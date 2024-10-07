@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "This workshop is taking place before the 2024 ASTMH conference in New Orleans, USA.\n📍 Where: Aloft New Orleans, 225 Baronne St, New Orleans, USA\n🗓️ When: 11-12 Nov 2024, immediately prior to the ASTMH conference"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Malaria Molecular Surveillance Study Design workshop",
+    "section": "",
+    "text": "Malaria Molecular Surveillance Study Design workshop"
+  },
+  {
+    "objectID": "tutorials.html",
+    "href": "tutorials.html",
+    "title": "Tutorials",
+    "section": "",
+    "text": "All of the materials from this workshop are freely available. We suggest you work through them in order (see the Schedule for the order in which materials were presented at the pre-ASTMH workshop)."
+  },
+  {
+    "objectID": "tutorials.html#list-of-all-the-tutorials",
+    "href": "tutorials.html#list-of-all-the-tutorials",
+    "title": "Tutorials",
+    "section": "List of all the tutorials",
+    "text": "List of all the tutorials\n\nTest"
+  },
+  {
+    "objectID": "tutorials/test.html",
+    "href": "tutorials/test.html",
+    "title": "Tutorial - testing learnr",
+    "section": "",
+    "text": "NOTE: when running locally this works with DRpower functions"
+  },
+  {
+    "objectID": "tutorials/test.html#topic-1",
+    "href": "tutorials/test.html#topic-1",
+    "title": "Tutorial - testing learnr",
+    "section": "Topic 1",
+    "text": "Topic 1\n\nExercise\nHere’s a simple exercise with an empty code chunk provided for entering the answer.\nWrite the R code required to add two plus two:\n\n\n\n\n\n\n\nExercise with Code\nHere’s an exercise with some prepopulated code as well as exercise.lines = 5 to provide a bit more initial room to work.\nNow write a function that adds any two numbers and then call it:\n\n\nadd &lt;- function() {\n  \n}"
+  },
+  {
+    "objectID": "tutorials/test.html#topic-2",
+    "href": "tutorials/test.html#topic-2",
+    "title": "Tutorial - testing learnr",
+    "section": "Topic 2",
+    "text": "Topic 2\n\nExercise with Hint\nHere’s an exercise where the chunk is pre-evaluated via the exercise.eval option (so the user can see the default output we’d like them to customize). We also add a “hint” to the correct solution via the chunk immediate below labeled print-limit-hint.\nModify the following code to limit the number of rows printed to 5:\n\n\nmtcars\n\n                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2\nValiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nDuster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4\nMerc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2\nMerc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2\nMerc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nMerc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3\nMerc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3\nMerc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3\nCadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4\nLincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4\nChrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4\nFiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\nHonda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\nToyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\nToyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1\nDodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2\nAMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2\nCamaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4\nPontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2\nFiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\nPorsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\nLotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\nFord Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4\nFerrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6\nMaserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8\nVolvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2\n\n\n\n\n\n\nhead(mtcars)\n\n\n\n\nQuiz\nYou can include any number of single or multiple choice questions as a quiz. Use the question function to define a question and the quiz function for grouping multiple questions together.\nSome questions to verify that you understand the purposes of various base and recommended R packages:\n\n\nQuiz"
+  },
+  {
+    "objectID": "tutorials.html#testing-iframe-with-shinyapps.io-link",
+    "href": "tutorials.html#testing-iframe-with-shinyapps.io-link",
+    "title": "Tutorials",
+    "section": "Testing iframe with shinyapps.io link",
+    "text": "Testing iframe with shinyapps.io link"
+  },
+  {
+    "objectID": "tutorials.html#testing-iframe-with-mrc-server-link",
+    "href": "tutorials.html#testing-iframe-with-mrc-server-link",
+    "title": "Tutorials",
+    "section": "Testing iframe with MRC server link",
+    "text": "Testing iframe with MRC server link"
+  },
+  {
+    "objectID": "schedule.html#day-1",
+    "href": "schedule.html#day-1",
+    "title": "Schedule",
+    "section": "Day 1",
+    "text": "Day 1\n\n\n\n\n\n\n\n\nTime\nTitle\nFormat\n\n\n\n\n12:00-12:30\nIntroductions\n\n\n\n12:30-1:00\nStudy design in MMS\nLecture\n\n\n1:00-1:30\nWhat is statistical power?\nLecture\n\n\n1:30-2:15\nActivity: Power basics\nLearnr tutorial\n\n\n2:15-2:30\nCoffee break\n\n\n\n2:30-3:00\nEstimating prevalence\nLecture\n\n\n3:00-3:30\nActivity: Estimating prevalence\nLearnr tutorial\n\n\n3:30-4:00\nLong coffee break\n\n\n\n4:00-5:00\nGuest lecture: logistics of designing a study\nLecture\n\n\n5:00-6:00\nDiscussion\nStructured discussion\n\n\n6pm onwards\nDinner"
+  },
+  {
+    "objectID": "schedule.html#day-2",
+    "href": "schedule.html#day-2",
+    "title": "Schedule",
+    "section": "Day 2",
+    "text": "Day 2\n\n\n\n\n\n\n\n\nTime\nTitle\nFormat\n\n\n\n\n8:30-9:00\nBreakfast\n\n\n\n9:00-9:30\nRecap of Day 1\n\n\n\n9:30-10:00\nMeasuring changes in prevalence and comparing against a threshold\nLecture\n\n\n10:00-10:45\nActivity: Measuring changes in prevalence\nLearnr tutorial\n\n\n10:45-11:00\nCoffee break\n\n\n\n11:00-11:30\nDesigning studies for multiple endpoints\nLecture\n\n\n11:30-12:15\nActivity: Designing study for multiple endpoints\nLearnr tutorial\n\n\n12:15-1:15\nLunch\n\n\n\n1:15-2:15\nDiscussion\nStructured discussion\n\n\n2:15-3:00\nIntra-cluster correlation\nLecture\n\n\n3:00-3:45\nActivity: Assuming intra-cluster correlation\nLearnr tutorial\n\n\n3:45-4:00\nCoffee break\n\n\n\n4:00-4:30\nEstimating ICC\nLecture\n\n\n4:30-5:00\nActivity\nLearnr tutorial\n\n\n5:00-5:15\nWrap-up"
+  },
+  {
+    "objectID": "index.html#workshop-format",
+    "href": "index.html#workshop-format",
+    "title": "Malaria Molecular Surveillance Study Design workshop",
+    "section": "Workshop format:",
+    "text": "Workshop format:\nOver the course of 1.5 days (see Schedule) we will have a combination of lectures, hands-on exercises, and group discussions. The workshop will be in English. We will cover several topics relevant to malaria molecular surveillance (MMS) study design, including:\n\nStatistical power\nSample size calculation\nEstimating prevalence\nMeasuring changes in prevalence\nCluster-based study design and intra-cluster correlation\nGuest lectures from experts conducting MMS studies"
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "Malaria Molecular Surveillance Study Design workshop",
+    "section": "Schedule",
+    "text": "Schedule"
+  },
+  {
+    "objectID": "index.html#materials",
+    "href": "index.html#materials",
+    "title": "Malaria Molecular Surveillance Study Design workshop",
+    "section": "Materials",
+    "text": "Materials\nAll of the materials from this workshop are freely available."
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "All of the materials from this workshop are freely available. We suggest you work through them in order (see the Schedule for the order in which materials were presented at the pre-ASTMH workshop)."
+  },
+  {
+    "objectID": "lectures.html#list-of-all-the-lectures-pdfs",
+    "href": "lectures.html#list-of-all-the-lectures-pdfs",
+    "title": "Lectures",
+    "section": "List of all the lectures (PDFs)",
+    "text": "List of all the lectures (PDFs)"
+  }
+]

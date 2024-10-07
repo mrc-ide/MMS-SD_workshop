@@ -1,0 +1,44 @@
+---
+title: "Schedule"
+---
+
+This workshop is taking place before the 2024 ASTMH conference in New Orleans, USA. 
+
+📍 Where: Aloft New Orleans, 225 Baronne St, New Orleans, USA
+
+🗓️ When: 11-12 Nov 2024, immediately prior to the ASTMH conference
+
+## Day 1
+| Time          | Title                                                       | Format                |
+|---------------|-------------------------------------------------------------|-----------------------|
+| 12:00-12:30   | Introductions                                               |                       |
+| 12:30-1:00    | Study design in MMS                                         | Lecture               |
+| 1:00-1:30     | What is statistical power?                                  | Lecture               |
+| 1:30-2:15     | Activity: Power basics                                      | Learnr tutorial       |
+| 2:15-2:30     | Coffee break                                                |                       |
+| 2:30-3:00     | Estimating prevalence                                       | Lecture               |
+| 3:00-3:30     | Activity: Estimating prevalence                             | Learnr tutorial       |
+| 3:30-4:00     | Long coffee break                                           |                       |
+| 4:00-5:00     | Guest lecture: logistics of designing a study               | Lecture               |
+| 5:00-6:00     | Discussion                                                  | Structured discussion |
+| 6pm onwards   | Dinner                                                      |                       |
+
+## Day 2
+
+| Time         | Title                                                         | Format                |
+|--------------|---------------------------------------------------------------|-----------------------|
+| 8:30-9:00    | Breakfast                                                     |                       |
+| 9:00-9:30    | Recap of Day 1                                                |               |
+| 9:30-10:00   | Measuring changes in prevalence and comparing against a threshold | Lecture          |
+| 10:00-10:45  | Activity: Measuring changes in prevalence                     | Learnr tutorial               |
+| 10:45-11:00  | Coffee break                                                  |                       |
+| 11:00-11:30  | Designing studies for multiple endpoints                      | Lecture               |
+| 11:30-12:15  | Activity: Designing study for multiple endpoints              | Learnr tutorial               |
+| 12:15-1:15   | Lunch                                                         |                       |
+| 1:15-2:15    | Discussion                                                    | Structured discussion |
+| 2:15-3:00    | Intra-cluster correlation                                     | Lecture               |
+| 3:00-3:45    | Activity: Assuming intra-cluster correlation                  | Learnr tutorial               |
+| 3:45-4:00    | Coffee break                                                  |                       |
+| 4:00-4:30    | Estimating ICC                                                | Lecture               |
+| 4:30-5:00    | Activity                                                      | Learnr tutorial               |
+| 5:00-5:15    | Wrap-up                                                       |                       |

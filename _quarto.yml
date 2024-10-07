@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "Malaria Molecular Surveillance Study Design workshop"
+  navbar:
+    left:
+      - href: index.qmd
+        text: "Home"
+        icon: house
+      - href: schedule.qmd
+        icon: calendar
+      - href: lectures.qmd
+        icon: bookmark
+      - text: "Tutorials"
+        icon: book
+        menu:
+          - text: "Overview"
+            href: tutorials.qmd
+          - text: "Test"
+            href: tutorials/test.Rmd
+            icon: play
+
+format:
+  html:
+    theme: journal
+    css: styles.css
+    toc: true

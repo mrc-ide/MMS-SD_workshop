@@ -1,0 +1,21 @@
+---
+title: ""
+---
+
+![](img/Pre-ASTMH workshop.png)
+
+# Malaria Molecular Surveillance Study Design workshop
+
+## Workshop format: 
+
+Over the course of 1.5 days (see [Schedule](schedule.qmd)) we will have a combination of lectures, hands-on exercises, and group discussions. The workshop will be in English. We will cover several topics relevant to malaria molecular surveillance (MMS) study design, including:
+
+- Statistical power
+- Sample size calculation
+- Estimating prevalence
+- Measuring changes in prevalence
+- Cluster-based study design and intra-cluster correlation
+- Guest lectures from experts conducting MMS studies
+
+## Materials
+All of the materials from this workshop are freely available. 

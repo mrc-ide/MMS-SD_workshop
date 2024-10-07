@@ -1,0 +1,26 @@
+---
+title: "Tutorials"
+---
+
+All of the materials from this workshop are freely available. We suggest you work through them in order (see the [Schedule](schedule.qmd) for the order in which materials were presented at the pre-ASTMH workshop).
+
+## List of all the tutorials 
+
+- [Test](tutorials/test.Rmd)
+
+## Testing iframe with shinyapps.io link
+<iframe src="https://shaziaruybal.shinyapps.io/covidClassifyR/"
+        width="100%"
+        height="800px"
+        frameborder="0"
+        allowfullscreen>
+</iframe>
+
+## Testing iframe with MRC server link
+
+<iframe src="https://shiny.dide.ic.ac.uk/DRpower-app/"
+        width="100%"
+        height="800px"
+        frameborder="0"
+        allowfullscreen>
+</iframe>
