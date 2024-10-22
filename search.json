@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "This workshop is taking place before the 2024 ASTMH conference in New Orleans, USA.\n📍 Where: Aloft New Orleans, 225 Baronne St, New Orleans, USA\n🗓️ When: 11-12 Nov 2024, immediately prior to the ASTMH conference"
+  },
+  {
+    "objectID": "schedule.html#day-1",
+    "href": "schedule.html#day-1",
+    "title": "Schedule",
+    "section": "Day 1",
+    "text": "Day 1\n\n\n\n\n\n\n\n\nTime\nTitle\nFormat\n\n\n\n\n12:00-12:30\nLunch\nIn meeting room\n\n\n12:30-1:00\nModule 1: Goal of MMS\nLecture\n\n\n1:00-1:45\nIntroductions\n\n\n\n1:45-2:15\nModule 2: Sampling from a population\nLecture\n\n\n2:15-3:00\nModule 2: Practical\nLearnR tutorial\n\n\n3:00-3:30\nBreak\n\n\n\n3:30-4:00\nModule 3: Sample size based on precision\nLearnR tutorial\n\n\n4:00-4:45\nModule 3: Practical\nLearnR tutorial\n\n\n4:45:5:00\nBreak\n\n\n\n5:00-6:00\nDiscussion groups\nStructured discussion\n\n\n6pm onwards\nGroup dinner"
+  },
+  {
+    "objectID": "schedule.html#day-2",
+    "href": "schedule.html#day-2",
+    "title": "Schedule",
+    "section": "Day 2",
+    "text": "Day 2\n\n\n\n\n\n\n\n\nTime\nTitle\nFormat\n\n\n\n\n8:30-9:00\nBreakfast\nIn meeting room\n\n\n9:00-9:05\nRecap of Day 1\n\n\n\n9:05-9:35\nGuest lecture: Logistics and challenges of designing a MMS study\nLecture\n\n\n9:35-10:05\nModule 4: Hypothesis testing and power\nLecture\n\n\n10:05-10:50\nModule 4: Practical\nLearnR tutorial\n\n\n10:50-11:10\nBreak\n\n\n\n11:10-11:40\nModule 5: Sample size calculation\nLecture\n\n\n11:40-12:30\nModule 5: Practical\nLearnR tutorial\n\n\n12:30-1:30\nLunch\n\n\n\n1:30-2:00\nModule 6: Intra-cluster correlation\nLecture\n\n\n2:00-2:45\nModule 6: Practical\nLearnR tutorial\n\n\n2:45-3:00\nBreak\n\n\n\n3:00-3:15\nModule 7: Designing studies for multiple end-points\nLecture\n\n\n3:15-4:45\nModule 7: Practical\nLearnR tutorial\n\n\n4:45-5:30\nDiscussion and wrap-up"
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html",
+    "href": "tutorials/module2_sampling.html",
+    "title": "Module 2: Sampling from a population",
+    "section": "",
+    "text": "Welcome to Module 2: Sampling from a population. In this module, we’ll explore how to relate samples to populations, calculate confidence intervals, and understand the impact of sample size on study results.\nSame arguments for prevalence of malaria vs markers etc. We are starting with a simple example….\n\n\nBy the end of this tutorial, you will be able to:\n\nDefine the target population for a study.\nDifferentiate between a population and a sample.\nCalculate the 95% confidence interval.\nAssess how sampling variability impacts the representation of the population.\nUnderstand the effect of sample size on confidence intervals."
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#introduction",
+    "href": "tutorials/module2_sampling.html#introduction",
+    "title": "Module 2: Sampling from a population",
+    "section": "",
+    "text": "Welcome to Module 2: Sampling from a population. In this module, we’ll explore how to relate samples to populations, calculate confidence intervals, and understand the impact of sample size on study results.\nSame arguments for prevalence of malaria vs markers etc. We are starting with a simple example….\n\n\nBy the end of this tutorial, you will be able to:\n\nDefine the target population for a study.\nDifferentiate between a population and a sample.\nCalculate the 95% confidence interval.\nAssess how sampling variability impacts the representation of the population.\nUnderstand the effect of sample size on confidence intervals."
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#what-is-my-population",
+    "href": "tutorials/module2_sampling.html#what-is-my-population",
+    "title": "Module 2: Sampling from a population",
+    "section": "What is my population?",
+    "text": "What is my population?\nIn any study, clearly defining the target population is crucial. Let’s consider a few examples of made-up studies.\n\nQUIZ Study 1\nWe want to estimate the prevalence of malaria infection in a community of 10,0000 people. Which of the following is the target population?\n\nAll residents\nOnly women or only men\nOnly children under 5 years old\nAdults over 60 years old\n\n\n\nQUIZ Study 2\n\n\nQUIZ Study 3"
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#relating-the-sample-to-the-population",
+    "href": "tutorials/module2_sampling.html#relating-the-sample-to-the-population",
+    "title": "Module 2: Sampling from a population",
+    "section": "Relating the sample to the population",
+    "text": "Relating the sample to the population\nIt is often not feasible to sample the entire population, for example, due to costs or difficulty in sampling everyone. The good thing is we can design our study so that our target population is a representative sample of our population.\n\nUsing the population census\nLet’s go back to our made-up study. We now have access to a census of the entire population.\n\n# fake census data\nN &lt;- 10000\n\nset.seed(1234)\n\ncensus &lt;- data.frame(\n  id = 1:N,\n  age = sample(0:80, N, replace = TRUE), # not really realistic, eg 'young population' but maybe OK for these purposes?\n  sex = sample(c(\"Male\", \"Female\"), N, replace = TRUE) #,\n  # malaria_infection = sample(c(\"Infected\", \"Not infected\"), N, replace = TRUE, prob = c(0.3, 0.7)\n)\n\ncensus &lt;- census %&gt;% \n  # infection probability higher in children\n  mutate(infection_prob = case_when(age &gt;=0 & age &lt;= 14 ~ 0.60,\n                                    age &gt; 14 & age &lt;=44 ~ 0.30,\n                                    age &gt; 44 ~ 0.10,\n                                    TRUE ~ 0.25),\n         malaria_infection = ifelse(runif(n()) &lt;= infection_prob, \"Infected\", \"Not infected\")) %&gt;% \n  select(-infection_prob)\n\ninfected_pop &lt;- census %&gt;% filter(malaria_infection == \"Infected\")\n\nWe have a census of the entire population of the village (n=10,000) with information each residents age and sex.\n\nkable(head(census))\n\n\n\n\nid\nage\nsex\nmalaria_infection\n\n\n\n\n1\n27\nMale\nNot infected\n\n\n2\n79\nFemale\nNot infected\n\n\n3\n21\nFemale\nInfected\n\n\n4\n8\nFemale\nNot infected\n\n\n5\n4\nMale\nNot infected\n\n\n6\n37\nMale\nInfected\n\n\n\n\n\nFor purposes of this tutorial we “know” the true infection status of every individual, there are 2678 people in the village with malaria infections.\n\ncensus %&gt;% \n  count(malaria_infection) %&gt;% \n  ggplot(aes(x = malaria_infection, y = n, fill = malaria_infection)) +\n    geom_bar(stat = \"identity\") +\n    scale_fill_brewer(palette = \"Set1\") +\n    labs(title = \"Malaria infection status\", x = \"\", y = \"Count\") +\n    guides(fill = F) +\n    theme_minimal()\n\n\n\n\nLet’s look at the age and sex distribution.\n\ninfected_pop %&gt;% \n  ggplot(aes(x = age, fill = sex)) +\n    geom_histogram(binwidth = 5, color = \"white\", boundary = 0) +\n    scale_fill_brewer(palette = \"Set2\") +\n    labs(title = \"Malaria-infected population\", x = \"Age (years)\", y = \"Count\") +\n    theme_minimal()\n\n\n\n\n\nSmall sample sizes\nSuppose we have resources to sequence 200 samples. Let’s randomly sample 200 individuals from the population and see\n\nsampleFromPopulation &lt;- function(sample_size, census){\n  ss &lt;- sample_size\n  sample_data &lt;- census %&gt;% sample_n(ss, replace = F) # sample without replacement \n  \n  comparison &lt;- bind_rows(\n    census %&gt;% mutate(group = \"Population\") %&gt;% select(age, sex, malaria_infection, group),\n    sample_data %&gt;% mutate(group = \"Sample\") %&gt;% select(age, sex, malaria_infection, group))\n  \n  return(comparison)\n}\n\nLet’s take a look at the demographics of our sample. Do we see a similar age and sex distribution? Run this a few times with the sample size of 200 to see how it changes.\n\nsample_size &lt;- 200\ncomparison &lt;- sampleFromPopulation(sample_size, census)\n\ncomparison %&gt;% \n  ggplot(aes(x = age, fill = sex)) +\n    geom_histogram(binwidth = 5, color = \"white\", boundary = 0) +\n    scale_fill_brewer(palette = \"Set2\") +\n    labs(title = \"Age and sex distribution\", x = \"Age (years)\", y = \"Count\") +\n    theme_minimal() +\n    facet_wrap(~group, scales = \"free_y\")\n\n\n\ncomparison %&gt;% \n  count(group, malaria_infection) %&gt;% \n  ggplot(aes(x = group, y = n, fill = malaria_infection)) +\n    geom_bar(stat = \"identity\", position = \"fill\") +\n    scale_fill_brewer(palette = \"Set1\", name = NULL) +\n    scale_y_continuous(labels = scales::percent) +\n    labs(title = \"Malaria infection status\", x = \"\", y = \"\") +\n    theme_minimal()\n\n\n\n\n\nn_sim &lt;- 1000\n# Vector to store sample proportions\nsample_proportions &lt;- numeric(n_sim)\n\nfor (i in 1:n_sim) {\n  sample_data &lt;- census %&gt;% sample_n(sample_size, replace = F)\n  \n  # Calculate sample proportion\n  p_hat &lt;- mean(sample_data$malaria_infection == \"Infected\")\n  \n  # Store the sample proportion\n  sample_proportions[i] &lt;- p_hat\n}\n\n# Calculate the mean and standard deviation of sample proportions\nmean_p_hat &lt;- mean(sample_proportions)\nsd_p_hat &lt;- sd(sample_proportions)\n\n# Display the results\ncat(\"Mean of sample proportions:\", mean_p_hat, \"\\n\")\n\nMean of sample proportions: 0.269395 \n\ncat(\"Standard deviation of sample proportions:\", sd_p_hat, \"\\n\")\n\nStandard deviation of sample proportions: 0.03018477 \n\n# Plot histogram of sample proportions\nhist(sample_proportions, breaks = 30, main = \"Distribution of Sample Proportions\", xlab = \"Sample Proportion of Infected Individuals\")\n\n\n\n\n\n\n\nQUIZ\nIs the sample always the same? (TRUE/FALSE)\n\n\nREFLECT (with hint):\n\nInterpretation text\n\nDoes the demography always look like the population? Can you ever generate a sample that looks systematically different from the population?\nYou should see that the sample differs from the population. Does that mean our sampling approach is biased? Hint: No it does not\nWhat do you notice about the demographics of the sample? Does it always reflect the population?\n\nHint: We have a lot of uncertainty with small sample sizes"
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#calculating-the-95-confidence-interval",
+    "href": "tutorials/module2_sampling.html#calculating-the-95-confidence-interval",
+    "title": "Module 2: Sampling from a population",
+    "section": "Calculating the 95% confidence interval",
+    "text": "Calculating the 95% confidence interval\nOur next topic focuses on calculating the 95% confidence interval (CI) using the Wald method. We will estimate the prevalence of malaria in our sample and calculate its 95% CI.\n\nset.seed(5)\nsample_data &lt;- census %&gt;% sample_n(200)\n\nWald confidence interval formula TODO: FIGURE OUT LATEX HERE\nCI = Z \n\nDon’t worry, we will decompose this formula step-by-step!\n\nSample proportion, phat\nIn our example, the sample proportion refers to the number of infected individuals in our sample. We calculate this by dividing the number of infected individuals in the sample by the total sample size.\n\n# Number of infected individuals in the sample\ninfected_count &lt;- sum(sample_data$malaria_infection == \"Infected\")\n\ninfected_count\n\n[1] 69\n\n\n\n# Sample proportion\np_hat &lt;- infected_count / sample_size\np_hat\n\n[1] 0.345\n\n\n\nSample size, n\nIn our example, our sample size was n=200.\n\n\nCalculating the standard error\nWe need to\n\nSE &lt;- sqrt((p_hat * (1 - p_hat)) / sample_size)\nSE\n\n[1] 0.03361361\n\n\nOur standard error is 0.0336136.\n\n\nCalculating the confidence interval\nTo get the 95% CI we need to calculate our lower and upper bounds. We use the Z-score for 95% confidence, which is 1.96.\n\n# Z-score for 95% confidence\nZ &lt;- 1.96\n\nLet’s start by calculating our lower bound:\n\nCI_lower &lt;- p_hat - Z * SE\n\nOur lower CI bound is: 0.2791173 or 27.91%.\nNow let’s calculate the upper bound:\n\nCI_upper &lt;- p_hat + Z * SE\n\nOur upper CI bound is: 0.4108827 or 41.09%.\n\nCI &lt;- data.frame(\n  Lower = CI_lower,\n  Estimate = p_hat,\n  Upper = CI_upper\n)\n\nSo, we can now say our estimated prevalence is 0.345 or 34.5% and our 95%CI is 27.91% to 41.09%."
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#comparison-to-true-prevalence-estimate",
+    "href": "tutorials/module2_sampling.html#comparison-to-true-prevalence-estimate",
+    "title": "Module 2: Sampling from a population",
+    "section": "Comparison to true prevalence estimate",
+    "text": "Comparison to true prevalence estimate\n\ntrue_infected_count &lt;- sum(census$malaria_infection == \"Infected\")\ntrue_prevalence &lt;- true_infected_count / N\n\nThe true prevalence is 0.2678 or 26.78%\n\nQUIZ Does our estimate fall within the 95%CI?\n\nYes/No"
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#how-often-does-true-prevalence-fall-within-the-95ci",
+    "href": "tutorials/module2_sampling.html#how-often-does-true-prevalence-fall-within-the-95ci",
+    "title": "Module 2: Sampling from a population",
+    "section": "How often does true prevalence fall within the 95%CI?",
+    "text": "How often does true prevalence fall within the 95%CI?\nLet’s explore this question by running a simulation and counting how many times our estimated prevalence is withing the 95%CI or not. - we’ve only done 1 example, now let’s do lots\n\n# simulation\nn_sim &lt;- 1000\nsample_size &lt;- 200\n\nsimulate_CI &lt;- function(census, sample_size, true_prevalence) {\n  sample_data &lt;- census %&gt;% sample_n(sample_size, replace = F)\n  infected_count &lt;- sum(sample_data$malaria_infection == \"Infected\")\n  p_hat &lt;- infected_count / sample_size\n  SE &lt;- sqrt((p_hat * (1 - p_hat)) / sample_size)\n  CI_lower &lt;- p_hat - Z * SE\n  CI_upper &lt;- p_hat + Z * SE\n  (true_prevalence &gt;= CI_lower) & (true_prevalence &lt;= CI_upper)\n}\n\nresults &lt;- replicate(n_sim, simulate_CI(census, sample_size, true_prevalence))\nmean(results) # coverage prob\n\n[1] 0.944\n\nresults_df &lt;- data.frame(result = results) %&gt;% \n                mutate(result = case_when(result == FALSE ~ \"Not within 95%CI\",\n                                          result == TRUE ~ \"Within 95%CI\"))\n\nresults_df %&gt;% \n  ggplot(aes(x = result, fill = result)) +\n    geom_bar() +\n    scale_fill_manual(values = c(\"Not within 95%CI\" = \"grey\", \"Within 95%CI\" = \"magenta4\")) +\n    labs(title = \"Simulation results\", x = \"\", y = \"Count\") +\n    guides(fill = F) +\n    theme_minimal()"
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#bonus",
+    "href": "tutorials/module2_sampling.html#bonus",
+    "title": "Module 2: Sampling from a population",
+    "section": "Bonus",
+    "text": "Bonus\n\nopen from code (do it yourself with hints), repeat for sample size of eg 500"
+  },
+  {
+    "objectID": "tutorials/module2_sampling.html#resources",
+    "href": "tutorials/module2_sampling.html#resources",
+    "title": "Module 2: Sampling from a population",
+    "section": "Resources",
+    "text": "Resources"
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "All of the materials from this workshop are freely available. We suggest you work through them in order (see the Schedule for the order in which materials were presented at the pre-ASTMH workshop)."
+  },
+  {
+    "objectID": "lectures.html#list-of-all-the-lectures-pdfs",
+    "href": "lectures.html#list-of-all-the-lectures-pdfs",
+    "title": "Lectures",
+    "section": "List of all the lectures (PDFs)",
+    "text": "List of all the lectures (PDFs)"
+  },
+  {
+    "objectID": "index.html#workshop-format",
+    "href": "index.html#workshop-format",
+    "title": "Malaria Molecular Surveillance Study Design workshop",
+    "section": "Workshop format",
+    "text": "Workshop format\nOver the course of 1.5 days (see Schedule) we will have a combination of lectures, hands-on exercises, and group discussions. The workshop will be in English. We will cover several topics relevant to malaria molecular surveillance (MMS) study design, including:\n\nStatistical power\nSample size calculation\nEstimating prevalence\nMeasuring changes in prevalence\nCluster-based study design and intra-cluster correlation\nGuest lectures from experts conducting MMS studies"
+  },
+  {
+    "objectID": "index.html#materials",
+    "href": "index.html#materials",
+    "title": "Malaria Molecular Surveillance Study Design workshop",
+    "section": "Materials",
+    "text": "Materials\nAll of the materials from this workshop are freely available."
+  },
+  {
+    "objectID": "tutorials.html",
+    "href": "tutorials.html",
+    "title": "Tutorials",
+    "section": "",
+    "text": "All of the materials from this workshop are freely available. We suggest you work through them in order (see the Schedule for the order in which materials were presented at the pre-ASTMH workshop)."
+  },
+  {
+    "objectID": "tutorials.html#list-of-all-the-tutorials",
+    "href": "tutorials.html#list-of-all-the-tutorials",
+    "title": "Tutorials",
+    "section": "List of all the tutorials",
+    "text": "List of all the tutorials\n\nTest"
+  },
+  {
+    "objectID": "tutorials/test.html",
+    "href": "tutorials/test.html",
+    "title": "Testing learnr with DRpower",
+    "section": "",
+    "text": "hist(rnorm(100))"
+  },
+  {
+    "objectID": "tutorials/test.html#topic",
+    "href": "tutorials/test.html#topic",
+    "title": "Testing learnr with DRpower",
+    "section": "",
+    "text": "hist(rnorm(100))"
+  },
+  {
+    "objectID": "tutorials/test.html#topic-1",
+    "href": "tutorials/test.html#topic-1",
+    "title": "Testing learnr with DRpower",
+    "section": "Topic 1",
+    "text": "Topic 1\n\nExercise\nHere’s a simple exercise with an empty code chunk provided for entering the answer.\nWrite the R code required to add two plus two:\n\n\n\n\n\n\n\nExercise with Code\nHere’s an exercise with some prepopulated code as well as exercise.lines = 5 to provide a bit more initial room to work.\nNow write a function that adds any two numbers and then call it:\n\n\nadd &lt;- function() {\n  \n}"
+  },
+  {
+    "objectID": "tutorials/test.html#topic-2",
+    "href": "tutorials/test.html#topic-2",
+    "title": "Testing learnr with DRpower",
+    "section": "Topic 2",
+    "text": "Topic 2\n\nExercise with Hint\nHere’s an exercise where the chunk is pre-evaluated via the exercise.eval option (so the user can see the default output we’d like them to customize). We also add a “hint” to the correct solution via the chunk immediate below labeled print-limit-hint.\nModify the following code to limit the number of rows printed to 5:\n\n\nmtcars\n\n                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2\nValiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nDuster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4\nMerc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2\nMerc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2\nMerc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nMerc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3\nMerc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3\nMerc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3\nCadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4\nLincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4\nChrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4\nFiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\nHonda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\nToyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\nToyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1\nDodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2\nAMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2\nCamaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4\nPontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2\nFiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\nPorsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\nLotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\nFord Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4\nFerrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6\nMaserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8\nVolvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2\n\n\n\n\n\n\nhead(mtcars)"
+  },
+  {
+    "objectID": "tutorials/test.html#topic-3",
+    "href": "tutorials/test.html#topic-3",
+    "title": "Testing learnr with DRpower",
+    "section": "Topic 3",
+    "text": "Topic 3\n\nExercise with DRpower: detecting rare variants at 1% prevalence\nNOTE: when running locally this works with DRpower functions\nModify the following code to see the power to detect rare variants at a 1% prevalence threshold if we have 5 clusters of 30 samples, we assume an intra-cluster correlation of 0.05:\n\n\nget_power_presence()\n\n\n\n\n\nget_power_presence(N = c(30, 30, 30, 30, 30), prevalence = 0.01, ICC = 0.05)"
+  },
+  {
+    "objectID": "tutorials/test.html#quiz",
+    "href": "tutorials/test.html#quiz",
+    "title": "Testing learnr with DRpower",
+    "section": "Quiz",
+    "text": "Quiz\nYou can include any number of single or multiple choice questions as a quiz. Use the question function to define a question and the quiz function for grouping multiple questions together.\nSome questions to verify that you understand the purposes of various base and recommended R packages:\n\n\nQuiz"
+  }
+]
