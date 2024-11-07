@@ -1,0 +1,203 @@
+---
+title: "Module 3: Calculating Sample Size from Margin of Error"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Learning outcomes
+
+This activity focuses on using margin of error arguments to come up with an appropriate sample size for a hypothetical study. In this activity you will learn:
+
+- How to calculate a 95% confidence interval from prevalence data
+- How to derive the formula for sample size directly from the confidence interval formula
+- How to calculate a minimum sample size using assumptions about prevalence and margin of error
+- How to account for drop-out and positive fraction
+
+*Disclaimer: This scenario is entirely fictitious, and while it uses real place names, any resemblance to actual events is purely coincidental*
+
+# Scenario 1
+
+## Background
+
+You have been recruited by the national malaria control programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations in the parasite population that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The *dhps* K540E mutation, which is known to be associated with high level SP resistance alongside other common mutations, has recently been found at high prevalence (72%) in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda, hence the NMCP is concerned about possible flow of drug resistant parasites over the border.
+
+The NMCP plans to conduct a cross-sectional study to estimate the prevalence of the *dhps* K540E mutation within Rutshuru town. **Your job is to work out the appropriate sample size for this study.**
+
+## Results of a pilot study
+
+Thankfully, a pilot study has already been conducted in Rutshuru. This pilot study included 100 participants, chosen at random from households within the town, who were tested for malaria via rapid diagnostic test (RDT). 23 people tested positive for malaria and these samples were sent away for genetic sequencing. 19 samples were successfully sequenced, of which 5 were positive for the K540E mutation.
+
+**Question:** Which is the correct equation when calculating the prevalence of K540E mutations from the pilot data?
+
+**Options:**
+
+- 23 / 100
+- 19 / 100
+- 5 / 23
+- 5 / 19 **(correct)**
+
+Recall that we can use the following formula to calculate a 95% confidence interval on our prevalence estimate:
+
+$$
+\hat{p} \pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{N}}
+$$
+Complete the following R code by entering the appropriate values for `p` and `N` to compute this interval:
+
+```{r}
+# enter values for the estimated prevalence and the sample size
+p <- 5 / 19 # NB, delete value
+N <- 19     # NB, delete value
+
+# calculate the margin of error (MOE)
+z <- qnorm(0.975)
+MOE <- z*sqrt(p*(1 - p) / N)
+
+# report the point estimate and 95% confidence interval
+data.frame(prevalence = p,
+           lower = p - MOE,
+           upper = p + MOE)
+```
+
+**Question:** Which of these statements is correct:
+**Options:**
+
+- The 95% CI ranges from 1.5% to 80.2%
+- The 95% CI ranges from 6.5% to 46.1% **(correct)**
+- The 95% CI ranges from 24.0% to 28.0%
+- The 95% CI ranges from 0.065% to 0.461%
+
+The 95% CI shows that we are very uncertain of the prevalence of K540E mutations based on our pilot data alone. While our best estimate of the prevalence is 26%, the plausible range includes anything from 6.5% to 46.1%. The NMCP considers this range too wide to be useful. Hence, they plan to conduct a follow-up study.
+
+
+## Calculating the sample size
+
+Our first task is to convert the formula for the margin of error (MOE) into a new formula that tells us the appropriate sample size. If you are comfortable with the mathematics and want to see how to do this then follow these steps. If not, you can jump ahead to Step 3 to see the final formula.
+
+**Step 1: Write down the formula for the MOE**
+
+We will use the mathematical symbol $m$ for the MOE:
+
+$$
+m = z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{N}}
+$$
+**Step 2: Square both sides**
+
+$$
+m^2 = z_{1-\alpha/2}^2 \frac{p(1-p)}{N}
+$$
+**Step 3: Multiply by $N$ and divide by $m^2$**
+
+$$
+N = z_{1-\alpha/2}^2 \frac{p(1-p)}{m^2}
+$$
+We can use this formula to tell us the appropriate sample size given an assumed value of the prevalence ($p$) and a target value for the MOE ($m$).
+
+**Question:** What value should we assume for $p$?
+**Options: (all three answers are correct as they are all reasonable)**
+
+- 0.26 based on the pilot data
+- 0.5 as this is the most pessimistic assumption in terms of requiring the largest sample size
+- 0.72 based on the prevalence in neighbouring Uganda
+
+All three answers above are reasonable as long as they can be justified. But for the sake of argument let's assume a value of $p=0.26$ going forward. The NMCP has decided that a MOE of 5% is acceptable. Complete the following R code by entering the appropriate values for `p` and `m` to compute the resulting sample size:
+
+```{r}
+# enter values for the estimated prevalence and the sample size
+p <- 0.26     # NB, delete value
+m <- 0.05     # NB, delete value
+
+# calculate the raw sample size
+z <- qnorm(0.975)
+N <- z^2*p*(1 - p) / m^2
+
+print(N)
+```
+
+You should have obtained a sample size of 295.64, which we would round **up** to $N=296$ to give a whole number. The nice thing about this calculation is that we can double check that it is correct. Try entering the values $p=0.26$ and $N=296$ into the 95% CI formula that we used in the pilot data analysis. If our calculations were correct, you should find that the resulting MOE is very close to 5%.
+
+## Buffering
+
+Buffering refers to increasing a sample size to allow for events that are out of our control and that can result in drop-out (loss of samples). Some ways that drop-out can occur are through:
+
+- Participants withdrawing consent
+- Participants dying or leaving the area
+- Samples being lost during transportation
+- Samples becoming contaminated
+- Samples failing amplification or sequencing resulting in a lack of genetic data
+- Data being lost due to computational errors
+
+We cannot completely eliminate the risk of drop-out, but by buffering sample sizes we can be robust to it. If we expect a proportion $d$ of samples to be lost, then the formula for adjusted sample size is:
+
+$$
+N_{\text{buffered}} = \frac{N_{\text{original}}}{1 - d}
+$$
+
+Through consulting with lab technicians and the study team, you estimate that 10% of samples may be lost to drop-out. Complete the following R code to come up with a buffered sample size:
+
+```{r}
+# enter value for estimated dropout
+r <- 0.1     # NB, delete value
+
+# calculate the buffered sample size
+N_buffered <- N / (1 - r)
+
+print(N_buffered)
+```
+
+**Question:** What is the correct buffered sample size?
+
+**Options:**
+
+- 300
+- 328
+- 350
+- 329 **(correct)**
+
+## Accounting for positive fraction
+
+So far, we have focused on working out how many *confirmed malaria cases* we need in our study. However, recall that this will be a cross-sectional study with individuals being sampled at random from households within Rutshuru town. Many of the individuals tested will not be positive for malaria. It may be useful for us to know how many individuals we need to *test* as part of this study, which may be considerably higher than the number of confirmed malaria cases.
+
+The NMCP estimates that 25% of the population of Rutshuru will be positive for malaria by RDT. We can use the same buffering formula as before, but now using the positive fraction ($f$) to inflate our sample size:
+
+$$
+N_{\text{test}} = \frac{N_{\text{confirmed}}}{f}
+$$
+
+Complete the following R code to work out the number of people we will need to test to achieve the final target sample size:
+
+```{r}
+# enter value for estimated positive fraction
+N_buffered <- 329
+f <- 0.25     # NB, delete value
+
+# calculate the testing sample size
+N_test <- N_buffered / f
+
+print(N_test)
+```
+
+**Question:** How many people will we need to test to obtain the target sample size of 329 positive malaria cases?
+
+**Options:**
+
+- 534
+- 923
+- 1316 **(correct)**
+- 1536
+
+You have now completed your study design exercise. Your recommendation to the NMCP is as follows:
+
+*Assuming a prevalence of K540E mutations of 26% based on pilot data, a sample size of* **329** *confirmed malaria cases will be needed to estimate prevalence to within 5% margin of error. This number is buffered to take into account an assumed 10% drop-out. Assuming that malaria prevalence is 25% by RDT in Rutshuru town, this translates to* **1316** *individuals who will need to be tested in the cross-sectional study design.*
+
+## Bonus questions
+
+The study design above is based on strong statistical principles. However, it is worth testing how robust these numbers are to changes in our assumptions.
+
+1. Under the chosen sample size of 296 (after drop-out), what would be your margin of error under the worst case scenario that the true prevalence of the K540E mutation was actually 50%?
+
+2. We estimated that 1316 people will need to be tested based on an assumed 25% prevalence of malaria. But what if malaria prevalence is actually only 15% in Rutshuru town?
+
