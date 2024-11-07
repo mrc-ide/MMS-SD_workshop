@@ -1,6 +1,8 @@
 ---
 title: "Module 1: Sampling from a population"
-output: learnr::tutorial
+output:
+  learnr::tutorial:
+    progressive: true
 runtime: shiny_prerendered
 ---
 
@@ -11,6 +13,9 @@ library(ggplot2)
 library(knitr)
 knitr::opts_chunk$set(warning = FALSE,
                       echo = FALSE)
+
+# needed for longer calculations (eg DRpower) note - in seconds
+tutorial_options(exercise.timelimit = 120)
 
 # FUNCTIONS
 sampleFromPopulation <- function(sample_size, census){
@@ -161,7 +166,7 @@ Z <- 1.96
 
 ## Introduction
 
-Welcome to Module 2: **Sampling from a population**.
+Welcome to Module 1: **Sampling from a population**.
 
 In this module, we'll explore how to relate samples to populations, calculate confidence intervals, and understand the impact of sample size on study results. We are going to explore how to think about this when conducting studies to determine the prevalence of malaria to start with a simple example to gently introduce these statistical concepts. When we think about malaria molecular surveillance (MMS) studies, the same concepts apply. For example, in MMS studies we might be designing our study to determine the prevalence of *molecular markers* (for example, drug resistance markers) rather than malaria infection.
 
@@ -219,6 +224,7 @@ This is the information we have in the census (here we show the first 6 resident
 kable(head(census))
 ```
 
+### Population demographics
 Below we can see a breakdown of malaria-infected individuals in this population.
 
 ```{r}
@@ -258,8 +264,17 @@ Let's take a look at the demographics of our sample by plotting the age and sex 
 
 Below we use the function `sampleFromPopulation()` and we specify what our sample size is and from where we want to sample (in our case from the census data). 
 
-*Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population?*
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
 
+  <span style="color:#d19554;"> 
+  Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population?
+  </span>
+</div>
+
+<br>
 We can use the `plotAgeSexDistribution()` and `plotInfectedProportion()` functions to visualize our results. Click on "Run Code". 
 
 ```{r sampling-1, exercise=TRUE}
@@ -317,23 +332,29 @@ quiz(caption = "QUIZ - Sampling from the population",
   question_radio("Was the sample always the same?",
            answer("Yes", correct = FALSE),
            answer("No", correct = TRUE),
+           allow_retry = TRUE,
            correct = "That is correct! Sometimes our sample may not be representative of the population.",
            incorrect = "Are you sure? Try running the code above a few more times. Is it always reflective of the population in terms of age and sex distribution and/or with respect to the proportion of people infected?"
-  )
-)
-```
-
-```{r quiz-sampling-small}
-quiz(caption = "QUIZ - Sampling from the population with small sample sizes",
+  ),
   question_radio("Does our sample of 200 always reflect the population?",
            answer("Yes", correct = FALSE),
            answer("No", correct = TRUE),
+           allow_retry = TRUE,
            correct = "That is correct! When we have small sample sizes this can lead to high uncertainty and more variability thus our sample may not be representative of the population.",
            incorrect = "Are you sure? Try running the code above a few more times. You could even replace 200 with 50 to see how this impacts the results. Is it always reflective of the population in terms of age and sex distribution and/or with respect to the proportion of people infected? Smaller sample sizes are more susceptible to sampling variability. With a limited number of individuals, the likelihood of the sample deviating from the population characteristics increases."
   )
 )
 ```
 
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Smaller sample sizes are more susceptible to sampling variability. With a limited number of individuals, the likelihood of the sample deviating from the population characteristics increases. Think about how this may or may not impact your results. 
+  </span>
+</div>
 
 ### ✨ BONUS QUESTION ✨
 
@@ -344,6 +365,7 @@ quiz(caption = "QUIZ - Sampling bias",
   question_radio("Does this mean our sampling approach is biased?",
            answer("Yes", correct = FALSE),
            answer("No", correct = TRUE),
+           allow_retry = TRUE,
            correct = "That is correct! This does not necessarily mean our sampling approach is biased. Bias refers to a *systematic error* that consistently favors certain outcomes. However, because we are randomly sampling 200 individuals with *equal chance of being selected* our sampling approach is not biased. This can occur even if the characteristics of our sample (e.g., age and sex distribution) may not perfectly match those of the population.",
            incorrect = "That is not correct! Although our sample was not always reflective of the population (for example, the characteristics like age and sex distribution did not perfectly match), our *sampling* method was unbiased because we randomly sampled 200 individuals and each person had an equal chance of being selected. Bias refers to a *systematic error* that consistently favors certain outcomes, which was not the case here."
   )
@@ -405,7 +427,7 @@ infected_count <- sum(sample_data$malaria_infection == "Infected")
 ### What is the estimated prevalence of malaria in our sample?
 We can calculate this by dividing the number of individuals infected with malaria by our sample size. 
 
-Try coding it yourself or click on the hint. 
+Try coding it yourself or click on the solution. 
 
 ```{r est-prev, exercise = TRUE, exercise.setup = "sample-seed-params"}
 
@@ -445,7 +467,7 @@ The sample proportion refers to the proportion of infected individuals in our sa
 p_hat <-
 ```
 
-```{r phat-hint}
+```{r phat-solution}
 # Sample proportion
 p_hat <- infected_count / sample_size
 p_hat
@@ -463,7 +485,7 @@ Now we can calculate the standard error using `phat` and `sample_size` as shown 
 SE <- 
 ```
 
-```{r SE-hint}
+```{r SE-solution}
 # Standard error
 SE <- sqrt((p_hat * (1 - p_hat)) / sample_size)
 SE
@@ -482,7 +504,7 @@ Our standard error is 0.336 or 33.6%.
 
 Now that we know our standard error, we can calculate the lower and upper bounds of our 95% CI. We use the Z-score for 95% confidence, which is `1.96` and record it as `Z`. Then we need to calculate our lower and upper bounds using the formula above. We need to multiply `Z` by our `SE` and substract it from `p_hat`. 
 
-Let's start with the lower bound. Click on the hint if you need help. 
+Let's start with the lower bound. Click on the solution if you need help. 
 ```{r ci-lower, exercise=TRUE, exercise.setup = "sample-seed-params"}
 # Z-score for 95% confidence
 Z <- 1.96
@@ -491,7 +513,7 @@ Z <- 1.96
 
 ```
 
-```{r ci-lower-hint}
+```{r ci-lower-solution}
 # Z-score for 95% confidence
 Z <- 1.96
 
@@ -519,7 +541,7 @@ Z <- 1.96
 
 ```
 
-```{r ci-upper-hint}
+```{r ci-upper-solution}
 # Z-score for 95% confidence
 Z <- 1.96
 
@@ -554,7 +576,7 @@ CI_lower
 CI_upper
 ```
 
-So, putting it all together, our estimated prevalence is 0.345 or **34.5%** and our 95%CI is 27.91% to 41.11%.
+So, putting it all together, our estimated prevalence is 0.345 or **34.5%** and our 95%CI is 27.91% to 41.09%.
 
 ## Comparing to the true prevalence estimate
 
@@ -568,12 +590,31 @@ quiz(caption = "QUIZ - Does our estimate fall within the 95%CI?",
      ))
 ```
 
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Do you always expect the true prevalence to fall within the 95%CI?
+  </span>
+</div>
+
 ## How often does true prevalence fall within the 95%CI?
 
 We explored above what would happen if we randomly sampled 200 individuals. In this first example, the true prevalence didn't fall within the 95%CI. But this was just one example. Now we want to see what happens if we repeat this sampling *many* times. Let's now explore by running a simulation where we sample 1000 times and we will count how many times our true prevalence is within the 95%CI.
 
-TODO "reflection"
-Before you run the below code, think about the intuition behind this - how often do you expect the true prevalence to be within the 95%CI? Now run the code and see if you were correct! 
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Before you run the below code, think about the intuition behind this - how often do you expect the true prevalence to be within the 95%CI? 
+  </span>
+</div>
+
+Now run the code and see if you were correct!
 
 ```{r sim-ci, exercise=TRUE}
 n_simulations <- 1000
@@ -585,22 +626,31 @@ plotCISimulationResults(results, n_simulations)
 ```
 
 
-# TODO 
+
+## TODO 
 QUIZ HERE and explanation of results! 
 
 ## Bonus
 
 *Note: This section is optional and requires more coding than the previous exercise*
 
-Let's repeat this exercise for a sample size of 500. Try coding it yourself from scratch using the functions that we used above. Click on the hint if you get stuck! 
+Let's repeat this exercise for a sample size of 500. Try coding it yourself from scratch using the functions that we used above. Click on the solution if you get stuck! 
 
-Does our true prevalence fall within our 95% CI? What do you notice about the simulation results? 
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Does our true prevalence fall within our 95% CI? What do you notice about the simulation results? 
+  </span>
+</div>
 
 ```{r sampling-500, exercise=TRUE}
 sample_size <- 500
 ```
 
-```{r sampling-500-hint}
+```{r sampling-500-solution}
 sample_size <- 500
 sample_data <- sampleFromPopulation(sample_size, census)
 comparison <- compareSampleToPopulation(sample_data, census)
@@ -621,5 +671,3 @@ n_simulations <- 1000
 results <- replicate(n_simulations, simulate_CI(census, sample_size, true_prevalence))
 plotCISimulationResults(results, n_simulations)
 ```
-
-## Resources
