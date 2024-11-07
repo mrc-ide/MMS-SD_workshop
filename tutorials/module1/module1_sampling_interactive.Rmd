@@ -179,15 +179,14 @@ By the end of this tutorial, you will be able to:
 
 In any study, clearly defining the **target population** is crucial. Let's consider a few examples of made-up studies.
 
-TODO: edit message so they are a bit different
 ```{r quiz-study-pop}
 quiz(caption = "QUIZ - Target population",
   question_checkbox("We want to estimate the prevalence of malaria infection in a community of 10,0000 people. Which of the following is the target population?",
            allow_retry = TRUE,
            answer("All residents", correct = TRUE),
-           answer("Only women or only men", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus on a specific demographic or group. <br>"),
-           answer("Only children under 5 years old", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus on a specific demographic or group. <br>"),
-           answer("Adults over 60 years old", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus on a specific demographic or group. <br>"), 
+           answer("Only women or only men", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus only on women or men. <br>"),
+           answer("Only children under 5 years old", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus only on children. <br>"),
+           answer("Adults over 60 years old", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus on adults. <br>"), 
            correct = "That is correct! Our target population should be a sample of all the community residents, not a specific demographic or group.", 
            incorrect = "If we want to estimate the prevalence in the *community* we don't want to focus on a specific demographic or group. <br>"
   )
