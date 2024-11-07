@@ -625,10 +625,50 @@ results <- replicate(n_simulations, simulate_CI(census, sample_size, true_preval
 plotCISimulationResults(results, n_simulations)
 ```
 
+```{r quiz-sim-ci}
+quiz(
+  caption = "QUIZ - Confidence Intervals and Simulation",
 
+  question("In the context of confidence intervals, what does a 95% confidence level mean?",
+    answer("It means that 95% of the time, the sample estimate will be equal to the true population parameter.", correct = FALSE),
+    answer("It means that we are 95% confident that the true population parameter lies within the calculated confidence interval from our sample.", correct = TRUE),
+    answer("It means that 95% of the data points lie within the confidence interval.", correct = FALSE),
+    answer("It means that there is a 95% probability that the sample estimate falls within the interval.", correct = FALSE),
+    correct = "Correct! A 95% confidence level means we are 95% confident that the true population parameter lies within the interval calculated from our sample.",
+    incorrect = "Not quite. Remember, a 95% confidence level refers to our confidence that the interval contains the true population parameter."
+  ),
 
-## TODO 
-QUIZ HERE and explanation of results! 
+  question("After running the simulation of 1,000 samples, approximately how many of the confidence intervals would you expect to contain the true population prevalence?",
+    answer("About 50 of them.", correct = FALSE),
+    answer("About 950 of them.", correct = TRUE),
+    answer("All 1,000 of them.", correct = FALSE),
+    answer("None of them.", correct = FALSE),
+    correct = "That's right! With a 95% confidence interval, we'd expect about 950 out of 1,000 intervals to contain the true prevalence.",
+    incorrect = "Consider the definition of a 95% confidence interval—it suggests that approximately 95% of intervals contain the true parameter."
+  ),
+
+  question("If the true prevalence falls outside the confidence interval calculated from our sample, does it mean our sampling method is biased?",
+    answer("Yes, because the confidence interval should always contain the true parameter.", correct = FALSE),
+    answer("No, because even with a correct method, there's still a chance the confidence interval won't contain the true parameter.", correct = TRUE),
+    answer("Yes, because our sample size was too small.", correct = FALSE),
+    answer("No, because the confidence interval is only a rough estimate.", correct = FALSE),
+    correct = "Exactly! Even with an unbiased sampling method, there's a 5% chance the true parameter won't be within the 95% confidence interval.",
+    incorrect = "Not quite. Remember that confidence intervals are calculated with a certain level of confidence, and there's always a chance the true parameter lies outside the interval."
+  )
+)
+```
+
+After running the simulation, you should notice that the true prevalence falls within the 95% confidence intervals in approximately **95% of the simulations**. This outcome aligns with the definition of a 95% confidence interval: if we were to repeat the sampling process many times, we would expect the true parameter to lie within the calculated confidence interval about 95 out of 100 times.
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  This simulation demonstrates the concept of confidence level in statistical inference. It shows that the method we use to calculate confidence intervals is reliable in the long run. However, in any single sample (like the one we initially took), there's still a chance (about 5%) that the true prevalence will not be captured within the interval. This is why it's important to interpret confidence intervals correctly and understand that they provide a measure of the uncertainty associated with our estimates.
+  </span>
+</div>
 
 ## Bonus
 
