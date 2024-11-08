@@ -32,7 +32,7 @@ By the end of this tutorial, you will be able to:
 - Calculate a minimum sample size using assumptions about prevalence and margin of error.
 - Account for drop-out and malaria positive fraction.
 
-**Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these places.**
+**Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.**
 
 ## Background
 
@@ -51,7 +51,7 @@ quiz(caption = "",
            answer("23 / 100 = 23.0%", correct = FALSE),
            answer("19 / 100 = 19.0%", correct = FALSE),
            answer("5 / 23 = 21.7%", correct = FALSE),
-           answer("5 / 19 = 26%.3", correct = TRUE), 
+           answer("5 / 19 = 26.3%", correct = TRUE), 
            correct = "That is correct! The numerator is the number of times we observed the K540E mutation, and the denominator is the number of *successfully sequenced* samples.", 
            incorrect = "Hint: the numerator should be the number of times we observed the K540E mutation, and the denominator should be the number of samples that had the *potential* to observe this mutation."
   )
@@ -131,7 +131,7 @@ $$
 N = z_{1-\alpha/2}^2 \frac{p(1-p)}{m^2}
 $$
 
-Now we have a new formula that we can use to determine the appropriate sample size based on assumed values of $p$ and $m$. Our reason for working through the derivation of this formula is to show how closely connected it is to the formula for the confidence interval. In fact, it is the same mathematical expression, just "reverse engineered" to be in terms of $N$.
+Now we have a new formula that we can use to determine the appropriate sample size based on assumed values of $p$ and $m$. Our reason for working through the derivation of this formula was to show how closely connected it is to the formula for the confidence interval. In fact, it is the same mathematical expression, just "reverse engineered" to be in terms of $N$.
 
 Now we need to decide what values to assume for $p$ and $m$.
 
@@ -181,7 +181,7 @@ We obtain a value of 295.65. We would round this *up* to $N=296$ to give a whole
 </details>
 </br>
 
-One of the nice things about sample size determination is that we can easily check that our calculation is correct. *Optional exercise:* Try entering the values $p=0.26$ and $N=296$ into the 95% CI formula that we used in the pilot data analysis. If our calculations were correct, you should find that the resulting MOE is very close to 5%.
+One of the nice things about sample size determination is that we can easily check that our calculation is correct. **Optional exercise:** Try entering the values $p=0.26$ and $N=296$ into the 95% CI formula that we used in the pilot data analysis. If our calculations were correct, you should find that the resulting MOE is very close to 5%.
 
 ```{r ss_check-1, exercise=TRUE}
 # Copy over the Wald formula code from the previous section, and edit to reflect
