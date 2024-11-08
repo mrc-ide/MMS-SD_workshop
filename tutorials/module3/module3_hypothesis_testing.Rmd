@@ -1,5 +1,5 @@
 ---
-title: 'Module 4: Hypothesis Testing'
+title: 'Module 3: Hypothesis Testing and power'
 output: html_document
 date: "`r Sys.Date()`"
 ---
@@ -22,6 +22,8 @@ This activity focuses on hypothesis testing and power. After a short quiz, you w
 - How to use a test statistic to decide whether or not to reject a null hypothesis.
 - How to perform power analysis under two different statistical tests, and how to use this to select sample sizes.
 - How to interpret power curves.
+
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is simulated for teaching purposes only. It does not necessarily represent the real epidemiological situation.*
 
 ## Short quiz on hypothesis testing and power
 
@@ -280,7 +282,7 @@ Our original question was whether it was worth conducting this study given our t
 
 ## Bonus questions
 
-A study was conducted with the aim of detecting rare *pfk13* variants. A sample size of 32 was used, as this was determined to be sufficient based on statistical arguments. However, during sequencing it also became clear that *pfmdr1* mutations could be explored from the same samples at little extra cost. 10 out of the 32 samples were found to carry the *pfmdr1* N86Y mutation, giving a prevalence of 32%. This was surprising - only last year a study had found a prevalence of 20% in a sample of 150 people. This raised the question of whether the prevalence of N86Y mutations had increased significantly over this period.
+A study was conducted with the aim of detecting rare *pfk13* variants. A sample size of 32 was used, as this was determined to be sufficient based on statistical arguments. However, during sequencing it also became clear that *pfmdr1* mutations could be sequenced from the same samples at little extra cost. 10 out of the 32 samples were found to carry the *pfmdr1* N86Y mutation, giving a prevalence of 32%. This was surprising - only last year a study had found a prevalence of 20% in a sample of 150 people. This raised the question of whether the prevalence of N86Y mutations had increased significantly over this period.
 
 The research team carried out a z-test for proportions to see if there was a statistically significant increase between the two studies. Here are the inputs to their test:
 
@@ -293,7 +295,7 @@ n_1 &= 150 \\
 n_2 &= 32
 \end{align}
 $$
-The test statistic was calculated as follows:
+The test statistic was calculated from these values as follows:
 $$
 Z = \frac{|\hat{p}_1 - \hat{p}_2|}{\sqrt{\hat{p}(1 - \hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}
 $$
@@ -310,12 +312,12 @@ p <- (x1 + x2) / (n1 + n2)
 
 Z <- abs(p1 - p2) / sqrt(p*(1 - p)*(1 / n1 + 1 / n2))
 ```
-This gives the value $Z = 1.40$. The researchers compared this against the critical values of $\pm1.96$ and found that this was non-significant (it was inside the interval). Therefore, they did not have evidence to reject the null hypothesis that prevalence was unchanged over this time period. They took this as reassurance that prevalence of N86Y mutations is not increasing in the region.
+This gives the value $Z = 1.40$. The researchers compared this value against the critical values of $\pm1.96$ and found that this was non-significant. Therefore, they did not have evidence to reject the null hypothesis that prevalence stayed the same over this time period. They took this as reassurance that prevalence of N86Y mutations is not increasing in the region.
 
 However...
 
 **Question:**
-Were they right to come to this conclusion? What was their power to detect a a change in prevalence from 20% to around 30%? What about a change from 20% to 40%? How does this "retrospective" power analysis change how we interpret the non-significant finding from the z-test?
+Were they right to come to this conclusion? What was their power to detect a a change in prevalence from 20% to 30%? What about a change from 20% to 40%? How does this "retrospective" power analysis change how we interpret the non-significant finding from the z-test?
 
 **Answer:**
 
@@ -332,14 +334,14 @@ z <- qnorm(1 - 0.05 / 2)
 power <- 1 - pnorm(z - mu_alt)
 ```
 
-When we conduct power analysis under the z-test, we find that power to detect a change from 20% to 30% was only around 21%. Similarly, power to detect a change from 20% to 40% was still only 58%. This falls well below the usual 80% power threshold. With this power, there would be a very good chance of getting a non-significant result even if prevalence had doubled.
+When we conduct power analysis under the z-test, we find that power to detect a change from 20% to 30% was only around 21%. Similarly, power to detect a change from 20% to 40% was still only 58%. This falls well below the usual 80% power threshold. With this low power there would be a very good chance of getting a non-significant result even if prevalence had doubled!
 
 The problem here is that the sample size of 32 is too small, leading to an underpowered study. This happened because the study design was not powered to answer questions about the change in prevalence of N86Y mutations, rather it was designed and powered to answer a question about presence/absence of rare *pfk13* variants.
 
-The lack of power means we shouldn't read too much into the non-significant finding. There could have been major changes in the prevalence of N86Y mutations over the year, but we would have very little chance of coming to this conclusion due to our lack of power.
+The lack of power means we shouldn't read too much into the non-significant finding. There could have been major changes in the prevalence of N86Y mutations over the year, but we would have very little chance of rejecting the null hypothesis due to our lack of power.
 
 **Question:**
 How could this low power have been avoided?
 
 **Answer:**
-If we intended to look for changes in prevalence of N86Y mutations alongside looking for rare *pfk13* mutants then this should have been accounted for at the design stage. A power analysis should have been conducted that took into account *both endpoints*. This would have led to a larger sample size sufficient to answer both questions.
+If our plan was to look for changes in prevalence of N86Y mutations alongside looking for rare *pfk13* mutants then this should have been accounted for at the design stage. A power analysis should have been conducted that took into account *both endpoints*. This would have resulted in a larger sample size that was sufficient to answer both questions.
