@@ -17,8 +17,8 @@ website:
         menu:
           - text: "Overview"
             href: tutorials.qmd
-          - text: "Test"
-            href: tutorials/test.Rmd
+          - text: "Module 1"
+            href: https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/
             icon: play
 
 format:
