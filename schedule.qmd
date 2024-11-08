@@ -17,8 +17,8 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 1:45-2:15     | Module 1: Sampling from a population                        | Lecture               |
 | 2:15-3:00     | Module 1: Practical                                         | [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)       |
 | 3:00-3:30     | Break                                                |        |
-| 3:30-4:00     | Module 2: Sample size based on precision                    | LearnR tutorial       |
-| 4:00-4:45     | Module 2: Practical                                           |  LearnR tutorial                     |
+| 3:30-4:00     | Module 2: Sample size based on precision                    | Lecture       |
+| 4:00-4:45     | Module 2: Practical                                           |  [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/)                     |
 | 4:45:5:00     | Break               |                |
 | 5:00-6:00     | Discussion groups                                                | Structured discussion |
 | 6pm onwards   | Group dinner                                                      |                       |
