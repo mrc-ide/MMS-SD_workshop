@@ -5,10 +5,14 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
+install.packages("DRpower", repos = c("https://plasmogenepi.r-universe.dev", "https://cloud.r-project.org"))
+
 library(learnr)
 library(dplyr)
 library(ggplot2)
 library(knitr)
+library(DRpower)
+
 knitr::opts_chunk$set(warning = FALSE,
                       echo = FALSE)
 
@@ -184,7 +188,7 @@ In any study, clearly defining the **target population** is crucial. Let's consi
 
 ```{r quiz-study-pop}
 quiz(caption = "QUIZ - Target population",
-  question_checkbox("We want to estimate the prevalence of malaria infection in a community of 10,0000 people. Which of the following is the target population?",
+  question_checkbox("We want to estimate the prevalence of malaria infection in a community of 10,000 people. Which of the following is the target population?",
            allow_retry = TRUE,
            answer("All residents", correct = TRUE),
            answer("Only women or only men", correct = FALSE, message = "If we want to estimate the prevalence in the *community* we don't want to focus only on women or men. <br>"),
@@ -331,7 +335,7 @@ quiz(caption = "QUIZ - Sampling from the population",
            answer("Yes", correct = FALSE),
            answer("No", correct = TRUE),
            allow_retry = TRUE,
-           correct = "That is correct! Sometimes our sample may not be representative of the population.",
+           correct = "That is correct! Our sample changes every time we randomly draw a sample from a population.",
            incorrect = "Are you sure? Try running the code above a few more times. Is it always reflective of the population in terms of age and sex distribution and/or with respect to the proportion of people infected?"
   ),
   question_radio("Does our sample of 200 always reflect the population?",
@@ -395,7 +399,7 @@ sample_data <- sampleFromPopulation(sample_size, census)
 # Count number of infected individuals in the sample
 infected_count <- sum(sample_data$malaria_infection == "Infected")
 
-# phat
+# p_hat
 p_hat <- infected_count/sample_size
 
 # Z
@@ -425,7 +429,7 @@ infected_count <- sum(sample_data$malaria_infection == "Infected")
 ### What is the estimated prevalence of malaria in our sample?
 We can calculate this by dividing the number of individuals infected with malaria by our sample size. 
 
-Try coding it yourself or click on the solution. 
+Try coding it yourself or click on the solution. *Note: In R when we want to divide two things we can use `/`.*
 
 ```{r est-prev, exercise = TRUE, exercise.setup = "sample-seed-params"}
 
@@ -453,13 +457,13 @@ As we saw above, we need to also calculate the 95% CI around our estimate.
 
 This is the **Wald confidence interval formula:**
 
-![](images/wald_formula.png){width="443"}
+![](images/wald_formula.png){width="60%"}
 
 We are now going to go through this formula step-by-step!
 
-#### 1. Defining our sample proportion, phat
+#### 1. Defining our sample proportion, p_hat
 
-The sample proportion refers to the proportion of infected individuals in our sample. We just calculated this above by dividing the number of infected individuals in the sample by the total sample size. Let's do it again for good measure, and record it as `p_hat`.
+The sample proportion refers to the proportion of infected individuals in our sample. We just calculated this above by dividing the number of infected individuals in the sample by the total sample size. Let's do it again for good measure, and record it as `p_hat`. 
 
 ```{r phat, exercise=TRUE, exercise.setup = "sample-seed-params"}
 p_hat <-
@@ -477,7 +481,14 @@ Above we defined our sample size to be n=200 and recorded it as `sample_size`.
 
 ##### 3. Calculating the standard error
 
-Now we can calculate the standard error using `phat` and `sample_size` as shown below. 
+Now we can calculate the standard error using `p_hat` and `sample_size`. In our formula, the standard error is the part that is multiplied by `Z` (see below). 
+
+$$
+SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+
+
+*Note: In R the function to take the square root is `sqrt()` and when we want to multiply two things we can use `*`.*
 
 ```{r SE, exercise=TRUE, exercise.setup = "sample-seed-params"}
 SE <- 
@@ -496,7 +507,7 @@ SE
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 
 </summary>
-Our standard error is 0.336 or 33.6%.
+Our standard error is 0.336.
 
 ##### 4. Calculating the confidence interval
 
@@ -574,15 +585,15 @@ CI_lower
 CI_upper
 ```
 
-So, putting it all together, our estimated prevalence is 0.345 or **34.5%** and our 95%CI is 27.91% to 41.09%.
+So, putting it all together, our estimated prevalence is 0.345 or **34.5%** and our 95%CI is 27.9% to 41.1%.
 
 ## Comparing to the true prevalence estimate
 
-You may remember from our exploration of the census data earlier, that 26.78% of our population was infected with malaria. 
+You may remember from our exploration of the census data earlier, that **26.78%** of our population was infected with malaria, in others this is the *true* prevalence. 
 
 ```{r quiz-ci-prev}
-quiz(caption = "QUIZ - Does our estimate fall within the 95%CI?",
-     question("Is our true prevalence within the 95%CI?",
+quiz(caption = "QUIZ - 95% confidence interval",
+     question("Is our true prevalence within the 95%CI of 27.9-41.1%?",
               answer("Yes", correct = F, message = "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%"),
               answer("No", correct = T, "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%. In the next exercise we are going to run some simulations to explore this further.")
      ))
@@ -680,7 +691,7 @@ Let's repeat this exercise for a sample size of 500. Try coding it yourself from
   </span> 
 
   <span style="color:#d19554;"> 
-  Does our true prevalence fall within our 95% CI? What do you notice about the simulation results? 
+  Does the true prevalence (**26.78%**) fall within our 95% CI? What do you notice about the simulation results?
   </span>
 </div>
 
