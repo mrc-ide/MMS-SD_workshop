@@ -24,7 +24,7 @@ tutorial_options(exercise.timelimit = 120)
 
 Welcome to Module 3: **Hypothesis Testing and Power**
 
-In this module, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within MMS, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? This is what we mean by statistical power. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
+In this module, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? This is what we mean by statistical power. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
 
 
 ### Learning Outcomes
@@ -50,7 +50,7 @@ quiz(caption = "",
            answer("A prediction about the future outcome of an experiment.", correct = FALSE),
            answer("A statement that there is no effect or no difference between groups, and any observed effect is due to chance.", correct = TRUE),
            answer("A hypothesis that describes the expected relationship between two variables.", correct = FALSE), 
-           correct = "That is correct! A null hypothesis assumes there is no effect. Often the null hypothesis is a statement that there is nothing interesting going on - but not always! For example, imagine our null hypothesis is that people using bed nets have the same malaria incidence as those not using bed nets. If this null hypothesis is true then that is very interesting indeed.", 
+           correct = "That is correct! A null hypothesis assumes there is no effect/difference. Often the null hypothesis is a statement that there is nothing interesting going on - but not always! For example, imagine our null hypothesis is that people using bed nets have the same malaria incidence as those not using bed nets. If this null hypothesis is true then that is very interesting indeed.", 
            incorrect = "Hint: when you see the word 'null' think 'nothing'."
   )
 )
@@ -64,7 +64,7 @@ quiz(caption = "",
            answer("The presence of a genetic marker for drug resistance is independent of the region (e.g., East Africa vs. West Africa).", correct = FALSE),
            answer("Elevation has no linear relationship with malaria risk.", correct = FALSE),
            answer("Malaria incidence is twice as high in men as it is in women.", correct = TRUE), 
-           correct = "That is correct! This cannot be a null hypothesis as it expresses a difference between men and women. The null hypothesis would be that there is no difference in incidence between men and women.", 
+           correct = "That is correct! This cannot be a null hypothesis as it expresses a difference between two groups. The null hypothesis would be that there is no difference in incidence between men and women.", 
            incorrect = "Hint: for each statement, try to work out if it assumes an effect/difference or no effect."
   )
 )
@@ -106,7 +106,7 @@ quiz(caption = "",
            answer("A one-way street analysis.", correct = FALSE),
            answer("A wild goose chase.", correct = FALSE),
            answer("A one-tailed test.", correct = TRUE), 
-           correct = "That is correct! A one-tailed test assumes that we already know the direction of the effect - for example, that bed nets will decrease the incidence of malaria, and not increase it. Two-tailed tests tend to be harder to disprove, making them more conservative.", 
+           correct = "That is correct! A one-tailed test assumes that we already know the direction of the effect - for example, that bed nets will decrease the incidence of malaria, not increase it. Two-tailed tests tend to be harder to disprove, making them more conservative.", 
            incorrect = "Hint: the 'tails' of a distribution refer to the low probability regions either side of the main hump."
   )
 )
@@ -142,33 +142,33 @@ Well done on completing this quiz! We will now put some of these ideas into prac
 
 ## Testing for changes in drug resistance prevalence over time
 
-You are a local health minister working in the Gombe region of Nigeria. You are concerned that the prevalence of antimalarial resistance might be increasing in Gombe city, the capital city of Gombe state. A study conducted three years ago found that the prevalence of *pfmdr1* N86Y mutations was 15%. You plan to conduct a new survey to establish if there has been a change in the prevalence of N86Y mutations over this time.
+You are a local health minister working in the Gombe region of Nigeria. You are concerned that the prevalence of antimalarial resistance may be increasing in Gombe city, the capital city of Gombe state. A study conducted three years ago found that the prevalence of *pfmdr1* N86Y mutations was 15%. You plan to conduct a new study to establish if there has been a significant change in the prevalence of N86Y mutations over this time.
 
-We will take the previous estimate of $p_0=0.15$ three years ago to be exactly correct. In other words, we will compare against this exact value, rather than also considering uncertainty in $p_0$. For this reason, the appropriate statistical test is the one-sample z-test for proportions.
+We will take the previous estimate of 15% prevalence three years ago to be exact. For this reason, the appropriate statistical test is the one-sample z-test for proportions.
 
 ```{r ztest-quiz}
 quiz(caption = "",
-     question("Which of these is the null hypothesis under the test?",
+     question("Which of these is the correct null hypothesis under the planned test?",
            allow_retry = TRUE,
            answer("The prevalence of *pfmdr1* N86Y mutations has increased from 15% over the past three years.", correct = FALSE),
            answer("The prevalence of *pfmdr1* N86Y mutations has decreased from 15% over the past three years.", correct = FALSE),
            answer("The prevalence of *pfmdr1* N86Y mutations is still 15%, the same as it was three years ago.", correct = TRUE),
-           answer("The prevalence of *pfmdr1* N86Y mutations has either increased or decreased, but is no longer 15%.", correct = FALSE), 
-           correct = "That is correct! We don't even need to know anything about the z-test to know that this is the correct answer. It is the only option that specifies no effect/difference, meaning it is the only answer that is a valid null hypothesis.", 
+           answer("The prevalence of *pfmdr1* N86Y mutations has changed from its earlier value of 15%.", correct = FALSE), 
+           correct = "That is correct! We don't need to know anything about the z-test to know that this is the correct answer. It is the only option that specifies no effect/difference, meaning it is the only valid null hypothesis among the options.", 
            incorrect = "Hint: remember that a null hypothesis is a statement of no effect or difference."
   )
 )
 ```
 
-For our power analysis, we need to assume a known value for the current prevalence, $p_1$. We will be pessimistic and assume that the prevalence has doubled over the three year period to $p_1=0.30$. We plan to use a sample size of $N=150$ in the new study.
+We will denote the prevalence three years ago by $p_0 = 0.15$. For our power analysis, we need to assume a known prevalence in the present day, which we will denote $p_1$. We will be pessimistic and assume that the prevalence has doubled over the three year period, meaning $p_1=0.30$. Our initial plan is to use a sample size of $N=150$.
 
-Given these values, we can calculate the expected value for our test statistic using the following formula:
+Given these values, we can calculate the *expected value* for our test statistic using the following formula:
 $$
-\mu_{\text{alt}} = \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}}
+\mu = \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}}
 $$
-Note that the vertical lines around $|p_1 - p_0|$ mean we should take the *absolute value* of the difference. This ensures that $\mu_{\text{alt}}$ is always positive.
+The vertical lines around $|p_1 - p_0|$ mean we should take the *absolute value* of the difference. This ensures that $\mu$ is always positive.
 
-Complete the following R code to calculate the value of $\mu_{\text{alt}}$:
+Complete the following R code to calculate the value of $\mu$:
 
 ```{r ztest-1, exercise=TRUE}
 # input parameters
@@ -182,10 +182,10 @@ p_diff <- abs(p1 - p0)
 # calculate the standard error
 SE <- sqrt(p1*(1 - p1) / N)
 
-# calculate mu_alt
-mu_alt <- 
+# calculate mu
+mu <- 
 
-print(mu_alt)
+print(mu)
 ```
 
 ```{r ztest-1-solution}
@@ -200,10 +200,10 @@ p_diff <- abs(p1 - p0)
 # calculate the standard error
 SE <- sqrt(p1*(1 - p1) / N)
 
-# calculate mu_alt
-mu_alt <- p_diff / SE
+# calculate mu
+mu <- p_diff / SE
 
-print(mu_alt)
+print(mu)
 ```
 
 <details>
@@ -211,15 +211,17 @@ print(mu_alt)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-You should find that $\mu_{\text{alt}} = 4.00$.
+You should find that $\mu = 4.00$.
 
 </details>
 </br>
 
-We can use the value of $\mu_{\text{alt}}$ to tell us our power. The formula for power under the z-test is:
+This means that *on average* we should expect our test statistic to equal $4.00$ if the alternative hypothesis is true. The actual value that we observe would be expected to vary around this value.
+
+We can use $\mu}$ to tell us our power. The formula for power under the z-test is:
 
 $$
-P_{ow} = 1 - \phi(z_{1-\alpha/2} - \mu_{\text{alt}})
+P_{\text{ow}} = 1 - \phi(z_{1-\alpha/2} - \mu)
 $$
 
 In this formula, $\phi(x)$ refers to the area under the curve of a standard normal distribution up to the point $x$. There is no simple way of calculating this value, but we can obtain it easily in R using the `pnorm()` function. As in previous activities, the value $z_{1 - \alpha/2}$ refers to the critical value of the normal distribution at a significance level $\alpha$ (two-tailed), which is approximately equal to 1.96.
@@ -230,11 +232,11 @@ Complete the following R code to calculate the power under the planned study des
 p0 <- 0.15
 p1 <- 0.3
 N <- 150
-mu_alt <- abs(p1 - p0) / sqrt(p1*(1 - p1) / N)
+mu <- abs(p1 - p0) / sqrt(p1*(1 - p1) / N)
 ```
 
 ```{r ztest-2, exercise=TRUE, exercise.setup = "ztest-2-params"}
-# calculate power using the known value of mu_alt
+# calculate power using the known value of mu
 z <- 1.96
 power <- # hint, you will need to use the pnorm() function here
 
@@ -242,9 +244,9 @@ print(power)
 ```
 
 ```{r ztest-2-solution}
-# calculate power using the known value of mu_alt
+# calculate power using the known value of mu
 z <- 1.96
-power <- 1 - pnorm(z - mu_alt)
+power <- 1 - pnorm(z - mu)
 
 print(power)
 ```
@@ -276,9 +278,9 @@ quiz(caption = "",
 
 ## Using power curves
 
-Our current study design has 98% power. We normally aim for at least 80% power, meaning this study is adequately powered. In fact, we could argue that it is *over-powered*, meaning we could get away with using fewer samples and still have a good chance of detecting a real effect.
+We have calculated that our current study design has 98% power. We normally aim for at least 80% power, meaning this study is adequately powered. In fact, we could argue that it is *over-powered*, meaning we could get away with using fewer samples and still have a good chance of detecting a real effect.
 
-We can use power curves to explore how power changes as a function of variables such as sample size. In the plot below, the region with at least 80% power is shaded in blue.
+We can use power curves to explore how power changes as a function of sample size. In the plot below, the region with at least 80% power is shaded in blue.
 
 ```{r, fig.width=6, fig.height=4}
 data.frame(p0 = 0.15,
@@ -302,14 +304,14 @@ quiz(caption = "",
            answer("60", correct = FALSE),
            answer("74", correct = TRUE),
            answer("100", correct = FALSE),
-           answer("More than 200", correct = FALSE), 
-           correct = "That is correct! Our planned sample size is more than double what we need to achieve 80% power. Notice also that the extra 76 samples only buy us an extra 18% power. This a common feature of power analysis; we reach diminishing returns as we add more samples.", 
+           answer("More than 150", correct = FALSE), 
+           correct = "That is correct! Our planned sample size is more than double what we need to achieve 80% power.", 
            incorrect = "Hint: look for the point at which the curve intersects the shaded region."
   )
 )
 ```
 
-This power analysis indicates that we may not need to sequence 150 samples after all. However, it did make the rather pessimistic assumption that prevalence has doubled from 15% to 30% over the three year period. It would be useful to repeat this analysis making different assumptions about the prevalence. One way to do this is via a series of power curves:
+The power analysis indicates that we may not need to sequence 150 samples after all. However, it did make the rather pessimistic assumption that prevalence has doubled from 15% to 30% over the three year period. It would be useful to repeat this analysis making different assumptions about the prevalence. One way to do this is via a series of power curves:
 
 ```{r, fig.width=6, fig.height=4}
 expand_grid(p0 = 0.15,
@@ -328,23 +330,21 @@ expand_grid(p0 = 0.15,
   xlab("Sample size (N)") + ylab("Power")
 ```
 
-We can see that power is a long way from 80% under a sample size of 74 if we make even a slight change in our assumptions down to 25% or 20% prevalence. So while we have adequate power to detect a doubling of the prevalence, there may still be large changes in the prevalence of N86Y mutations that we would fail to detect under this design.
+Even a slight change in our assumption about the prevalence of N86Y mutations has a large effect on power. If we assumed present-day prevalence was 25% rather than 30% then we would need twice as many samples to achieve 80% power. This analysis was useful for exploring the exact relationship between sample size and power. However, it can be fiddly to read values off the power curve to find the exact point at which it crosses the 80% threshold. This is where sample size formulae and sample size tables come in handy. 
 
-## Sample size tables
+## Using sample size tables
 
-Power curves are useful for exploring the exact relationship between sample size and power. However, it can be fiddly to read values off the curve to find the exact point at which it crosses the 80% threshold. This is where sample size formulae and sample size tables come in handy.
-
-Recall that power under the z-test was given by
+Recall that power under the one-sample z-test for proportions was given by
 $$
-P_{ow} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}} \right)
+P_{\text{ow}} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}} \right)
 $$
-In an earlier module, we rearranged the formula for the Wald interval to arrive at a new formula in terms of the sample size $N$. Here, we want to do exactly the same thing, just with a more complicated formula! We won't walk through the steps of this derivation, but take my word for it that this can be rearranged to produce:
+Recall that in an earlier module we rearranged the formula for the Wald interval to arrive at a new formula in terms of the sample size $N$. Here, we want to do exactly the same thing, just with a more complicated formula! We won't walk through the steps of this derivation, but take my word for it that this can be rearranged to produce:
 $$
 N = (z_{1 - \alpha/2} + z_{1 - \beta})^2\frac{p_1(1 - p_1)}{(p_1 - p_0)^2}
 $$
-The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$, and $\beta$ is one minus our power (typically $\beta = 0.2$).
+The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is one minus our power (typically $\beta = 0.2$).
 
-The following R code implements this formula. Have a play around with this code. Try changing the value of `p2` and see what happens. Do you obtain the value $N=74$ when $p_2=0.3$, like we found from the power curve? What happens to the sample size as the prevalence gets closer to 15%?
+The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p1` and see what happens to the minimum sample size. Do you obtain the value $N=74$ when $p_2=0.3$, like we found from the power curve? What happens to the sample size as `p1` gets closer to 15%?
 
 ```{r ztest-ss-2, exercise=TRUE}
 # define our assumed values
@@ -376,7 +376,7 @@ data.frame(p0 = 0.15,
   footnote(general = "\nTable 1: minimum sample sizes under various assumptions about present-day prevalence", general_title = "")
 ```
 
-This allows us to scan across values and work out what is reasonable, but also achievable.
+This allows us to scan across values and work out what is reasonable, and also what is achievable.
 
 <div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
   <span style="font-size: 1.2em; color: #d19554;">
@@ -384,313 +384,70 @@ This allows us to scan across values and work out what is reasonable, but also a
   </span> 
 
   <span style="color:#d19554;"> 
-  What sample size would you opt for in this case? What factors could help you decide on a reasonable assumption for the present day prevalence? What factors could help constrain which sample sizes are feasible?
+  What sample size would you opt for in this case? What factors could help you decide on a reasonable assumption for the present day prevalence of N86Y mutations? What factors could help constrain which sample sizes are feasible?
   </span>
 </div>
 
 ## Detecting rare variants
 
-Following your success of your N86Y study in Gombe city, you have been asked to carry out a new study looking into *pfk13* mutations.
+Building on the success of your N86Y study in Gombe city, you have been invited to conduct a new investigation focused on identifying *pfk13* mutations in the nearby town of Pindiga. This study will target WHO validated mutations that are known to be associated with partial resistance to artemisinin. Instead of estimating the *prevalence* of these mutations, your goal is simply to determine whether any of these mutations are *present* in the population.
 
+Your will test individuals who present with malaria symptoms at a local health facility. For those who test positive for malaria, dried blood spots will be collected and subsequently sent for sequencing. However, due to limited resources, you are only able to sequence 100 samples.
 
-You are planning a study to look for the presence of validated *pfk13* mutations. You are not interested in estimating the prevalence of mutations, rather you want to know if any of these mutations are *present* in your population. You will test people for malaria as they present to a local health facility, and a subset of dried blood spots from malaria-positive patients will be sent away for sequencing. You only have the resources to sequence 100 samples, and you want to know if it is worth conducting a study with such a small sample size.
+The key question, then, is: **with a sample size of only 100, is it worthwhile to pursue this study?**
 
-## Background
+### Framing the problem as a hypothesis test
 
-You have been recruited by the National Malaria Control Programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The *dhps* K540E mutation, known to be associated with high level SP resistance when found alongside other common mutations, has recently been found at high prevalence (72%) in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda. The NMCP is concerned about possible flow of drug resistant parasites over the border.
+This type of detection study can be framed as a hypothesis test. The null hypothesis is that *there are no validated mutations present in the population*. In other words, the prevalence of these mutations is zero. Even a single observation of a mutant would disprove this null hypothesis. Therefore, unlike most statistical tests, there is no test statistic to calculate. Instead, we simply reject the null hypothesis if we see a single validated mutant.
 
-The NMCP plans to conduct a cross-sectional study to estimate the prevalence of the *dhps* K540E mutation within Rutshuru town. **Your job is to work out the appropriate sample size for this study.**
+It is straightforward to calculate power under this test. We start by assuming a known prevalence, $p$, for the validated mutations. $p$ is zero under the null hypothesis, and $p$ must be greater than 0 under the alternative hypothesis. We will use $N$ to denote the sample size. We can derive the power by following these steps:
 
-## Results of a pilot study
+**Step 1: Chance of a single negative result:**
 
-A pilot study has already been conducted in Rutshuru. This pilot study included 100 participants chosen at random from households within the town, who were tested for malaria via rapid diagnostic test (RDT). 23 people tested positive for malaria and these samples were sent away for genetic sequencing. 19 samples were successfully sequenced, of which 5 were positive for the K540E mutation.
-
-```{r quiz-pilot1}
-quiz(caption = "",
-     question("Which is the correct formula when calculating the prevalence of K540E mutations from the pilot data?",
-           allow_retry = TRUE,
-           answer("23 / 100 = 23.0%", correct = FALSE),
-           answer("19 / 100 = 19.0%", correct = FALSE),
-           answer("5 / 23 = 21.7%", correct = FALSE),
-           answer("5 / 19 = 26%.3", correct = TRUE), 
-           correct = "That is correct! The numerator is the number of times we observed the K540E mutation, and the denominator is the number of *successfully sequenced* samples.", 
-           incorrect = "Hint: the numerator should be the number of times we observed the K540E mutation, and the denominator should be the number of samples that had the *potential* to observe this mutation."
-  )
-)
-```
-
-Recall that we can use the following formula to calculate a 95% confidence interval on our prevalence estimate:
-
+The probability that a single sample is negative (i.e. does not carry a validated *pfk13* mutation) is given by:
 $$
-\hat{p} \pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{N}}
-$$
-Complete the following R code to compute this interval:
-
-```{r wald-1, exercise=TRUE}
-# estimate the prevalence
-x <- 
-N <- 
-p <- x / N
-
-# calculate the margin of error (MOE)
-z <- 1.96
-MOE <- z*sqrt(p*(1 - p) / N)
-
-# compute lower and upper 95% limits
-p - MOE
-p + MOE
-```
-
-```{r wald-1-solution}
-# estimate the prevalence
-x <- 5
-N <- 19
-p <- x / N
-
-# calculate the margin of error (MOE)
-z <- 1.96
-MOE <- z*sqrt(p*(1 - p) / N)
-
-# compute lower and upper 95% limits
-CI_lower <- p - MOE
-CI_upper <- p + MOE
-c(CI_lower, CI_upper)
-```
-
-<details>
-<summary style="text-decoration: underline; color: red;">
-`r fontawesome::fa("check", fill = "red")`Click to see the answer
-</summary>
-
-The 95% interval goes from 0.065 to 0.461, or in other words from 6.5% to 46.1%.
-
-</details>
-</br>
-
-The 95% confidence interval reveals considerable uncertainty regarding the prevalence of K540E mutations. While our best estimate is 26.3%, the plausible range spans from 6.5% to 46.1%, which the NMCP finds too broad to be practically useful. They plan to conduct a follow-up study to obtain a more precise estimate.
-
-
-## Calculating the appropriate sample size
-
-When designing the new study we will calculate the exact sample size needed to achieve a target margin of error (MOE). We can do this by rearranging the MOE formula to isolate the sample size (N) on the left side. If you’re comfortable with the math and would like to see the steps, follow along below. Otherwise, feel free to skip to Step 3 for the final formula.
-
-**Step 1: Write down the formula for the MOE**
-
-We will use the mathematical symbol $m$ for the MOE:
-
-$$
-m = z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{N}}
-$$
-**Step 2: Square both sides**
-
-$$
-m^2 = z_{1-\alpha/2}^2 \frac{p(1-p)}{N}
-$$
-**Step 3: Multiply both sides by $N$ and divide by $m^2$**
-
-$$
-N = z_{1-\alpha/2}^2 \frac{p(1-p)}{m^2}
+\text{Pr}(\text{Negative}) = 1 - p
 $$
 
-Now we have a new formula that we can use to determine the appropriate sample size based on assumed values of $p$ and $m$. Our reason for working through the derivation of this formula is to show how closely connected it is to the formula for the confidence interval. In fact, it is the same mathematical expression, just "reverse engineered" to be in terms of $N$.
+**Step 2: Chance of $N$ negative results:**
 
-Now we need to decide what values to assume for $p$ and $m$.
+The probability that all $N$ samples are negative is equal to this probability raised to the power $N$:
+$$
+\text{Pr}(N \text{ negatives}) = (1 - p)^N
+$$
+This is like saying we observe a negative outcome $N$ times. It assumes that samples are drawn independently from a much larger population.
 
-```{r quiz-prev}
-quiz(caption = "",
-     question("Which of these are reasonable choices for $p$?",
-           allow_retry = TRUE,
-           answer("$p = 0.26$ as this was the prevalence found in the pilot data.", correct = FALSE),
-           answer("$p = 0.72$ as this was the prevalence found in neighbouring Uganda", correct = FALSE), 
-           answer("$p = 0.5$ as this is the most pessimistic assumption. It will lead to the largest sample size, and so by assuming this value we are robust to any other value of the prevalence.", correct = FALSE),
-           answer("All of the above", correct = TRUE), 
-           correct = "That is correct! Any of these methods are reasonable as long as we can justify them.",
-           incorrect = "That is a reasonable choice, but it is not the only reasonable choice!"
-  )
-)
-```
+**Step 3: Chance of at least one positive result:**
 
-For the sake of this tutorial we will assume a value of $p=0.26$ to match the pilot data. The NMCP has decided that a MOE of 5% is acceptable. Complete the following R code to compute the resulting sample size:
+The chance of seeing at least one positive sample is equal to one minus the probability of seeing no positive samples. If we see a positive sample then we reject the null hypothesis. Hence, this is also our power:
 
-```{r sample_size-1, exercise=TRUE}
-# enter assumed values
+$$
+P_{\text{ow}} = 1 - (1 - p)^N
+$$
+This very simple expression can be used to guide our study design.
+
+Complete the following R code to implement this formula. What is our power if we assume a prevalence of 5%?
+
+```{r detection-1, exercise=TRUE}
+# define parameters
 p <- 
-m <- 
-
-# calculate the raw sample size
-z <- 1.96
-z^2*p*(1 - p) / m^2
-```
-
-```{r sample_size-1-solution}
-# enter assumed values
-p <- 0.26
-m <- 0.05
-
-# calculate the raw sample size
-z <- 1.96
-z^2*p*(1 - p) / m^2
-```
-
-<details>
-<summary style="text-decoration: underline; color: red;">
-`r fontawesome::fa("check", fill = "red")`Click to see the answer
-</summary>
-
-We obtain a value of 295.65. We would round this *up* to $N=296$ to give a whole number.
-
-</details>
-</br>
-
-One of the nice things about sample size determination is that we can easily check that our calculation is correct. *Optional exercise:* Try entering the values $p=0.26$ and $N=296$ into the 95% CI formula that we used in the pilot data analysis. If our calculations were correct, you should find that the resulting MOE is very close to 5%.
-
-```{r ss_check-1, exercise=TRUE}
-# Copy over the Wald formula code from the previous section, and edit to reflect
-# the new assumed prevalence of 26% and sample size of 296
-```
-
-```{r ss_check-1-solution}
-# enter assumed values
-p <- 0.26
-N <- 296
-
-# calculate the margin of error (MOE)
-z <- 1.96
-z*sqrt(p*(1 - p) / N)
-```
-
-<details>
-<summary style="text-decoration: underline; color: red;">
-`r fontawesome::fa("check", fill = "red")`Click to see the answer
-</summary>
-
-You should obtain a margin of error of 4.997%, which is very close to the target 5%. Notice that our MOE will always be equal or *smaller* than the target MOE. This is because we rounded the sample size up from 295.65 to 296.
-
-</details>
-</br>
-
-## Buffering
-
-Buffering refers to increasing a sample size to allow for drop-out (loss of samples). Some ways that drop-out can occur are through:
-
-- Participants withdrawing consent
-- Participants dying or leaving the area
-- Samples being lost during transportation
-- Samples becoming contaminated
-- Samples failing amplification or sequencing resulting in a lack of genetic data
-- Data being lost due to data storage errors
-
-We cannot completely eliminate the risk of drop-out, but by buffering sample sizes we can at least be robust to it. If we expect a proportion $d$ of samples to be lost, then the formula for buffered sample size is:
-
-$$
-N_{\text{buffered}} = \frac{N_{\text{original}}}{1 - d}
-$$
-
-Through consulting with lab technicians and the study team, you estimate that 10% of samples may be lost to drop-out. Complete the following R code to come up with a buffered sample size:
-
-```{r buffer-1, exercise=TRUE}
-# enter sample size and estimated drop-out
-N <- 296
-d <- 0.1
-
-# calculate the buffered sample size
-N_buffered <- 
-
-print(N_buffered)
-```
-
-```{r buffer-1-solution}
-# enter sample size and estimated drop-out
-N <- 296
-d <- 0.1
-
-# calculate the buffered sample size
-N_buffered <- N / (1 - d)
-
-print(N_buffered)
-```
-
-<details>
-<summary style="text-decoration: underline; color: red;">
-`r fontawesome::fa("check", fill = "red")`Click to see the answer
-</summary>
-
-You should obtain a buffered sample size of 328.89, which we would round up to 329.
-
-</details>
-</br>
-
-
-## Accounting for positive fraction
-
-So far, we have focused on working out how many *confirmed malaria cases* we need in our study. However, recall that this will be a cross-sectional study with individuals being sampled at random from households within Rutshuru town. Many of the individuals tested will be negative for malaria. It may be useful for the study team to know how many individuals they need to *test* as part of this study, which may be considerably higher than the number of confirmed malaria cases.
-
-The NMCP estimates that 25% of the population of Rutshuru will be positive for malaria by RDT. We can use the same buffering formula as before, but now using the positive fraction ($f$) to inflate our sample size:
-
-$$
-N_{\text{test}} = \frac{N_{\text{confirmed}}}{f}
-$$
-
-Note that this is **in addition** to buffering for drop-out. We can imagine a chain of events where we can lose samples at each stage; we want to ensure that in the end we still have enough samples remaining.
-
-Complete the following R code to work out the number of people we will need to test to achieve the final target sample size:
-
-```{r fraction-1, exercise=TRUE}
-# enter buffered sample size and positive fraction
 N <- 
-f <- 
 
-# calculate the testing sample size
-N_test <- 
+# calculate power
+power <- 
 
-print(N_test)
+print(power)
 ```
 
-```{r fraction-1-solution}
-# enter buffered sample size and positive fraction
-N <- 329
-f <- 0.25
+```{r detection-1-solution}
+# define parameters
+p <- 0.05
+N <- 100
 
-# calculate the testing sample size
-N_test <- N / f
+# calculate power
+power <- 1 - (1 - p)^N
 
-print(N_test)
-```
-
-<details>
-<summary style="text-decoration: underline; color: red;">
-`r fontawesome::fa("check", fill = "red")`Click to see the answer
-</summary>
-
-You should find that 1316 people need to be tested.
-
-</details>
-</br>
-
-You have now completed your study design exercise. Your recommendation to the NMCP is as follows:
-
-*Assuming a prevalence of K540E mutations of 26% based on pilot data, a sample size of* **329** *confirmed malaria cases will be needed to estimate prevalence to within 5% margin of error. This number is buffered to allow for 10% drop-out.*
-
-*Assuming that malaria prevalence is 25% by RDT in Rutshuru town, this translates to* **1316** *individuals who will need to be tested in the cross-sectional study design.*
-
-## Bonus questions
-
-The study design above is based on strong statistical principles. However, it is worth testing how robust these numbers are to changes in our assumptions.
-
-Under the chosen sample size of 296 (after drop-out), what would be your margin of error under the worst case scenario that the true prevalence of the K540E mutation was actually 50%?
-
-```{r bonus-1, exercise=TRUE}
-
-```
-
-```{r bonus-1-solution}
-# enter assumed values
-p <- 0.5
-N <- 296
-
-# calculate the margin of error (MOE)
-z <- 1.96
-z*sqrt(p*(1 - p) / N)
+print(power)
 ```
 
 <details>
@@ -698,29 +455,36 @@ z*sqrt(p*(1 - p) / N)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-The MOE would increase to 5.7% in the most pessimistic scenario.
+You should find that $P_{\text{ow}} = 0.994$ if we assume a prevalence of $p = 0.05$.
 
 </details>
 </br>
 
-We estimated that 1316 people will need to be tested based on an assumed 25% prevalence of malaria. But what if malaria prevalence is actually only 15% in Rutshuru town? What would be your expected final sample size, and what would be your resulting MOE?
+Based on this result, we are over-powered to detect *pfk13* mutants, meaning we can reduce the sample size. So, how many samples are needed? Rearranging our power formula to be in terms of $N$ we obtain:
+$$
+N = \frac{\text{log}(1 - P_{\text{ow}})}{\text{log}(1 - p)}
+$$
 
-```{r bonus-2, exercise=TRUE}
+Complete the following R code to implement this sample size formula. What minimum sample size is needed if we assume a prevalence of 5%?
 
-```
+```{r detection-2, exercise=TRUE}
+# define prevalence
+p <- 
 
-```{r bonus-2-solution}
-# enter assumed values
-p <- 0.26
-N_test <- 1316
+# calculate minimum sample size
+N <- 
 
-# work out final sample size assuming 15% prevalence and 10% drop-out
-N <- round(N_test * 0.15 * 0.9)
 print(N)
+```
 
-# calculate the margin of error (MOE)
-z <- 1.96
-z*sqrt(p*(1 - p) / N)
+```{r detection-2-solution}
+# define prevalence
+p <- 0.05
+
+# calculate minimum sample size
+N <- log(1 - 0.8) / log(1 - p)
+
+print(N)
 ```
 
 <details>
@@ -728,8 +492,31 @@ z*sqrt(p*(1 - p) / N)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-Assuming 15% prevalence and 10% drop-out, our final sample size of successfully sequenced malaria cases would be around 178. This would result in a MOE of 6.4%.
+You should find that $N = 31.38$, which would be rounded up to $N = 32$.
 
 </details>
 </br>
 
+This is a very promising result - we can definitely run a well-powered study within our resource constraints. However, we did make the fairly pessimistic assumption that validated *pfk13* mutants are already at 5% prevalence in the population. In reality, we may want to catch them before they reach 5% in order to take pre-emptive measures. Again, we can consult a sample size table (**Table 2**):
+
+```{r}
+data.frame(p = c(0.001, 0.005, seq(0.01, 0.05, 0.01))) |>
+  mutate(N = ceiling(log(1 - 0.8) / log(1 - p)),
+         p_percent = sprintf("%s%%", p*100)) |>
+  select(p_percent, N) |>
+  kable("html", col.names = c("Assumed prevalence of pfk13 mutations", "Sample size"), escape = FALSE) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
+  column_spec(1, width = "5cm") |>
+  column_spec(2, width = "4cm") |>
+  footnote(general = "\nTable 2: minimum sample sizes under various assumptions about pfk13 mutation prevalence", general_title = "")
+```
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Based on the values in **Table 2**, do you think it is worthwhile to conduct this study? If you ran a study that was powered down to 2% prevalence (80 samples) and did not find any *pfk13* mutants, would you be reassured by this result?
+  </span>
+</div>
