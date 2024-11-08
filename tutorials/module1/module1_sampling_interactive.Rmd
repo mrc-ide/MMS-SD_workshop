@@ -1,17 +1,19 @@
 ---
 title: "Module 1: Sampling from a population"
-output: learnr::tutorial
+output:
+  learnr::tutorial:
+    progressive: true
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-install.packages("DRpower", repos = c("https://plasmogenepi.r-universe.dev", "https://cloud.r-project.org"))
+# install.packages("DRpower", repos = c("https://plasmogenepi.r-universe.dev", "https://cloud.r-project.org"))
 
 library(learnr)
 library(dplyr)
 library(ggplot2)
 library(knitr)
-library(DRpower)
+# library(DRpower)
 
 knitr::opts_chunk$set(warning = FALSE,
                       echo = FALSE)
