@@ -1,5 +1,5 @@
 ---
-title: "Module 3: Calculating Sample Size from Margin of Error"
+title: "Module 2: Calculating Sample Size from Margin of Error"
 output: html_document
 date: "`r Sys.Date()`"
 ---
@@ -17,13 +17,13 @@ This activity focuses on using margin of error arguments to come up with an appr
 - How to calculate a minimum sample size using assumptions about prevalence and margin of error
 - How to account for drop-out and positive fraction
 
-*Disclaimer: This scenario is entirely fictitious, and while it uses real place names, any resemblance to actual events is purely coincidental*
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is simulated for teaching purposes only. It does not necessarily represent the real epidemiological situation.*
 
 # Scenario 1
 
 ## Background
 
-You have been recruited by the national malaria control programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations in the parasite population that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The *dhps* K540E mutation, which is known to be associated with high level SP resistance alongside other common mutations, has recently been found at high prevalence (72%) in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda, hence the NMCP is concerned about possible flow of drug resistant parasites over the border.
+You have been recruited by the National Malaria Control Programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations in the parasite population that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The *dhps* K540E mutation, which is known to be associated with high level SP resistance alongside other common mutations, has recently been found at high prevalence (72%) in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda, hence the NMCP is concerned about possible flow of drug resistant parasites over the border.
 
 The NMCP plans to conduct a cross-sectional study to estimate the prevalence of the *dhps* K540E mutation within Rutshuru town. **Your job is to work out the appropriate sample size for this study.**
 
@@ -63,6 +63,7 @@ data.frame(prevalence = p,
 ```
 
 **Question:** Which of these statements is correct:
+
 **Options:**
 
 - The 95% CI ranges from 1.5% to 80.2%
@@ -97,13 +98,14 @@ $$
 We can use this formula to tell us the appropriate sample size given an assumed value of the prevalence ($p$) and a target value for the MOE ($m$).
 
 **Question:** What value should we assume for $p$?
+
 **Options: (all three answers are correct as they are all reasonable)**
 
 - 0.26 based on the pilot data
 - 0.5 as this is the most pessimistic assumption in terms of requiring the largest sample size
 - 0.72 based on the prevalence in neighbouring Uganda
 
-All three answers above are reasonable as long as they can be justified. But for the sake of argument let's assume a value of $p=0.26$ going forward. The NMCP has decided that a MOE of 5% is acceptable. Complete the following R code by entering the appropriate values for `p` and `m` to compute the resulting sample size:
+All three answers above are reasonable as long as they can be justified. But for the sake of argument let's assume a value of $p=0.26$. The NMCP has decided that a MOE of 5% is acceptable. Complete the following R code by entering the appropriate values for `p` and `m` to compute the resulting sample size:
 
 ```{r}
 # enter values for the estimated prevalence and the sample size
