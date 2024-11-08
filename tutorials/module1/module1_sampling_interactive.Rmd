@@ -7,7 +7,10 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-# install.packages("DRpower", repos = c("https://plasmogenepi.r-universe.dev", "https://cloud.r-project.org"))
+# options(repos = c(
+#   plasmogenepi = "https://plasmogenepi.r-universe.dev",
+#   CRAN = "https://cloud.r-project.org"
+# ))
 
 library(learnr)
 library(dplyr)

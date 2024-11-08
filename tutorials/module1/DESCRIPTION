@@ -1,0 +1,14 @@
+Package: module1_sampling_interactive
+Type: Application
+Title: Module 1 Sampling Interactive Tutorial
+Version: 0.1.0
+Authors@R: person("Your", "Name", email = "you@example.com", role = c("aut", "cre"))
+Description: An interactive tutorial for Module 1 Sampling.
+Depends:
+    R (>= 3.5.0)
+Imports:
+    DRpower,
+    learnr,
+    ggplot2
+Encoding: UTF-8
+LazyData: true
