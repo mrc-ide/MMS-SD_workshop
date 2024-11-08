@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-11-08">
+
+<title>Malaria Molecular Surveillance Study Design workshop - Module 2: Calculating Sample Size from Margin of Error</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Malaria Molecular Surveillance Study Design workshop</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html" rel="" target=""><i class="bi bi-calendar" role="img">
+</i> 
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html" rel="" target=""><i class="bi bi-bookmark" role="img">
+</i> 
+ <span class="menu-text">Lectures</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Module 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Module 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Module 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Module 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Module 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Module 6</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
+  <li><a href="#scenario-1" id="toc-scenario-1" class="nav-link" data-scroll-target="#scenario-1">Scenario 1</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#results-of-a-pilot-study" id="toc-results-of-a-pilot-study" class="nav-link" data-scroll-target="#results-of-a-pilot-study">Results of a pilot study</a></li>
+  <li><a href="#calculating-the-sample-size" id="toc-calculating-the-sample-size" class="nav-link" data-scroll-target="#calculating-the-sample-size">Calculating the sample size</a></li>
+  <li><a href="#buffering" id="toc-buffering" class="nav-link" data-scroll-target="#buffering">Buffering</a></li>
+  <li><a href="#accounting-for-positive-fraction" id="toc-accounting-for-positive-fraction" class="nav-link" data-scroll-target="#accounting-for-positive-fraction">Accounting for positive fraction</a></li>
+  <li><a href="#bonus-questions" id="toc-bonus-questions" class="nav-link" data-scroll-target="#bonus-questions">Bonus questions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 2: Calculating Sample Size from Margin of Error</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 8, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
+<p>This activity focuses on using margin of error arguments to come up with an appropriate sample size for a hypothetical study. In this activity you will learn:</p>
+<ul>
+<li>How to calculate a 95% confidence interval from prevalence data</li>
+<li>How to derive the formula for sample size directly from the confidence interval formula</li>
+<li>How to calculate a minimum sample size using assumptions about prevalence and margin of error</li>
+<li>How to account for drop-out and positive fraction</li>
+</ul>
+<p><em>Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is simulated for teaching purposes only. It does not necessarily represent the real epidemiological situation.</em></p>
+</section>
+<section id="scenario-1" class="level1">
+<h1>Scenario 1</h1>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>You have been recruited by the National Malaria Control Programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations in the parasite population that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The <em>dhps</em> K540E mutation, which is known to be associated with high level SP resistance alongside other common mutations, has recently been found at high prevalence (72%) in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda, hence the NMCP is concerned about possible flow of drug resistant parasites over the border.</p>
+<p>The NMCP plans to conduct a cross-sectional study to estimate the prevalence of the <em>dhps</em> K540E mutation within Rutshuru town. <strong>Your job is to work out the appropriate sample size for this study.</strong></p>
+</section>
+<section id="results-of-a-pilot-study" class="level2">
+<h2 class="anchored" data-anchor-id="results-of-a-pilot-study">Results of a pilot study</h2>
+<p>Thankfully, a pilot study has already been conducted in Rutshuru. This pilot study included 100 participants, chosen at random from households within the town, who were tested for malaria via rapid diagnostic test (RDT). 23 people tested positive for malaria and these samples were sent away for genetic sequencing. 19 samples were successfully sequenced, of which 5 were positive for the K540E mutation.</p>
+<p><strong>Question:</strong> Which is the correct equation when calculating the prevalence of K540E mutations from the pilot data?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>23 / 100</li>
+<li>19 / 100</li>
+<li>5 / 23</li>
+<li>5 / 19 <strong>(correct)</strong></li>
+</ul>
+<p>Recall that we can use the following formula to calculate a 95% confidence interval on our prevalence estimate:</p>
+<p><span class="math display">\[
+\hat{p} \pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{N}}
+\]</span> Complete the following R code by entering the appropriate values for <code>p</code> and <code>N</code> to compute this interval:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enter values for the estimated prevalence and the sample size</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">/</span> <span class="dv">19</span> <span class="co"># NB, delete value</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">19</span>     <span class="co"># NB, delete value</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the margin of error (MOE)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>MOE <span class="ot">&lt;-</span> z<span class="sc">*</span><span class="fu">sqrt</span>(p<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> N)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># report the point estimate and 95% confidence interval</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">prevalence =</span> p,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">lower =</span> p <span class="sc">-</span> MOE,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">upper =</span> p <span class="sc">+</span> MOE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  prevalence     lower     upper
+1  0.2631579 0.0651572 0.4611586</code></pre>
+</div>
+</div>
+<p><strong>Question:</strong> Which of these statements is correct:</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>The 95% CI ranges from 1.5% to 80.2%</li>
+<li>The 95% CI ranges from 6.5% to 46.1% <strong>(correct)</strong></li>
+<li>The 95% CI ranges from 24.0% to 28.0%</li>
+<li>The 95% CI ranges from 0.065% to 0.461%</li>
+</ul>
+<p>The 95% CI shows that we are very uncertain of the prevalence of K540E mutations based on our pilot data alone. While our best estimate of the prevalence is 26%, the plausible range includes anything from 6.5% to 46.1%. The NMCP considers this range too wide to be useful. Hence, they plan to conduct a follow-up study.</p>
+</section>
+<section id="calculating-the-sample-size" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-the-sample-size">Calculating the sample size</h2>
+<p>Our first task is to convert the formula for the margin of error (MOE) into a new formula that tells us the appropriate sample size. If you are comfortable with the mathematics and want to see how to do this then follow these steps. If not, you can jump ahead to Step 3 to see the final formula.</p>
+<p><strong>Step 1: Write down the formula for the MOE</strong></p>
+<p>We will use the mathematical symbol <span class="math inline">\(m\)</span> for the MOE:</p>
+<p><span class="math display">\[
+m = z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{N}}
+\]</span> <strong>Step 2: Square both sides</strong></p>
+<p><span class="math display">\[
+m^2 = z_{1-\alpha/2}^2 \frac{p(1-p)}{N}
+\]</span> <strong>Step 3: Multiply by <span class="math inline">\(N\)</span> and divide by <span class="math inline">\(m^2\)</span></strong></p>
+<p><span class="math display">\[
+N = z_{1-\alpha/2}^2 \frac{p(1-p)}{m^2}
+\]</span> We can use this formula to tell us the appropriate sample size given an assumed value of the prevalence (<span class="math inline">\(p\)</span>) and a target value for the MOE (<span class="math inline">\(m\)</span>).</p>
+<p><strong>Question:</strong> What value should we assume for <span class="math inline">\(p\)</span>?</p>
+<p><strong>Options: (all three answers are correct as they are all reasonable)</strong></p>
+<ul>
+<li>0.26 based on the pilot data</li>
+<li>0.5 as this is the most pessimistic assumption in terms of requiring the largest sample size</li>
+<li>0.72 based on the prevalence in neighbouring Uganda</li>
+</ul>
+<p>All three answers above are reasonable as long as they can be justified. But for the sake of argument let’s assume a value of <span class="math inline">\(p=0.26\)</span>. The NMCP has decided that a MOE of 5% is acceptable. Complete the following R code by entering the appropriate values for <code>p</code> and <code>m</code> to compute the resulting sample size:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enter values for the estimated prevalence and the sample size</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.26</span>     <span class="co"># NB, delete value</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">0.05</span>     <span class="co"># NB, delete value</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the raw sample size</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> z<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> m<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 295.6387</code></pre>
+</div>
+</div>
+<p>You should have obtained a sample size of 295.64, which we would round <strong>up</strong> to <span class="math inline">\(N=296\)</span> to give a whole number. The nice thing about this calculation is that we can double check that it is correct. Try entering the values <span class="math inline">\(p=0.26\)</span> and <span class="math inline">\(N=296\)</span> into the 95% CI formula that we used in the pilot data analysis. If our calculations were correct, you should find that the resulting MOE is very close to 5%.</p>
+</section>
+<section id="buffering" class="level2">
+<h2 class="anchored" data-anchor-id="buffering">Buffering</h2>
+<p>Buffering refers to increasing a sample size to allow for events that are out of our control and that can result in drop-out (loss of samples). Some ways that drop-out can occur are through:</p>
+<ul>
+<li>Participants withdrawing consent</li>
+<li>Participants dying or leaving the area</li>
+<li>Samples being lost during transportation</li>
+<li>Samples becoming contaminated</li>
+<li>Samples failing amplification or sequencing resulting in a lack of genetic data</li>
+<li>Data being lost due to computational errors</li>
+</ul>
+<p>We cannot completely eliminate the risk of drop-out, but by buffering sample sizes we can be robust to it. If we expect a proportion <span class="math inline">\(d\)</span> of samples to be lost, then the formula for adjusted sample size is:</p>
+<p><span class="math display">\[
+N_{\text{buffered}} = \frac{N_{\text{original}}}{1 - d}
+\]</span></p>
+<p>Through consulting with lab technicians and the study team, you estimate that 10% of samples may be lost to drop-out. Complete the following R code to come up with a buffered sample size:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enter value for estimated dropout</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.1</span>     <span class="co"># NB, delete value</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the buffered sample size</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>N_buffered <span class="ot">&lt;-</span> N <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> r)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N_buffered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 328.4874</code></pre>
+</div>
+</div>
+<p><strong>Question:</strong> What is the correct buffered sample size?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>300</li>
+<li>328</li>
+<li>350</li>
+<li>329 <strong>(correct)</strong></li>
+</ul>
+</section>
+<section id="accounting-for-positive-fraction" class="level2">
+<h2 class="anchored" data-anchor-id="accounting-for-positive-fraction">Accounting for positive fraction</h2>
+<p>So far, we have focused on working out how many <em>confirmed malaria cases</em> we need in our study. However, recall that this will be a cross-sectional study with individuals being sampled at random from households within Rutshuru town. Many of the individuals tested will not be positive for malaria. It may be useful for us to know how many individuals we need to <em>test</em> as part of this study, which may be considerably higher than the number of confirmed malaria cases.</p>
+<p>The NMCP estimates that 25% of the population of Rutshuru will be positive for malaria by RDT. We can use the same buffering formula as before, but now using the positive fraction (<span class="math inline">\(f\)</span>) to inflate our sample size:</p>
+<p><span class="math display">\[
+N_{\text{test}} = \frac{N_{\text{confirmed}}}{f}
+\]</span></p>
+<p>Complete the following R code to work out the number of people we will need to test to achieve the final target sample size:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enter value for estimated positive fraction</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>N_buffered <span class="ot">&lt;-</span> <span class="dv">329</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fl">0.25</span>     <span class="co"># NB, delete value</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the testing sample size</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>N_test <span class="ot">&lt;-</span> N_buffered <span class="sc">/</span> f</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1316</code></pre>
+</div>
+</div>
+<p><strong>Question:</strong> How many people will we need to test to obtain the target sample size of 329 positive malaria cases?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>534</li>
+<li>923</li>
+<li>1316 <strong>(correct)</strong></li>
+<li>1536</li>
+</ul>
+<p>You have now completed your study design exercise. Your recommendation to the NMCP is as follows:</p>
+<p><em>Assuming a prevalence of K540E mutations of 26% based on pilot data, a sample size of</em> <strong>329</strong> <em>confirmed malaria cases will be needed to estimate prevalence to within 5% margin of error. This number is buffered to take into account an assumed 10% drop-out. Assuming that malaria prevalence is 25% by RDT in Rutshuru town, this translates to</em> <strong>1316</strong> <em>individuals who will need to be tested in the cross-sectional study design.</em></p>
+</section>
+<section id="bonus-questions" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-questions">Bonus questions</h2>
+<p>The study design above is based on strong statistical principles. However, it is worth testing how robust these numbers are to changes in our assumptions.</p>
+<ol type="1">
+<li><p>Under the chosen sample size of 296 (after drop-out), what would be your margin of error under the worst case scenario that the true prevalence of the K540E mutation was actually 50%?</p></li>
+<li><p>We estimated that 1316 people will need to be tested based on an assumed 25% prevalence of malaria. But what if malaria prevalence is actually only 15% in Rutshuru town?</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
