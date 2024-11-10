@@ -14,7 +14,7 @@
 <meta name="allow-skip" content="false" />
 <meta name="learnr-version-prerender" content="0.11.5" />
 
-<title>Module 3: Hypothesis Testing and Power</title>
+<title>Activity 3: Hypothesis Testing and Power</title>
 
 <!-- header-includes START -->
 <!-- HEAD_CONTENT -->
@@ -111,9 +111,9 @@ if (window.hljs) {
 
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Welcome to Module 3: <strong>Hypothesis Testing and
+<p>Welcome to Activity 3: <strong>Hypothesis Testing and
 Power</strong></p>
-<p>In this module, we introduce the concept of statistical power and
+<p>In this activity, we introduce the concept of statistical power and
 demonstrate its connection to null hypothesis testing. In many studies
 within malaria molecular surveillance, we aim to test specific
 hypotheses. For instance: Has the prevalence of drug resistance
@@ -369,7 +369,7 @@ chance of detecting a real effect.</p>
 <p>We can use power curves to explore how power changes as a function of
 sample size. In the plot below, the region with at least 80% power is
 shaded in blue.</p>
-<p><img src="module3_power_interactive_files/figure-html/unnamed-chunk-1-1.png" width="576" /></p>
+<p><img src="activity3_power_interactive_files/figure-html/unnamed-chunk-1-1.png" width="576" /></p>
 <div class="panel-heading tutorial-quiz-title"></div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="power-curve-quiz-1" class="tutorial-question panel-body">
@@ -385,7 +385,7 @@ assumption that prevalence has doubled from 15% to 30% over the three
 year period. It would be useful to repeat this analysis making different
 assumptions about the prevalence. One way to do this is via a series of
 power curves:</p>
-<p><img src="module3_power_interactive_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<p><img src="activity3_power_interactive_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
 <p>Even a slight change in our assumption about the prevalence of N86Y
 mutations has a large effect on power. If we assumed present-day
 prevalence was 25% rather than 30% then we would need twice as many
@@ -800,22 +800,22 @@ session$onSessionEnded(function() {
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q1-1", question = structure("What is a null hypothesis?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_1463012", 
+"character")), answers = list(structure(list(id = "lnr_ans_62f3229", 
     option = "A statement that there is a significant effect or difference between groups.", 
     value = "A statement that there is a significant effect or difference between groups.", 
     label = structure("A statement that there is a significant effect or difference between groups.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a377b9c", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_89d3784", 
     option = "A prediction about the future outcome of an experiment.", 
     value = "A prediction about the future outcome of an experiment.", 
     label = structure("A prediction about the future outcome of an experiment.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_36ea875", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_430c963", 
     option = "A statement that there is no effect or no difference between groups, and any observed effect is due to chance.", 
     value = "A statement that there is no effect or no difference between groups, and any observed effect is due to chance.", 
     label = structure("A statement that there is no effect or no difference between groups, and any observed effect is due to chance.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_13d4b78", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a0ce532", 
     option = "A hypothesis that describes the expected relationship between two variables.", 
     value = "A hypothesis that describes the expected relationship between two variables.", 
     label = structure("A hypothesis that describes the expected relationship between two variables.", html = TRUE, class = c("html", 
@@ -827,7 +827,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: when you see the word ‘null’ think ‘nothing’.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q1-1-answer", question = "quiz-q1-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1654607537.72951, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1775851920.67305, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -835,22 +835,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q2-1", question = structure("Which of these is <em>not<\u002fem> a null hypothesis?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_1abc865", 
+"character")), answers = list(structure(list(id = "lnr_ans_aa9368", 
     option = "There is no difference in malaria prevalence between people who sleep under bed nets and people who do not.", 
     value = "There is no difference in malaria prevalence between people who sleep under bed nets and people who do not.", 
     label = structure("There is no difference in malaria prevalence between people who sleep under bed nets and people who do not.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e5c83da", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4613a67", 
     option = "The presence of a genetic marker for drug resistance is independent of the region (e.g., East Africa vs. West Africa).", 
     value = "The presence of a genetic marker for drug resistance is independent of the region (e.g., East Africa vs. West Africa).", 
     label = structure("The presence of a genetic marker for drug resistance is independent of the region (e.g., East Africa vs. West Africa).", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5e11b99", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_35aa1f4", 
     option = "Elevation has no linear relationship with malaria risk.", 
     value = "Elevation has no linear relationship with malaria risk.", 
     label = structure("Elevation has no linear relationship with malaria risk.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_33b1516", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_16d6e9c", 
     option = "Malaria incidence is twice as high in men as it is in women.", 
     value = "Malaria incidence is twice as high in men as it is in women.", 
     label = structure("Malaria incidence is twice as high in men as it is in women.", html = TRUE, class = c("html", 
@@ -862,29 +862,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: for each statement, try to work out if it assumes an effect/difference or no effect.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q2-1-answer", question = "quiz-q2-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1631485220.74028, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 2058536533.04142, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q3-1", question = structure("A false-negative result is when…", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_1686425", 
+"character")), answers = list(structure(list(id = "lnr_ans_47aee88", 
     option = "You fail to reject the null hypothesis when it is actually false.", 
     value = "You fail to reject the null hypothesis when it is actually false.", 
     label = structure("You fail to reject the null hypothesis when it is actually false.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e4cca8a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_adc14c3", 
     option = "You fail to reject the null hypothesis when it is actually true.", 
     value = "You fail to reject the null hypothesis when it is actually true.", 
     label = structure("You fail to reject the null hypothesis when it is actually true.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a8fa989", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a8902fd", 
     option = "You reject the null hypothesis when it is actually false.", 
     value = "You reject the null hypothesis when it is actually false.", 
     label = structure("You reject the null hypothesis when it is actually false.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8c42941", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ab0d61f", 
     option = "You reject the null hypothesis when it is actually true.", 
     value = "You reject the null hypothesis when it is actually true.", 
     label = structure("You reject the null hypothesis when it is actually true.", html = TRUE, class = c("html", 
@@ -896,7 +896,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: this one takes some thinking, as the options all sound quite similar! It can help to really dissect the statement. The question asks for a negative result, meaning we don’t find a significant effect. In other words, we fail to reject the null hypothesis. This means the answer must be either the first or second option. The question asks for a <em>false<\u002fem> negative result, meaning we were incorrect to come to this conclusion. This means the null hypothesis must have been false. The answer is therefore the first option.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q3-1-answer", question = "quiz-q3-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1103487871.48615, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 129584913.939657, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -904,19 +904,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q4-1", question = structure("The parameter \\(\\alpha\\) is often referred to as…", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_3749226", 
+"character")), answers = list(structure(list(id = "lnr_ans_1ecd998", 
     option = "The confidence level of a hypothesis test.", value = "The confidence level of a hypothesis test.", 
     label = structure("The confidence level of a hypothesis test.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1f5f40b", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5101bcf", 
     option = "The significance level of a hypothesis test.", 
     value = "The significance level of a hypothesis test.", label = structure("The significance level of a hypothesis test.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_885851f", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7d8abf2", 
     option = "The power of a statistical test.", value = "The power of a statistical test.", 
     label = structure("The power of a statistical test.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e01307f", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fb8ec36", 
     option = "The probability of making a Type II error.", value = "The probability of making a Type II error.", 
     label = structure("The probability of making a Type II error.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -927,26 +927,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: \\(\\alpha\\) is the threshold we set to decide if a result is statistically significant.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q4-1-answer", question = "quiz-q4-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1133766018.97205, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1331172186.38012, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q5-1", question = structure("A statistical test that only examines effects in one direction is called…", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_713211", 
+"character")), answers = list(structure(list(id = "lnr_ans_4f503f0", 
     option = "A one-headed test.", value = "A one-headed test.", 
     label = structure("A one-headed test.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ccc3862", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1b6a56c", 
     option = "A one-way street analysis.", value = "A one-way street analysis.", 
     label = structure("A one-way street analysis.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_58b4b91", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f9878ba", 
     option = "A wild goose chase.", value = "A wild goose chase.", 
     label = structure("A wild goose chase.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f1f2ad", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a320ab5", 
     option = "A one-tailed test.", value = "A one-tailed test.", 
     label = structure("A one-tailed test.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -957,7 +957,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: the ‘tails’ of a distribution refer to the low probability regions either side of the main hump.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q5-1-answer", question = "quiz-q5-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 923426954.569996, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 548186120.244731, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -965,10 +965,10 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q6-1", question = structure("In statistical testing, we always compare our test statistic against the same distribution.", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_4bbf06a", 
+"character")), answers = list(structure(list(id = "lnr_ans_fbe046a", 
     option = "TRUE", value = "TRUE", label = structure("TRUE", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_af3eb24", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6c49225", 
     option = "FALSE", value = "FALSE", label = structure("FALSE", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -978,29 +978,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: in the z-test the statistic follows a z-distribution, but in the chi-squared test the statistic follows a chi-squared distribution…", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q6-1-answer", question = "quiz-q6-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1291453223.39862, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 978278730.044454, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-q7-1", question = structure("You are running a study to test if the prevalence of a drug resistant mutation has changed over time. You analyse your data using a z-test. The critical values for a two-tailed z-test at the significance level \\(\\alpha = 0.05\\) are at \\(\\pm1.96\\). You obtain a test statistic of -2.54. What should you do based on this result?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_f7b151d", 
+"character")), answers = list(structure(list(id = "lnr_ans_bb2ace1", 
     option = "Reject the null hypothesis because the test statistic is less than zero.", 
     value = "Reject the null hypothesis because the test statistic is less than zero.", 
     label = structure("Reject the null hypothesis because the test statistic is less than zero.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_34202a9", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e69c0f", 
     option = "Reject the null hypothesis because the test statistic is less than the lower critical value.", 
     value = "Reject the null hypothesis because the test statistic is less than the lower critical value.", 
     label = structure("Reject the null hypothesis because the test statistic is less than the lower critical value.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b823ec1", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_bd0fe4a", 
     option = "Fail to reject the null hypothesis because the test statistic is negative.", 
     value = "Fail to reject the null hypothesis because the test statistic is negative.", 
     label = structure("Fail to reject the null hypothesis because the test statistic is negative.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_e430d50", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_269dc7f", 
     option = "Fail to reject the null hypothesis because the test statistic is less than the upper critical value.", 
     value = "Fail to reject the null hypothesis because the test statistic is less than the upper critical value.", 
     label = structure("Fail to reject the null hypothesis because the test statistic is less than the upper critical value.", html = TRUE, class = c("html", 
@@ -1012,7 +1012,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Hint: we reject the null hypothesis when the observed value is outside the range -1.96 to +1.96.", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz-q7-1-answer", question = "quiz-q7-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 343114496.340225, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 467993218.282074, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1021,22 +1021,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "ztest-quiz-1", 
     question = structure("Which of these is the correct null hypothesis under the planned test?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a89f5a1", 
+    "character")), answers = list(structure(list(id = "lnr_ans_7d34e32", 
         option = "The prevalence of *pfmdr1* N86Y mutations has increased from 15% over the past three years.", 
         value = "The prevalence of *pfmdr1* N86Y mutations has increased from 15% over the past three years.", 
         label = structure("The prevalence of <em>pfmdr1<\u002fem> N86Y mutations has increased from 15% over the past three years.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e897414", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a37e649", 
         option = "The prevalence of *pfmdr1* N86Y mutations has decreased from 15% over the past three years.", 
         value = "The prevalence of *pfmdr1* N86Y mutations has decreased from 15% over the past three years.", 
         label = structure("The prevalence of <em>pfmdr1<\u002fem> N86Y mutations has decreased from 15% over the past three years.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dd629e5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fce7ac", 
         option = "The prevalence of *pfmdr1* N86Y mutations is still 15%, the same as it was three years ago.", 
         value = "The prevalence of *pfmdr1* N86Y mutations is still 15%, the same as it was three years ago.", 
         label = structure("The prevalence of <em>pfmdr1<\u002fem> N86Y mutations is still 15%, the same as it was three years ago.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3ac7b23", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a62060", 
         option = "The prevalence of *pfmdr1* N86Y mutations has changed from its earlier value of 15%.", 
         value = "The prevalence of *pfmdr1* N86Y mutations has changed from its earlier value of 15%.", 
         label = structure("The prevalence of <em>pfmdr1<\u002fem> N86Y mutations has changed from its earlier value of 15%.", html = TRUE, class = c("html", 
@@ -1049,7 +1049,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "ztest-quiz-1-answer", question = "ztest-quiz-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1170463705.95496, options = list()), class = c("learnr_radio", 
+    seed = 1788245639.16728, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1080,10 +1080,10 @@ learnr:::store_exercise_cache(structure(list(label = "ztest-1", global_setup = s
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "module3_power_interactive_cache/html/", 
+        cache.path = "activity3_power_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module3_power_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity3_power_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1130,10 +1130,10 @@ learnr:::store_exercise_cache(structure(list(label = "ztest-2", global_setup = s
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "module3_power_interactive_cache/html/", 
+        cache.path = "activity3_power_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module3_power_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity3_power_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1155,22 +1155,22 @@ learnr:::store_exercise_cache(structure(list(label = "ztest-2", global_setup = s
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "power-quiz-1", 
     question = structure("A power of 98% means…", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_e1ebf5c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d1898ba", 
         option = "There is a 98% chance that the study will be successful.", 
         value = "There is a 98% chance that the study will be successful.", 
         label = structure("There is a 98% chance that the study will be successful.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9082697", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c70d6ee", 
         option = "There is a 98% difference in prevalence between the time points.", 
         value = "There is a 98% difference in prevalence between the time points.", 
         label = structure("There is a 98% difference in prevalence between the time points.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_44ea11e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_741a90a", 
         option = "There is a 98% chance that the alternative hypothesis is true.", 
         value = "There is a 98% chance that the alternative hypothesis is true.", 
         label = structure("There is a 98% chance that the alternative hypothesis is true.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a67c8da", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cd5a1a6", 
         option = "Assuming the alternative hypothesis is true, there is a 98% chance that we will correctly reject the null hypothesis.", 
         value = "Assuming the alternative hypothesis is true, there is a 98% chance that we will correctly reject the null hypothesis.", 
         label = structure("Assuming the alternative hypothesis is true, there is a 98% chance that we will correctly reject the null hypothesis.", html = TRUE, class = c("html", 
@@ -1183,7 +1183,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "power-quiz-1-answer", question = "power-quiz-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 827035934.114881, options = list()), class = c("learnr_radio", 
+    seed = 1664649043.22484, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1191,16 +1191,16 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "power-curve-quiz-1", 
     question = structure("From this graph, what sample size is needed to achieve a power of 80%?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_7f42786", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8de7ba8", 
         option = "60", value = "60", label = structure("60", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d1208c0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b0f286c", 
         option = "74", value = "74", label = structure("74", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b8f4f7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d26a18f", 
         option = "100", value = "100", label = structure("100", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_16f3ee7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f9569e", 
         option = "More than 150", value = "More than 150", label = structure("More than 150", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1211,7 +1211,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "power-curve-quiz-1-answer", question = "power-curve-quiz-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1639434020.23658, options = list()), class = c("learnr_radio", 
+    seed = 791617552.131374, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1237,10 +1237,10 @@ learnr:::store_exercise_cache(structure(list(label = "ztest-ss-2", global_setup 
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "module3_power_interactive_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "activity3_power_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module3_power_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity3_power_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1285,10 +1285,10 @@ learnr:::store_exercise_cache(structure(list(label = "detection-1", global_setup
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "module3_power_interactive_cache/html/", 
+        cache.path = "activity3_power_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module3_power_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity3_power_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1331,10 +1331,10 @@ learnr:::store_exercise_cache(structure(list(label = "detection-2", global_setup
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "module3_power_interactive_cache/html/", 
+        cache.path = "activity3_power_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module3_power_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity3_power_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1374,8 +1374,8 @@ learnr:::store_exercise_cache(structure(list(label = "detection-2", global_setup
 
 <!-- begin doc-metadata -->
 <div id="doc-metadata">
-<h1 class="title toc-ignore" style="display:none;">Module 3: Hypothesis
-Testing and Power</h1>
+<h1 class="title toc-ignore" style="display:none;">Activity 3:
+Hypothesis Testing and Power</h1>
 </div>
 <!-- end doc-metadata -->
 

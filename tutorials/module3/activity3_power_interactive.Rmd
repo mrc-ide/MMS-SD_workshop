@@ -1,8 +1,9 @@
 ---
-title: 'Module 3: Hypothesis Testing and Power'
+title: 'Activity 3: Hypothesis Testing and Power'
 output:
   learnr::tutorial:
     progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -22,9 +23,9 @@ tutorial_options(exercise.timelimit = 120)
 
 ## Introduction
 
-Welcome to Module 3: **Hypothesis Testing and Power**
+Welcome to Activity 3: **Hypothesis Testing and Power**
 
-In this module, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? This is what we mean by statistical power. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
+In this activity, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? This is what we mean by statistical power. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
 
 
 ### Learning Outcomes

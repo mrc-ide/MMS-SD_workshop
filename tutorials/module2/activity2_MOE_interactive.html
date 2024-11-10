@@ -11,10 +11,10 @@
 
 
 <meta name="progressive" content="true" />
-<meta name="allow-skip" content="false" />
+<meta name="allow-skip" content="true" />
 <meta name="learnr-version-prerender" content="0.11.5" />
 
-<title>Module 2: Calculating Sample Size from Margin of Error</title>
+<title>Activity 2: Calculating Sample Size from Margin of Error</title>
 
 <!-- header-includes START -->
 <!-- HEAD_CONTENT -->
@@ -111,13 +111,11 @@ if (window.hljs) {
 
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Welcome to Module 2: <strong>Calculating Sample Size from Margin of
+<p>Welcome to Activity 2: <strong>Calculating Sample Size from Margin of
 Error</strong></p>
-<p>In this module, we’ll explore how margin of error (MOE) arguments can
-guide sample size determination. This approach differs from power
-analysis, as it doesn’t involve hypothesis testing and therefore doesn’t
-require the concept of power. Instead, it relies solely on the concept
-of <em>precision</em>. Larger sample sizes lead to more precise
+<p>In this activity, we’ll explore how margin of error (MOE) arguments
+can guide sample size determination. This approach relies solely on the
+concept of <em>precision</em>; larger sample sizes lead to more precise
 estimates. This method is invaluable not only in Malaria Molecular
 Surveillance (MMS) but also in epidemiology more broadly, where
 estimating prevalence is often a primary goal.</p>
@@ -501,9 +499,10 @@ to see the answer
 </details>
 <p></br></p>
 <p>We estimated that 1316 people will need to be tested based on an
-assumed 25% prevalence of malaria. But what if malaria prevalence is
-actually only 15% in Rutshuru town? What would be your expected final
-sample size, and what would be your resulting MOE?</p>
+assumed 25% prevalence of malaria. But what if during the study we find
+that this assumption was not correct, and malaria prevalence is actually
+only 15% in Rutshuru town? What would be your expected final sample
+size, and what would be your resulting MOE?</p>
 <div class="tutorial-exercise" data-label="bonus-2" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -570,19 +569,19 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-pilot1-1", 
     question = structure("Which is the correct formula when calculating the prevalence of K540E mutations from the pilot data?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_ad12981", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f516494", 
         option = "23 / 100 = 23.0%", value = "23 / 100 = 23.0%", 
         label = structure("23 / 100 = 23.0%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ba0aea3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4d3baae", 
         option = "19 / 100 = 19.0%", value = "19 / 100 = 19.0%", 
         label = structure("19 / 100 = 19.0%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8d24542", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e4c2af5", 
         option = "5 / 23 = 21.7%", value = "5 / 23 = 21.7%", 
         label = structure("5 / 23 = 21.7%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_21bb4d9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_62700ff", 
         option = "5 / 19 = 26.3%", value = "5 / 19 = 26.3%", 
         label = structure("5 / 19 = 26.3%", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -594,7 +593,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-pilot1-1-answer", question = "quiz-pilot1-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1335577679.37807, options = list()), class = c("learnr_radio", 
+    seed = 1016065336.52686, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -624,10 +623,10 @@ learnr:::store_exercise_cache(structure(list(label = "wald-1", global_setup = st
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "module2_MOE_interactive_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        cache.path = "activity2_MOE_interactive_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -650,22 +649,22 @@ learnr:::store_exercise_cache(structure(list(label = "wald-1", global_setup = st
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-prev-1", 
     question = structure("Which of these are reasonable choices for \\(p\\)?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_c62e24", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f99c507", 
         option = "$p = 0.26$ as this was the prevalence found in the pilot data.", 
         value = "$p = 0.26$ as this was the prevalence found in the pilot data.", 
         label = structure("\\(p = 0.26\\) as this was the prevalence found in the pilot data.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ee7e29e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7dd1940", 
         option = "$p = 0.72$ as this was the prevalence found in neighbouring Uganda", 
         value = "$p = 0.72$ as this was the prevalence found in neighbouring Uganda", 
         label = structure("\\(p = 0.72\\) as this was the prevalence found in neighbouring Uganda", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_613efd0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1edf9bb", 
         option = "$p = 0.5$ as this is the most pessimistic assumption. It will lead to the largest sample size, and so by assuming this value we are robust to any other value of the prevalence.", 
         value = "$p = 0.5$ as this is the most pessimistic assumption. It will lead to the largest sample size, and so by assuming this value we are robust to any other value of the prevalence.", 
         label = structure("\\(p = 0.5\\) as this is the most pessimistic assumption. It will lead to the largest sample size, and so by assuming this value we are robust to any other value of the prevalence.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_34f6866", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_464a0fc", 
         option = "All of the above", value = "All of the above", 
         label = structure("All of the above", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -677,7 +676,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-prev-1-answer", question = "quiz-prev-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 543575199.746878, options = list()), class = c("learnr_radio", 
+    seed = 955399114.555108, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -705,10 +704,10 @@ learnr:::store_exercise_cache(structure(list(label = "sample_size-1", global_set
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "module2_MOE_interactive_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        cache.path = "activity2_MOE_interactive_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -751,10 +750,10 @@ learnr:::store_exercise_cache(structure(list(label = "ss_check-1", global_setup 
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "module2_MOE_interactive_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "activity2_MOE_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -796,10 +795,10 @@ learnr:::store_exercise_cache(structure(list(label = "buffer-1", global_setup = 
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "module2_MOE_interactive_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "activity2_MOE_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -842,10 +841,10 @@ learnr:::store_exercise_cache(structure(list(label = "fraction-1", global_setup 
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "module2_MOE_interactive_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "activity2_MOE_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -887,10 +886,10 @@ learnr:::store_exercise_cache(structure(list(label = "bonus-1", global_setup = s
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "module2_MOE_interactive_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "activity2_MOE_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -931,10 +930,10 @@ learnr:::store_exercise_cache(structure(list(label = "bonus-2", global_setup = s
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "module2_MOE_interactive_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "activity2_MOE_interactive_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "module2_MOE_interactive_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "activity2_MOE_interactive_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -972,8 +971,8 @@ learnr:::store_exercise_cache(structure(list(label = "bonus-2", global_setup = s
 
 <!-- begin doc-metadata -->
 <div id="doc-metadata">
-<h1 class="title toc-ignore" style="display:none;">Module 2: Calculating
-Sample Size from Margin of Error</h1>
+<h1 class="title toc-ignore" style="display:none;">Activity 2:
+Calculating Sample Size from Margin of Error</h1>
 </div>
 <!-- end doc-metadata -->
 

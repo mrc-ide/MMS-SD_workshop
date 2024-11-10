@@ -1,5 +1,5 @@
 ---
-title: "Module 4: Intra-cluster correlation"
+title: "Activity 4: Intra-cluster correlation"
 output: html_document
 date: "`r Sys.Date()`"
 ---
