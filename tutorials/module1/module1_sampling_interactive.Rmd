@@ -701,16 +701,6 @@ After running the simulation, you should notice that the true prevalence falls w
 
 Let's repeat this exercise for a sample size of 500. Try coding it yourself from scratch using the functions that we used above. Click on the solution if you get stuck! 
 
-<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
-  <span style="font-size: 1.2em; color: #d19554;">
-    <i class="fas fa-comment"></i> Reflection:
-  </span> 
-
-  <span style="color:#d19554;"> 
-  Does the true prevalence (**26.78%**) fall within our 95% CI? What do you notice about the simulation results?
-  </span>
-</div>
-
 ```{r sampling-500, exercise=TRUE}
 sample_size <- 500
 ```
@@ -736,3 +726,13 @@ n_simulations <- 1000
 results <- replicate(n_simulations, simulate_CI(census, sample_size, true_prevalence))
 plotCISimulationResults(results, n_simulations)
 ```
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Does the true prevalence (**26.78%**) fall within our 95% CI? What do you notice about the simulation results?
+  </span>
+</div>
