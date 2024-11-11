@@ -6,6 +6,6 @@ All of the materials from this workshop are freely available. We suggest you wor
 
 ## List of all the lectures (PDFs)
 
-- Intro lecture: [Goal of malaria molecular surveillance (MMS)]()
+- Intro lecture: [Goal of malaria molecular surveillance (MMS)](slides/L0-intro.pdf)
 - Lecture 1: [Sampling from a population](slides/L1-sampling.pdf)
-- Lecture 2: []()
+- Lecture 2: [Sample size calculations based on margin of error](slides/L2-margin_of_error.pdf)
