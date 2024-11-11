@@ -1,5 +1,5 @@
 ---
-title: "Module 1: Sampling from a population"
+title: "Activity 1: Sampling from a population"
 output:
   learnr::tutorial:
     progressive: true

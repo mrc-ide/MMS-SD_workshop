@@ -1,5 +1,5 @@
 ---
-title: 'Module 5: The DRpower tool'
+title: 'Activity 5: The DRpower tool'
 output:
   learnr::tutorial:
     progressive: true

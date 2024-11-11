@@ -24,13 +24,13 @@ website:
             href: https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/
             icon: play
           - text: "Module 3"
-            href: https://mms-sdworkshop.shinyapps.io/module3_power_interactive/
+            href: https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/
             icon: play
           - text: "Module 4"
             href: https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/
             icon: play
           - text: "Module 5"
-            href: https://mms-sdworkshop.shinyapps.io/module5_DRpower_interactive/
+            href: https://mms-sdworkshop.shinyapps.io/activity5_DRpower_interactive/
             icon: play
           - text: "Module 6"
             href: tutorials/module6/module6_scenarios.Rmd 
