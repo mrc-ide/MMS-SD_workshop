@@ -272,17 +272,6 @@ Let's take a look at the demographics of our sample by plotting the age and sex 
 
 Below we use the function `sampleFromPopulation()` and we specify what our sample size is and from where we want to sample (in our case from the census data). 
 
-<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
-  <span style="font-size: 1.2em; color: #d19554;">
-    <i class="fas fa-comment"></i> Reflection:
-  </span> 
-
-  <span style="color:#d19554;"> 
-  Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population?
-  </span>
-</div>
-
-<br>
 We can use the `plotAgeSexDistribution()` and `plotInfectedProportion()` functions to visualize our results. Click on "Run Code". 
 
 ```{r sampling-1, exercise=TRUE}
@@ -293,6 +282,16 @@ plotAgeSexDistribution(comparison)
 
 plotInfectedProportion(comparison)
 ```
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population?
+  </span>
+</div>
 
 ### Sampling many times from the population 
 
