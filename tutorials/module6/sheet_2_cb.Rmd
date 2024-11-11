@@ -1,0 +1,76 @@
+---
+title: 'Fact sheet: Health facility coordinator'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DT)
+```
+
+## Your role
+As the health facility coordinator on the team, your job is to help your team make informed decisions on the target health facilities (cluster) and study design considerations, including: 
+
+- Select appropriate regions and health facilities.
+- Decide on the number of clusters (health facilities) to include.
+- Planning for the time it will take to enrol the total number of malaria-positive patients in each location.
+
+Navigate back to the [group activity instructions](module6_scenarios.Rmd) if you need to!
+
+**Health facility information**
+
+*Use the buttons to download as .csv or .xls if you prefer*
+```{r echo=F}
+# Create a data frame for health facilities
+health_facilities <- data.frame(
+  region = c(
+    rep("Coastal Region", 20),
+    rep("Highland Region", 10),
+    rep("Forest Region", 15),
+    rep("Urban Region", 20)
+  ),
+  health_facility = c(
+    paste0("HF", 1:20),    # Coastal Region
+    paste0("HF", 21:30),   # Highland Region
+    paste0("HF", 31:45),   # Forest Region
+    paste0("HF", 46:65)    # Urban Region
+  ),
+  population_served = c(
+    # Coastal Region Population Served
+    12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000, 28000, 30000,
+    32000, 34000, 36000, 38000, 40000, 42000, 44000, 46000, 48000, 50000,
+    # Highland Region Population Served
+    10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000, 28000,
+    # Forest Region Population Served
+    15000, 18000, 21000, 24000, 27000, 30000, 33000, 36000, 39000, 42000,
+    45000, 48000, 51000, 54000, 57000,
+    # Urban Region Population Served
+    20000, 22000, 24000, 26000, 28000, 30000, 32000, 34000, 36000, 38000,
+    40000, 42000, 44000, 46000, 48000, 50000, 52000, 54000, 56000, 58000
+  ),
+  expected_malaria_cases_per_month = c(
+    # Coastal Region Expected Cases per Month
+    40, 47, 53, 60, 67, 73, 80, 87, 93, 100,
+    107, 113, 120, 127, 133, 140, 147, 153, 160, 167,
+    # Highland Region Expected Cases per Month
+    13, 15, 18, 20, 23, 25, 28, 30, 33, 35,
+    # Forest Region Expected Cases per Month
+    113, 135, 158, 180, 203, 225, 248, 270, 293, 315,
+    338, 360, 383, 405, 428,
+    # Urban Region Expected Cases per Month
+    42, 46, 50, 54, 58, 63, 67, 71, 75, 79,
+    83, 88, 92, 96, 100, 104, 108, 113, 117, 121
+  )
+)
+
+# Render the datatable without the search bar
+datatable(
+  health_facilities,
+  extensions = 'Buttons',
+  options = list(
+    dom = 'Bfrtip',
+    buttons = c('csv', 'excel')
+  ),
+  rownames = FALSE
+)
+```

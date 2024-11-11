@@ -1,0 +1,39 @@
+---
+title: 'Fact sheet: Epidemiologist'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DT)
+```
+
+## Your role
+As the epidemiologist on the team, your job is to help your team make informed decisions on the target population and study design considerations, including: 
+
+- Select appropriate regions and health facilities.
+- Decide on the number of clusters (health facilities) to include.
+- Use expected malaria cases per month and test positivity rates to plan enrollment.
+
+Navigate back to the [group activity instructions](module6_scenarios.Rmd) if you need to!
+
+#### **Malaria prevalence, incidence and test positivity rate**
+
+*Use the buttons to download as .csv or .xls if you prefer*
+```{r echo=F}
+epi <- data.frame(
+  region = c("Coastal Region", "Highland Region", "Forest Region", "Urban Region"),
+  prevalence = c("12%", "5%", "28%", "8%"),
+  incidence_per_1000_per_year = c(40, 15, 90, 25),
+  test_positivity_rate = c("18%", "7%", "35%", "10%"))
+
+datatable(epi, 
+          extensions = 'Buttons',
+          options = list(
+            dom = 'Bfrtip',
+            buttons = c('csv', 'excel'),
+            searching = FALSE
+          ),
+          rownames = FALSE
+)
+```
