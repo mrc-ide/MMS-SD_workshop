@@ -39,7 +39,7 @@ p <- dat$prevalence
 
 Welcome to Activity 4: **Dealing with over-dispersion in multi-cluster studies**
 
-In this activity, we will consider some of the features of multi-cluster studies that separate them from single-cluster studies. Very often in malaria surveillance we want to pool information over multiple sites. These could be health facilities, towns, or even regions of a country. By combining information over sites we can estimate the average value of some quantity of interest - for example the prevalence of a drug resistance mutation - without being too highly influenced by local variations. However, when pooling results, care must be taken not to overstate the amount of information we have. If data are *over-dispersed* then our sample size is effectively diminished, and in some cases power can be badly affected.
+In this activity, we will consider some of the features of multi-cluster studies that separate them from single-cluster studies. Very often in malaria surveillance we want to pool information over multiple sites. These could be health facilities, towns, or even regions of a country. By combining information over sites we can estimate the average value of some quantity of interest - for example the prevalence of a drug resistance mutation - without being too highly influenced by local variations. However, when pooling results, care must be taken not to overstate the amount of information we have. This is particularly true if data are *over-dispersed*, meaning there is more variation between sites than expected. In this case, our sample size is effectively diminished and in some cases power can be badly affected.
 
 ### Learning Outcomes
 
@@ -50,7 +50,7 @@ By the end of this tutorial, you will be able to:
 - Understand the impact of over-dispersion on statistical efficiency
 - Construct confidence intervals and perform hypothesis tests while accounting for over-dispersion
 
-**Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.**
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
 
 ## Analyzing data from a multi-cluster *pfhrp2* deletion study
 
@@ -70,6 +70,17 @@ kable(dat, "html", col.names = c("Site", "Confirmed Malaria<br>(n)", "pfhrp2 Del
   column_spec(4, width = "4cm") |>
   footnote(general = "\nTable 1: pfhrp2 deletion data broken down by site", general_title = "")
 ```
+
+In the R chunks below, you will be able to access these columns through the variables `n`, `x`, and `p`, as shown here:
+
+```{r sandbox-1, exercise=TRUE}
+# you can access the following vectors
+n
+x
+p
+
+```
+
 
 ### Estimating the global prevalence
 
@@ -109,13 +120,13 @@ You should find that $\hat{p} = 0.172$, or 17.2% prevalence.
 </details>
 </br>
 
-This calculation ignores differences in sample sizes between sites. For example, the Nhinhi site is given just as much weight as the Rudi site, despite having half the number of confirmed malaria cases. A different approach is to calculate $\hat{p}$ as the *weighted* average of the site-level prevalence, where the weights are given by the sample sizes:
+This calculation ignores differences in sample sizes between sites. For example, the Nhinhi site is given just as much weight as the Rudi site, despite having half the number of confirmed malaria cases. A different approach is to calculate $\hat{p}$ as the *weighted* average of the site-level prevalence, where the weights are given by the sample sizes. This is mathematically equivalent to summing the numerator and the denominators separately before dividing:
 
 $$
-\hat{p} = \frac{\sum_{i=1}^c w_i \hat{p}_i}{\sum_{i=1}^c w_i}
+\hat{p} = \frac{\sum_{i=1}^c x_i}{\sum_{i=1}^c n_i}
 $$
 
-Complete the following R code to calculate `p_global` as the *weighted* mean prevalence over sites, where weights are given by the sample size `n`.
+Complete the following R code to calculate `p_global` as the *weighted* mean prevalence over sites:
 
 ```{r global-2, exercise=TRUE}
 # calculate p_global as weighted mean prevalence over sites
@@ -126,7 +137,7 @@ print(p_global)
 
 ```{r global-2-solution}
 # calculate p_global as weighted mean prevalence over sites
-p_global <- sum(n*p) / sum(n)
+p_global <- sum(x) / sum(n)
 
 print(p_global)
 ```
@@ -511,7 +522,7 @@ If we ignored over-dispersion and treated all observations as independent, we wo
 
 ### Over-dispersion and hypothesis testing
 
-Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of *pfhrp2* deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic that factors in the design effect:
+Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of *pfhrp2* deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic ($Z$) that factors in the design effect:
 
 $$
 Z = \frac{|\hat{p} - h|}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
@@ -529,7 +540,7 @@ Z <- abs(p_global - h) / sqrt(p_global * (1 - p_global) / N * Deff)
 print(Z)
 ```
 
-We obtain a value $Z = 1.43$. This is within the critical range $\pm1.96$, meaning we would not reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find $Z = 5.11$. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a *pfhrp2/3* study, this could mean difference between switching RDTs nationwide vs sticking with the current brand.
+We obtain a test statistic of $Z = 1.43$. This is within the critical range $\pm1.96$, meaning we would not reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find $Z = 5.11$. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a *pfhrp2/3* study, this could mean difference between switching RDTs nationwide vs sticking with the current brand.
 
 **Disclaimer: We do not advocate for the use of the z-test for the design pfhrp2/3 deletion studies, or the analysis of the resulting data. We will learn about a much more powerful approach to this problem in the next module.**
 
@@ -566,7 +577,7 @@ Under this study design we only have 61% power. Contrast this with power of 99.9
 
 ### Over-dispersion and sample size
 
-When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, we can assume a known value of the ICC.
+When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, we can assume a known value of the ICC ($r$).
 
 Our new minimum sample size formula becomes:
 
@@ -574,7 +585,7 @@ $$
 n = \frac{1 - r}{\frac{c(p - h)^2}{(z_{1 - \alpha/2} + z_{1 - \beta})^2 p(1-p)} - r}
 $$
 
-Note that this is the sample size *per cluster*, assuming there are $c$ clusters of equal size. We can calculate this in R as follows:
+Note that $n$ is the sample size *per cluster*, assuming there are $c$ clusters of equal size. We can calculate this in R as follows:
 
 ```{r, echo=TRUE}
 # define assumed parameters
