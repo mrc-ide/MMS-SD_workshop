@@ -1,8 +1,9 @@
 ---
-title: "Module 2: Calculating Sample Size from Margin of Error"
+title: "Activity 2: Calculating Sample Size from Margin of Error"
 output:
   learnr::tutorial:
     progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -20,9 +21,9 @@ tutorial_options(exercise.timelimit = 120)
 
 ## Introduction
 
-Welcome to Module 2: **Calculating Sample Size from Margin of Error**
+Welcome to Activity 2: **Calculating Sample Size from Margin of Error**
 
-In this module, we’ll explore how margin of error (MOE) arguments can guide sample size determination. This approach differs from power analysis, as it doesn’t involve hypothesis testing and therefore doesn’t require the concept of power. Instead, it relies solely on the concept of *precision*. Larger sample sizes lead to more precise estimates. This method is invaluable not only in Malaria Molecular Surveillance (MMS) but also in epidemiology more broadly, where estimating prevalence is often a primary goal.
+In this activity, we’ll explore how margin of error (MOE) arguments can guide sample size determination. This approach relies solely on the concept of *precision*; larger sample sizes lead to more precise estimates. This method is invaluable not only in Malaria Molecular Surveillance (MMS) but also in epidemiology more broadly, where estimating prevalence is often a primary goal.
 
 ### Learning Outcomes
 
@@ -32,7 +33,7 @@ By the end of this tutorial, you will be able to:
 - Calculate a minimum sample size using assumptions about prevalence and margin of error.
 - Account for drop-out and malaria positive fraction.
 
-**Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.**
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
 
 ## Background
 
@@ -342,7 +343,7 @@ The MOE would increase to 5.7% in the most pessimistic scenario.
 </details>
 </br>
 
-We estimated that 1316 people will need to be tested based on an assumed 25% prevalence of malaria. But what if malaria prevalence is actually only 15% in Rutshuru town? What would be your expected final sample size, and what would be your resulting MOE?
+We estimated that 1316 people will need to be tested based on an assumed 25% prevalence of malaria. But what if during the study we find that this assumption was not correct, and malaria prevalence is actually only 15% in Rutshuru town? What would be your expected final sample size, and what would be your resulting MOE?
 
 ```{r bonus-2, exercise=TRUE}
 

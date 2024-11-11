@@ -1,8 +1,9 @@
 ---
-title: 'Module 3: Hypothesis Testing and Power'
+title: 'Activity 3: Hypothesis Testing and Power'
 output:
   learnr::tutorial:
     progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -22,9 +23,9 @@ tutorial_options(exercise.timelimit = 120)
 
 ## Introduction
 
-Welcome to Module 3: **Hypothesis Testing and Power**
+Welcome to Activity 3: **Hypothesis Testing and Power**
 
-In this module, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? This is what we mean by statistical power. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
+In this activity, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender, or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? Statistical power is the mathematical way to calculate how likely we are to detect this real effect. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
 
 
 ### Learning Outcomes
@@ -33,11 +34,11 @@ By the end of this tutorial, you will be able to:
 
 - Define key terms related to null hypothesis testing.
 - Use a test statistic to decide whether or not to reject a null hypothesis.
-- Perform power analysis under two different statistical tests.
+- Perform power analysis using two different statistical tests.
 - Interpret power curves.
 - Use minimum sample size tables.
 
-**Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.**
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
 
 
 ## Quiz on hypothesis testing and power
@@ -50,7 +51,7 @@ quiz(caption = "",
            answer("A prediction about the future outcome of an experiment.", correct = FALSE),
            answer("A statement that there is no effect or no difference between groups, and any observed effect is due to chance.", correct = TRUE),
            answer("A hypothesis that describes the expected relationship between two variables.", correct = FALSE), 
-           correct = "That is correct! A null hypothesis assumes there is no effect/difference. Often the null hypothesis is a statement that there is nothing interesting going on - but not always! For example, imagine our null hypothesis is that people using bed nets have the same malaria incidence as those not using bed nets. If this null hypothesis is true then that is very interesting indeed.", 
+           correct = "That is correct! A null hypothesis assumes there is no effect/difference between groups. Often the null hypothesis is a statement that there is nothing interesting going on - but not always! For example, imagine our null hypothesis is that people using bed nets have the same malaria incidence as those not using bed nets. If this null hypothesis is true then that is very interesting indeed.", 
            incorrect = "Hint: when you see the word 'null' think 'nothing'."
   )
 )
@@ -65,7 +66,7 @@ quiz(caption = "",
            answer("Elevation has no linear relationship with malaria risk.", correct = FALSE),
            answer("Malaria incidence is twice as high in men as it is in women.", correct = TRUE), 
            correct = "That is correct! This cannot be a null hypothesis as it expresses a difference between two groups. The null hypothesis would be that there is no difference in incidence between men and women.", 
-           incorrect = "Hint: for each statement, try to work out if it assumes an effect/difference or no effect."
+           incorrect = "Hint: for each statement, try to work out if it assumes an effect/difference or no effect between groups."
   )
 )
 ```
@@ -75,11 +76,10 @@ quiz(caption = "",
      question("A false-negative result is when...",
            allow_retry = TRUE,
            answer("You fail to reject the null hypothesis when it is actually false.", correct = TRUE),
-           answer("You fail to reject the null hypothesis when it is actually true.", correct = FALSE),
-           answer("You reject the null hypothesis when it is actually false.", correct = FALSE),
-           answer("You reject the null hypothesis when it is actually true.", correct = FALSE), 
-           correct = "That is correct! A false-negative result means we failed to detect an effect that was really there.", 
-           incorrect = "Hint: this one takes some thinking, as the options all sound quite similar! It can help to really dissect the statement. The question asks for a negative result, meaning we don't find a significant effect. In other words, we fail to reject the null hypothesis. This means the answer must be either the first or second option. The question asks for a *false* negative result, meaning we were incorrect to come to this conclusion. This means the null hypothesis must have been false. The answer is therefore the first option."
+           answer("You fail to reject the null hypothesis when it is actually true.", correct = FALSE, message = "You're right that this is a negative result, but this is a true-negative rather than a false-negative."),
+           answer("You reject the null hypothesis when it is actually false.", correct = FALSE, message = "This is the opposite of a false-negative result; this is a true-positive result."),
+           answer("You reject the null hypothesis when it is actually true.", correct = FALSE, message = "You're right that this is a false result, but it is a false-positive rather than a false-negative."), 
+           correct = "That is correct! A false-negative result means we failed to detect an effect that was really there."
   )
 )
 ```
@@ -106,20 +106,20 @@ quiz(caption = "",
            answer("A one-way street analysis.", correct = FALSE),
            answer("A wild goose chase.", correct = FALSE),
            answer("A one-tailed test.", correct = TRUE), 
-           correct = "That is correct! A one-tailed test assumes that we already know the direction of the effect - for example, that bed nets will decrease the incidence of malaria, not increase it. Two-tailed tests tend to be harder to disprove, making them more conservative.", 
-           incorrect = "Hint: the 'tails' of a distribution refer to the low probability regions either side of the main hump."
+           correct = "That is correct! A one-tailed test assumes that we already know the direction of the effect - for example, that bed nets will decrease the incidence of malaria, not increase it. One-tailed tests tend to be easier to disprove, but we have to be sure about the direction of the effect.", 
+           incorrect = "Hint: the 'tails' of a distribution refer to the low probability regions on either side of the main hump."
   )
 )
 ```
 
 ```{r quiz-q6}
 quiz(caption = "",
-     question_radio("In statistical testing, we always compare our test statistic against the same distribution.",
+     question_radio("In statistical testing, we always compare our test statistic against the normal distribution.",
            allow_retry = TRUE,
            answer("TRUE", correct = FALSE),
            answer("FALSE", correct = TRUE),
-           correct = "That is correct! Different statistical tests can have different distributions for the test statistic. We need to know what distribution we are comparing against to make sure we use the correct critical values when assessing significance.", 
-           incorrect = "Hint: in the z-test the statistic follows a z-distribution, but in the chi-squared test the statistic follows a chi-squared distribution..."
+           correct = "That is correct! Different statistical tests can have different distributions for the test statistic - for example, the chi-squared test statistic follows a chi-squared distribution. We need to know the correct distribution to compare against when assessing significance.", 
+           incorrect = "Hint: is a test statistic always normally distributed?"
   )
 )
 ```
@@ -132,7 +132,7 @@ quiz(caption = "",
            answer("Reject the null hypothesis because the test statistic is less than the lower critical value.", correct = TRUE),
            answer("Fail to reject the null hypothesis because the test statistic is negative.", correct = FALSE),
            answer("Fail to reject the null hypothesis because the test statistic is less than the upper critical value.", correct = FALSE), 
-           correct = "That is correct! The observed value is negative, meaning we are comparing against the lower critical value of -1.96. The observed value is greater in magnitude than the critical value, so we should reject the null hypothesis.", 
+           correct = "That is correct! The test statistic is negative, meaning we are comparing against the lower critical value of -1.96. The test statistic is greater in magnitude than the critical value, so we should reject the null hypothesis.", 
            incorrect = "Hint: we reject the null hypothesis when the observed value is outside the range -1.96 to +1.96."
   )
 )
@@ -142,9 +142,9 @@ Well done on completing this quiz! We will now put some of these ideas into prac
 
 ## Testing for changes in drug resistance prevalence over time
 
-You are a local health minister working in the Gombe region of Nigeria. You are concerned that the prevalence of antimalarial resistance may be increasing in Gombe city, the capital city of Gombe state. A study conducted three years ago found that the prevalence of *pfmdr1* N86Y mutations was 15%. You plan to conduct a new study to establish if there has been a significant change in the prevalence of N86Y mutations over this time.
+You are a local health minister working in the Gombe region of Nigeria. You are concerned that the prevalence of antimalarial resistance may be increasing in Gombe city, the capital of Gombe state. A study conducted three years ago found that the prevalence of *pfmdr1* N86Y mutations was 15%. You plan to conduct a new study to establish if there has been a significant change in the prevalence of N86Y mutations over this time.
 
-We will take the previous estimate of 15% prevalence three years ago to be exact. For this reason, the appropriate statistical test is the one-sample z-test for proportions.
+We will take the previous estimate of 15% prevalence three years ago to be exact. Because we are comparing a sample against a known value, the appropriate statistical test is the one-sample z-test for proportions.
 
 ```{r ztest-quiz}
 quiz(caption = "",
@@ -154,8 +154,8 @@ quiz(caption = "",
            answer("The prevalence of *pfmdr1* N86Y mutations has decreased from 15% over the past three years.", correct = FALSE),
            answer("The prevalence of *pfmdr1* N86Y mutations is still 15%, the same as it was three years ago.", correct = TRUE),
            answer("The prevalence of *pfmdr1* N86Y mutations has changed from its earlier value of 15%.", correct = FALSE), 
-           correct = "That is correct! We don't need to know anything about the z-test to know that this is the correct answer. It is the only option that specifies no effect/difference, meaning it is the only valid null hypothesis among the options.", 
-           incorrect = "Hint: remember that a null hypothesis is a statement of no effect or difference."
+           correct = "That is correct! It is the only option that specifies no effect/difference in the mutation prevalence between the two time periods.", 
+           incorrect = "Hint: remember that a null hypothesis is a statement of no effect or difference between groups."
   )
 )
 ```
@@ -218,10 +218,10 @@ You should find that $\mu = 4.00$.
 
 This means that *on average* we should expect our test statistic to equal $4.00$ if the alternative hypothesis is true. The actual value that we observe would be expected to vary around this value.
 
-We can use $\mu}$ to tell us our power. The formula for power under the z-test is:
+We can use $\mu$ to tell us our power. The formula for power under the z-test is:
 
 $$
-P_{\text{ow}} = 1 - \phi(z_{1-\alpha/2} - \mu)
+\text{Power} = 1 - \phi(z_{1-\alpha/2} - \mu)
 $$
 
 In this formula, $\phi(x)$ refers to the area under the curve of a standard normal distribution up to the point $x$. There is no simple way of calculating this value, but we can obtain it easily in R using the `pnorm()` function. As in previous activities, the value $z_{1 - \alpha/2}$ refers to the critical value of the normal distribution at a significance level $\alpha$ (two-tailed), which is approximately equal to 1.96.
@@ -256,7 +256,7 @@ print(power)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-You should find that $P_{\text{ow}} = 0.98$.
+You should find that $\text{Power} = 0.98$.
 
 </details>
 </br>
@@ -299,13 +299,13 @@ data.frame(p0 = 0.15,
 
 ```{r power-curve-quiz}
 quiz(caption = "",
-     question("From this graph, what sample size is needed to achieve a power of 80%?",
+     question("From this graph, what is the minimum sample size needed to achieve 80% power?",
            allow_retry = TRUE,
            answer("60", correct = FALSE),
            answer("74", correct = TRUE),
            answer("100", correct = FALSE),
            answer("More than 150", correct = FALSE), 
-           correct = "That is correct! Our planned sample size is more than double what we need to achieve 80% power.", 
+           correct = "That is correct! Our planned sample size of 150 is more than double what we need to achieve 80% power.", 
            incorrect = "Hint: look for the point at which the curve intersects the shaded region."
   )
 )
@@ -336,15 +336,15 @@ Even a slight change in our assumption about the prevalence of N86Y mutations ha
 
 Recall that power under the one-sample z-test for proportions was given by
 $$
-P_{\text{ow}} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}} \right)
+\text{Power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}} \right)
 $$
-Recall that in an earlier module we rearranged the formula for the Wald interval to arrive at a new formula in terms of the sample size $N$. Here, we want to do exactly the same thing, just with a more complicated formula! We won't walk through the steps of this derivation, but take my word for it that this can be rearranged to produce:
+Recall that in an earlier module we rearranged the formula for the Wald confidence interval to arrive at a new formula in terms of the sample size $N$. Here, we want to do exactly the same thing, just with a more complicated formula! We won't walk through the steps of this derivation, but take my word for it that this can be rearranged to produce:
 $$
 N = (z_{1 - \alpha/2} + z_{1 - \beta})^2\frac{p_1(1 - p_1)}{(p_1 - p_0)^2}
 $$
-The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is one minus our power (typically $\beta = 0.2$).
+The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is one minus our power (typically $\beta = 0.2$ because minimum power is usually 0.8).
 
-The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p1` and see what happens to the minimum sample size. Do you obtain the value $N=74$ when $p_2=0.3$, like we found from the power curve? What happens to the sample size as `p1` gets closer to 15%?
+The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p1` and see what happens to the minimum sample size. Do you obtain the value $N=74$ when $p_2=0.3$, like we found from the power curve? Remember that you should always round sample sizes *up* if they are non-integers. What happens to the sample size as `p1` gets closer to 15%?
 
 ```{r ztest-ss-2, exercise=TRUE}
 # define our assumed values
@@ -398,7 +398,7 @@ The key question, then, is: **with a sample size of only 100, is it worthwhile t
 
 ### Framing the problem as a hypothesis test
 
-This type of detection study can be framed as a hypothesis test. The null hypothesis is that *there are no validated mutations present in the population*. In other words, the prevalence of these mutations is zero. Even a single observation of a mutant would disprove this null hypothesis. Therefore, unlike most statistical tests, there is no test statistic to calculate. Instead, we simply reject the null hypothesis if we see a single validated mutant.
+This type of detection study can be framed as a hypothesis test. The null hypothesis is that *there are no WHO-validated mutations present in the population*. In other words, the prevalence of these mutations is zero. Even a single observation of a mutant would disprove this null hypothesis. Therefore, unlike most statistical tests, there is no test statistic to calculate. Instead, we simply reject the null hypothesis if we see a single WHO-validated mutant.
 
 It is straightforward to calculate power under this test. We start by assuming a known prevalence, $p$, for the validated mutations. $p$ is zero under the null hypothesis, and $p$ must be greater than 0 under the alternative hypothesis. We will use $N$ to denote the sample size. We can derive the power by following these steps:
 
@@ -408,21 +408,30 @@ The probability that a single sample is negative (i.e. does not carry a validate
 $$
 \text{Pr}(\text{Negative}) = 1 - p
 $$
+**Step 2: Chance of two negative results:**
 
-**Step 2: Chance of $N$ negative results:**
+The probability of two negative samples is the probability of one negative sample multiplied by the probability of another negative sample:
+$$
+\begin{align}
+\text{Pr}(\text{Two negatives}) &= (1 - p)(1 - p) \\
+&= (1 - p)^2
+\end{align}
+$$
 
-The probability that all $N$ samples are negative is equal to this probability raised to the power $N$:
+**Step 3: Chance of $N$ negative results:**
+
+The probability that all $N$ samples are negative is the probability of one negative sample raised to the power $N$:
 $$
 \text{Pr}(N \text{ negatives}) = (1 - p)^N
 $$
-This is like saying we observe a negative outcome $N$ times. It assumes that samples are drawn independently from a much larger population.
+This is like saying what is the probability we observe a negative outcome $N$ times. It assumes that samples are drawn independently from a much larger population.
 
-**Step 3: Chance of at least one positive result:**
+**Step 4: Chance of at least one positive result:**
 
 The chance of seeing at least one positive sample is equal to one minus the probability of seeing no positive samples. If we see a positive sample then we reject the null hypothesis. Hence, this is also our power:
 
 $$
-P_{\text{ow}} = 1 - (1 - p)^N
+\text{Power} = 1 - (1 - p)^N
 $$
 This very simple expression can be used to guide our study design.
 
@@ -455,17 +464,17 @@ print(power)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-You should find that $P_{\text{ow}} = 0.994$ if we assume a prevalence of $p = 0.05$.
+You should find that $\text{Power} = 0.994$ if we assume a prevalence of $p = 0.05$.
 
 </details>
 </br>
 
 Based on this result, we are over-powered to detect *pfk13* mutants, meaning we can reduce the sample size. So, how many samples are needed? Rearranging our power formula to be in terms of $N$ we obtain:
 $$
-N = \frac{\text{log}(1 - P_{\text{ow}})}{\text{log}(1 - p)}
+N = \frac{\text{log}(1 - \text{Power})}{\text{log}(1 - p)}
 $$
 
-Complete the following R code to implement this sample size formula. What minimum sample size is needed if we assume a prevalence of 5%?
+Complete the following R code to implement this sample size formula. What minimum sample size is needed if we assume a prevalence of 5% and we are aiming for 80% power?
 
 ```{r detection-2, exercise=TRUE}
 # define prevalence
