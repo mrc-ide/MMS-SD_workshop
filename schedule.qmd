@@ -14,7 +14,7 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 12:00-12:30   | Lunch                                                       | In meeting room       |
 | 12:30-1:00    | Intro: Goal of Malaria Molecular Surveillance (MMS)                                       | Lecture               |
 | 1:00-1:45     | Introductions                                               |                       |
-| 1:45-2:15     | Module 1: Sampling from a population                        | Lecture               |
+| 1:45-2:15     | Module 1: Sampling from a population                        | [Lecture](slides/L1-sampling.pdf)               |
 | 2:15-3:00     | Module 1: Activity                                         | [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)       |
 | 3:00-3:30     | Break                                                |        |
 | 3:30-4:00     | Module 2: Sample size calculations based on precision                    | Lecture       |
