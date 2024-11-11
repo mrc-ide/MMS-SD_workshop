@@ -154,17 +154,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Module 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
  <span class="dropdown-text">Module 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
  <span class="dropdown-text">Module 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
+    <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/activity5_DRpower_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
  <span class="dropdown-text">Module 5</span></a>
   </li>  
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   </ul></li>
-  <li><a href="#analyzing-data-from-a-multi-cluster-pfhrp2-deletion-study" id="toc-analyzing-data-from-a-multi-cluster-pfhrp2-deletion-study" class="nav-link" data-scroll-target="#analyzing-data-from-a-multi-cluster-pfhrp2-deletion-study">Analyzing data from a multi-cluster <em>pfhrp2</em> deletion study</a>
+  <li><a href="#analyzing-data-from-a-multi-cluster-pfhrp23-deletion-study" id="toc-analyzing-data-from-a-multi-cluster-pfhrp23-deletion-study" class="nav-link" data-scroll-target="#analyzing-data-from-a-multi-cluster-pfhrp23-deletion-study">Analyzing data from a multi-cluster <em>pfhrp2/3</em> deletion study</a>
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   <li><a href="#estimating-the-global-prevalence" id="toc-estimating-the-global-prevalence" class="nav-link" data-scroll-target="#estimating-the-global-prevalence">Estimating the global prevalence</a></li>
@@ -253,8 +253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.</em></p>
 </section>
 </section>
-<section id="analyzing-data-from-a-multi-cluster-pfhrp2-deletion-study" class="level2">
-<h2 class="anchored" data-anchor-id="analyzing-data-from-a-multi-cluster-pfhrp2-deletion-study">Analyzing data from a multi-cluster <em>pfhrp2</em> deletion study</h2>
+<section id="analyzing-data-from-a-multi-cluster-pfhrp23-deletion-study" class="level2">
+<h2 class="anchored" data-anchor-id="analyzing-data-from-a-multi-cluster-pfhrp23-deletion-study">Analyzing data from a multi-cluster <em>pfhrp2/3</em> deletion study</h2>
 <section id="background" class="level3">
 <h3 class="anchored" data-anchor-id="background">Background</h3>
 <p>You are collaborating with the Tanzanian National Malaria Control Programme (NMCP) to investigate the prevalence of <em>pfhrp2/3</em> gene deletions in the Dodoma region of Tanzania. These gene deletions pose a significant threat to malaria control efforts as they can lead to parasites being undetectable by rapid diagnostic tests (RDTs) that rely exclusively on the HRP2 protein. Undetected cases may lead to delays in treatment or missed malaria diagnoses, undermining effective case management.</p>
@@ -273,9 +273,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: left;" data-quarto-table-cell-role="th">Site</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Confirmed Malaria<br>
 (n)</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2 Deleted<br>
+<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2/3 Deleted<br>
 (x)</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2 Deletion Prevalence<br>
+<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2/3 Deletion Prevalence<br>
 (p)</th>
 </tr>
 </thead>
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody><tfoot>
 <tr class="odd">
 <td style="text-align: left; padding: 0;"><sup></sup><br>
-Table 1: pfhrp2 deletion data broken down by site</td>
+Table 1: pfhrp2/3 deletion data broken down by site</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
@@ -347,16 +347,16 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 <div class="cell" data-exercise="true">
 <div class="tutorial-exercise" data-label="sandbox-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can access the following vectors</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(n)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 </section>
 <section id="estimating-the-global-prevalence" class="level3">
 <h3 class="anchored" data-anchor-id="estimating-the-global-prevalence">Estimating the global prevalence</h3>
-<p>We want to use the information over all 8 sites to estimate the prevalence of <em>pfhrp2</em> deletions in the Dodoma region as a whole. This is often called the “global” prevalence estimate. We will use <span class="math inline">\(\hat{p}\)</span> to denote the global prevalence, and <span class="math inline">\(\hat{p}_i\)</span> to denote the site-level prevalence in the <span class="math inline">\(i^\text{th}\)</span> site.</p>
+<p>We want to use the information over all 8 sites to estimate the prevalence of <em>pfhrp2/3</em> deletions in the Dodoma region as a whole. This is often called the “global” prevalence estimate. We will use <span class="math inline">\(\hat{p}\)</span> to denote the global prevalence, and <span class="math inline">\(\hat{p}_i\)</span> to denote the site-level prevalence in the <span class="math inline">\(i^\text{th}\)</span> site.</p>
 <p>A common way to calculate <span class="math inline">\(\hat{p}\)</span> is to take the mean over sites.</p>
 <p><span class="math display">\[
 \hat{p} = \frac{1}{c} \sum_{i=1}^c \hat{p}_i
@@ -420,9 +420,9 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 </section>
 <section id="detecting-over-dispersion" class="level3">
 <h3 class="anchored" data-anchor-id="detecting-over-dispersion">Detecting over-dispersion</h3>
-<p>Now that we have an estimate of the global prevalence, we can look for <em>over-dispersion</em> in the data. If all patients enrolled in the study were completely independent, meaning they all had the same probability <span class="math inline">\(\hat{p}\)</span> of carrying the <em>pfhrp2</em> deletion, then we would expect to see a certain level of variation between sites. Most of the time, the site-level prevalence should be within the following 95% interval: <span class="math display">\[
+<p>Now that we have an estimate of the global prevalence, we can look for <em>over-dispersion</em> in the data. If all patients enrolled in the study were completely independent, meaning they all had the same probability <span class="math inline">\(\hat{p}\)</span> of carrying the <em>pfhrp2/3</em> deletion, then we would expect to see a certain level of variation between sites. Most of the time, the site-level prevalence should be within the following 95% interval: <span class="math display">\[
 \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n_i}}
-\]</span> where <span class="math inline">\(n_i\)</span> is the sample size in the <span class="math inline">\(i^{\text{th}}\)</span> site. Because this is a 95% interval, we should expect sites to fall within this range around 95% of the time. For our study involving 8 sites, we <em>may</em> see one site-level prevalence outside this range by chance, but it would be very unusual to see more than one outside this range.</p>
+\]</span> where <span class="math inline">\(n_i\)</span> is the sample size in the <span class="math inline">\(i^{\text{th}}\)</span> site. Because this is a 95% interval, we should expect site-level prevalence to fall within this range around 95% of the time. For our study involving 8 sites, we <em>may</em> see one site-level prevalence outside this range by chance, but it would be very unusual to see more than one outside this range.</p>
 <p>The plot below shows the site-level prevalence in red. The global mean prevalence of 17.2% is shown as a horizontal dashed line, and the 95% interval is shown as an error bar.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -499,8 +499,7 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 <p>The observed variance between sites can be calculated as:</p>
 <p><span class="math display">\[
 \text{Var}_{\text{obs}} = \frac{1}{c-1}\sum_{i=1}^c (\hat{p}_i - \hat{p})^2
-\]</span></p>
-<p>This formula is called the <em>sample variance</em>, it is found in many areas of statistics. We don’t need to calculate this value by hand, instead we can do it very easily in R using the <code>var()</code> function:</p>
+\]</span> The observed variance, or sample variance, can be calculated using this formula. This formula is found in many areas of statistics. We don’t need to calculate this value by hand, instead we can do it very easily in R using the <code>var()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate observed variance between sites</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>var_observed <span class="ot">&lt;-</span> <span class="fu">var</span>(p)</span>
@@ -529,18 +528,18 @@ D_{\text{eff}} = \frac{\text{Var}_{\text{obs}}}{\text{Var}_{\text{SRS}}}
 <div class="cell" data-exercise="true" data-exercise.setup="deff-params">
 <div class="tutorial-exercise" data-label="deff-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate design effect from the variances</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Deff <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>D_eff <span class="ot">&lt;-</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Deff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(D_eff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 <div class="cell">
 <div class="tutorial-exercise-support" data-label="deff-1-solution" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate design effect from the variances</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Deff <span class="ot">&lt;-</span> var_observed <span class="sc">/</span> var_SRS</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>D_eff <span class="ot">&lt;-</span> var_observed <span class="sc">/</span> var_SRS</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Deff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(D_eff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <details>
@@ -550,7 +549,7 @@ D_{\text{eff}} = \frac{\text{Var}_{\text{obs}}}{\text{Var}_{\text{SRS}}}
 <p>You should find that <span class="math inline">\(D_{\text{eff}} = 12.79\)</span>.</p>
 </details>
 <p><br></p>
-<p>The design effect is a measure of the statistical <em>inefficiency</em> of a study design. Larger values indicate less efficient designs, with a value of <span class="math inline">\(D_{\text{eff}}=1\)</span> representing a gold standard in terms of statistical efficiency. Our observed value of <span class="math inline">\(D_{\text{eff}}=12.79\)</span> indicates that our study has a high level of statistical inefficiency due to the over-dispersion in the data.</p>
+<p>The design effect is a measure of the statistical <em>inefficiency</em> of a study design. Larger values indicate less efficient designs, with a value of <span class="math inline">\(D_{\text{eff}}=1\)</span> meaning that the study design is as efficient as SRS, which is seen as the gold standard for statistical efficiency (although technically <span class="math inline">\(D_{\text{eff}}\)</span> can be less than 1 in some rare cases)! Our observed value of <span class="math inline">\(D_{\text{eff}}=12.79\)</span> indicates that our study has a high level of statistical inefficiency due to the over-dispersion in the data.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="panel-heading tutorial-quiz-title"></div>
@@ -577,18 +576,18 @@ N_{\text{eff}} = \frac{\sum_{i=1}^c n_i}{D_{\text{eff}}}
 <div class="cell" data-exercise="true" data-exercise.setup="neff-params">
 <div class="tutorial-exercise" data-label="neff-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate effective sample size based on total sample size and design effect</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Neff <span class="ot">&lt;-</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>N_eff <span class="ot">&lt;-</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Neff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N_eff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 <div class="cell">
 <div class="tutorial-exercise-support" data-label="neff-1-solution" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate effective sample size based on total sample size and design effect</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Neff <span class="ot">&lt;-</span> <span class="fu">sum</span>(n) <span class="sc">/</span> Deff</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>N_eff <span class="ot">&lt;-</span> <span class="fu">sum</span>(n) <span class="sc">/</span> D_eff</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Neff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N_eff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <details>
@@ -630,7 +629,7 @@ r = \frac{D_{\text{eff}} - 1}{\bar{n} - 1}
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n_bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(n)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the ICC</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ICC <span class="ot">&lt;-</span> (Deff <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> (n_bar <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ICC <span class="ot">&lt;-</span> (D_eff <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> (n_bar <span class="sc">-</span> <span class="dv">1</span>)</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ICC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -642,7 +641,7 @@ r = \frac{D_{\text{eff}} - 1}{\bar{n} - 1}
 <p>You should find that <span class="math inline">\(r = 0.132\)</span>.</p>
 </details>
 <p><br></p>
-<p>The ICC can be harder to interpret than other measures like the design effect or effective sample size, but it does have certain advantages. We can think of the ICC as an <em>intrinsic</em> property of the population, while the design effect is only a measure of the inefficiency of <em>our study</em>. While <span class="math inline">\(D_{\text{eff}}\)</span> is influenced by <span class="math inline">\(r\)</span>, it is also influenced by many other factors, most notably the sample size. If we were to double the sample size of a study then our design effect would change, but the ICC would stay exactly the same. This makes it straightforward to compare values of <span class="math inline">\(r\)</span> between studies, while we have to take great care when comparing values of <span class="math inline">\(D_{\text{eff}}\)</span>.</p>
+<p>The ICC can be harder to interpret than other measures like the design effect or effective sample size, but it does have certain advantages. We can think of the ICC as an <em>intrinsic</em> property of the population, while the design effect is only a measure of the inefficiency of <em>our study</em>. While <span class="math inline">\(D_{\text{eff}}\)</span> is influenced by <span class="math inline">\(r\)</span>, it is also influenced by many other factors, most notably the sample size. If we were to double the sample size of a study then our design effect would change, but the ICC would stay exactly the same. This makes it more straightforward to compare values of <span class="math inline">\(r\)</span> between studies, while we have to take great care when comparing values of <span class="math inline">\(D_{\text{eff}}\)</span>.</p>
 </section>
 </section>
 <section id="accounting-for-over-dispersion" class="level2">
@@ -665,9 +664,9 @@ r = \frac{D_{\text{eff}} - 1}{\bar{n} - 1}
 <th style="text-align: left;" data-quarto-table-cell-role="th">Site</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Confirmed Malaria<br>
 (n)</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2 Deleted<br>
+<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2/3 Deleted<br>
 (x)</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2 Deletion Prevalence<br>
+<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2/3 Deletion Prevalence<br>
 (p)</th>
 </tr>
 </thead>
@@ -723,7 +722,7 @@ r = \frac{D_{\text{eff}} - 1}{\bar{n} - 1}
 </tbody><tfoot>
 <tr class="odd">
 <td style="text-align: left; padding: 0;"><sup></sup><br>
-Table 1: pfhrp2 deletion data broken down by site</td>
+Table 2: pfhrp2/3 deletion data broken down by site</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
@@ -735,11 +734,11 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 
 </div>
 </div>
-<p>We already estimated the prevalence in the region as the mean over sites, giving <span class="math inline">\(\hat{p} = 0.172\)</span>. Now we want to construct a 95% CI around this estimate. For this, we need a modified version of the Wald interval:</p>
+<p>We already estimated the prevalence in the region as the mean over sites, giving <span class="math inline">\(\hat{p} = 0.172\)</span>. Now we want to construct a 95% CI around this estimate. For this, we need a modified version of the Wald confidence interval:</p>
 <p><span class="math display">\[
 \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{N} D_{\text{eff}}}
-\]</span> Here, <span class="math inline">\(N\)</span> is the total sample size summed over all sites, which in our case is <span class="math inline">\(N = 725\)</span>. The main difference from our previous version of the Wald interval is the inclusion of the design effect, <span class="math inline">\(D_{\text{eff}}\)</span>. Notice that <span class="math inline">\(D_{\text{eff}}\)</span> <em>stretches</em> the interval, meaning a higher design effect would lead to greater uncertainty.</p>
-<p>Complete the following R code to calculate a 95% CI on the global prevalence using this new version of the Wald formula. Note that you still have access to previously computed variables in this code box, including <code>n</code>, <code>x</code>, <code>p</code>, <code>p_global</code> and <code>Deff</code>:</p>
+\]</span> Here, <span class="math inline">\(N\)</span> is the total sample size summed over all sites, which in our case is <span class="math inline">\(N = 725\)</span>. The main difference from our previous version of the Wald confidence interval is the inclusion of the design effect, <span class="math inline">\(D_{\text{eff}}\)</span>. Notice that <span class="math inline">\(D_{\text{eff}}\)</span> <em>stretches</em> the interval, meaning a higher design effect would lead to greater uncertainty.</p>
+<p>Complete the following R code to calculate a 95% CI on the global prevalence using this new version of the Wald formula. Note that you still have access to previously computed variables in this code box, including <code>n</code>, <code>x</code>, <code>p</code>, <code>p_global</code> and <code>D_eff</code>:</p>
 <div class="cell" data-exercise="true" data-exercise.setup="wald-params">
 <div class="tutorial-exercise" data-label="Wald-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get total sample size and z</span></span>
@@ -764,7 +763,7 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fl">1.96</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate margin of error</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">sqrt</span>(p_global<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_global) <span class="sc">/</span> N <span class="sc">*</span> Deff)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">sqrt</span>(p_global<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_global) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate lower and upper limits</span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>CI_lower <span class="ot">&lt;-</span> p_global <span class="sc">-</span> m</span>
@@ -780,7 +779,7 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 <p>You should find that the CI ranges from 0.073 to 0.270, or in other words from 7.3% to 27.0%.</p>
 </details>
 <p><br></p>
-<p>This CI is considerably wider than we would have obtained if we did not take over-dispersion into account. The two intervals are shown below:</p>
+<p>This CI is considerably wider than we would have obtained if we did not take over-dispersion into account. The two confidence intervals are shown below:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="activity4_multicluster_interactive_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="384"></p>
@@ -790,7 +789,7 @@ Table 1: pfhrp2 deletion data broken down by site</td>
 </section>
 <section id="over-dispersion-and-hypothesis-testing" class="level3">
 <h3 class="anchored" data-anchor-id="over-dispersion-and-hypothesis-testing">Over-dispersion and hypothesis testing</h3>
-<p>Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of <em>pfhrp2</em> deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic (<span class="math inline">\(Z\)</span>) that factors in the design effect:</p>
+<p>Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of <em>pfhrp2/3</em> deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic (<span class="math inline">\(Z\)</span>) that factors in the design effect:</p>
 <p><span class="math display">\[
 Z = \frac{|\hat{p} - h|}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
 \]</span> Where <span class="math inline">\(h\)</span> is the threshold we are comparing against (<span class="math inline">\(h = 0.1\)</span>).</p>
@@ -800,26 +799,26 @@ Z = \frac{|\hat{p} - h|}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate test statistic</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(p_global <span class="sc">-</span> h) <span class="sc">/</span> <span class="fu">sqrt</span>(p_global <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_global) <span class="sc">/</span> N <span class="sc">*</span> Deff)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(p_global <span class="sc">-</span> h) <span class="sc">/</span> <span class="fu">sqrt</span>(p_global <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_global) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.430108</code></pre>
 </div>
 </div>
-<p>We obtain a test statistic of <span class="math inline">\(Z = 1.43\)</span>. This is within the critical range <span class="math inline">\(\pm1.96\)</span>, meaning we would not reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find <span class="math inline">\(Z = 5.11\)</span>. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a <em>pfhrp2/3</em> study, this could mean difference between switching RDTs nationwide vs sticking with the current brand.</p>
-<p><strong>Disclaimer: We do not advocate for the use of the z-test for the design pfhrp2/3 deletion studies, or the analysis of the resulting data. We will learn about a much more powerful approach to this problem in the next module.</strong></p>
+<p>We obtain a test statistic of <span class="math inline">\(Z = 1.43\)</span>. This is within the critical range <span class="math inline">\(\pm1.96\)</span>, meaning we would fail to reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find <span class="math inline">\(Z = 5.11\)</span>. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a <em>pfhrp2/3</em> study, this could mean the difference between switching RDTs nationwide vs sticking with the current brand.</p>
+<p><strong>Disclaimer: We do not advocate for the use of the z-test for the design of pfhrp2/3 deletion studies, or the analysis of the resulting data. We will learn about a much more powerful approach to this problem in the next module.</strong></p>
 </section>
 <section id="over-dispersion-and-power" class="level3">
 <h3 class="anchored" data-anchor-id="over-dispersion-and-power">Over-dispersion and power</h3>
 <p>Addressing over-dispersion is just as critical in the design stage as it is in the analysis stage. For the one-sample z-test for proportions, we already saw the formula for power in a previous module. Now, we obtain a new formula that takes <span class="math inline">\(D_{\text{eff}}\)</span> into account:</p>
 <p><span class="math display">\[
-P_{\text{ow}} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - h|}{\sqrt{\frac{p(1-p)}{N}}D_{\text{eff}}} \right)
+\text{power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - h|}{\sqrt{\frac{p(1-p)}{N}}D_{\text{eff}}} \right)
 \]</span> To make use of this formula, we have to assume known values for the true global prevalence <span class="math inline">\(p\)</span> and also the design effect <span class="math inline">\(D_{\text{eff}}\)</span>. We also have to set the total sample size <span class="math inline">\(N\)</span> and the threshold <span class="math inline">\(h\)</span>. We will assume <span class="math inline">\(p = 0.2\)</span>, <span class="math inline">\(D_{\text{eff}} = 10\)</span>, <span class="math inline">\(N = 800\)</span> and <span class="math inline">\(h = 0.1\)</span>.</p>
 <p>We can calculate the power under this new formula in R as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define assumed parameters</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Deff <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>D_eff <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">800</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -827,20 +826,20 @@ P_{\text{ow}} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - h|}{\sqrt{\frac{p(1-p)
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>z_alpha <span class="ot">&lt;-</span> <span class="fl">1.96</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate expected value of test statistic</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>mu_alt <span class="ot">&lt;-</span> <span class="fu">abs</span>(p <span class="sc">-</span> h) <span class="sc">/</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> N <span class="sc">*</span> Deff)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">abs</span>(p <span class="sc">-</span> h) <span class="sc">/</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate power</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_alpha <span class="sc">-</span> mu_alt)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_alpha <span class="sc">-</span> y)</span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(power)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6087521</code></pre>
 </div>
 </div>
-<p>Under this study design we only have 61% power. Contrast this with power of 99.99998% that we obtain if we ignore the design effect! Clearly the inclusion of the design effect is severely hurting our power in this analysis, however, it is better to include it and be realistic than to ignore it and obtain results that are unreliable.</p>
+<p>Under this study design we only have 61% power. Contrast this with power of 99.99998% that we obtain if we ignore the design effect! Clearly the inclusion of the design effect is severely hurting our power in this analysis, however, it is better to include the design effect and be realistic than to ignore the design effect and obtain results that are unreliable.</p>
 </section>
 <section id="over-dispersion-and-sample-size" class="level3">
 <h3 class="anchored" data-anchor-id="over-dispersion-and-sample-size">Over-dispersion and sample size</h3>
-<p>When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, we can assume a known value of the ICC (<span class="math inline">\(r\)</span>).</p>
+<p>When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, in our equation for sample size we can assume a known value of the ICC (<span class="math inline">\(r\)</span>) as sample size does not depend on <span class="math inline">\(r\)</span>.</p>
 <p>Our new minimum sample size formula becomes:</p>
 <p><span class="math display">\[
 n = \frac{1 - r}{\frac{c(p - h)^2}{(z_{1 - \alpha/2} + z_{1 - \beta})^2 p(1-p)} - r}
@@ -883,7 +882,7 @@ tutorial_options(exercise.timelimit = 120)
 
 set.seed(3)
 
-# mock up pfhrp2 deletion data
+# mock up pfhrp2/3 deletion data
 dat <- data.frame(Site = c("Chalinze", "Ibwaga", "Lukali", "Malolo", "Mafene", "Mpendo", "Nhinhi", "Rudi")) |>
   mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),
          pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),
@@ -926,13 +925,13 @@ learnr:::store_exercise_cache(structure(list(label = "sandbox-1", global_setup =
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
 "", "# save variables", "n <- dat$Confirmed_malaria", "x <- dat$pfhrp2_deleted", 
 "p <- dat$prevalence"), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "sandbox-1", code = "# you can access the following vectors\nn\nx\np\n", 
+    setup = NULL, chunks = list(list(label = "sandbox-1", code = "# you can access the following vectors\nprint(n)\nprint(x)\nprint(p)", 
         opts = list(label = "\"sandbox-1\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -954,9 +953,9 @@ learnr:::store_exercise_cache(structure(list(label = "sandbox-1", global_setup =
         fenced.echo = FALSE, ft.shadow = FALSE, exercise.timelimit = 120, 
         label = "sandbox-1", exercise = TRUE, original.params.src = "r sandbox-1, exercise=TRUE", 
         chunk.echo = FALSE, code = c("# you can access the following vectors", 
-        "n", "x", "p", ""), out.width.px = 672L, out.height.px = 480L, 
-        params.src = "r sandbox-1, exercise=TRUE", fig.num = 0, 
-        exercise.df_print = "default", exercise.checker = "NULL"), 
+        "print(n)", "print(x)", "print(p)"), out.width.px = 672L, 
+        out.height.px = 480L, params.src = "r sandbox-1, exercise=TRUE", 
+        fig.num = 0, exercise.df_print = "default", exercise.checker = "NULL"), 
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
 )))
 </script>
@@ -974,7 +973,7 @@ learnr:::store_exercise_cache(structure(list(label = "global-1", global_setup = 
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
@@ -1024,7 +1023,7 @@ learnr:::store_exercise_cache(structure(list(label = "global-2", global_setup = 
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
@@ -1078,7 +1077,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("That is correct! There are six sites that have prevalence either above or below the 95% interval expected if all observations were independent.", html = TRUE, class = c("html", 
+    "character"))), messages = list(correct = structure("That is correct! There are six sites that have prevalence either above or below the 95% confidence interval expected if all observations were independent.", html = TRUE, class = c("html", 
     "character")), try_again = structure("Hint: a site-level prevalence is outside the range if it is either above the upper error bar, or below the lower error bar.", html = TRUE, class = c("html", 
     "character")), incorrect = structure("Hint: a site-level prevalence is outside the range if it is either above the upper error bar, or below the lower error bar.", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
@@ -1128,9 +1127,9 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
         label = structure("Variation in treatment practices leading to different selective pressures between sites.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c42eb4b", 
-        option = "Local outbreaks within sites, driven by infected individuals carrying *pfhrp2* deletions.", 
-        value = "Local outbreaks within sites, driven by infected individuals carrying *pfhrp2* deletions.", 
-        label = structure("Local outbreaks within sites, driven by infected individuals carrying <em>pfhrp2<\u002fem> deletions.", html = TRUE, class = c("html", 
+        option = "Local outbreaks within sites, driven by infected individuals carrying *pfhrp2/3* deletions.", 
+        value = "Local outbreaks within sites, driven by infected individuals carrying *pfhrp2/3* deletions.", 
+        label = structure("Local outbreaks within sites, driven by infected individuals carrying <em>pfhrp⅔<\u002fem> deletions.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -1148,9 +1147,9 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-overdispersion-4-1", 
     question = structure("Why does the Nhinhi site have a slightly wider 95% interval than the other sites?", html = TRUE, class = c("html", 
     "character")), answers = list(structure(list(id = "lnr_ans_b783ae7", 
-        option = "The Nhinhi site has higher prevalence of *pfhrp2* deletions.", 
-        value = "The Nhinhi site has higher prevalence of *pfhrp2* deletions.", 
-        label = structure("The Nhinhi site has higher prevalence of <em>pfhrp2<\u002fem> deletions.", html = TRUE, class = c("html", 
+        option = "The Nhinhi site has higher prevalence of *pfhrp2/3* deletions.", 
+        value = "The Nhinhi site has higher prevalence of *pfhrp2/3* deletions.", 
+        label = structure("The Nhinhi site has higher prevalence of <em>pfhrp⅔<\u002fem> deletions.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_99e403f", 
         option = "The diagnostic methods used at the Nhinhi site are less accurate.", 
@@ -1192,7 +1191,7 @@ learnr:::store_exercise_cache(structure(list(label = "deff-1", global_setup = st
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
@@ -1201,11 +1200,11 @@ learnr:::store_exercise_cache(structure(list(label = "deff-1", global_setup = st
     setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)", 
     chunks = list(list(label = "deff-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)", 
         opts = list(label = "\"deff-params\""), engine = "r"), 
-        list(label = "deff-1", code = "# calculate design effect from the variances\nDeff <- \n\nprint(Deff)", 
+        list(label = "deff-1", code = "# calculate design effect from the variances\nD_eff <- \n\nprint(D_eff)", 
             opts = list(label = "\"deff-1\"", exercise = "TRUE", 
                 exercise.setup = "\"deff-params\""), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = structure(c("# calculate design effect from the variances", 
-    "Deff <- var_observed / var_SRS", "", "print(Deff)"), chunk_opts = list(
+    "D_eff <- var_observed / var_SRS", "", "print(D_eff)"), chunk_opts = list(
         label = "deff-1-solution")), tests = NULL, options = list(
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
@@ -1226,7 +1225,7 @@ learnr:::store_exercise_cache(structure(list(label = "deff-1", global_setup = st
         label = "deff-1", exercise = TRUE, exercise.setup = "deff-params", 
         original.params.src = "r deff-1, exercise=TRUE, exercise.setup = \"deff-params\"", 
         chunk.echo = FALSE, code = c("# calculate design effect from the variances", 
-        "Deff <- ", "", "print(Deff)"), out.width.px = 672L, 
+        "D_eff <- ", "", "print(D_eff)"), out.width.px = 672L, 
         out.height.px = 480L, params.src = "r deff-1, exercise=TRUE, exercise.setup = \"deff-params\"", 
         fig.num = 0, exercise.df_print = "default", exercise.checker = "NULL"), 
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
@@ -1273,20 +1272,20 @@ learnr:::store_exercise_cache(structure(list(label = "neff-1", global_setup = st
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
 "", "# save variables", "n <- dat$Confirmed_malaria", "x <- dat$pfhrp2_deleted", 
 "p <- dat$prevalence"), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nDeff <- var_observed / var_SRS", 
-    chunks = list(list(label = "neff-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nDeff <- var_observed / var_SRS", 
+    setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nD_eff <- var_observed / var_SRS", 
+    chunks = list(list(label = "neff-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nD_eff <- var_observed / var_SRS", 
         opts = list(label = "\"neff-params\""), engine = "r"), 
-        list(label = "neff-1", code = "# calculate effective sample size based on total sample size and design effect\nNeff <- \n\nprint(Neff)", 
+        list(label = "neff-1", code = "# calculate effective sample size based on total sample size and design effect\nN_eff <- \n\nprint(N_eff)", 
             opts = list(label = "\"neff-1\"", exercise = "TRUE", 
                 exercise.setup = "\"neff-params\""), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = structure(c("# calculate effective sample size based on total sample size and design effect", 
-    "Neff <- sum(n) / Deff", "", "print(Neff)"), chunk_opts = list(
+    "N_eff <- sum(n) / D_eff", "", "print(N_eff)"), chunk_opts = list(
         label = "neff-1-solution")), tests = NULL, options = list(
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
@@ -1307,7 +1306,7 @@ learnr:::store_exercise_cache(structure(list(label = "neff-1", global_setup = st
         label = "neff-1", exercise = TRUE, exercise.setup = "neff-params", 
         original.params.src = "r neff-1, exercise=TRUE, exercise.setup = \"neff-params\"", 
         chunk.echo = FALSE, code = c("# calculate effective sample size based on total sample size and design effect", 
-        "Neff <- ", "", "print(Neff)"), out.width.px = 672L, 
+        "N_eff <- ", "", "print(N_eff)"), out.width.px = 672L, 
         out.height.px = 480L, params.src = "r neff-1, exercise=TRUE, exercise.setup = \"neff-params\"", 
         fig.num = 0, exercise.df_print = "default", exercise.checker = "NULL"), 
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
@@ -1327,20 +1326,20 @@ learnr:::store_exercise_cache(structure(list(label = "ICC-1", global_setup = str
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
 "", "# save variables", "n <- dat$Confirmed_malaria", "x <- dat$pfhrp2_deleted", 
 "p <- dat$prevalence"), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nDeff <- var_observed / var_SRS", 
-    chunks = list(list(label = "neff-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nDeff <- var_observed / var_SRS", 
+    setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nD_eff <- var_observed / var_SRS", 
+    chunks = list(list(label = "neff-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nD_eff <- var_observed / var_SRS", 
         opts = list(label = "\"neff-params\""), engine = "r"), 
         list(label = "ICC-1", code = "# calculate the mean sample size\nn_bar <- \n\n# calculate the ICC\nICC <- \n\nprint(ICC)", 
             opts = list(label = "\"ICC-1\"", exercise = "TRUE", 
                 exercise.setup = "\"neff-params\""), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = structure(c("# calculate the mean sample size", 
-    "n_bar <- mean(n)", "", "# calculate the ICC", "ICC <- (Deff - 1) / (n_bar - 1)", 
+    "n_bar <- mean(n)", "", "# calculate the ICC", "ICC <- (D_eff - 1) / (n_bar - 1)", 
     "", "print(ICC)"), chunk_opts = list(label = "ICC-1-solution")), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
@@ -1383,21 +1382,21 @@ learnr:::store_exercise_cache(structure(list(label = "Wald-1", global_setup = st
 "library(kableExtra)", "library(DRpower)", "knitr::opts_chunk$set(warning = FALSE,", 
 "                      echo = FALSE)", "", "# needed for longer calculations (eg DRpower) note - in seconds", 
 "tutorial_options(exercise.timelimit = 120)", "", "set.seed(3)", 
-"", "# mock up pfhrp2 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
+"", "# mock up pfhrp2/3 deletion data", "dat <- data.frame(Site = c(\"Chalinze\", \"Ibwaga\", \"Lukali\", \"Malolo\", \"Mafene\", \"Mpendo\", \"Nhinhi\", \"Rudi\")) |>", 
 "  mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),", 
 "         pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),", 
 "         prevalence = round(pfhrp2_deleted / Confirmed_malaria, 3))", 
 "", "# save variables", "n <- dat$Confirmed_malaria", "x <- dat$pfhrp2_deleted", 
 "p <- dat$prevalence"), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nDeff <- var_observed / var_SRS", 
-    chunks = list(list(label = "wald-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nDeff <- var_observed / var_SRS", 
+    setup = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nD_eff <- var_observed / var_SRS", 
+    chunks = list(list(label = "wald-params", code = "p_global <- mean(p)\nvar_observed <- var(p)\nvar_SRS <- mean(p_global*(1 - p_global) / n)\nD_eff <- var_observed / var_SRS", 
         opts = list(label = "\"wald-params\""), engine = "r"), 
         list(label = "Wald-1", code = "# get total sample size and z\nN <- \nz <- 1.96\n\n# calculate margin of error\nm <- \n\n# calculate lower and upper limits\nCI_lower <- \nCI_upper <- \n\nprint(c(CI_lower, CI_upper))", 
             opts = list(label = "\"Wald-1\"", exercise = "TRUE", 
                 exercise.setup = "\"wald-params\""), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = structure(c("# get total sample size and z", 
     "N <- sum(n)", "z <- 1.96", "", "# calculate margin of error", 
-    "m <- 1.96*sqrt(p_global*(1 - p_global) / N * Deff)", "", 
+    "m <- 1.96*sqrt(p_global*(1 - p_global) / N * D_eff)", "", 
     "# calculate lower and upper limits", "CI_lower <- p_global - m", 
     "CI_upper <- p_global + m", "", "print(c(CI_lower, CI_upper))"
     ), chunk_opts = list(label = "Wald-1-solution")), tests = NULL, 
