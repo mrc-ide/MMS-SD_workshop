@@ -1,0 +1,36 @@
+---
+title: 'Fact sheet: health facility information'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DT)
+```
+
+## Your role
+As the budget officer on the team, your job is to help your team make informed decisions on costing and study design considerations, including: 
+
+- Choosing (and potentially limiting) the number of regions or health facilities.
+- Adjusting sample sizes, number of clusters, and timelines.
+- Conducting cost calculations, for example: 
+  - Total Fixed Costs = Number of HFs × (Fixed Cost per HF + Transport Cost per HF)
+  - Total Variable Costs = Total Samples Enrolled × Variable Cost per Sample Enrollment Rate
+
+Do your best job to stay within your budget! 
+
+### Costs per item
+
+| **Cost item**                           | **Cost** | **Description**                                       |
+|-----------------------------------------|----------|-------------------------------------------------------|
+| Fixed cost per health facility enrolled | $5,000   | Includes training, equipment, and administrative expenses. |
+| Cost per sample enrolled       | $50      | Includes laboratory testing, consumables, and data management. |
+
+### Transport costs per health facility
+
+| **Region**       | **Transport cost per health facility** |
+|------------------|----------------------------------------|
+| North Region     | $1,000                                 |
+| South Region     | $1,500                                 |
+| East Region      | $2,000                                 |
+| West Region      | $800                                   |

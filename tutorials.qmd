@@ -6,12 +6,12 @@ All of the materials from this workshop are freely available. We suggest you wor
 
 ## List of all the tutorials 
 
-- [Module 1: Sampling from a population](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)
-- [Module 2](https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/)
+- Module 1: [Sampling from a population](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)
+- Module 2:[Sample size based on precision](https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/)
 - [Module 3]()
 - [Module 4]()
 - [Module 5]()
 - [Module 5]()
-- [Module 6](tutorials/module6/module6_scenarios.qmd)
+- Module 6: [Designing a study for multiple end-points](tutorials/module6/module6_scenarios.Rmd)
 
 
