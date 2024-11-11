@@ -23,7 +23,7 @@ tutorial_options(exercise.timelimit = 120)
 
 set.seed(3)
 
-# mock up pfhrp2 deletion data
+# mock up pfhrp2/3 deletion data
 dat <- data.frame(Site = c("Chalinze", "Ibwaga", "Lukali", "Malolo", "Mafene", "Mpendo", "Nhinhi", "Rudi")) |>
   mutate(Confirmed_malaria = c(100, 80, 100, 100, 95, 100, 50, 100),
          pfhrp2_deleted = DRpower:::rbbinom_reparam(n_clust = 8, N = Confirmed_malaria, p = 0.2, rho = 0.1),
@@ -52,7 +52,7 @@ By the end of this tutorial, you will be able to:
 
 *Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
 
-## Analyzing data from a multi-cluster *pfhrp2* deletion study
+## Analyzing data from a multi-cluster *pfhrp2/3* deletion study
 
 ### Background
 
@@ -62,29 +62,28 @@ A multi-cluster study has been performed in 8 sites within the Dodoma region. Th
 
 ```{r}
 # create table with kable
-kable(dat, "html", col.names = c("Site", "Confirmed Malaria<br>(n)", "pfhrp2 Deleted<br>(x)", "pfhrp2 Deletion Prevalence<br>(p)"), escape = FALSE) |>
+kable(dat, "html", col.names = c("Site", "Confirmed Malaria<br>(n)", "pfhrp2/3 Deleted<br>(x)", "pfhrp2/3 Deletion Prevalence<br>(p)"), escape = FALSE) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
   column_spec(1, width = "3cm") |>
   column_spec(2, width = "3cm") |>
   column_spec(3, width = "3cm") |>
   column_spec(4, width = "4cm") |>
-  footnote(general = "\nTable 1: pfhrp2 deletion data broken down by site", general_title = "")
+  footnote(general = "\nTable 1: pfhrp2/3 deletion data broken down by site", general_title = "")
 ```
 
 In the R chunks below, you will be able to access these columns through the variables `n`, `x`, and `p`, as shown here:
 
 ```{r sandbox-1, exercise=TRUE}
 # you can access the following vectors
-n
-x
-p
-
+print(n)
+print(x)
+print(p)
 ```
 
 
 ### Estimating the global prevalence
 
-We want to use the information over all 8 sites to estimate the prevalence of *pfhrp2* deletions in the Dodoma region as a whole. This is often called the "global" prevalence estimate. We will use $\hat{p}$ to denote the global prevalence, and $\hat{p}_i$ to denote the site-level prevalence in the $i^\text{th}$ site.
+We want to use the information over all 8 sites to estimate the prevalence of *pfhrp2/3* deletions in the Dodoma region as a whole. This is often called the "global" prevalence estimate. We will use $\hat{p}$ to denote the global prevalence, and $\hat{p}_i$ to denote the site-level prevalence in the $i^\text{th}$ site.
 
 A common way to calculate $\hat{p}$ is to take the mean over sites.
 
@@ -156,11 +155,11 @@ In this example, prevalence is slightly higher via the weighted mean than the or
 
 ### Detecting over-dispersion
 
-Now that we have an estimate of the global prevalence, we can look for *over-dispersion* in the data. If all patients enrolled in the study were completely independent, meaning they all had the same probability $\hat{p}$ of carrying the *pfhrp2* deletion, then we would expect to see a certain level of variation between sites. Most of the time, the site-level prevalence should be within the following 95% interval:
+Now that we have an estimate of the global prevalence, we can look for *over-dispersion* in the data. If all patients enrolled in the study were completely independent, meaning they all had the same probability $\hat{p}$ of carrying the *pfhrp2/3* deletion, then we would expect to see a certain level of variation between sites. Most of the time, the site-level prevalence should be within the following 95% interval:
 $$
 \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n_i}}
 $$
-where $n_i$ is the sample size in the $i^{\text{th}}$ site. Because this is a 95% interval, we should expect sites to fall within this range around 95% of the time. For our study involving 8 sites, we *may* see one site-level prevalence outside this range by chance, but it would be very unusual to see more than one outside this range.
+where $n_i$ is the sample size in the $i^{\text{th}}$ site. Because this is a 95% interval, we should expect site-level prevalence to fall within this range around 95% of the time. For our study involving 8 sites, we *may* see one site-level prevalence outside this range by chance, but it would be very unusual to see more than one outside this range.
 
 The plot below shows the site-level prevalence in red. The global mean prevalence of 17.2% is shown as a horizontal dashed line, and the 95% interval is shown as an error bar.
 
@@ -193,7 +192,7 @@ quiz(caption = "",
            answer("2", correct = FALSE),
            answer("4", correct = FALSE),
            answer("6", correct = TRUE), 
-           correct = "That is correct! There are six sites that have prevalence either above or below the 95% interval expected if all observations were independent.", 
+           correct = "That is correct! There are six sites that have prevalence either above or below the 95% confidence interval expected if all observations were independent.", 
            incorrect = "Hint: a site-level prevalence is outside the range if it is either above the upper error bar, or below the lower error bar."
   )
 )
@@ -218,7 +217,7 @@ quiz(caption = "",
            allow_retry = TRUE,
            answer("Limited migration and gene flow between sites.", correct = TRUE),
            answer("Variation in treatment practices leading to different selective pressures between sites.", correct = TRUE),
-           answer("Local outbreaks within sites, driven by infected individuals carrying *pfhrp2* deletions.", correct = TRUE),
+           answer("Local outbreaks within sites, driven by infected individuals carrying *pfhrp2/3* deletions.", correct = TRUE),
            correct = "That is correct! A wide range of factors can lead to over-dispersion, meaning it is extremely common in multi-cluster studies.", 
            incorrect = "Hint: that is one explanation, but is it the only possible explanation?"
   )
@@ -229,7 +228,7 @@ quiz(caption = "",
 quiz(caption = "",
   question("Why does the Nhinhi site have a slightly wider 95% interval than the other sites?",
            allow_retry = TRUE,
-           answer("The Nhinhi site has higher prevalence of *pfhrp2* deletions.", correct = FALSE),
+           answer("The Nhinhi site has higher prevalence of *pfhrp2/3* deletions.", correct = FALSE),
            answer("The diagnostic methods used at the Nhinhi site are less accurate.", correct = FALSE),
            answer("The Nhinhi site is geographically isolated.", correct = FALSE),
            answer("The sample size in Nhinhi is lower than other sites.", correct = TRUE),
@@ -251,8 +250,7 @@ The observed variance between sites can be calculated as:
 $$
 \text{Var}_{\text{obs}} = \frac{1}{c-1}\sum_{i=1}^c (\hat{p}_i - \hat{p})^2
 $$
-
-This formula is called the *sample variance*, it is found in many areas of statistics. We don't need to calculate this value by hand, instead we can do it very easily in R using the `var()` function:
+The observed variance, or sample variance, can be calculated using this formula. This formula is found in many areas of statistics. We don't need to calculate this value by hand, instead we can do it very easily in R using the `var()` function:
 
 ```{r, echo=TRUE}
 # calculate observed variance between sites
@@ -289,16 +287,16 @@ var_SRS <- mean(p_global*(1 - p_global) / n)
 
 ```{r deff-1, exercise=TRUE, exercise.setup = "deff-params"}
 # calculate design effect from the variances
-Deff <- 
+D_eff <- 
 
-print(Deff)
+print(D_eff)
 ```
 
 ```{r deff-1-solution}
 # calculate design effect from the variances
-Deff <- var_observed / var_SRS
+D_eff <- var_observed / var_SRS
 
-print(Deff)
+print(D_eff)
 ```
 
 <details>
@@ -311,8 +309,7 @@ You should find that $D_{\text{eff}} = 12.79$.
 </details>
 </br>
 
-The design effect is a measure of the statistical *inefficiency* of a study design. Larger values indicate less efficient designs, with a value of $D_{\text{eff}}=1$ representing a gold standard in terms of statistical efficiency. Our observed value of $D_{\text{eff}}=12.79$ indicates that our study has a high level of statistical inefficiency due to the over-dispersion in the data.
-
+The design effect is a measure of the statistical *inefficiency* of a study design. Larger values indicate less efficient designs, with a value of $D_{\text{eff}}=1$ meaning that the study design is as efficient as SRS, which is seen as the gold standard for statistical efficiency (although technically $D_{\text{eff}}$ can be less than 1 in some rare cases)! Our observed value of $D_{\text{eff}}=12.79$ indicates that our study has a high level of statistical inefficiency due to the over-dispersion in the data.
 
 ```{r quiz-deff-1}
 quiz(caption = "",
@@ -341,21 +338,21 @@ Complete the following R code to calculate an effective sample size:
 p_global <- mean(p)
 var_observed <- var(p)
 var_SRS <- mean(p_global*(1 - p_global) / n)
-Deff <- var_observed / var_SRS
+D_eff <- var_observed / var_SRS
 ```
 
 ```{r neff-1, exercise=TRUE, exercise.setup = "neff-params"}
 # calculate effective sample size based on total sample size and design effect
-Neff <- 
+N_eff <- 
 
-print(Neff)
+print(N_eff)
 ```
 
 ```{r neff-1-solution}
 # calculate effective sample size based on total sample size and design effect
-Neff <- sum(n) / Deff
+N_eff <- sum(n) / D_eff
 
-print(Neff)
+print(N_eff)
 ```
 
 <details>
@@ -405,7 +402,7 @@ print(ICC)
 n_bar <- mean(n)
 
 # calculate the ICC
-ICC <- (Deff - 1) / (n_bar - 1)
+ICC <- (D_eff - 1) / (n_bar - 1)
 
 print(ICC)
 ```
@@ -420,7 +417,7 @@ You should find that $r = 0.132$.
 </details>
 </br>
 
-The ICC can be harder to interpret than other measures like the design effect or effective sample size, but it does have certain advantages. We can think of the ICC as an *intrinsic* property of the population, while the design effect is only a measure of the inefficiency of *our study*. While $D_{\text{eff}}$ is influenced by $r$, it is also influenced by many other factors, most notably the sample size. If we were to double the sample size of a study then our design effect would change, but the ICC would stay exactly the same. This makes it straightforward to compare values of $r$ between studies, while we have to take great care when comparing values of $D_{\text{eff}}$.
+The ICC can be harder to interpret than other measures like the design effect or effective sample size, but it does have certain advantages. We can think of the ICC as an *intrinsic* property of the population, while the design effect is only a measure of the inefficiency of *our study*. While $D_{\text{eff}}$ is influenced by $r$, it is also influenced by many other factors, most notably the sample size. If we were to double the sample size of a study then our design effect would change, but the ICC would stay exactly the same. This makes it more straightforward to compare values of $r$ between studies, while we have to take great care when comparing values of $D_{\text{eff}}$.
 
 ## Accounting for over-dispersion
 
@@ -432,29 +429,29 @@ Let's look again at the *pfhrp2/3* data from Dodoma region:
 
 ```{r}
 # create table with kable
-kable(dat, "html", col.names = c("Site", "Confirmed Malaria<br>(n)", "pfhrp2 Deleted<br>(x)", "pfhrp2 Deletion Prevalence<br>(p)"), escape = FALSE) |>
+kable(dat, "html", col.names = c("Site", "Confirmed Malaria<br>(n)", "pfhrp2/3 Deleted<br>(x)", "pfhrp2/3 Deletion Prevalence<br>(p)"), escape = FALSE) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
   column_spec(1, width = "3cm") |>
   column_spec(2, width = "3cm") |>
   column_spec(3, width = "3cm") |>
   column_spec(4, width = "4cm") |>
-  footnote(general = "\nTable 1: pfhrp2 deletion data broken down by site", general_title = "")
+  footnote(general = "\nTable 2: pfhrp2/3 deletion data broken down by site", general_title = "")
 ```
 
-We already estimated the prevalence in the region as the mean over sites, giving $\hat{p} = 0.172$. Now we want to construct a 95% CI around this estimate. For this, we need a modified version of the Wald interval:
+We already estimated the prevalence in the region as the mean over sites, giving $\hat{p} = 0.172$. Now we want to construct a 95% CI around this estimate. For this, we need a modified version of the Wald confidence interval:
 
 $$
 \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{N} D_{\text{eff}}}
 $$
-Here, $N$ is the total sample size summed over all sites, which in our case is $N = 725$. The main difference from our previous version of the Wald interval is the inclusion of the design effect, $D_{\text{eff}}$. Notice that $D_{\text{eff}}$ *stretches* the interval, meaning a higher design effect would lead to greater uncertainty.
+Here, $N$ is the total sample size summed over all sites, which in our case is $N = 725$. The main difference from our previous version of the Wald confidence interval is the inclusion of the design effect, $D_{\text{eff}}$. Notice that $D_{\text{eff}}$ *stretches* the interval, meaning a higher design effect would lead to greater uncertainty.
 
-Complete the following R code to calculate a 95% CI on the global prevalence using this new version of the Wald formula. Note that you still have access to previously computed variables in this code box, including `n`, `x`, `p`, `p_global` and `Deff`:
+Complete the following R code to calculate a 95% CI on the global prevalence using this new version of the Wald formula. Note that you still have access to previously computed variables in this code box, including `n`, `x`, `p`, `p_global` and `D_eff`:
 
 ```{r wald-params}
 p_global <- mean(p)
 var_observed <- var(p)
 var_SRS <- mean(p_global*(1 - p_global) / n)
-Deff <- var_observed / var_SRS
+D_eff <- var_observed / var_SRS
 ```
 
 ```{r Wald-1, exercise=TRUE, exercise.setup = "wald-params"}
@@ -478,7 +475,7 @@ N <- sum(n)
 z <- 1.96
 
 # calculate margin of error
-m <- 1.96*sqrt(p_global*(1 - p_global) / N * Deff)
+m <- 1.96*sqrt(p_global*(1 - p_global) / N * D_eff)
 
 # calculate lower and upper limits
 CI_lower <- p_global - m
@@ -497,17 +494,17 @@ You should find that the CI ranges from 0.073 to 0.270, or in other words from 7
 </details>
 </br>
 
-This CI is considerably wider than we would have obtained if we did not take over-dispersion into account. The two intervals are shown below:
+This CI is considerably wider than we would have obtained if we did not take over-dispersion into account. The two confidence intervals are shown below:
 
 ```{r, fig.width=4, fig.height=4}
 p_global <- mean(p)
 var_observed <- var(p)
 var_SRS <- mean(p_global*(1 - p_global) / n)
-Deff <- var_observed / var_SRS
+D_eff <- var_observed / var_SRS
 N <- sum(n)
 
 MOE1 <- 1.96*sqrt(p_global*(1 - p_global) / N)
-MOE2 <- 1.96*sqrt(p_global*(1 - p_global) / N * Deff)
+MOE2 <- 1.96*sqrt(p_global*(1 - p_global) / N * D_eff)
 
 rbind.data.frame(list(type = "Without\ndesign effect", y = p_global, ymin = p_global - MOE1, ymax = p_global + MOE1),
                  list(type = "With\ndesign effect", y = p_global, ymin = p_global - MOE2, ymax = p_global + MOE2)) |>
@@ -522,7 +519,7 @@ If we ignored over-dispersion and treated all observations as independent, we wo
 
 ### Over-dispersion and hypothesis testing
 
-Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of *pfhrp2* deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic ($Z$) that factors in the design effect:
+Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of *pfhrp2/3* deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic ($Z$) that factors in the design effect:
 
 $$
 Z = \frac{|\hat{p} - h|}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
@@ -536,20 +533,20 @@ This can be calculated in R as follows:
 h <- 0.1
 
 # calculate test statistic
-Z <- abs(p_global - h) / sqrt(p_global * (1 - p_global) / N * Deff)
+Z <- abs(p_global - h) / sqrt(p_global * (1 - p_global) / N * D_eff)
 print(Z)
 ```
 
-We obtain a test statistic of $Z = 1.43$. This is within the critical range $\pm1.96$, meaning we would not reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find $Z = 5.11$. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a *pfhrp2/3* study, this could mean difference between switching RDTs nationwide vs sticking with the current brand.
+We obtain a test statistic of $Z = 1.43$. This is within the critical range $\pm1.96$, meaning we would fail to reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find $Z = 5.11$. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a *pfhrp2/3* study, this could mean the difference between switching RDTs nationwide vs sticking with the current brand.
 
-**Disclaimer: We do not advocate for the use of the z-test for the design pfhrp2/3 deletion studies, or the analysis of the resulting data. We will learn about a much more powerful approach to this problem in the next module.**
+**Disclaimer: We do not advocate for the use of the z-test for the design of pfhrp2/3 deletion studies, or the analysis of the resulting data. We will learn about a much more powerful approach to this problem in the next module.**
 
 ### Over-dispersion and power
 
 Addressing over-dispersion is just as critical in the design stage as it is in the analysis stage. For the one-sample z-test for proportions, we already saw the formula for power in a previous module. Now, we obtain a new formula that takes $D_{\text{eff}}$ into account:
 
 $$
-P_{\text{ow}} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - h|}{\sqrt{\frac{p(1-p)}{N}}D_{\text{eff}}} \right)
+\text{power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - h|}{\sqrt{\frac{p(1-p)}{N}}D_{\text{eff}}} \right)
 $$
 To make use of this formula, we have to assume known values for the true global prevalence $p$ and also the design effect $D_{\text{eff}}$. We also have to set the total sample size $N$ and the threshold $h$. We will assume $p = 0.2$, $D_{\text{eff}} = 10$, $N = 800$ and $h = 0.1$.
 
@@ -558,7 +555,7 @@ We can calculate the power under this new formula in R as follows:
 ```{r, echo=TRUE}
 # define assumed parameters
 p <- 0.2
-Deff <- 10
+D_eff <- 10
 N <- 800
 h <- 0.1
 
@@ -566,18 +563,18 @@ h <- 0.1
 z_alpha <- 1.96
 
 # calculate expected value of test statistic
-mu_alt <- abs(p - h) / sqrt(p * (1 - p) / N * Deff)
+y <- abs(p - h) / sqrt(p * (1 - p) / N * D_eff)
 
 # calculate power
-power <- 1 - pnorm(z_alpha - mu_alt)
+power <- 1 - pnorm(z_alpha - y)
 print(power)
 ```
 
-Under this study design we only have 61% power. Contrast this with power of 99.99998% that we obtain if we ignore the design effect! Clearly the inclusion of the design effect is severely hurting our power in this analysis, however, it is better to include it and be realistic than to ignore it and obtain results that are unreliable.
+Under this study design we only have 61% power. Contrast this with power of 99.99998% that we obtain if we ignore the design effect! Clearly the inclusion of the design effect is severely hurting our power in this analysis, however, it is better to include the design effect and be realistic than to ignore the design effect and obtain results that are unreliable.
 
 ### Over-dispersion and sample size
 
-When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, we can assume a known value of the ICC ($r$).
+When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, in our equation for sample size we can assume a known value of the ICC ($r$) as sample size does not depend on $r$.
 
 Our new minimum sample size formula becomes:
 

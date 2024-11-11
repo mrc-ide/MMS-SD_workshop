@@ -164,11 +164,11 @@ We will denote the prevalence three years ago by $p_0 = 0.15$. For our power ana
 
 Given these values, we can calculate the *expected value* for our test statistic using the following formula:
 $$
-\mu = \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}}
+y = \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}}
 $$
-The vertical lines around $|p_1 - p_0|$ mean we should take the *absolute value* of the difference. This ensures that $\mu$ is always positive.
+The vertical lines around $|p_1 - p_0|$ mean we should take the *absolute value* of the difference. This ensures that $y$ is always positive.
 
-Complete the following R code to calculate the value of $\mu$:
+Complete the following R code to calculate the value of $y$:
 
 ```{r ztest-1, exercise=TRUE}
 # input parameters
@@ -182,10 +182,10 @@ p_diff <- abs(p1 - p0)
 # calculate the standard error
 SE <- sqrt(p1*(1 - p1) / N)
 
-# calculate mu
-mu <- 
+# calculate the expected value of the statistic
+y <- 
 
-print(mu)
+print(y)
 ```
 
 ```{r ztest-1-solution}
@@ -200,10 +200,10 @@ p_diff <- abs(p1 - p0)
 # calculate the standard error
 SE <- sqrt(p1*(1 - p1) / N)
 
-# calculate mu
-mu <- p_diff / SE
+# calculate the expected value of the statistic
+y <- p_diff / SE
 
-print(mu)
+print(y)
 ```
 
 <details>
@@ -211,17 +211,17 @@ print(mu)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-You should find that $\mu = 4.00$.
+You should find that $y = 4.01$.
 
 </details>
 </br>
 
-This means that *on average* we should expect our test statistic to equal $4.00$ if the alternative hypothesis is true. The actual value that we observe would be expected to vary around this value.
+This means that *on average* we should expect our test statistic to equal $4.01$ if the alternative hypothesis is true. The actual value that we observe would be expected to vary around this value.
 
-We can use $\mu$ to tell us our power. The formula for power under the z-test is:
+We can use $y$ to tell us our power. The formula for power under the z-test is:
 
 $$
-\text{Power} = 1 - \phi(z_{1-\alpha/2} - \mu)
+\text{Power} = 1 - \phi(z_{1-\alpha/2} - y)
 $$
 
 In this formula, $\phi(x)$ refers to the area under the curve of a standard normal distribution up to the point $x$. There is no simple way of calculating this value, but we can obtain it easily in R using the `pnorm()` function. As in previous activities, the value $z_{1 - \alpha/2}$ refers to the critical value of the normal distribution at a significance level $\alpha$ (two-tailed), which is approximately equal to 1.96.
@@ -232,11 +232,11 @@ Complete the following R code to calculate the power under the planned study des
 p0 <- 0.15
 p1 <- 0.3
 N <- 150
-mu <- abs(p1 - p0) / sqrt(p1*(1 - p1) / N)
+y <- abs(p1 - p0) / sqrt(p1*(1 - p1) / N)
 ```
 
 ```{r ztest-2, exercise=TRUE, exercise.setup = "ztest-2-params"}
-# calculate power using the known value of mu
+# calculate power using the known value of y
 z <- 1.96
 power <- # hint, you will need to use the pnorm() function here
 
@@ -244,9 +244,9 @@ print(power)
 ```
 
 ```{r ztest-2-solution}
-# calculate power using the known value of mu
+# calculate power using the known value of y
 z <- 1.96
-power <- 1 - pnorm(z - mu)
+power <- 1 - pnorm(z - y)
 
 print(power)
 ```
@@ -344,7 +344,7 @@ N = (z_{1 - \alpha/2} + z_{1 - \beta})^2\frac{p_1(1 - p_1)}{(p_1 - p_0)^2}
 $$
 The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is one minus our power (typically $\beta = 0.2$ because minimum power is usually 0.8).
 
-The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p1` and see what happens to the minimum sample size. Do you obtain the value $N=74$ when $p_2=0.3$, like we found from the power curve? Remember that you should always round sample sizes *up* if they are non-integers. What happens to the sample size as `p1` gets closer to 15%?
+The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p1` and see what happens to the minimum sample size. Do you obtain the value $N=74$ when $p_1=0.3$, like we found from the power curve? Remember that you should always round sample sizes *up* if they are non-integers. What happens to the sample size as `p1` gets closer to 15%?
 
 ```{r ztest-ss-2, exercise=TRUE}
 # define our assumed values
