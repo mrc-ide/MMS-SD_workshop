@@ -3,6 +3,7 @@ title: "Module 1: Sampling from a population"
 output:
   learnr::tutorial:
     progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -462,7 +463,14 @@ As we saw above, we need to also calculate the 95% CI around our estimate.
 
 This is the **Wald confidence interval formula:**
 
-![](images/wald_formula.png){width="60%"}
+$$
+CI = \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+Where:
+
+- $\hat{p}$ = sample proportion
+- $\ z_{1 - \alpha/2}$ = Z-score corresponding to the desired confidence level (for 95%, Z = 1.96)
+- ${n}$ = sample size
 
 We are now going to go through this formula step-by-step!
 
