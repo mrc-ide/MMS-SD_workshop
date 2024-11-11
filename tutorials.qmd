@@ -7,7 +7,7 @@ All of the materials from this workshop are freely available. We suggest you wor
 ## List of all the tutorials 
 
 - Module 1: [Sampling from a population](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)
-- Module 2:[Sample size based on precision](https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/)
+- Module 2:[Sample size based on precision](https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/)
 - [Module 3]()
 - [Module 4]()
 - [Module 5]()

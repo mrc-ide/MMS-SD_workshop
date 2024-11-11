@@ -21,7 +21,7 @@ website:
             href: https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/
             icon: play
           - text: "Module 2"
-            href: https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/
+            href: https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/
             icon: play
           - text: "Module 3"
             href: https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/
