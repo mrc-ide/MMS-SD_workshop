@@ -519,7 +519,7 @@ SE
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 
 </summary>
-Our standard error is 0.336.
+Our standard error is 0.034.
 
 ##### 4. Calculating the confidence interval
 
