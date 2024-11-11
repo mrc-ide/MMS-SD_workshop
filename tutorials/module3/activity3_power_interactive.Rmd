@@ -53,13 +53,8 @@ quiz(caption = "",
            answer("A hypothesis that describes the expected relationship between two variables.", correct = FALSE), 
            correct = "That is correct! A null hypothesis assumes there is no effect/difference between groups. Often the null hypothesis is a statement that there is nothing interesting going on - but not always! For example, imagine our null hypothesis is that people using bed nets have the same malaria incidence as those not using bed nets. If this null hypothesis is true then that is very interesting indeed.", 
            incorrect = "Hint: when you see the word 'null' think 'nothing'."
-  )
-)
-```
-
-```{r quiz-q2}
-quiz(caption = "",
-     question("Which of these is *not* a null hypothesis?",
+  ),
+  question("Which of these is *not* a null hypothesis?",
            allow_retry = TRUE,
            answer("There is no difference in malaria prevalence between people who sleep under bed nets and people who do not.", correct = FALSE),
            answer("The presence of a genetic marker for drug resistance is independent of the region (e.g., East Africa vs. West Africa).", correct = FALSE),
@@ -67,26 +62,16 @@ quiz(caption = "",
            answer("Malaria incidence is twice as high in men as it is in women.", correct = TRUE), 
            correct = "That is correct! This cannot be a null hypothesis as it expresses a difference between two groups. The null hypothesis would be that there is no difference in incidence between men and women.", 
            incorrect = "Hint: for each statement, try to work out if it assumes an effect/difference or no effect between groups."
-  )
-)
-```
-
-```{r quiz-q3}
-quiz(caption = "",
-     question("A false-negative result is when...",
+  ),
+  question("A false-negative result is when...",
            allow_retry = TRUE,
            answer("You fail to reject the null hypothesis when it is actually false.", correct = TRUE),
            answer("You fail to reject the null hypothesis when it is actually true.", correct = FALSE, message = "You're right that this is a negative result, but this is a true-negative rather than a false-negative."),
            answer("You reject the null hypothesis when it is actually false.", correct = FALSE, message = "This is the opposite of a false-negative result; this is a true-positive result."),
            answer("You reject the null hypothesis when it is actually true.", correct = FALSE, message = "You're right that this is a false result, but it is a false-positive rather than a false-negative."), 
            correct = "That is correct! A false-negative result means we failed to detect an effect that was really there."
-  )
-)
-```
-
-```{r quiz-q4}
-quiz(caption = "",
-     question("The parameter $\\alpha$ is often referred to as...",
+  ),
+  question("The parameter $\\alpha$ is often referred to as...",
            allow_retry = TRUE,
            answer("The confidence level of a hypothesis test.", correct = FALSE),
            answer("The significance level of a hypothesis test.", correct = TRUE),
@@ -94,13 +79,8 @@ quiz(caption = "",
            answer("The probability of making a Type II error.", correct = FALSE), 
            correct = "That is correct! Smaller values of $\\alpha$ make it harder for us to reject the null hypothesis.", 
            incorrect = "Hint: $\\alpha$ is the threshold we set to decide if a result is statistically significant."
-  )
-)
-```
-
-```{r quiz-q5}
-quiz(caption = "",
-     question("A statistical test that only examines effects in one direction is called...",
+  ),
+  question("A statistical test that only examines effects in one direction is called...",
            allow_retry = TRUE,
            answer("A one-headed test.", correct = FALSE),
            answer("A one-way street analysis.", correct = FALSE),
@@ -108,25 +88,15 @@ quiz(caption = "",
            answer("A one-tailed test.", correct = TRUE), 
            correct = "That is correct! A one-tailed test assumes that we already know the direction of the effect - for example, that bed nets will decrease the incidence of malaria, not increase it. One-tailed tests tend to be easier to disprove, but we have to be sure about the direction of the effect.", 
            incorrect = "Hint: the 'tails' of a distribution refer to the low probability regions on either side of the main hump."
-  )
-)
-```
-
-```{r quiz-q6}
-quiz(caption = "",
-     question_radio("In statistical testing, we always compare our test statistic against the normal distribution.",
+  ),
+  question_radio("In statistical testing, we always compare our test statistic against the normal distribution.",
            allow_retry = TRUE,
            answer("TRUE", correct = FALSE),
            answer("FALSE", correct = TRUE),
            correct = "That is correct! Different statistical tests can have different distributions for the test statistic - for example, the chi-squared test statistic follows a chi-squared distribution. We need to know the correct distribution to compare against when assessing significance.", 
            incorrect = "Hint: is a test statistic always normally distributed?"
-  )
-)
-```
-
-```{r quiz-q7}
-quiz(caption = "",
-     question("You are running a study to test if the prevalence of a drug resistant mutation has changed over time. You analyse your data using a z-test. The critical values for a two-tailed z-test at the significance level $\\alpha = 0.05$ are at $\\pm1.96$. You obtain a test statistic of -2.54. What should you do based on this result?",
+  ),
+  question("You are running a study to test if the prevalence of a drug resistant mutation has changed over time. You analyse your data using a z-test. The critical values for a two-tailed z-test at the significance level $\\alpha = 0.05$ are at $\\pm1.96$. You obtain a test statistic of -2.54. What should you do based on this result?",
            allow_retry = TRUE,
            answer("Reject the null hypothesis because the test statistic is less than zero.", correct = FALSE),
            answer("Reject the null hypothesis because the test statistic is less than the lower critical value.", correct = TRUE),
