@@ -606,6 +606,7 @@ You may remember from our exploration of the census data earlier, that **26.78%*
 ```{r quiz-ci-prev}
 quiz(caption = "QUIZ - 95% confidence interval",
      question("Is our true prevalence within the 95%CI of 27.9-41.1%?",
+              allow_retry = TRUE,
               answer("Yes", correct = F, message = "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%"),
               answer("No", correct = T, "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%. In the next exercise we are going to run some simulations to explore this further.")
      ))
@@ -651,6 +652,7 @@ quiz(
   caption = "QUIZ - Confidence Intervals and Simulation",
 
   question("In the context of confidence intervals, what does a 95% confidence level mean?",
+           allow_retry = TRUE,
     answer("It means that 95% of the time, the sample estimate will be equal to the true population parameter.", correct = FALSE),
     answer("It means that we are 95% confident that the true population parameter lies within the calculated confidence interval from our sample.", correct = TRUE),
     answer("It means that 95% of the data points lie within the confidence interval.", correct = FALSE),
@@ -660,6 +662,7 @@ quiz(
   ),
 
   question("After running the simulation of 1,000 samples, approximately how many of the confidence intervals would you expect to contain the true population prevalence?",
+           allow_retry = TRUE,
     answer("About 50 of them.", correct = FALSE),
     answer("About 950 of them.", correct = TRUE),
     answer("All 1,000 of them.", correct = FALSE),
@@ -669,6 +672,7 @@ quiz(
   ),
 
   question("If the true prevalence falls outside the confidence interval calculated from our sample, does it mean our sampling method is biased?",
+           allow_retry = TRUE,
     answer("Yes, because the confidence interval should always contain the true parameter.", correct = FALSE),
     answer("No, because even with a correct method, there's still a chance the confidence interval won't contain the true parameter.", correct = TRUE),
     answer("Yes, because our sample size was too small.", correct = FALSE),
