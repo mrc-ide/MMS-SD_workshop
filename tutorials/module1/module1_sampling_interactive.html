@@ -353,11 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Suppose we have resources to sequence 200 samples. Let’s randomly sample 200 individuals from the population and see how they ‘compare’.</p>
 <p>Let’s take a look at the demographics of our sample by plotting the age and sex distribution of the population and the sample. On the left we have the same age/sex distribution we saw above for the whole population, and on the right we see the distribution in our sampled individuals.</p>
 <p>Below we use the function <code>sampleFromPopulation()</code> and we specify what our sample size is and from where we want to sample (in our case from the census data).</p>
-<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
-<p><span style="font-size: 1.2em; color: #d19554;"> <i class="fas fa-comment"></i> Reflection: </span></p>
-<p><span style="color:#d19554;"> Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population? </span></p>
-</div>
-<p><br> We can use the <code>plotAgeSexDistribution()</code> and <code>plotInfectedProportion()</code> functions to visualize our results. Click on “Run Code”.</p>
+<p>We can use the <code>plotAgeSexDistribution()</code> and <code>plotInfectedProportion()</code> functions to visualize our results. Click on “Run Code”.</p>
 <div class="cell" data-exercise="true">
 <div class="tutorial-exercise" data-label="sampling-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">sampleFromPopulation</span>(<span class="at">sample_size =</span> <span class="dv">200</span>, census)</span>
@@ -368,6 +364,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plotInfectedProportion</span>(comparison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+</div>
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+<p><span style="font-size: 1.2em; color: #d19554;"> <i class="fas fa-comment"></i> Reflection: </span></p>
+<p><span style="color:#d19554;"> Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population? </span></p>
 </div>
 </section>
 <section id="sampling-many-times-from-the-population" class="level3">
@@ -537,7 +537,7 @@ SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Click to see the answer</p>
 </summary>
-<p>Our standard error is 0.336.</p>
+<p>Our standard error is 0.034.</p>
 </details></section>
 <section id="calculating-the-confidence-interval" class="level5">
 <h5 class="anchored" data-anchor-id="calculating-the-confidence-interval">4. Calculating the confidence interval</h5>
@@ -923,20 +923,20 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-study-pop-1", 
     question = structure("We want to estimate the prevalence of malaria infection in a community of 10,000 people. Which of the following is the target population?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_2d0066c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_87c5fdf", 
         option = "All residents", value = "All residents", label = structure("All residents", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5c0bec9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a2acb5a", 
         option = "Only women or only men", value = "Only women or only men", 
         label = structure("Only women or only men", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("If we want to estimate the prevalence in the <em>community<\u002fem> we don’t want to focus only on women or men. <br>", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4f3d0d9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a828e3", 
         option = "Only children under 5 years old", value = "Only children under 5 years old", 
         label = structure("Only children under 5 years old", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("If we want to estimate the prevalence in the <em>community<\u002fem> we don’t want to focus only on children. <br>", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d3d6ee0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f4d82e", 
         option = "Adults over 60 years old", value = "Adults over 60 years old", 
         label = structure("Adults over 60 years old", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("If we want to estimate the prevalence in the <em>community<\u002fem> we don’t want to focus on adults. <br>", html = TRUE, class = c("html", 
@@ -949,7 +949,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-study-pop-1-answer", question = "quiz-study-pop-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 761328887.645479, options = list()), class = c("learnr_checkbox", 
+    seed = 3566010.49833945, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1178,10 +1178,10 @@ learnr:::store_exercise_cache(structure(list(label = "sampling-2", global_setup 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sampling-1", 
     question = structure("Was the sample always the same?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_5416d3d", 
+    "character")), answers = list(structure(list(id = "lnr_ans_7f5867c", 
         option = "Yes", value = "Yes", label = structure("Yes", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b210cf5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9d54460", 
         option = "No", value = "No", label = structure("No", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1192,17 +1192,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sampling-1-answer", question = "quiz-sampling-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1765914552.17768, options = list()), class = c("learnr_radio", 
+    seed = 731139430.659537, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sampling-2", 
     question = structure("Does our sample of 200 always reflect the population?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_59c3cc2", 
+    "character")), answers = list(structure(list(id = "lnr_ans_709b60", 
         option = "Yes", value = "Yes", label = structure("Yes", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5ebafea", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9c99c9d", 
         option = "No", value = "No", label = structure("No", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1213,17 +1213,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sampling-2-answer", question = "quiz-sampling-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 866881968.596327, options = list()), class = c("learnr_radio", 
+    seed = 1100757544.98742, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sampling-bias-1", 
     question = structure("Does this mean our sampling approach is biased?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_8fb4e0a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_fab5b53", 
         option = "Yes", value = "Yes", label = structure("Yes", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9158796", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_18570f4", 
         option = "No", value = "No", label = structure("No", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1234,7 +1234,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sampling-bias-1-answer", question = "quiz-sampling-bias-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1976807234.07948, options = list()), class = c("learnr_radio", 
+    seed = 1491214867.3056, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1926,11 +1926,11 @@ learnr:::store_exercise_cache(structure(list(label = "ci-calculation", global_se
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-ci-prev-1", 
     question = structure("Is our true prevalence within the 95%CI of 27.9-41.1%?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_4ed4cbf", 
+    "character")), answers = list(structure(list(id = "lnr_ans_400c77e", 
         option = "Yes", value = "Yes", label = structure("Yes", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7b3c4a3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_692ffb6", 
         option = "No", value = "No", label = structure("No", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = structure("The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%. In the next exercise we are going to run some simulations to explore this further.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
@@ -1941,8 +1941,8 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-ci-prev-1-answer", question = "quiz-ci-prev-1"), 
-    loading = NULL, random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 493822055.270046, options = list()), class = c("learnr_radio", 
+    loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
+    seed = 1206134037.43835, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -2060,22 +2060,22 @@ learnr:::store_exercise_cache(structure(list(label = "sim-ci", global_setup = st
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sim-ci-1", 
     question = structure("In the context of confidence intervals, what does a 95% confidence level mean?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b89aacc", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3895058", 
         option = "It means that 95% of the time, the sample estimate will be equal to the true population parameter.", 
         value = "It means that 95% of the time, the sample estimate will be equal to the true population parameter.", 
         label = structure("It means that 95% of the time, the sample estimate will be equal to the true population parameter.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_eea04f5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a8884b0", 
         option = "It means that we are 95% confident that the true population parameter lies within the calculated confidence interval from our sample.", 
         value = "It means that we are 95% confident that the true population parameter lies within the calculated confidence interval from our sample.", 
         label = structure("It means that we are 95% confident that the true population parameter lies within the calculated confidence interval from our sample.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6eda794", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d997153", 
         option = "It means that 95% of the data points lie within the confidence interval.", 
         value = "It means that 95% of the data points lie within the confidence interval.", 
         label = structure("It means that 95% of the data points lie within the confidence interval.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e92bce7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c52766b", 
         option = "It means that there is a 95% probability that the sample estimate falls within the interval.", 
         value = "It means that there is a 95% probability that the sample estimate falls within the interval.", 
         label = structure("It means that there is a 95% probability that the sample estimate falls within the interval.", html = TRUE, class = c("html", 
@@ -2087,27 +2087,27 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), incorrect = structure("Not quite. Remember, a 95% confidence level refers to our confidence that the interval contains the true population parameter.", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sim-ci-1-answer", question = "quiz-sim-ci-1"), 
-    loading = NULL, random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 856909712.10097, options = list()), class = c("learnr_radio", 
+    loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
+    seed = 1414698499.34123, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sim-ci-2", 
     question = structure("After running the simulation of 1,000 samples, approximately how many of the confidence intervals would you expect to contain the true population prevalence?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_892061d", 
+    "character")), answers = list(structure(list(id = "lnr_ans_1e88bbc", 
         option = "About 50 of them.", value = "About 50 of them.", 
         label = structure("About 50 of them.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_67cc5d0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_68e5a1", 
         option = "About 950 of them.", value = "About 950 of them.", 
         label = structure("About 950 of them.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_36a4f90", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dbde3a4", 
         option = "All 1,000 of them.", value = "All 1,000 of them.", 
         label = structure("All 1,000 of them.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ee2fc3b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7d75d33", 
         option = "None of them.", value = "None of them.", label = structure("None of them.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -2117,30 +2117,30 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), incorrect = structure("Consider the definition of a 95% confidence interval—it suggests that approximately 95% of intervals contain the true parameter.", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sim-ci-2-answer", question = "quiz-sim-ci-2"), 
-    loading = NULL, random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 420146349.304354, options = list()), class = c("learnr_radio", 
+    loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
+    seed = 1258429268.914, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sim-ci-3", 
     question = structure("If the true prevalence falls outside the confidence interval calculated from our sample, does it mean our sampling method is biased?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_18626a7", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8741142", 
         option = "Yes, because the confidence interval should always contain the true parameter.", 
         value = "Yes, because the confidence interval should always contain the true parameter.", 
         label = structure("Yes, because the confidence interval should always contain the true parameter.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b44107d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_20819f4", 
         option = "No, because even with a correct method, there's still a chance the confidence interval won't contain the true parameter.", 
         value = "No, because even with a correct method, there's still a chance the confidence interval won't contain the true parameter.", 
         label = structure("No, because even with a correct method, there’s still a chance the confidence interval won’t contain the true parameter.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8b3b72f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bf0837d", 
         option = "Yes, because our sample size was too small.", 
         value = "Yes, because our sample size was too small.", 
         label = structure("Yes, because our sample size was too small.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_be8ec24", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a1f2066", 
         option = "No, because the confidence interval is only a rough estimate.", 
         value = "No, because the confidence interval is only a rough estimate.", 
         label = structure("No, because the confidence interval is only a rough estimate.", html = TRUE, class = c("html", 
@@ -2152,8 +2152,8 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), incorrect = structure("Not quite. Remember that confidence intervals are calculated with a certain level of confidence, and there’s always a chance the true parameter lies outside the interval.", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sim-ci-3-answer", question = "quiz-sim-ci-3"), 
-    loading = NULL, random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 1904223467.11328, options = list()), class = c("learnr_radio", 
+    loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
+    seed = 329308600.346654, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
