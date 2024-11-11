@@ -40,5 +40,5 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 2:00-2:45    | Module 5: Practical                 | LearnR tutorial               |
 | 2:45-3:00    | Break                                                  |                       |
 | 3:00-3:15    | Module 6: Designing studies for multiple end-points           | Lecture               |
-| 3:15-4:45    | Module 6: Practical                                           | LearnR tutorial               |
+| 3:15-4:45    | Module 6: Practical                                           | [Role play scenario](tutorials/module6/module6_scenarios.Rmd)              |
 | 4:45-5:30    | Discussion and wrap-up                                        |                       |
