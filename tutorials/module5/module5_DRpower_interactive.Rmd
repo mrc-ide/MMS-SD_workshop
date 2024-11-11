@@ -3,6 +3,7 @@ title: 'Module 5: The DRpower tool'
 output:
   learnr::tutorial:
     progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -56,13 +57,13 @@ First, we need to scope out roughly how many sites and how many samples are requ
 
 ![](images/planner_explore_menu.png){width="100%"}
 
-You should see a sample size table with the number of sites (health facilities) in rows, and the assumed prevalence of *pfhrp2/3* deletions in columns (like below).
+You should see a sample size table with the number of sites (health facilities) in rows, and the assumed prevalence of *pfhrp2/3* deletions in columns (like below). The page automatically loads with the default ICC of **0.05** and the WHO **5%** prevalence threshold.
 
 ![](images/explore_page.png){width="100%"}
 
 In any power analysis, we must begin by assuming a known effect size under the alternative hypothesis. For this study, that means selecting an assumed prevalence of *pfhrp2/3* deletions in the population. This assumption can be challenging and may feel somewhat arbitrary. It’s important to remember that as the assumed prevalence approaches the 5% detection threshold, the required sample size increases significantly. Conversely, assuming a very high prevalence may reduce the public health relevance of the study by focusing power on detecting only large shifts in the parasite population—changes that could already be affecting clinical diagnosis.
 
-To balance these factors, we recommend a default assumed prevalence of 10%. This value provides a reasonable sensitivity level while keeping sample sizes manageable. For more insights on selecting this parameter, refer to the [FAQ section](https://shiny.dide.ic.ac.uk/DRpower-app/) in the web-based *pfhrp2/3* Planner.
+To balance these factors, we recommend a default assumed prevalence of 10% (highlighted in purple). This value provides a reasonable sensitivity level while keeping sample sizes manageable. For more insights on selecting this parameter, refer to the [FAQ section](https://shiny.dide.ic.ac.uk/DRpower-app/) in the web-based *pfhrp2/3* Planner.
 
 ```{r quiz-sizes-10}
 quiz(caption = "QUIZ - Sample sizes",
@@ -87,7 +88,7 @@ As the number of sites recruited increases, the total sample size needed actuall
 
 ### Factoring in financial considerations
 
-The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training of staff. They estimate it will cost \$500 USD per cluster recruited, plus an additional \$6 USD per sample enrolled.
+The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training of staff. They estimate it will cost \$500 USD per health facility (cluster) recruited, plus an additional \$6 USD per sample enrolled.
 
 ```{r quiz-sizes-cost}
 quiz(caption = "QUIZ - Sample sizes based on cost",
@@ -111,7 +112,7 @@ ss <- DRpower::get_sample_size_table(prevalence = 0.1)
 
 ### Selecting sites
 
-Next, we have to choose how we will select the 7 sites. Common choices are 1) *sentinel site surveillance*, where known and established sites are chosen based on feasibility, and 2) random selection, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.
+Next, we have to choose how we will select the 7 sites. Common choices are 1) *sentinel site surveillance*, where known and established sites are chosen based on feasibility, and 2) *random selection*, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.
 
 Some advantages of sentinel site surveillance include:
 
@@ -167,7 +168,7 @@ kable(df2, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
 
 But now we are faced with a problem - how do we know if this new design still has adequate power? We can no longer rely on sample size tables, which assume the same sample size per cluster. On the other hand, we cannot simply *assume* that power will be adequate. This is where the [Design tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner becomes useful.
 
-Download a .csv file with the current study plan [from here](TODO). You can then upload this spreadsheet into the we app using the "Upload a .csv file" option. You should find that the table populates with these values.
+Download a .csv file with the current study plan [from here](https://raw.githubusercontent.com/mrc-ide/MMS-SD_workshop/refs/heads/main/tutorials/module5/data/pfhrp2_design.csv). You can then upload this spreadsheet into the we app using the "Upload a .csv file" option. You should find that the table populates with these values.
 
 ![](images/design_upload.png){width="100%"}
 
@@ -206,7 +207,7 @@ kable(df3, "html", col.names = c("Site name", "pfhrp2 negative", "Sample size"),
   footnote(general = "\nTable 3: results of the pfhrp2/3 study", general_title = "")
 ```
 
-You can download these results in .csv form [here](TODO). The easiest way to analyse these data is via the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner. Select "Upload a .csv file" and import the data.
+You can download these results in .csv form [here](https://github.com/mrc-ide/MMS-SD_workshop/blob/main/tutorials/module5/data/pfhrp2_results.csv). The easiest way to analyse these data is via the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner. Select "Upload a .csv file" and import the data.
 
 ![](images/analysis_upload.png){width="100%"}
 
@@ -230,7 +231,7 @@ In this example, we have sufficient evidence to conclude that the prevalence of 
 
 As noted above, the **DRpower** method automatically accounts for ICC when estimating prevalence, so a separate ICC estimate is not strictly necessary. However, obtaining an ICC estimate can still be valuable for future study planning. It’s a straightforward process and contributes to a broader understanding of ICC levels, which can benefit researchers planning similar studies in the future or in neighbouring regions.
 
-Still on the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/), scroll down to the "Estimate ICC" button (it should look like the screenshot below). Clicking this button gives an estimate of the ICC, including a point estimate and a 95% CrI.
+Still on the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/), scroll down to the "Estimate ICC" button (it should look like the screenshot below). Clicking this button gives an estimate of the ICC, including a point estimate and a 95% Credible Interval (CrI).
 
 ![](images/est_icc.png){width="100%"}
 
@@ -263,6 +264,8 @@ The following R code calculates the sample size needed for a multi-cluster preva
 DRpower::get_sample_size_margin(MOE = 0.1, n_clust = 10, prevalence = 0.2, ICC = 0.01)
 ```
 
+The result you obtain is the sample size needed per cluster to achieve your target MOE using the Wald interval.
+
 Until now, we have focused on using the Wald interval to construct a 95% confidence interval (CI). Although the Wald interval is straightforward to calculate, it relies on assumptions that may not always hold. For instance, with a small sample size or when prevalence is near 0 or 1, the Wald interval can extend beyond logical boundaries, producing values below 0 or above 1. Such results are nonsensical and indicate that the interval may not accurately represent the underlying data.
 
 An alternative approach is to use the Clopper-Pearson (CP) interval. Unlike the Wald interval, the CP interval remains within the 0 to 1 range, making it more statistically robust. However, this robustness comes with a trade-off: the CP interval tends to be conservative, resulting in wider intervals.
@@ -284,6 +287,8 @@ Play around with the following R code, which still aims to reach a target margin
 DRpower::get_sample_size_margin_CP(MOE = 0.1, n_clust = 10, prevalence = 0.2, ICC = 0.01)
 ```
 
+The result you obtain is the sample size needed per cluster to achieve your target MOE using the CP interval.
+
 Finally, we may want to look for the presence of rare variants in a multi-cluster design while accounting for intra-cluster correlation.
 
 Play around with the following code. 
@@ -302,3 +307,5 @@ Play around with the following code.
 # calculate sample size needed in a multi-cluster presence/absence study
 DRpower::get_sample_size_presence(n_clust = 5, prevalence = 0.05, ICC = 0.05)
 ```
+
+The result you obtain is the sample size needed per cluster to detect the presence of rare variants at 1% prevalence.
