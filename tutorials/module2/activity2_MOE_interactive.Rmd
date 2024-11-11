@@ -33,7 +33,7 @@ By the end of this tutorial, you will be able to:
 - Calculate a minimum sample size using assumptions about prevalence and margin of error.
 - Account for drop-out and malaria positive fraction.
 
-**Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.**
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
 
 ## Background
 
