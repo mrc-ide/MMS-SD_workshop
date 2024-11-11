@@ -1,0 +1,107 @@
+---
+title: "Fact sheet: Statistician"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+# options(repos = c(
+#   plasmogenepi = "https://plasmogenepi.r-universe.dev",
+#   CRAN = "https://cloud.r-project.org"
+# ))
+
+library(DRpower)
+library(learnr)
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = FALSE)
+
+# needed for longer calculations (eg DRpower) note - in seconds
+tutorial_options(exercise.timelimit = 120)
+
+epi <- data.frame(
+  region = c("Coastal Region", "Highland Region", "Forest Region", "Urban Region"),
+  prevalence = c("12%", "5%", "28%", "8%"),
+  incidence_per_1000_per_year = c(40, 15, 90, 25),
+  test_positivity_rate = c("18%", "7%", "35%", "10%"))
+
+health_facilities <- data.frame(
+  region = c(
+    rep("Coastal Region", 20),
+    rep("Highland Region", 10),
+    rep("Forest Region", 15),
+    rep("Urban Region", 20)
+  ),
+  health_facility = c(
+    paste0("HF", 1:20),    # Coastal Region
+    paste0("HF", 21:30),   # Highland Region
+    paste0("HF", 31:45),   # Forest Region
+    paste0("HF", 46:65)    # Urban Region
+  ),
+  population_served = c(
+    # Coastal Region Population Served
+    12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000, 28000, 30000,
+    32000, 34000, 36000, 38000, 40000, 42000, 44000, 46000, 48000, 50000,
+    # Highland Region Population Served
+    10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000, 28000,
+    # Forest Region Population Served
+    15000, 18000, 21000, 24000, 27000, 30000, 33000, 36000, 39000, 42000,
+    45000, 48000, 51000, 54000, 57000,
+    # Urban Region Population Served
+    20000, 22000, 24000, 26000, 28000, 30000, 32000, 34000, 36000, 38000,
+    40000, 42000, 44000, 46000, 48000, 50000, 52000, 54000, 56000, 58000
+  ),
+  expected_malaria_cases_per_month = c(
+    # Coastal Region Expected Cases per Month
+    40, 47, 53, 60, 67, 73, 80, 87, 93, 100,
+    107, 113, 120, 127, 133, 140, 147, 153, 160, 167,
+    # Highland Region Expected Cases per Month
+    13, 15, 18, 20, 23, 25, 28, 30, 33, 35,
+    # Forest Region Expected Cases per Month
+    113, 135, 158, 180, 203, 225, 248, 270, 293, 315,
+    338, 360, 383, 405, 428,
+    # Urban Region Expected Cases per Month
+    42, 46, 50, 54, 58, 63, 67, 71, 75, 79,
+    83, 88, 92, 96, 100, 104, 108, 113, 117, 121
+  )
+)
+
+cost_per_hf <- 5000
+cost_per_sample <- 55
+cost_transport_north <- 1000
+cost_transport_south <- 1500
+cost_transport_east <- 2500
+cost_transport_west <- 800
+```
+
+## Your role
+As the statistician on the team, your job is to help your team make informed decisions on study design considerations, including:
+
+- Decide on the number of clusters (health facilities) to include.
+- Buffer for drop-out.
+- Determining the necessary sample size and power for primary and secondary endpoints.
+- Adjust for ICC. 
+
+## Available data
+In order to help you perform these critical calculations, we have pre-loaded all the fact sheets and data that your various team members have access to. 
+
+This includes: 
+
+- `epi`: data on malaria prevalence, incidence and test positivity rate
+- `health_facilities`: data on health facilities in each region, the population they serve, and expected malaria cases per month  
+- `cost_per_hf`: fixed cost per health facility enrolled (in USD), including training, equipment, and administrative expenses.
+- `cost_per_sample`: cost per sample enrolled (in USD), including collection, laboratory testing, consumables, and data management
+- `cost_transport_north`: transport cost per health facility (in USD) in the North region
+- `cost_transport_south`: transport cost per health facility (in USD) in the South region
+- `cost_transport_east`: transport cost per health facility (in USD) in the East region
+- `cost_transport_west`:  transport cost per health facility (in USD) in the West region
+
+### Exercise 
+
+*You can use the below R code box to perform your calculations*
+
+```{r code-box, exercise=TRUE}
+
+```

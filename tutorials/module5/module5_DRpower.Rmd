@@ -128,7 +128,7 @@ kable(df1, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
 With a preliminary study plan in place, we can now incorporate some real-world constraints. After discussions with site leads at each of the seven locations, we’ve learned that several sites may face challenges in reaching the target sample size. This could stem from factors like limited staffing, low malaria incidence, or other local issues. To address this, you’ve adjusted the sample sizes by increasing recruitment targets at sites where it is feasible to do so. Here’s the updated sample size table:
 
 ```{r, echo=FALSE}
-df2 <- read.csv("../data/pfhrp2_design.csv") |>
+df2 <- read.csv("data/pfhrp2_design.csv") |>
   select(-percent_dropout)
 
 kable(df2, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
@@ -160,7 +160,7 @@ Running an estimate with 1000 simulations should show that the study’s power i
 Some time later, the Ethiopian NMCP request your assistance once again to analyse the results of the *pfhrp2/3* deletion study, which was carried out according to your plan. The results of the study are shown in **Table 3**.
 
 ```{r, echo=FALSE}
-df3 <- read.csv("../data/pfhrp2_results.csv")
+df3 <- read.csv("data/pfhrp2_results.csv")
 
 kable(df3, "html", col.names = c("Site name", "pfhrp2 negative", "Sample size"), escape = FALSE) |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
