@@ -33,7 +33,7 @@ website:
             href: https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/
             icon: play
           - text: "Module 6"
-            href: https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/
+            href: tutorials/module6/module6_scenarios.Rmd 
             icon: play
 
 format:

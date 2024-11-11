@@ -1,0 +1,119 @@
+---
+title: "Fact sheet: Statistician"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+# options(repos = c(
+#   plasmogenepi = "https://plasmogenepi.r-universe.dev",
+#   CRAN = "https://cloud.r-project.org"
+# ))
+
+library(DRpower)
+library(learnr)
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = FALSE)
+
+# needed for longer calculations (eg DRpower) note - in seconds
+tutorial_options(exercise.timelimit = 120)
+
+epi <- data.frame(
+  region = c("North Region", "South Region", "East Region", "West Region"),
+  prevalence = c("15%", "25%", "35%", "10%"),
+  incidence_per_1000_per_year = c(50, 80, 120, 30),
+  test_positivity_rate = c("20%", "30%", "40%", "15%")
+)
+
+health_facilities <- data.frame(
+  region = c(
+    rep("North Region", 25),
+    rep("South Region", 25),
+    rep("East Region", 25),
+    rep("West Region", 25)
+  ),
+  health_facility = c(
+    paste0("HF", 1:100)
+  ),
+  population_served = c(
+    10000, 12000, 8000, 15000, 9000, 11000, 14000, 13000, 7000, 16000,
+    18000, 20000, 22000, 6000, 5000, 17000, 19000, 21000, 23000, 24000,
+    25000, 26000, 27000, 28000, 29000,
+    12000, 14000, 16000, 18000, 20000,
+    22000, 24000, 26000, 28000, 30000,
+    32000, 34000, 36000, 38000, 40000,
+    42000, 44000, 46000, 48000, 50000,
+    52000, 54000, 56000, 58000, 60000,
+    15000, 18000, 20000, 22000, 25000,
+    28000, 30000, 32000, 35000, 38000,
+    40000, 42000, 45000, 48000, 50000,
+    52000, 55000, 58000, 60000, 62000,
+    65000, 68000, 70000, 72000, 75000,
+    5000, 7000, 9000, 11000, 13000,
+    15000, 17000, 19000, 21000, 23000,
+    25000, 27000, 29000, 31000, 33000,
+    35000, 37000, 39000, 41000, 43000,
+    45000, 47000, 49000, 51000, 53000
+  ),
+  expected_malaria_cases_per_month = c(
+    42, 50, 33, 63, 38, 46, 58, 54, 29, 67,
+    75, 83, 92, 25, 21, 71, 79, 88, 96, 100,
+    104, 108, 113, 117, 121,
+    80, 93, 107, 120, 133,
+    147, 160, 173, 187, 200,
+    213, 227, 240, 253, 267,
+    280, 293, 307, 320, 333,
+    347, 360, 373, 387, 400,
+    175, 210, 233, 257, 292,
+    327, 350, 373, 408, 443,
+    467, 490, 525, 560, 583,
+    607, 642, 677, 700, 723,
+    758, 793, 817, 840, 875,
+    13, 18, 23, 28, 33,
+    38, 43, 48, 53, 58,
+    63, 68, 73, 78, 83,
+    88, 93, 98, 103, 108,
+    113, 118, 123, 128, 133
+  )
+)
+
+cost_per_hf <- 5000
+cost_per_sample <- 50
+cost_transport_north <- 1000
+cost_transport_south <- 1500
+cost_transport_east <- 2000
+cost_transport_west <- 800
+```
+
+## Your role
+As the statistician on the team, your job is to help your team make informed decisions on study design considerations, including:
+
+- Decide on the number of clusters (health facilities) to include.
+- Buffer for drop-out.
+- Determining the necessary sample size and power for primary and secondary endpoints.
+- Adjust for ICC. 
+
+## Available data
+In order to help you perform these critical calculations, we have pre-loaded all the fact sheets and data that your various team members have access to. 
+
+This includes: 
+
+- `epi`: data on malaria prevalence, incidence and test positivity rate
+- `health_facilities`: data on health facilities in each region, the population they serve, and expected malaria cases per month  
+- `cost_per_hf`: fixed cost per health facility enrolled (in USD), including training, equipment, and administrative expenses.
+- `cost_per_sample`: cost per sample enrolled (in USD), including collection, laboratory testing, consumables, and data management
+- `cost_transport_north`: transport cost per health facility (in USD) in the North region
+- `cost_transport_south`: transport cost per health facility (in USD) in the South region
+- `cost_transport_east`: transport cost per health facility (in USD) in the East region
+- `cost_transport_west`:  transport cost per health facility (in USD) in the West region
+
+### Exercise 
+
+*You can use the below R code box to perform your calculations*
+
+```{r code-box, exercise=TRUE}
+
+```

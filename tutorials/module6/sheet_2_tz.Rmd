@@ -1,0 +1,86 @@
+---
+title: 'Fact sheet: Health facility coordinator'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DT)
+```
+
+## Your role
+As the health facility coordinator on the team, your job is to help your team make informed decisions on the target health facilities (cluster) and study design considerations, including: 
+
+- Select appropriate regions and health facilities.
+- Decide on the number of clusters (health facilities) to include.
+- Planning for the time it will take to enrol the total number of malaria-positive patients in each location.
+
+Navigate back to the [group activity instructions](module6_scenarios.Rmd) if you need to!
+
+**Health facility information**
+
+*Use the buttons to download as .csv or .xls if you prefer*
+```{r echo=F}
+health_facilities <- data.frame(
+  region = c(
+    rep("North Region", 25),
+    rep("South Region", 25),
+    rep("East Region", 25),
+    rep("West Region", 25)
+  ),
+  health_facility = c(
+    paste0("HF", 1:100)
+  ),
+  population_served = c(
+    10000, 12000, 8000, 15000, 9000, 11000, 14000, 13000, 7000, 16000,
+    18000, 20000, 22000, 6000, 5000, 17000, 19000, 21000, 23000, 24000,
+    25000, 26000, 27000, 28000, 29000,
+    12000, 14000, 16000, 18000, 20000,
+    22000, 24000, 26000, 28000, 30000,
+    32000, 34000, 36000, 38000, 40000,
+    42000, 44000, 46000, 48000, 50000,
+    52000, 54000, 56000, 58000, 60000,
+    15000, 18000, 20000, 22000, 25000,
+    28000, 30000, 32000, 35000, 38000,
+    40000, 42000, 45000, 48000, 50000,
+    52000, 55000, 58000, 60000, 62000,
+    65000, 68000, 70000, 72000, 75000,
+    5000, 7000, 9000, 11000, 13000,
+    15000, 17000, 19000, 21000, 23000,
+    25000, 27000, 29000, 31000, 33000,
+    35000, 37000, 39000, 41000, 43000,
+    45000, 47000, 49000, 51000, 53000
+  ),
+  expected_malaria_cases_per_month = c(
+    42, 50, 33, 63, 38, 46, 58, 54, 29, 67,
+    75, 83, 92, 25, 21, 71, 79, 88, 96, 100,
+    104, 108, 113, 117, 121,
+    80, 93, 107, 120, 133,
+    147, 160, 173, 187, 200,
+    213, 227, 240, 253, 267,
+    280, 293, 307, 320, 333,
+    347, 360, 373, 387, 400,
+    175, 210, 233, 257, 292,
+    327, 350, 373, 408, 443,
+    467, 490, 525, 560, 583,
+    607, 642, 677, 700, 723,
+    758, 793, 817, 840, 875,
+    13, 18, 23, 28, 33,
+    38, 43, 48, 53, 58,
+    63, 68, 73, 78, 83,
+    88, 93, 98, 103, 108,
+    113, 118, 123, 128, 133
+  )
+)
+
+# Render the datatable without the search bar
+datatable(
+  health_facilities,
+  extensions = 'Buttons',
+  options = list(
+    dom = 'Bfrtip',
+    buttons = c('csv', 'excel')
+  ),
+  rownames = FALSE
+)
+```
