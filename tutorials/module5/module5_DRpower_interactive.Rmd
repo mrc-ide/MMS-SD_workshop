@@ -61,7 +61,7 @@ You should see a sample size table with the number of sites (health facilities) 
 
 ![](images/explore_page.png){width="100%"}
 
-In any power analysis, we must begin by assuming a known effect size under the alternative hypothesis. For this study, that means selecting an assumed prevalence of *pfhrp2/3* deletions in the population. This assumption can be challenging and may feel somewhat arbitrary. It’s important to remember that as the assumed prevalence approaches the 5% detection threshold, the required sample size increases significantly. Conversely, assuming a very high prevalence may reduce the public health relevance of the study by focusing power on detecting only large shifts in the parasite population—changes that could already be affecting clinical diagnosis.
+In any power analysis, we must begin by assuming a known effect size under the alternative hypothesis. For this study, that means selecting an assumed prevalence of *pfhrp2/3* deletions in the population. This assumption can be challenging and may feel somewhat arbitrary. It’s important to remember that as the assumed prevalence decreases towards 5% detection threshold, the required sample size increases significantly. Conversely, assuming a very high prevalence may reduce the public health relevance of the study by focusing power on detecting only large shifts in the parasite population—changes that could already be affecting clinical diagnosis.
 
 To balance these factors, we recommend a default assumed prevalence of 10% (highlighted in purple). This value provides a reasonable sensitivity level while keeping sample sizes manageable. For more insights on selecting this parameter, refer to the [FAQ section](https://shiny.dide.ic.ac.uk/DRpower-app/) in the web-based *pfhrp2/3* Planner.
 
@@ -120,7 +120,7 @@ Some advantages of sentinel site surveillance include:
 
 - **Cost-Effectiveness and Established Infrastructure:** Sentinel sites are often strategically chosen for accessibility and logistical ease, making them more cost-effective than random site selection, which may require travel to remote or difficult-to-reach locations. Additionally, these sites usually have established infrastructure, trained personnel, and local relationships, streamlining data collection and improving data quality.
 
-- **Targeting High-Burden or Priority Areas:** Sentinel sites are often selected based on epidemiological significance, such as higher disease burden or strategic relevance for outbreak monitoring. This targeted approach can be advantageous in understanding and responding to disease patterns in high-risk areas, which might be overlooked in a random selection approach.
+- **Targeting High-Burden or Priority Areas:** Sentinel sites are often selected based on epidemiological significance, such as higher disease burden or strategic relevance for outbreak monitoring. This targeted approach can be advantageous in understanding and responding to disease patterns in high-risk areas, which might be overlooked in a random selection approach. In addition, numbers of positive tests are easier to obtain. 
 
 On the other hand, there are some advantages of random site selection:
 
@@ -130,10 +130,10 @@ On the other hand, there are some advantages of random site selection:
 
 ```{r quiz-design}
 quiz(caption = "QUIZ - Study design",
-  question_checkbox("Which of these designs would you choose for this study?",
+  question_radio("Which of these designs would you choose for this study?",
            allow_retry = TRUE,
-           answer("Sentinel site surveillance ", correct = TRUE),
-           answer("Random sampling", correct = TRUE)
+           answer("Sentinel site surveillance ", correct = TRUE, message = "Actually, both are correct answers depending on your study."),
+           answer("Random sampling", correct = TRUE, message = "Actually, both are correct answers depending on your study.")
   )
 )
 ```
@@ -168,7 +168,9 @@ kable(df2, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
 
 But now we are faced with a problem - how do we know if this new design still has adequate power? We can no longer rely on sample size tables, which assume the same sample size per cluster. On the other hand, we cannot simply *assume* that power will be adequate. This is where the [Design tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner becomes useful.
 
-Download a .csv file with the current study plan [from here](https://raw.githubusercontent.com/mrc-ide/MMS-SD_workshop/refs/heads/main/tutorials/module5/data/pfhrp2_design.csv). You can then upload this spreadsheet into the we app using the "Upload a .csv file" option. You should find that the table populates with these values.
+Download a .csv file with the current study plan [from here](https://drive.google.com/file/d/1MAx7geMGMOMCEaZ7dqSgQcsQ1H6-6X_l/view?usp=share_link). 
+
+You can then upload this spreadsheet into the we app using the "Upload a .csv file" option. You should find that the table populates with these values.
 
 ![](images/design_upload.png){width="100%"}
 
@@ -207,7 +209,9 @@ kable(df3, "html", col.names = c("Site name", "pfhrp2 negative", "Sample size"),
   footnote(general = "\nTable 3: results of the pfhrp2/3 study", general_title = "")
 ```
 
-You can download these results in .csv form [here](https://github.com/mrc-ide/MMS-SD_workshop/blob/main/tutorials/module5/data/pfhrp2_results.csv). The easiest way to analyse these data is via the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner. Select "Upload a .csv file" and import the data.
+You can download these results in .csv form [here](https://drive.google.com/file/d/1nWTYNZ6_955jFbXosRC3kL8pUFX9ehDu/view?usp=share_link). 
+
+The easiest way to analyse these data is via the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner. Select "Upload a .csv file" and import the data.
 
 ![](images/analysis_upload.png){width="100%"}
 
@@ -257,20 +261,27 @@ Our *pfhrp2/3* analysis is now complete. We began with a well-powered study desi
 
 The **DRpower** R package is primarily designed with *pfhrp2/3* studies in mind, but also contains some functions that are useful for other multi-cluster designs. For example, it can be used when estimating prevalence to within a specified margin of error, or when detecting the presence of rare variants, while taking into account intra-cluster correlation. These features are only present in the R package, and are not present on the web-based *pfhrp2/3* Planner.
 
-The following R code calculates the sample size needed for a multi-cluster prevalence survey to reach a target margin of error. Try varying the value of the ICC and see how this impacts sample size.
+The following R code calculates the sample size needed for each cluster for a multi-cluster prevalence survey to reach a target margin of error. Try varying the value of the ICC and see how this impacts sample size.
 
 ```{r moe-calc, exercise = TRUE}
 # calculate sample size needed to achieve a target MOE
 DRpower::get_sample_size_margin(MOE = 0.1, n_clust = 10, prevalence = 0.2, ICC = 0.01)
 ```
 
-The result you obtain is the sample size needed per cluster to achieve your target MOE using the Wald interval.
+The result you obtain is the sample size needed per cluster to achieve your target MOE using the Wald confidence interval (CI).
 
-Until now, we have focused on using the Wald interval to construct a 95% confidence interval (CI). Although the Wald interval is straightforward to calculate, it relies on assumptions that may not always hold. For instance, with a small sample size or when prevalence is near 0 or 1, the Wald interval can extend beyond logical boundaries, producing values below 0 or above 1. Such results are nonsensical and indicate that the interval may not accurately represent the underlying data.
+Until now, we have focused on using the Wald interval to construct a 95% CI. Although the Wald interval is straightforward to calculate, it relies on assumptions that may not always hold. For instance, with a small sample size or when prevalence is near 0 or 1, the Wald interval can extend beyond logical boundaries, producing prevalence values below 0 or above 1. Such results are nonsensical and indicate that the confidence interval may not accurately represent the underlying data.
 
-An alternative approach is to use the Clopper-Pearson (CP) interval. Unlike the Wald interval, the CP interval remains within the 0 to 1 range, making it more statistically robust. However, this robustness comes with a trade-off: the CP interval tends to be conservative, resulting in wider intervals.
+An alternative approach is to use the Clopper-Pearson (CP) interval. Unlike the Wald interval, the CP interval always remains within the 0 to 1 range, making it more statistically robust. However, this robustness comes with a trade-off: the CP interval tends to be conservative, resulting in wider intervals.
 
 Play around with the following R code, which still aims to reach a target margin of error but now assuming CP intervals. 
+
+```{r moe-cp, exercise = TRUE}
+# calculate sample size needed to achieve a target MOE using CP intervals
+DRpower::get_sample_size_margin_CP(MOE = 0.1, n_clust = 10, prevalence = 0.2, ICC = 0.01)
+```
+
+The result you obtain is the sample size needed per cluster to achieve your target MOE using the CP interval.
 
 <div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
   <span style="font-size: 1.2em; color: #d19554;">
@@ -281,17 +292,16 @@ Play around with the following R code, which still aims to reach a target margin
   What do you notice about the sample size compared to the simple Wald interval approach?
   </span>
 </div>
-
-```{r moe-cp, exercise = TRUE}
-# calculate sample size needed to achieve a target MOE using CP intervals
-DRpower::get_sample_size_margin_CP(MOE = 0.1, n_clust = 10, prevalence = 0.2, ICC = 0.01)
-```
-
-The result you obtain is the sample size needed per cluster to achieve your target MOE using the CP interval.
+<br>
 
 Finally, we may want to look for the presence of rare variants in a multi-cluster design while accounting for intra-cluster correlation.
 
 Play around with the following code. 
+
+```{r cluster-sizes, exercise = TRUE}
+# calculate sample size needed in a multi-cluster presence/absence study
+DRpower::get_sample_size_presence(n_clust = 5, prevalence = 0.05, ICC = 0.05)
+```
 
 <div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
   <span style="font-size: 1.2em; color: #d19554;">
@@ -302,10 +312,5 @@ Play around with the following code.
   What total sample size would you need if you assume 10 clusters, 1% prevalence of the variant of interest, and an ICC of 0.05? How would this compare to the total sample size if you treated all sites as independent?
   </span>
 </div>
-
-```{r cluster-sizes, exercise = TRUE}
-# calculate sample size needed in a multi-cluster presence/absence study
-DRpower::get_sample_size_presence(n_clust = 5, prevalence = 0.05, ICC = 0.05)
-```
-
+<br>
 The result you obtain is the sample size needed per cluster to detect the presence of rare variants at 1% prevalence.

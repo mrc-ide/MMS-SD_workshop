@@ -70,10 +70,10 @@ health_facilities <- data.frame(
 
 cost_per_hf <- 5000
 cost_per_sample <- 55
-cost_transport_north <- 1000
-cost_transport_south <- 1500
-cost_transport_east <- 2500
-cost_transport_west <- 800
+cost_transport_coast <- 1000
+cost_transport_highland <- 1500
+cost_transport_forest <- 2500
+cost_transport_urban <- 800
 ```
 
 ## Your role
@@ -93,10 +93,10 @@ This includes:
 - `health_facilities`: data on health facilities in each region, the population they serve, and expected malaria cases per month  
 - `cost_per_hf`: fixed cost per health facility enrolled (in USD), including training, equipment, and administrative expenses.
 - `cost_per_sample`: cost per sample enrolled (in USD), including collection, laboratory testing, consumables, and data management
-- `cost_transport_north`: transport cost per health facility (in USD) in the North region
-- `cost_transport_south`: transport cost per health facility (in USD) in the South region
-- `cost_transport_east`: transport cost per health facility (in USD) in the East region
-- `cost_transport_west`:  transport cost per health facility (in USD) in the West region
+- `cost_transport_coast`: transport cost per health facility (in USD) in the Coastal region
+- `cost_transport_highland`: transport cost per health facility (in USD) in the Highland region
+- `cost_transport_forest`: transport cost per health facility (in USD) in the Forest region
+- `cost_transport_urban`:  transport cost per health facility (in USD) in the Urban region
 
 ### Exercise 
 
