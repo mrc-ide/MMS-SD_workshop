@@ -1,0 +1,30 @@
+---
+title: "Scenario 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(fontawesome)
+```
+
+## Background
+
+You have been recruited by the National Malaria Control Programme (NMCP) of Tanzania to assist with study design. The NMCP is concerned about the potential spread of mutations that affect the performance of HRP2-based rapid diagnostic tests (RDTs). *pfhrp2* deletions can cause false-negative results in HRP2-based RDTs. In the last few weeks, there have been anecdotal reports of RDT failures in border towns, particularly in the South Region. Additionally, there are concerns about the emergence of artemisinin resistance due to *pfk13* mutations, as neighboring countries have reported detection of these mutations. Confirming whether these rare mutations are present in Tanzania is a priority for the NMCP. The NMCP plans to conduct a cross-sectional study to estimate the prevalence of *pfhrp2* deletions and detect *pfk13* mutations. The NMCP are also interested to know the prevalence of other drug resistance mutations, such as *pfdhps*, *pfdhfr* and *pfcrt* mutations so these are secondary outcomes of interest.  
+
+## Your task
+The NMCP has a **budget of USD 500,000**. There are four regions in Tanzania (North, South, East and West) each with 25 health facilities. From previous studies conducted by the NMCP, we know that the **intra-cluster correlation is 0.1**. Your job is to design a study powered for the following end-points: 
+
+- **Primary endpoints**
+  - Estimate the prevalence of *pfhrp2* deletions causing false-negative RDTs
+  - Detect *pfk13* mutations associated with artemisinin resistance.
+
+- **Secondary endpoint**
+  - Estimate the prevalence of *pfdhps*, *pfdhfr* and *pfcrt* mutations.
+
+Each team member has key information on the epidemiological context, health facilities in each region, costing and sample size considerations (ICC, etc). Click on your role to access this information. Work in parellel (but together) to develop your study design! 
+
+- [`r fa("chart-line")` **Epidemiologist**](sheet_1_tz.Rmd): Provide insights on disease prevalence and high-risk areas. 
+- [`r fa("hospital")` **Health Facility Coordinator**](sheet_2_tz.Rmd): Offer logistical information about facilities.
+- [`r fa("circle-dollar-to-slot")` **Budget Officer**](sheet_3_tz.Rmd): Manage financial aspects and calculate costs.
+- [`r fa("calculator")` **Statistician**](https://mms-sdworkshop.shinyapps.io/module6_coding1/) (1-2 people): Handle sample size calculations and adjust for ICC.
