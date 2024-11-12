@@ -347,7 +347,7 @@
     "href": "lectures.html#list-of-all-the-lectures-pdfs",
     "title": "Lectures",
     "section": "List of all the lectures (PDFs)",
-    "text": "List of all the lectures (PDFs)\n\nIntro lecture: Goal of malaria molecular surveillance (MMS)\nLecture 1: Sampling from a population\nLecture 2: Sample size calculations based on margin of error"
+    "text": "List of all the lectures (PDFs)\n\nIntro lecture: Goal of malaria molecular surveillance (MMS)\nLecture 1: Sampling from a population\nLecture 2: Sample size calculations based on margin of error\nLecture 3: Hypothesis testing and power\nLecture 4: Intra-cluster correlation\nLecture 5: The DRpower tool\nLecture 6: Designing studies for multiple end-points"
   },
   {
     "objectID": "index.html#workshop-format",
