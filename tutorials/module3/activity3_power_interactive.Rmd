@@ -25,7 +25,7 @@ tutorial_options(exercise.timelimit = 120)
 
 Welcome to Activity 3: **Hypothesis Testing and Power**
 
-In this activity, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender, or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely is it that our study design will detect it? Statistical power is the mathematical way to calculate how likely we are to detect this real effect. We’ll explore these concepts using two examples: comparing drug resistance prevalence between two time points and detecting rare genetic variants
+In this activity, we introduce the concept of statistical power and demonstrate its connection to null hypothesis testing. In many studies within malaria molecular surveillance, we aim to test specific hypotheses. For instance: Has the prevalence of drug resistance mutations increased over the past five years? Are certain genetic variants linked to gender, or occupation? Does treatment efficacy vary based on genetic markers? Each of these questions can be framed as a null hypothesis test. This leads us to a crucial question: given that a real effect exists, how likely are we to detect it? Statistical power is the mathematical way to calculate how likely we are to detect this real effect. We’ll explore these concepts using two examples: comparing drug resistance prevalence against a known value and detecting rare genetic variants
 
 
 ### Learning Outcomes
@@ -114,7 +114,7 @@ Well done on completing this quiz! We will now put some of these ideas into prac
 
 You are a local health minister working in the Gombe region of Nigeria. You are concerned that the prevalence of antimalarial resistance may be increasing in Gombe city, the capital of Gombe state. A study conducted three years ago found that the prevalence of *pfmdr1* N86Y mutations was 15%. You plan to conduct a new study to establish if there has been a significant change in the prevalence of N86Y mutations over this time.
 
-We will take the previous estimate of 15% prevalence three years ago to be exact. Because we are comparing a sample against a known value, the appropriate statistical test is the one-sample z-test for proportions.
+To simplify our analysis, we will take the previous estimate of 15% prevalence three years ago to be exact. This means we are comparing a sample against a known value, in which case the appropriate statistical test is the one-sample z-test for proportions.
 
 ```{r ztest-quiz}
 quiz(caption = "",
@@ -130,50 +130,50 @@ quiz(caption = "",
 )
 ```
 
-We will denote the prevalence three years ago by $p_0 = 0.15$. For our power analysis, we need to assume a known prevalence in the present day, which we will denote $p_1$. We will be pessimistic and assume that the prevalence has doubled over the three year period, meaning $p_1=0.30$. Our initial plan is to use a sample size of $N=150$.
+We will denote the prevalence three years ago by $p_0 = 0.15$. For our power analysis, we need to assume a known prevalence in the present day, which we will denote $p$. We will be pessimistic and assume that the prevalence has doubled over the three year period, meaning $p=0.30$. Our initial plan is to use a sample size of $n=150$.
 
 Given these values, we can calculate the *expected value* for our test statistic using the following formula:
 $$
-y = \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}}
+E[Z] = \frac{|p - p_0|}{\sqrt{\frac{p(1-p)}{n}}}
 $$
-The vertical lines around $|p_1 - p_0|$ mean we should take the *absolute value* of the difference. This ensures that $y$ is always positive.
+The vertical lines around $|p - p_0|$ mean we should take the *absolute value* of the difference. This ensures that $E[Z]$ is always positive.
 
-Complete the following R code to calculate the value of $y$:
+Complete the following R code to calculate the value of $E[Z]$:
 
 ```{r ztest-1, exercise=TRUE}
 # input parameters
 p0 <- 
-p1 <- 
-N <- 
+p <- 
+n <- 
 
 # calculate absolute value of difference in prevalence
-p_diff <- abs(p1 - p0)
+p_diff <- abs(p - p0)
 
 # calculate the standard error
-SE <- sqrt(p1*(1 - p1) / N)
+SE <- sqrt(p*(1 - p) / n)
 
 # calculate the expected value of the statistic
-y <- 
+E_Z <- 
 
-print(y)
+print(E_Z)
 ```
 
 ```{r ztest-1-solution}
 # input parameters
 p0 <- 0.15
-p1 <- 0.3
-N <- 150
+p <- 0.3
+n <- 150
 
 # calculate absolute value of difference in prevalence
-p_diff <- abs(p1 - p0)
+p_diff <- abs(p - p0)
 
 # calculate the standard error
-SE <- sqrt(p1*(1 - p1) / N)
+SE <- sqrt(p*(1 - p) / n)
 
 # calculate the expected value of the statistic
-y <- p_diff / SE
+E_Z <- p_diff / SE
 
-print(y)
+print(E_Z)
 ```
 
 <details>
@@ -181,42 +181,42 @@ print(y)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-You should find that $y = 4.01$.
+You should find that $E[Z}] = 4.01$.
 
 </details>
 </br>
 
-This means that *on average* we should expect our test statistic to equal $4.01$ if the alternative hypothesis is true. The actual value that we observe would be expected to vary around this value.
+This means that *on average* we should expect our test statistic to equal $4.01$, assuming the alternative hypothesis is true. The actual value that we observe will vary around this value.
 
-We can use $y$ to tell us our power. The formula for power under the z-test is:
+We can use $E[Z]$ to tell us our power. The formula for power under the z-test is:
 
 $$
-\text{Power} = 1 - \phi(z_{1-\alpha/2} - y)
+\text{Power} = 1 - \phi(z_{1-\alpha/2} - E[Z])
 $$
 
 In this formula, $\phi(x)$ refers to the area under the curve of a standard normal distribution up to the point $x$. There is no simple way of calculating this value, but we can obtain it easily in R using the `pnorm()` function. As in previous activities, the value $z_{1 - \alpha/2}$ refers to the critical value of the normal distribution at a significance level $\alpha$ (two-tailed), which is approximately equal to 1.96.
 
-Complete the following R code to calculate the power under the planned study design:
+Complete the following R code to calculate the power under the planned study design. You still have access to the variable `E_Z` from before in this code chunk:
 
 ```{r ztest-2-params}
 p0 <- 0.15
-p1 <- 0.3
-N <- 150
-y <- abs(p1 - p0) / sqrt(p1*(1 - p1) / N)
+p <- 0.3
+n <- 150
+E_Z <- abs(p - p0) / sqrt(p*(1 - p) / n)
 ```
 
 ```{r ztest-2, exercise=TRUE, exercise.setup = "ztest-2-params"}
-# calculate power using the known value of y
-z <- 1.96
+# calculate power using the known value of E_Z
+z_alpha <- 1.96
 power <- # hint, you will need to use the pnorm() function here
 
 print(power)
 ```
 
 ```{r ztest-2-solution}
-# calculate power using the known value of y
-z <- 1.96
-power <- 1 - pnorm(z - y)
+# calculate power using the known value of E_Z
+z_alpha <- 1.96
+power <- 1 - pnorm(z_alpha - E_Z)
 
 print(power)
 ```
@@ -264,7 +264,7 @@ data.frame(p0 = 0.15,
   geom_line(aes(x = N, y = pow)) +
   scale_x_continuous(limits = c(10, 150), breaks = seq(0, 150, 10), expand = c(0, 0)) +
   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2), expand = c(0, 0)) +
-  xlab("Sample size (N)") + ylab("Power")
+  xlab("Sample size (n)") + ylab("Power")
 ```
 
 ```{r power-curve-quiz}
@@ -296,8 +296,8 @@ expand_grid(p0 = 0.15,
   geom_line(aes(x = N, y = pow, col = p1_percent, group = p1_percent)) +
   scale_x_continuous(limits = c(10, 150), breaks = seq(0, 150, 10), expand = c(0, 0)) +
   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2), expand = c(0, 0)) +
-  labs(color = "Present day\nprevalence") +
-  xlab("Sample size (N)") + ylab("Power")
+  labs(color = "Present day\nprevalence (p)") +
+  xlab("Sample size (n)") + ylab("Power")
 ```
 
 Even a slight change in our assumption about the prevalence of N86Y mutations has a large effect on power. If we assumed present-day prevalence was 25% rather than 30% then we would need twice as many samples to achieve 80% power. This analysis was useful for exploring the exact relationship between sample size and power. However, it can be fiddly to read values off the power curve to find the exact point at which it crosses the 80% threshold. This is where sample size formulae and sample size tables come in handy. 
@@ -306,27 +306,27 @@ Even a slight change in our assumption about the prevalence of N86Y mutations ha
 
 Recall that power under the one-sample z-test for proportions was given by
 $$
-\text{Power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p_1 - p_0|}{\sqrt{\frac{p_1(1-p_1)}{N}}} \right)
+\text{Power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - p_0|}{\sqrt{\frac{p(1 - p)}{n}}} \right)
 $$
-Recall that in an earlier module we rearranged the formula for the Wald confidence interval to arrive at a new formula in terms of the sample size $N$. Here, we want to do exactly the same thing, just with a more complicated formula! We won't walk through the steps of this derivation, but take my word for it that this can be rearranged to produce:
+In an earlier module we rearranged the formula for the Wald confidence interval to arrive at a new formula in terms of the sample size $n$. Here, we want to do exactly the same thing, just with a more complicated formula! We won't walk through the steps of this derivation, but take my word for it that this can be rearranged to produce:
 $$
-N = (z_{1 - \alpha/2} + z_{1 - \beta})^2\frac{p_1(1 - p_1)}{(p_1 - p_0)^2}
+n = (z_{1 - \alpha/2} + z_{1 - \beta})^2\frac{p(1 - p)}{(p - p_0)^2}
 $$
-The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is one minus our power (typically $\beta = 0.2$ because minimum power is usually 0.8).
+The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is one minus our power. Typically $\beta = 0.2$ because target power is usually 0.8.
 
-The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p1` and see what happens to the minimum sample size. Do you obtain the value $N=74$ when $p_1=0.3$, like we found from the power curve? Remember that you should always round sample sizes *up* if they are non-integers. What happens to the sample size as `p1` gets closer to 15%?
+The following R code implements this sample size formula. Have a play around with this code. Try changing the value of `p` and see what happens to the minimum sample size. Do you obtain the value $n=74$ when $p=0.3$, like we found from the power curve? Remember that you should always round sample sizes *up* if they are non-integers. What happens to the sample size as `p` gets closer to the 15% threshold?
 
 ```{r ztest-ss-2, exercise=TRUE}
 # define our assumed values
 p0 <- 0.15
-p1 <- 0.30
+p <- 0.30
 
 # define the two z parameters
 z_alpha <- 1.96
 z_beta <- qnorm(0.8)
 
 # calculate the minimum sample size
-(z_alpha + z_beta)^2 * p1*(1 - p1) / (p1 - p0)^2
+(z_alpha + z_beta)^2 * p*(1 - p) / (p - p0)^2
 ```
 
 One of the nice things about sample size formulae is that we can use them to produce tables of minimum sample sizes. **Table 1** shows the minimum sample size required to achieve 80% power under different assumptions about the prevalence of N86Y mutations:
@@ -360,17 +360,17 @@ This allows us to scan across values and work out what is reasonable, and also w
 
 ## Detecting rare variants
 
-Building on the success of your N86Y study in Gombe city, you have been invited to conduct a new investigation focused on identifying *pfk13* mutations in the nearby town of Pindiga. This study will target WHO validated mutations that are known to be associated with partial resistance to artemisinin. Instead of estimating the *prevalence* of these mutations, your goal is simply to determine whether any of these mutations are *present* in the population.
+Building on the success of your N86Y study in Gombe city, you have been invited to conduct a new study focused on identifying *pfk13* mutations in the nearby town of Pindiga. This study will target WHO validated mutations that are known to be associated with partial resistance to artemisinin. Instead of estimating the *prevalence* of these mutations, your goal is simply to determine whether any of these mutations are *present* in the population.
 
-Your will test individuals who present with malaria symptoms at a local health facility. For those who test positive for malaria, dried blood spots will be collected and subsequently sent for sequencing. However, due to limited resources, you are only able to sequence 100 samples.
+You will test individuals who present with malaria symptoms at a local health facility. For those who test positive for malaria, dried blood spots will be collected and subsequently sent for sequencing. However, due to limited resources, you are only able to sequence 100 samples.
 
 The key question, then, is: **with a sample size of only 100, is it worthwhile to pursue this study?**
 
 ### Framing the problem as a hypothesis test
 
-This type of detection study can be framed as a hypothesis test. The null hypothesis is that *there are no WHO-validated mutations present in the population*. In other words, the prevalence of these mutations is zero. Even a single observation of a mutant would disprove this null hypothesis. Therefore, unlike most statistical tests, there is no test statistic to calculate. Instead, we simply reject the null hypothesis if we see a single WHO-validated mutant.
+This type of detection study can be framed as a null hypothesis test. The null hypothesis is that *there are no WHO-validated mutations present in the population*. In other words, the prevalence of these mutations is zero. Even a single observation of a WHO-validated mutant would disprove this null hypothesis. Therefore, unlike most statistical tests, there is no test statistic to calculate here. Instead, we simply reject the null hypothesis if we see a single sample containing a WHO-validated mutant.
 
-It is straightforward to calculate power under this test. We start by assuming a known prevalence, $p$, for the validated mutations. $p$ is zero under the null hypothesis, and $p$ must be greater than 0 under the alternative hypothesis. We will use $N$ to denote the sample size. We can derive the power by following these steps:
+It is straightforward to calculate power under this test. We start by assuming a known prevalence, $p$, for the validated mutations. We can derive the power by following these steps:
 
 **Step 1: Chance of a single negative result:**
 
@@ -388,20 +388,20 @@ $$
 \end{align}
 $$
 
-**Step 3: Chance of $N$ negative results:**
+**Step 3: Chance of $n$ negative results:**
 
-The probability that all $N$ samples are negative is the probability of one negative sample raised to the power $N$:
+The probability that all $n$ samples are negative is the probability of one negative sample raised to the power $n$:
 $$
-\text{Pr}(N \text{ negatives}) = (1 - p)^N
+\text{Pr}(n \text{ negatives}) = (1 - p)^n
 $$
-This is like saying what is the probability we observe a negative outcome $N$ times. It assumes that samples are drawn independently from a much larger population.
+This is like saying what is the probability we observe a negative outcome $n$ times. It assumes that samples are drawn independently from a much larger population.
 
 **Step 4: Chance of at least one positive result:**
 
 The chance of seeing at least one positive sample is equal to one minus the probability of seeing no positive samples. If we see a positive sample then we reject the null hypothesis. Hence, this is also our power:
 
 $$
-\text{Power} = 1 - (1 - p)^N
+\text{Power} = 1 - (1 - p)^n
 $$
 This very simple expression can be used to guide our study design.
 
@@ -410,7 +410,7 @@ Complete the following R code to implement this formula. What is our power if we
 ```{r detection-1, exercise=TRUE}
 # define parameters
 p <- 
-N <- 
+n <- 
 
 # calculate power
 power <- 
@@ -421,10 +421,10 @@ print(power)
 ```{r detection-1-solution}
 # define parameters
 p <- 0.05
-N <- 100
+n <- 100
 
 # calculate power
-power <- 1 - (1 - p)^N
+power <- 1 - (1 - p)^n
 
 print(power)
 ```
@@ -439,9 +439,9 @@ You should find that $\text{Power} = 0.994$ if we assume a prevalence of $p = 0.
 </details>
 </br>
 
-Based on this result, we are over-powered to detect *pfk13* mutants, meaning we can reduce the sample size. So, how many samples are needed? Rearranging our power formula to be in terms of $N$ we obtain:
+Based on this result, we are over-powered to detect *pfk13* mutants, meaning we can reduce the sample size. So, how many samples are needed? Rearranging our power formula to be in terms of $n$ we obtain:
 $$
-N = \frac{\text{log}(1 - \text{Power})}{\text{log}(1 - p)}
+n = \frac{\text{log}(1 - \text{Power})}{\text{log}(1 - p)}
 $$
 
 Complete the following R code to implement this sample size formula. What minimum sample size is needed if we assume a prevalence of 5% and we are aiming for 80% power?
@@ -451,9 +451,9 @@ Complete the following R code to implement this sample size formula. What minimu
 p <- 
 
 # calculate minimum sample size
-N <- 
+n <- 
 
-print(N)
+print(n)
 ```
 
 ```{r detection-2-solution}
@@ -461,9 +461,9 @@ print(N)
 p <- 0.05
 
 # calculate minimum sample size
-N <- log(1 - 0.8) / log(1 - p)
+n <- log(1 - 0.8) / log(1 - p)
 
-print(N)
+print(n)
 ```
 
 <details>
@@ -471,7 +471,7 @@ print(N)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-You should find that $N = 31.38$, which would be rounded up to $N = 32$.
+You should find that $n = 31.38$, which would be rounded up to $n = 32$.
 
 </details>
 </br>
