@@ -18,7 +18,7 @@ Over the course of 1.5 days (see [Schedule](schedule.qmd)) we will have a combin
 - Guest lectures from experts conducting MMS studies
 
 ## Materials
-All of the materials were developed by Bob Verity and Shazia Ruybal-Pesántez and are freely available under the [MIT license](https://opensource.org/license/mit). This website is produced from a [Github repository](github.com/mrc-ide/MMS-SD_workshop).
+All of the materials were developed by Bob Verity and Shazia Ruybal-Pesántez and are freely available under the [MIT license](https://opensource.org/license/mit). This website is produced from a [Github repository](https://github.com/mrc-ide/MMS-SD_workshop).
 
 ## Acknowledgments and funding
 Funding for this workshop was provided by the Gates Foundation. 

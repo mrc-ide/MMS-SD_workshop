@@ -12,16 +12,16 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | Time          | Title                                                       | Format                |
 |---------------|-------------------------------------------------------------|-----------------------|
 | 12:00-12:30   | Lunch                                                       | In meeting room       |
-| 12:30-1:00    | Intro: Goal of MMS                                       | Lecture               |
+| 12:30-1:00    | Intro: Goal of Malaria Molecular Surveillance (MMS)                                       | [Lecture](slides/L0-intro.pdf)               |
 | 1:00-1:45     | Introductions                                               |                       |
-| 1:45-2:15     | Module 1: Sampling from a population                        | Lecture               |
-| 2:15-3:00     | Module 1: Practical                                         | [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)       |
+| 1:45-2:15     | Module 1: Sampling from a population                        | [Lecture](slides/L1-sampling.pdf)               |
+| 2:15-3:00     | Module 1: Activity                                         | [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)       |
 | 3:00-3:30     | Break                                                |        |
-| 3:30-4:00     | Module 2: Sample size based on precision                    | Lecture       |
-| 4:00-4:45     | Module 2: Practical                                           |  [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module2_MOE_interactive/)                     |
+| 3:30-4:00     | Module 2: Sample size calculations based on precision                    | [Lecture](slides/L2-margin_of_error.pdf)       |
+| 4:00-4:45     | Module 2: Activity                                           |  [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/)                     |
 | 4:45:5:00     | Break               |                |
 | 5:00-6:00     | Discussion groups                                                | Structured discussion |
-| 6pm onwards   | Group dinner                                                      |                       |
+| 6:30pm onwards   | Group dinner                                                      |                       |
 
 ## Day 2
 
@@ -30,15 +30,18 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 8:30-9:00    | Breakfast                                                     | In meeting room       |
 | 9:00-9:05    | Recap of Day 1                                                |               |
 | 9:05-9:35    | Guest lecture: Logistics and challenges of designing a MMS study | Lecture          |
-| 9:35-10:05   | Module 3: Hypothesis testing, power and sample size calculation                      | Lecture              |
-| 10:05-10:50  | Module 3: Practical                                           |  LearnR tutorial      |
+| 9:35-10:05   | Module 3: Hypothesis testing and power                       | Lecture              |
+| 10:05-10:50  | Module 3: Activity                                          |  [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/)      |
 | 10:50-11:10  | Break                      |                |
 | 11:10-11:40  | Module 4: Intra-cluster correlation              | Lecture               |
-| 11:40-12:30  | Module 4: Practical                                           |   LearnR tutorial     |
+| 11:40-12:30  | Module 4: Activity                                           |   [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/)     |
 | 12:30-1:30   | Lunch                                                    |  |
-| 1:30-2:00    | Module 5: The DRpower tool                           | Lecture               |
-| 2:00-2:45    | Module 5: Practical                 | LearnR tutorial               |
+| 1:30-2:00    | Module 5: The DRpower tool                           | [Lecture](slides/L5-DRpower.pdf)               |
+| 2:00-2:45    | Module 5: Activity                 | [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module5_DRpower_interactive/)               |
 | 2:45-3:00    | Break                                                  |                       |
 | 3:00-3:15    | Module 6: Designing studies for multiple end-points           | Lecture               |
-| 3:15-4:45    | Module 6: Practical                                           | [Role play scenario](tutorials/module6/module6_scenarios.Rmd)              |
-| 4:45-5:30    | Discussion and wrap-up                                        |                       |
+| 3:15-4:45    | Module 6: Activity                                          | [Role play scenario](tutorials/module6/module6_scenarios.Rmd)              |
+| 4:45-5:00    | Short break                                        |                       |
+| 5:00-5:30    | Discussion                                        |                       |
+| 5:30-5:45    | Wrap-up                                        |                       |
+| 5:45-6:00    | Group photo and certificates                                       |                       |

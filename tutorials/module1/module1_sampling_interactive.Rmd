@@ -1,8 +1,9 @@
 ---
-title: "Module 1: Sampling from a population"
+title: "Activity 1: Sampling from a population"
 output:
   learnr::tutorial:
     progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -271,17 +272,6 @@ Let's take a look at the demographics of our sample by plotting the age and sex 
 
 Below we use the function `sampleFromPopulation()` and we specify what our sample size is and from where we want to sample (in our case from the census data). 
 
-<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
-  <span style="font-size: 1.2em; color: #d19554;">
-    <i class="fas fa-comment"></i> Reflection:
-  </span> 
-
-  <span style="color:#d19554;"> 
-  Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population?
-  </span>
-</div>
-
-<br>
 We can use the `plotAgeSexDistribution()` and `plotInfectedProportion()` functions to visualize our results. Click on "Run Code". 
 
 ```{r sampling-1, exercise=TRUE}
@@ -292,6 +282,16 @@ plotAgeSexDistribution(comparison)
 
 plotInfectedProportion(comparison)
 ```
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Do we see a similar age and sex distribution? What about the proportion of infected and not infected individuals in the population?
+  </span>
+</div>
 
 ### Sampling many times from the population 
 
@@ -462,7 +462,14 @@ As we saw above, we need to also calculate the 95% CI around our estimate.
 
 This is the **Wald confidence interval formula:**
 
-![](images/wald_formula.png){width="60%"}
+$$
+CI = \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+Where:
+
+- $\hat{p}$ = sample proportion
+- $\ z_{1 - \alpha/2}$ = Z-score corresponding to the desired confidence level (for 95%, Z = 1.96)
+- ${n}$ = sample size
 
 We are now going to go through this formula step-by-step!
 
@@ -512,7 +519,7 @@ SE
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 
 </summary>
-Our standard error is 0.336.
+Our standard error is 0.034.
 
 ##### 4. Calculating the confidence interval
 
@@ -599,6 +606,7 @@ You may remember from our exploration of the census data earlier, that **26.78%*
 ```{r quiz-ci-prev}
 quiz(caption = "QUIZ - 95% confidence interval",
      question("Is our true prevalence within the 95%CI of 27.9-41.1%?",
+              allow_retry = TRUE,
               answer("Yes", correct = F, message = "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%"),
               answer("No", correct = T, "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%. In the next exercise we are going to run some simulations to explore this further.")
      ))
@@ -644,6 +652,7 @@ quiz(
   caption = "QUIZ - Confidence Intervals and Simulation",
 
   question("In the context of confidence intervals, what does a 95% confidence level mean?",
+           allow_retry = TRUE,
     answer("It means that 95% of the time, the sample estimate will be equal to the true population parameter.", correct = FALSE),
     answer("It means that we are 95% confident that the true population parameter lies within the calculated confidence interval from our sample.", correct = TRUE),
     answer("It means that 95% of the data points lie within the confidence interval.", correct = FALSE),
@@ -653,6 +662,7 @@ quiz(
   ),
 
   question("After running the simulation of 1,000 samples, approximately how many of the confidence intervals would you expect to contain the true population prevalence?",
+           allow_retry = TRUE,
     answer("About 50 of them.", correct = FALSE),
     answer("About 950 of them.", correct = TRUE),
     answer("All 1,000 of them.", correct = FALSE),
@@ -662,6 +672,7 @@ quiz(
   ),
 
   question("If the true prevalence falls outside the confidence interval calculated from our sample, does it mean our sampling method is biased?",
+           allow_retry = TRUE,
     answer("Yes, because the confidence interval should always contain the true parameter.", correct = FALSE),
     answer("No, because even with a correct method, there's still a chance the confidence interval won't contain the true parameter.", correct = TRUE),
     answer("Yes, because our sample size was too small.", correct = FALSE),
@@ -690,16 +701,6 @@ After running the simulation, you should notice that the true prevalence falls w
 
 Let's repeat this exercise for a sample size of 500. Try coding it yourself from scratch using the functions that we used above. Click on the solution if you get stuck! 
 
-<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
-  <span style="font-size: 1.2em; color: #d19554;">
-    <i class="fas fa-comment"></i> Reflection:
-  </span> 
-
-  <span style="color:#d19554;"> 
-  Does the true prevalence (**26.78%**) fall within our 95% CI? What do you notice about the simulation results?
-  </span>
-</div>
-
 ```{r sampling-500, exercise=TRUE}
 sample_size <- 500
 ```
@@ -725,3 +726,13 @@ n_simulations <- 1000
 results <- replicate(n_simulations, simulate_CI(census, sample_size, true_prevalence))
 plotCISimulationResults(results, n_simulations)
 ```
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Does the true prevalence (**26.78%**) fall within our 95% CI? What do you notice about the simulation results?
+  </span>
+</div>

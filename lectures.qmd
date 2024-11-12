@@ -5,3 +5,11 @@ title: "Lectures"
 All of the materials from this workshop are freely available. We suggest you work through them in order (see the [Schedule](schedule.qmd) for the order in which materials were presented at the pre-ASTMH workshop).
 
 ## List of all the lectures (PDFs)
+
+- Intro lecture: [Goal of malaria molecular surveillance (MMS)](slides/L0-intro.pdf)
+- Lecture 1: [Sampling from a population](slides/L1-sampling.pdf)
+- Lecture 2: [Sample size calculations based on margin of error](slides/L2-margin_of_error.pdf)
+- Lecture 3: [Hypothesis testing and power]()
+- Lecture 4: [Intra-cluster correlation]()
+- Lecture 5: [The DRpower tool](slides/L5-DRpower.pdf)
+- Lecture 6: [Designing studies for multiple end-points]()
