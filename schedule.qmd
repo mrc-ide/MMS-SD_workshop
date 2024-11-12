@@ -30,10 +30,10 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 8:30-9:00    | Breakfast                                                     | In meeting room       |
 | 9:00-9:05    | Recap of Day 1                                                |               |
 | 9:05-9:35    | Guest lecture: Logistics and challenges of designing a MMS study | Lecture          |
-| 9:35-10:05   | Module 3: Hypothesis testing and power                       | Lecture              |
+| 9:35-10:05   | Module 3: Hypothesis testing and power                       | [Lecture](slides/L3-hypothesis_testing.pdf)              |
 | 10:05-10:50  | Module 3: Activity                                          |  [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/)      |
 | 10:50-11:10  | Break                      |                |
-| 11:10-11:40  | Module 4: Intra-cluster correlation              | Lecture               |
+| 11:10-11:40  | Module 4: Intra-cluster correlation              | [Lecture](slides/L4-multi_cluster.pdf)               |
 | 11:40-12:30  | Module 4: Activity                                           |   [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/)     |
 | 12:30-1:30   | Lunch                                                    |  |
 | 1:30-2:00    | Module 5: The DRpower tool                           | [Lecture](slides/L5-DRpower.pdf)               |
