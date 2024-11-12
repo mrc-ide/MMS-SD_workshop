@@ -12,4 +12,4 @@ All of the materials from this workshop are freely available. We suggest you wor
 - Lecture 3: [Hypothesis testing and power](slides/L3-hypothesis_testing.pdf)
 - Lecture 4: [Intra-cluster correlation](slides/L4-multi_cluster.pdf)
 - Lecture 5: [The DRpower tool](slides/L5-DRpower.pdf)
-- Lecture 6: [Designing studies for multiple end-points]()
+- Lecture 6: [Designing studies for multiple end-points](slides/L6-multiple_endpoints.pdf)

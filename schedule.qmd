@@ -39,7 +39,7 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 1:30-2:00    | Module 5: The DRpower tool                           | [Lecture](slides/L5-DRpower.pdf)               |
 | 2:00-2:45    | Module 5: Activity                 | [LearnR tutorial](https://mms-sdworkshop.shinyapps.io/module5_DRpower_interactive/)               |
 | 2:45-3:00    | Break                                                  |                       |
-| 3:00-3:15    | Module 6: Designing studies for multiple end-points           | Lecture               |
+| 3:00-3:15    | Module 6: Designing studies for multiple end-points           | [Lecture](slides/L6-multiple_endpoints.pdf)               |
 | 3:15-4:45    | Module 6: Activity                                          | [Role play scenario](tutorials/module6/module6_scenarios.Rmd)              |
 | 4:45-5:00    | Short break                                        |                       |
 | 5:00-5:30    | Discussion                                        |                       |
