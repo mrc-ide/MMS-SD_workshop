@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Welcome to Activity 4: <strong>Dealing with over-dispersion in multi-cluster studies</strong></p>
-<p>In this activity, we will consider some of the features of multi-cluster studies that separate them from single-cluster studies. Very often in malaria surveillance we want to pool information over multiple sites. These could be health facilities, towns, or even regions of a country. By combining information over sites we can estimate the average value of some quantity of interest - for example the prevalence of a drug resistance mutation - without being too highly influenced by local variations. However, when pooling results, care must be taken not to overstate the amount of information we have. This is particularly true if data are <em>over-dispersed</em>, meaning there is more variation between sites than expected. In this case, our sample size is effectively diminished and in some cases power can be badly affected.</p>
+<p>In this activity, we will consider some of the features of multi-cluster studies that separate them from single-cluster studies. Very often in malaria surveillance we want to pool information over multiple sites. These could be health facilities, towns, or even regions of a country. By combining information over sites we can estimate the average value of some quantity of interest, for example the prevalence of a drug resistance mutation, without being too highly influenced by local variations. However, when pooling results we must take care not to overstate the amount of information we have. This is particularly true if data are <em>over-dispersed</em>, meaning there is more variation between sites than expected. In this case, our sample size is effectively diminished and in some cases power can be badly affected.</p>
 <section id="learning-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h3>
 <p>By the end of this tutorial, you will be able to:</p>
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="analyzing-data-from-a-multi-cluster-pfhrp23-deletion-study">Analyzing data from a multi-cluster <em>pfhrp2/3</em> deletion study</h2>
 <section id="background" class="level3">
 <h3 class="anchored" data-anchor-id="background">Background</h3>
-<p>You are collaborating with the Tanzanian National Malaria Control Programme (NMCP) to investigate the prevalence of <em>pfhrp2/3</em> gene deletions in the Dodoma region of Tanzania. These gene deletions pose a significant threat to malaria control efforts as they can lead to parasites being undetectable by rapid diagnostic tests (RDTs) that rely exclusively on the HRP2 protein. Undetected cases may lead to delays in treatment or missed malaria diagnoses, undermining effective case management.</p>
+<p>You are collaborating with the Tanzanian National Malaria Control Programme (NMCP) to investigate the prevalence of <em>pfhrp2/3</em> gene deletions in the Dodoma region of Tanzania. These gene deletions pose a significant threat to malaria control efforts because they can lead to parasites being undetectable by rapid diagnostic tests (RDTs) that rely exclusively on the HRP2 protein. Undetected cases may lead to delays in treatment or missed malaria diagnoses, undermining effective case management.</p>
 <p>A multi-cluster study has been performed in 8 sites within the Dodoma region. The results of this study are shown below:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -361,7 +361,7 @@ Table 1: pfhrp2/3 deletion data broken down by site</td>
 <p><span class="math display">\[
 \hat{p} = \frac{1}{c} \sum_{i=1}^c \hat{p}_i
 \]</span></p>
-<p>where there are <span class="math inline">\(c\)</span> sites, so in our case <span class="math inline">\(c = 8\)</span>.</p>
+<p>where there are <span class="math inline">\(c\)</span> sites. In our case <span class="math inline">\(c = 8\)</span>.</p>
 <p>Complete the following R code to calculate <code>p_global</code> as the mean prevalence over sites. The values in <strong>Table 1</strong> are available through the variables <code>n</code>, <code>x</code> and <code>p</code>.</p>
 <div class="cell" data-exercise="true">
 <div class="tutorial-exercise" data-label="global-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
@@ -387,7 +387,7 @@ Table 1: pfhrp2/3 deletion data broken down by site</td>
 <p>You should find that <span class="math inline">\(\hat{p} = 0.172\)</span>, or 17.2% prevalence.</p>
 </details>
 <p><br></p>
-<p>This calculation ignores differences in sample sizes between sites. For example, the Nhinhi site is given just as much weight as the Rudi site, despite having half the number of confirmed malaria cases. A different approach is to calculate <span class="math inline">\(\hat{p}\)</span> as the <em>weighted</em> average of the site-level prevalence, where the weights are given by the sample sizes. This is mathematically equivalent to summing the numerator and the denominators separately before dividing:</p>
+<p>This calculation ignores differences in sample sizes between sites. For example, the Nhinhi site is given just as much weight as the Rudi site, despite having half the number of confirmed malaria cases. A different approach is to calculate <span class="math inline">\(\hat{p}\)</span> as the <em>weighted</em> average of the site-level prevalence, where the weights are given by the sample sizes. This is mathematically equivalent to summing the numerator and summing the denominator separately before dividing:</p>
 <p><span class="math display">\[
 \hat{p} = \frac{\sum_{i=1}^c x_i}{\sum_{i=1}^c n_i}
 \]</span></p>
@@ -416,13 +416,13 @@ Table 1: pfhrp2/3 deletion data broken down by site</td>
 <p>You should find that <span class="math inline">\(\hat{p} = 0.183\)</span>, or 18.3% prevalence.</p>
 </details>
 <p><br></p>
-<p>In this example, prevalence is slightly higher via the weighted mean than the ordinary mean. Neither approach is more correct than the other, rather they have different strengths and weaknesses. The unweighted mean treats each site as a single observation, which is a robust approach when there is the possibility of over-dispersion. On the other hand, the weighted mean avoids small clusters having a large influence on the final estimate. For the purposes of this activity, we will use the unweighted mean as our global estimate.</p>
+<p>In this example, prevalence is slightly higher via the weighted mean than the unweighted mean. Neither approach is more correct than the other, they just have different strengths and weaknesses. The unweighted mean treats each site as a single observation, which is a robust approach when there is the possibility of over-dispersion. On the other hand, the weighted mean avoids small clusters having a large influence on the final estimate. For the purposes of this activity, we will use the unweighted mean as our global estimate.</p>
 </section>
 <section id="detecting-over-dispersion" class="level3">
 <h3 class="anchored" data-anchor-id="detecting-over-dispersion">Detecting over-dispersion</h3>
 <p>Now that we have an estimate of the global prevalence, we can look for <em>over-dispersion</em> in the data. If all patients enrolled in the study were completely independent, meaning they all had the same probability <span class="math inline">\(\hat{p}\)</span> of carrying the <em>pfhrp2/3</em> deletion, then we would expect to see a certain level of variation between sites. Most of the time, the site-level prevalence should be within the following 95% interval: <span class="math display">\[
 \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n_i}}
-\]</span> where <span class="math inline">\(n_i\)</span> is the sample size in the <span class="math inline">\(i^{\text{th}}\)</span> site. Because this is a 95% interval, we should expect site-level prevalence to fall within this range around 95% of the time. For our study involving 8 sites, we <em>may</em> see one site-level prevalence outside this range by chance, but it would be very unusual to see more than one outside this range.</p>
+\]</span> where <span class="math inline">\(n_i\)</span> is the sample size in the <span class="math inline">\(i^{\text{th}}\)</span> site. Because this is a 95% interval, we should expect site-level prevalence to fall within this range around 95% of the time. For our study involving 8 sites, we <em>may</em> see one site-level prevalence outside this range by chance, but it would be very unusual to see more than one value outside this range.</p>
 <p>The plot below shows the site-level prevalence in red. The global mean prevalence of 17.2% is shown as a horizontal dashed line, and the 95% interval is shown as an error bar.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -496,10 +496,10 @@ Table 1: pfhrp2/3 deletion data broken down by site</td>
 <section id="the-design-effect" class="level3">
 <h3 class="anchored" data-anchor-id="the-design-effect">The design effect</h3>
 <p>One way of quantifying the effect of over-dispersion is through the <strong>design effect</strong>, denoted <span class="math inline">\(D_{\text{eff}}\)</span>. We can estimate the design effect by calculating the observed variance between sites and dividing this by the variance that we would expect under simple random sampling (SRS). If the data are over-dispersed then the observed variance will be greater than the expected variance, meaning <span class="math inline">\(D_{\text{eff}}\)</span> will be greater than 1.</p>
-<p>The observed variance between sites can be calculated as:</p>
+<p>The observed variance, or sample variance, can be calculated using this formula:</p>
 <p><span class="math display">\[
 \text{Var}_{\text{obs}} = \frac{1}{c-1}\sum_{i=1}^c (\hat{p}_i - \hat{p})^2
-\]</span> The observed variance, or sample variance, can be calculated using this formula. This formula is found in many areas of statistics. We don’t need to calculate this value by hand, instead we can do it very easily in R using the <code>var()</code> function:</p>
+\]</span> This formula is found in many areas of statistics. We don’t need to calculate this value by hand, instead we can do it very easily in R using the <code>var()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate observed variance between sites</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>var_observed <span class="ot">&lt;-</span> <span class="fu">var</span>(p)</span>
@@ -568,7 +568,7 @@ D_{\text{eff}} = \frac{\text{Var}_{\text{obs}}}{\text{Var}_{\text{SRS}}}
 </section>
 <section id="the-effective-sample-size" class="level3">
 <h3 class="anchored" data-anchor-id="the-effective-sample-size">The effective sample size</h3>
-<p>Another way to quantify the impact of over-dispersion is through the <em>effective sample size</em>, <span class="math inline">\(N_{\text{eff}}\)</span>. The effective sample size tells us how many perfectly independent samples we would need in order to achieve the same level of statistical efficiency. In other words, it tells us how large our study would need to be if we could get rid of over-dispersion completely. We calculate <span class="math inline">\(N_{\text{eff}}\)</span> by dividing the true total sample size by the design effect:</p>
+<p>Another way to quantify the impact of over-dispersion is through the <em>effective sample size</em>, <span class="math inline">\(N_{\text{eff}}\)</span>. The effective sample size tells us how many perfectly independent samples we would need in order to achieve the same level of statistical efficiency as SRS. In other words, it tells us how large our study would need to be if we could get rid of over-dispersion completely. We calculate <span class="math inline">\(N_{\text{eff}}\)</span> by dividing the true total sample size by the design effect:</p>
 <p><span class="math display">\[
 N_{\text{eff}} = \frac{\sum_{i=1}^c n_i}{D_{\text{eff}}}
 \]</span></p>
@@ -597,11 +597,11 @@ N_{\text{eff}} = \frac{\sum_{i=1}^c n_i}{D_{\text{eff}}}
 <p>You should find that <span class="math inline">\(N_{\text{eff}} = 56.7\)</span>.</p>
 </details>
 <p><br></p>
-<p>Our effective sample size is just 56.7, even though our total sample size was 725. Amazingly, this means that - from the point of view of estimating prevalence - it’s as though we had enrolled only 56 patients! The high correlation within sites meant that we were effectively sampling the same “sort” of individual over and over again. We may have been better off recruiting more sites rather than sampling deeply within a site to avoid this issue.</p>
+<p>Our effective sample size is just 56.7, even though our total sample size was 725. Surprisingly, this means that - from the point of view of estimating prevalence - it’s as though we had enrolled only 56 patients! The high correlation within sites meant that we were effectively sampling the same “sort” of individual over and over again. We may have been better off recruiting more sites rather than sampling deeply within a site to avoid this issue.</p>
 </section>
 <section id="the-intra-cluster-correlation-coefficient" class="level3">
 <h3 class="anchored" data-anchor-id="the-intra-cluster-correlation-coefficient">The intra-cluster correlation coefficient</h3>
-<p>The third and final measure that we will consider is the <em>intra-cluster correlation coefficient</em> (ICC), denoted <span class="math inline">\(r\)</span>. This is a measure between 0 and 1 that describes how correlated observations are <em>within</em> a cluster (site). If there is correlation with clusters then there <em>must</em> be over-dispersion in the data, and likewise if data are over-dispersed then there <em>must</em> be intra-cluster correlation greater than 0.</p>
+<p>The third and final measure that we will consider is the <em>intra-cluster correlation coefficient</em> (ICC), denoted <span class="math inline">\(r\)</span>. This is a measure between 0 and 1 that describes how correlated observations are <em>within</em> a cluster (site). If there is correlation with clusters then there <em>must</em> be over-dispersion between clusters, and likewise if data are over-dispersed then there <em>must</em> be intra-cluster correlation greater than 0.</p>
 <p>The relationship between the ICC and the design effect is:</p>
 <p><span class="math display">\[
 D_{\text{eff}} = 1 + r(\bar{n} - 1)
@@ -791,45 +791,45 @@ Table 2: pfhrp2/3 deletion data broken down by site</td>
 <h3 class="anchored" data-anchor-id="over-dispersion-and-hypothesis-testing">Over-dispersion and hypothesis testing</h3>
 <p>Similarly, when it comes to hypothesis testing, we have to factor over-dispersion into our analysis. For example, imagine we want to compare our global estimate of the prevalence of <em>pfhrp2/3</em> deletions against a defined threshold of 10%. The appropriate statistical test here is the one-sample z-test for proportions, which we covered in an earlier module. However, we need to use a new formula for the test statistic (<span class="math inline">\(Z\)</span>) that factors in the design effect:</p>
 <p><span class="math display">\[
-Z = \frac{|\hat{p} - h|}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
-\]</span> Where <span class="math inline">\(h\)</span> is the threshold we are comparing against (<span class="math inline">\(h = 0.1\)</span>).</p>
+Z = \frac{\hat{p} - p_0}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
+\]</span> Where <span class="math inline">\(p_0\)</span> is the threshold we are comparing against (<span class="math inline">\(p_0 = 0.1\)</span>).</p>
 <p>This can be calculated in R as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define threshold</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate test statistic</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(p_global <span class="sc">-</span> h) <span class="sc">/</span> <span class="fu">sqrt</span>(p_global <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_global) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> p_global <span class="sc">-</span> p0 <span class="sc">/</span> <span class="fu">sqrt</span>(p_global <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_global) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.430108</code></pre>
+<pre><code>[1] -1.825035</code></pre>
 </div>
 </div>
-<p>We obtain a test statistic of <span class="math inline">\(Z = 1.43\)</span>. This is within the critical range <span class="math inline">\(\pm1.96\)</span>, meaning we would fail to reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find <span class="math inline">\(Z = 5.11\)</span>. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a <em>pfhrp2/3</em> study, this could mean the difference between switching RDTs nationwide vs sticking with the current brand.</p>
+<p>We obtain a test statistic of <span class="math inline">\(Z = 1.43\)</span>. This is within the critical range <span class="math inline">\(\pm1.96\)</span>, meaning we would fail to reject the null hypothesis. However, if we were to run the same analysis but ignoring the design effect, we would find <span class="math inline">\(Z = 5.11\)</span>. This is highly significant, and would result in us rejecting the null hypothesis. This is an example where over-dispersion is critically important, as it dictates the result of our hypothesis test. For something like a <em>pfhrp2/3</em> study, this could mean the difference between switching RDTs nationwide vs.&nbsp;sticking with the current brand of tests.</p>
 <p><strong>Disclaimer: We do not advocate for the use of the z-test for the design of pfhrp2/3 deletion studies, or the analysis of the resulting data. We will learn about a much more powerful approach to this problem in the next module.</strong></p>
 </section>
 <section id="over-dispersion-and-power" class="level3">
 <h3 class="anchored" data-anchor-id="over-dispersion-and-power">Over-dispersion and power</h3>
 <p>Addressing over-dispersion is just as critical in the design stage as it is in the analysis stage. For the one-sample z-test for proportions, we already saw the formula for power in a previous module. Now, we obtain a new formula that takes <span class="math inline">\(D_{\text{eff}}\)</span> into account:</p>
 <p><span class="math display">\[
-\text{power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - h|}{\sqrt{\frac{p(1-p)}{N}}D_{\text{eff}}} \right)
-\]</span> To make use of this formula, we have to assume known values for the true global prevalence <span class="math inline">\(p\)</span> and also the design effect <span class="math inline">\(D_{\text{eff}}\)</span>. We also have to set the total sample size <span class="math inline">\(N\)</span> and the threshold <span class="math inline">\(h\)</span>. We will assume <span class="math inline">\(p = 0.2\)</span>, <span class="math inline">\(D_{\text{eff}} = 10\)</span>, <span class="math inline">\(N = 800\)</span> and <span class="math inline">\(h = 0.1\)</span>.</p>
+\text{Power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - p_0|}{\sqrt{\frac{p(1-p)}{N}}D_{\text{eff}}} \right)
+\]</span> To make use of this formula, we have to assume known values for the true global prevalence <span class="math inline">\(p\)</span> and also the design effect <span class="math inline">\(D_{\text{eff}}\)</span>. We also have to set the total sample size <span class="math inline">\(N\)</span> and the threshold <span class="math inline">\(p_0\)</span>. We will assume <span class="math inline">\(p = 0.2\)</span>, <span class="math inline">\(D_{\text{eff}} = 10\)</span>, <span class="math inline">\(N = 800\)</span> and <span class="math inline">\(p_0 = 0.1\)</span>.</p>
 <p>We can calculate the power under this new formula in R as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define assumed parameters</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>D_eff <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">800</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># define z-values</span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>z_alpha <span class="ot">&lt;-</span> <span class="fl">1.96</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate expected value of test statistic</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">abs</span>(p <span class="sc">-</span> h) <span class="sc">/</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>E_Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(p <span class="sc">-</span> p0) <span class="sc">/</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> N <span class="sc">*</span> D_eff)</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate power</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_alpha <span class="sc">-</span> y)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_alpha <span class="sc">-</span> E_Z)</span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(power)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6087521</code></pre>
@@ -839,16 +839,16 @@ Z = \frac{|\hat{p} - h|}{\sqrt{\frac{\hat{p}(1 - \hat{p})}{N}D_{\text{eff}}}}
 </section>
 <section id="over-dispersion-and-sample-size" class="level3">
 <h3 class="anchored" data-anchor-id="over-dispersion-and-sample-size">Over-dispersion and sample size</h3>
-<p>When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, in our equation for sample size we can assume a known value of the ICC (<span class="math inline">\(r\)</span>) as sample size does not depend on <span class="math inline">\(r\)</span>.</p>
+<p>When it comes to the formula for minimum sample size under the z-test, we cannot assume a known value of the design effect. This is because the design effect itself depends on the sample size, so our reasoning becomes circular. However, in our equation for sample size we can assume a known value of the ICC (<span class="math inline">\(r\)</span>) as this is an intrinsic propertly of the population.</p>
 <p>Our new minimum sample size formula becomes:</p>
 <p><span class="math display">\[
-n = \frac{1 - r}{\frac{c(p - h)^2}{(z_{1 - \alpha/2} + z_{1 - \beta})^2 p(1-p)} - r}
+n = \frac{1 - r}{\frac{c(p - p_0)^2}{(z_{1 - \alpha/2} + z_{1 - \beta})^2 p(1-p)} - r}
 \]</span></p>
 <p>Note that <span class="math inline">\(n\)</span> is the sample size <em>per cluster</em>, assuming there are <span class="math inline">\(c\)</span> clusters of equal size. We can calculate this in R as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define assumed parameters</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.2</span>        <span class="co"># prevalence of deletions</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.1</span>        <span class="co"># threshold to compare against</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.1</span>        <span class="co"># threshold to compare against</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.05</span>       <span class="co"># intra-cluster correlation</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">8</span>          <span class="co"># number of clusters</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -857,7 +857,7 @@ n = \frac{1 - r}{\frac{c(p - h)^2}{(z_{1 - \alpha/2} + z_{1 - \beta})^2 p(1-p)} 
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>z_beta <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.8</span>)</span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate minimum sample size</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> r) <span class="sc">/</span> (c<span class="sc">*</span>(p <span class="sc">-</span> h)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> ((z_alpha <span class="sc">+</span> z_beta)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p)) <span class="sc">-</span> r)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> r) <span class="sc">/</span> (c<span class="sc">*</span>(p <span class="sc">-</span> p0)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> ((z_alpha <span class="sc">+</span> z_beta)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p)) <span class="sc">-</span> r)</span>
 <span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
