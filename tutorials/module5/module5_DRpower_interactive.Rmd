@@ -31,7 +31,7 @@ tutorial_options(exercise.timelimit = 120)
 
 Welcome to Module 5: **The DRpower tool**.
 
-In this module, we'll demonstrate the use of the **DRpower** R package and the accompanying web-based tool.
+In this module, we'll demonstrate the use of the **DRpower** tool. This is an R package that was primarily designed to help with the development of *P. falciparum* *pfhrp2/3* gene deletion studies. We we also explore the web-based *pfhrp2/3* Planner, which runs **DRpower** in the background but works via an intuitive user interface. Either of these tools can be used to design *pfhrp2/3* deletion studies that are well powered, and to analyse the resulting data to arrive at robust conclusions.
 
 ### Learning outcomes
 
@@ -41,13 +41,13 @@ In this activity you will learn:
 - How to analyse and interpret the results of a *pfhrp2/3* deletion study.
 - How to account for intra-cluster correlation in other study designs, such as prevalence surveys and presence/absence studies.
 
-*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is simulated for teaching purposes only. It does not necessarily represent the real epidemiological situation.*
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
 
 ## Designing a multi-cluster *pfhrp2/3* deletion study in Ethiopia
 
 ### Background
 
-You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into *pfhrp2/3* deletions. Following the WHO 2020 recommendation, this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of *pfhrp2* deletions among clinical malaria cases is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.
+You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into *pfhrp2/3* deletions. Following the WHO 2020 recommendation, this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of *pfhrp2/3* deletions among clinical malaria cases is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.
 
 A full study of this sort would normally be run in parallel over multiple regions, however, for the purposes of this tutorial we will focus exclusively on the Amhara region.
 
@@ -84,11 +84,11 @@ quiz(caption = "QUIZ - Sample sizes",
 )
 ```
 
-As the number of sites recruited increases, the total sample size needed actually decreases. This may seem counterintuitive, as we might expect that adding more clusters would inherently make the study larger. What’s happening here is that with more clusters, the samples become *more independent*. By sampling from a greater number of distinct sites, we reduce the likelihood of repeatedly sampling from the same sub-population, thereby minimizing the impact of intra-cluster correlation. As a result, fewer samples are needed overall to achieve the same level of statistical power.
+As the number of sites recruited increases, the total sample size actually decreases. This may seem counter-intuitive, as we might expect that adding more clusters would inherently make the study larger. What’s happening here is that with more clusters, the samples become *closer to independent*. By sampling from a greater number of distinct sites, we reduce the likelihood of repeatedly sampling from the same sub-population, thereby minimizing the impact of intra-cluster correlation. As a result, fewer samples are needed overall to achieve the same level of statistical power.
 
 ### Factoring in financial considerations
 
-The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training of staff. They estimate it will cost \$500 USD per health facility (cluster) recruited, plus an additional \$6 USD per sample enrolled.
+The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training. They estimate it will cost \$500 USD per health facility (cluster) recruited, plus an additional \$6 USD per sample enrolled.
 
 ```{r quiz-sizes-cost}
 quiz(caption = "QUIZ - Sample sizes based on cost",
@@ -97,12 +97,14 @@ quiz(caption = "QUIZ - Sample sizes based on cost",
            answer("2", correct = FALSE),
            answer("5", correct = FALSE),
            answer("7", correct = TRUE),
-           answer("10", correct = FALSE)
+           answer("10", correct = FALSE),
+           correct = "That is correct! The design with 7 clusters comes in at \\$6,365 UDS total. This is made up of \\$3,500 for setting up the clusters plus \\$2,856 for the samples enrolled. This is the cheapest of the possible options, although between 6 and 10 clusters are quite similar total costs and may also be viable options.",
+           incorrect = "Hint: you may want to use R or Excel to calculate the total cost for each possible number of clusters."
   )
 )
 ```
 
-The design with 7 clusters comes in at \$6,365 UDS total. This is made up of \$3,500 for setting up the clusters plus \$2,856 for the samples enrolled. This is the cheapest of the possible options, although between 6 and 10 clusters are quite similar total costs and may also be viable options.
+
 
 ```{r, echo=FALSE, eval=FALSE}
 ss <- DRpower::get_sample_size_table(prevalence = 0.1)
@@ -112,7 +114,7 @@ ss <- DRpower::get_sample_size_table(prevalence = 0.1)
 
 ### Selecting sites
 
-Next, we have to choose how we will select the 7 sites. Common choices are 1) *sentinel site surveillance*, where known and established sites are chosen based on feasibility, and 2) *random selection*, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.
+Next, we have to choose how to select the 7 sites. Common choices are 1) *sentinel site surveillance*, where known and established sites are chosen based on feasibility, and 2) *random selection*, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.
 
 Some advantages of sentinel site surveillance include:
 
@@ -133,12 +135,12 @@ quiz(caption = "QUIZ - Study design",
   question_radio("Which of these designs would you choose for this study?",
            allow_retry = TRUE,
            answer("Sentinel site surveillance ", correct = TRUE, message = "Actually, both are correct answers depending on your study."),
-           answer("Random sampling", correct = TRUE, message = "Actually, both are correct answers depending on your study.")
+           answer("Random sampling", correct = TRUE, message = "Actually, both are correct answers, just as long as you can justify your choice.")
   )
 )
 ```
 
-For the sake of this tutorial we will go with random selection of sites. A complete list of all health facilities in the Amhara region is compiled, and 7 sites are selected from this list at random. **Table 1** gives the chosen sites and the target sample size based on our initial calculations.
+In this tutorial we will go with random selection of sites. A complete list of all health facilities in the Amhara region is compiled, and 7 sites are selected from this list at random. **Table 1** gives the chosen sites and the target sample size based on our initial calculations.
 
 ```{r, echo=FALSE}
 df1 <- data.frame(Site_name = c("Dese", "Motta", "Debark", "Metema", "Chagni", "Finote Selam", "Alem Ketema"),
@@ -166,7 +168,7 @@ kable(df2, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
   footnote(general = "\nTable 2: target sample sizes factoring in constraints", general_title = "")
 ```
 
-But now we are faced with a problem - how do we know if this new design still has adequate power? We can no longer rely on sample size tables, which assume the same sample size per cluster. On the other hand, we cannot simply *assume* that power will be adequate. This is where the [Design tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner becomes useful.
+But now we are faced with a problem - how do we know if this new design has adequate power? We can no longer rely on sample size tables because these assume the same sample size per cluster. On the other hand, we cannot simply *assume* that power will be adequate. This is where the [Design tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner becomes useful.
 
 Download a .csv file with the current study plan [from here](https://drive.google.com/file/d/1MAx7geMGMOMCEaZ7dqSgQcsQ1H6-6X_l/view?usp=share_link). 
 
@@ -215,16 +217,20 @@ The easiest way to analyse these data is via the [Analysis tab](https://shiny.di
 
 ![](images/analysis_upload.png){width="100%"}
 
-Now click the "Estimate prevalence" button to perform a Bayesian analysis of the data. This analysis takes into account the intra-cluster correlation in the data, which is estimated and accounted for in the prevalence estimate. Therefore there is no need to estimate a design effect or effective sample size as this is accounted for automatically.
+Now click the "Estimate prevalence" button to perform a Bayesian analysis of the data. This analysis takes into account the intra-cluster correlation in the data, which is estimated and accounted for in the prevalence estimate. Therefore, there is no need to estimate a design effect or effective sample size as these will be accounted for automatically.
 
-You will also see a "Probability above threshold" field. This tells us the probability that the prevalence is above the 5% threshold.
+You will also see a "Probability above threshold" field. This tells us the probability that the prevalence is above the 5% threshold. To turn this into a decision-making framework, we need to decide on a level of confidence that we would be happy concluding that the prevalence is definitively over 5%. The power calculations in **DRpower** assume that we need 95% chance or higher to definitively conclude that prevalence is over 5%. This leads to two possible outcomes:
+
+- **Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is **below the threshold**.
+- **Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is **above the threshold**.
+
 
 ```{r quiz-prob}
 quiz(caption = "QUIZ - Probability above threshold",
-  question_checkbox("Which of these is true?",
+  question_radio("Looking at your analysis results in the app, which of these is true?",
            allow_retry = TRUE,
-           answer("There is *less than 95% probability* that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is below 5%.", correct = FALSE),
-           answer("There is *more than 95% probability* that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is above 5%.", correct = TRUE)
+           answer("**Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is below the threshold.", correct = FALSE),
+           answer("**Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is above the threshold.", correct = TRUE)
   )
 )
 ```
@@ -233,7 +239,7 @@ In this example, we have sufficient evidence to conclude that the prevalence of 
 
 ### Estimating the ICC
 
-As noted above, the **DRpower** method automatically accounts for ICC when estimating prevalence, so a separate ICC estimate is not strictly necessary. However, obtaining an ICC estimate can still be valuable for future study planning. It’s a straightforward process and contributes to a broader understanding of ICC levels, which can benefit researchers planning similar studies in the future or in neighbouring regions.
+As noted above, the **DRpower** method automatically accounts for ICC when estimating prevalence, so a separate ICC estimate is not strictly needed. However, obtaining an ICC estimate can still be valuable for future study planning. It’s a straightforward process and contributes to a broader understanding of ICC levels, which can benefit researchers planning similar studies in the future or in neighbouring regions.
 
 Still on the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/), scroll down to the "Estimate ICC" button (it should look like the screenshot below). Clicking this button gives an estimate of the ICC, including a point estimate and a 95% Credible Interval (CrI).
 
@@ -241,7 +247,7 @@ Still on the [Analysis tab](https://shiny.dide.ic.ac.uk/DRpower-app/), scroll do
 
 ```{r quiz-icc}
 quiz(caption = "QUIZ - Intra-cluster correlation",
-  question_checkbox("Based on the ICC analysis, which of these is true:",
+  question("Based on the ICC analysis, which of these is true:",
            allow_retry = TRUE,
            answer("There is strong evidence that the ICC is below 0.2", correct = TRUE),
            answer("There is strong evidence that the ICC is below 0.1", correct = FALSE),
@@ -255,7 +261,7 @@ We can navigate to the "Generate report" tab to download a report detailing our 
 
 ### Recap key points
 
-Our *pfhrp2/3* analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. By accounting for varying sample sizes across sites and anticipating potential drop-out, we reinforced the reliability of our approach. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study’s feasibility. Importantly, we accounted for possible over-dispersion at both the design and analysis stages, increasing our confidence in the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of *pfhrp2/3* deletions exceeds the 5% threshold—a finding with significant implications for malaria control at the national level.
+Our *pfhrp2/3* analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. We reinforced the reliability of our approach by accounting for varying sample sizes across sites and anticipating potential drop-out. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study’s feasibility. Importantly, we accounted for possible overdispersion at both the design and analysis stages, increasing the robustness of the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of *pfhrp2/3* deletions exceeds the 5% threshold — a finding with significant implications for malaria control at the national level.
 
 ## Bonus questions
 
