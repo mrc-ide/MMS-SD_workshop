@@ -17,22 +17,22 @@ website:
         menu:
           - text: "Overview"
             href: tutorials.qmd
-          - text: "Module 1"
+          - text: "Activity 1 - Sampling from a population"
             href: https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/
             icon: play
-          - text: "Module 2"
+          - text: "Activity 2 - Sample size calculation based on margin of error"
             href: https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/
             icon: play
-          - text: "Module 3"
+          - text: "Activity 3 - Hypothesis testing and power"
             href: https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/
             icon: play
-          - text: "Module 4"
+          - text: "Activity 4 - Dealing with overdispersion in multi-cluster studies"
             href: https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/
             icon: play
-          - text: "Module 5"
+          - text: "Activity 5 - The DRpower tool"
             href: https://mms-sdworkshop.shinyapps.io/module5_DRpower_interactive/
             icon: play
-          - text: "Module 6"
+          - text: "Activity 6 - Designing a study for multiple end-points"
             href: tutorials/module6/module6_scenarios.Rmd 
             icon: play
 

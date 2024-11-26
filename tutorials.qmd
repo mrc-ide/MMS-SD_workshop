@@ -7,9 +7,9 @@ All of the materials from this workshop are freely available. We suggest you wor
 ## List of all the tutorials 
 
 - Module 1: [Sampling from a population](https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/)
-- Module 2: [Sample size based on precision](https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/)
+- Module 2: [Sample size calculation based on margin of error](https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/)
 - Module 3: [Hypothesis testing and power](https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/)
-- Module 4: [Assuming intra-cluster correlation](https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/)
+- Module 4: [Dealing with overdispersion in multi-cluster studies](https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/)
 - Module 5: [The DRpower tool](https://mms-sdworkshop.shinyapps.io/module5_DRpower_interactive/)
 - Module 6: [Designing a study for multiple end-points](tutorials/module6/module6_scenarios.Rmd)
 
