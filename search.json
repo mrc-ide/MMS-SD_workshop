@@ -312,7 +312,7 @@
     "href": "tutorials.html#list-of-all-the-tutorials",
     "title": "Tutorials",
     "section": "List of all the tutorials",
-    "text": "List of all the tutorials\n\nModule 1: Sampling from a population\nModule 2: Sample size calculation based on margin of error\nModule 3: Hypothesis testing and power\nModule 4: Dealing with overdispersion in multi-cluster studies\nModule 5: The DRpower tool\nModule 6: Designing a study for multiple end-points"
+    "text": "List of all the tutorials\n\nActivity 1: Sampling from a population\nActivity 2: Sample size calculation based on margin of error\nActivity 3: Hypothesis testing and power\nActivity 4: Dealing with overdispersion in multi-cluster studies\nActivity 5: The DRpower tool\nActivity 6: Designing a study for multiple end-points"
   },
   {
     "objectID": "index.html#workshop-format",
