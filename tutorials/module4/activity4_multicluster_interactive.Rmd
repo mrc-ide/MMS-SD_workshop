@@ -8,6 +8,11 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
+# options(repos = c(
+#   plasmogenepi = "https://plasmogenepi.r-universe.dev",
+#   CRAN = "https://cloud.r-project.org"
+# ))
+
 library(learnr)
 library(dplyr)
 library(tidyr)
