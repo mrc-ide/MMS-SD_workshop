@@ -144,32 +144,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module1_sampling_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Module 1</span></a>
+ <span class="dropdown-text">Activity 1 - Sampling from a population</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Module 2</span></a>
+ <span class="dropdown-text">Activity 2 - Sample size calculation based on margin of error</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/activity3_power_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Module 3</span></a>
+ <span class="dropdown-text">Activity 3 - Hypothesis testing and power</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/activity4_multicluster_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Module 4</span></a>
+ <span class="dropdown-text">Activity 4 - Dealing with overdispersion in multi-cluster studies</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://mms-sdworkshop.shinyapps.io/module5_DRpower_interactive/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Module 5</span></a>
+ <span class="dropdown-text">Activity 5 - The DRpower tool</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../tutorials/module6/module6_scenarios.html" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Module 6</span></a>
+ <span class="dropdown-text">Activity 6 - Designing a study for multiple end-points</span></a>
   </li>  
     </ul>
   </li>
@@ -233,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Welcome to Module 5: <strong>The DRpower tool</strong>.</p>
-<p>In this module, we’ll demonstrate the use of the <strong>DRpower</strong> R package and the accompanying web-based tool.</p>
+<p>In this module, we’ll demonstrate the use of the <strong>DRpower</strong> tool. This is an R package that was primarily designed to help with the development of <em>P. falciparum</em> <em>pfhrp2/3</em> gene deletion studies. We we also explore the web-based <em>pfhrp2/3</em> Planner, which runs <strong>DRpower</strong> in the background but works via an intuitive user interface. Either of these tools can be used to design <em>pfhrp2/3</em> deletion studies that are well powered, and to analyse the resulting data to arrive at robust conclusions.</p>
 <section id="learning-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h3>
 <p>In this activity you will learn:</p>
@@ -242,14 +242,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>How to analyse and interpret the results of a <em>pfhrp2/3</em> deletion study.</li>
 <li>How to account for intra-cluster correlation in other study designs, such as prevalence surveys and presence/absence studies.</li>
 </ul>
-<p><em>Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is simulated for teaching purposes only. It does not necessarily represent the real epidemiological situation.</em></p>
+<p><em>Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.</em></p>
 </section>
 </section>
 <section id="designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia" class="level2">
 <h2 class="anchored" data-anchor-id="designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia">Designing a multi-cluster <em>pfhrp2/3</em> deletion study in Ethiopia</h2>
 <section id="background" class="level3">
 <h3 class="anchored" data-anchor-id="background">Background</h3>
-<p>You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into <em>pfhrp2/3</em> deletions. Following the WHO 2020 recommendation, this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of <em>pfhrp2</em> deletions among clinical malaria cases is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.</p>
+<p>You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into <em>pfhrp2/3</em> deletions. Following the WHO 2020 recommendation, this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of <em>pfhrp2/3</em> deletions among clinical malaria cases is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.</p>
 <p>A full study of this sort would normally be run in parallel over multiple regions, however, for the purposes of this tutorial we will focus exclusively on the Amhara region.</p>
 </section>
 <section id="using-sample-size-tables" class="level3">
@@ -285,11 +285,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>As the number of sites recruited increases, the total sample size needed actually decreases. This may seem counterintuitive, as we might expect that adding more clusters would inherently make the study larger. What’s happening here is that with more clusters, the samples become <em>more independent</em>. By sampling from a greater number of distinct sites, we reduce the likelihood of repeatedly sampling from the same sub-population, thereby minimizing the impact of intra-cluster correlation. As a result, fewer samples are needed overall to achieve the same level of statistical power.</p>
+<p>As the number of sites recruited increases, the total sample size actually decreases. This may seem counter-intuitive, as we might expect that adding more clusters would inherently make the study larger. What’s happening here is that with more clusters, the samples become <em>closer to independent</em>. By sampling from a greater number of distinct sites, we reduce the likelihood of repeatedly sampling from the same sub-population, thereby minimizing the impact of intra-cluster correlation. As a result, fewer samples are needed overall to achieve the same level of statistical power.</p>
 </section>
 <section id="factoring-in-financial-considerations" class="level3">
 <h3 class="anchored" data-anchor-id="factoring-in-financial-considerations">Factoring in financial considerations</h3>
-<p>The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training of staff. They estimate it will cost $500 USD per health facility (cluster) recruited, plus an additional $6 USD per sample enrolled.</p>
+<p>The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training. They estimate it will cost $500 USD per health facility (cluster) recruited, plus an additional $6 USD per sample enrolled.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="panel-heading tutorial-quiz-title">QUIZ - Sample sizes based on cost</div>
@@ -305,11 +305,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The design with 7 clusters comes in at $6,365 UDS total. This is made up of $3,500 for setting up the clusters plus $2,856 for the samples enrolled. This is the cheapest of the possible options, although between 6 and 10 clusters are quite similar total costs and may also be viable options.</p>
 </section>
 <section id="selecting-sites" class="level3">
 <h3 class="anchored" data-anchor-id="selecting-sites">Selecting sites</h3>
-<p>Next, we have to choose how we will select the 7 sites. Common choices are 1) <em>sentinel site surveillance</em>, where known and established sites are chosen based on feasibility, and 2) <em>random selection</em>, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.</p>
+<p>Next, we have to choose how to select the 7 sites. Common choices are 1) <em>sentinel site surveillance</em>, where known and established sites are chosen based on feasibility, and 2) <em>random selection</em>, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.</p>
 <p>Some advantages of sentinel site surveillance include:</p>
 <ul>
 <li><p><strong>Consistency and Comparability Over Time:</strong> Sentinel sites are typically chosen for long-term monitoring, enabling consistent data collection over time. This allows for more precise trend analysis and easier comparisons of changes in disease prevalence.</p></li>
@@ -336,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>For the sake of this tutorial we will go with random selection of sites. A complete list of all health facilities in the Amhara region is compiled, and 7 sites are selected from this list at random. <strong>Table 1</strong> gives the chosen sites and the target sample size based on our initial calculations.</p>
+<p>In this tutorial we will go with random selection of sites. A complete list of all health facilities in the Amhara region is compiled, and 7 sites are selected from this list at random. <strong>Table 1</strong> gives the chosen sites and the target sample size based on our initial calculations.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-sm small" data-quarto-postprocess="true">
@@ -451,7 +450,7 @@ Table 2: target sample sizes factoring in constraints</td>
 
 </div>
 </div>
-<p>But now we are faced with a problem - how do we know if this new design still has adequate power? We can no longer rely on sample size tables, which assume the same sample size per cluster. On the other hand, we cannot simply <em>assume</em> that power will be adequate. This is where the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Design tab</a> of the <em>pfhrp2/3</em> Planner becomes useful.</p>
+<p>But now we are faced with a problem - how do we know if this new design has adequate power? We can no longer rely on sample size tables because these assume the same sample size per cluster. On the other hand, we cannot simply <em>assume</em> that power will be adequate. This is where the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Design tab</a> of the <em>pfhrp2/3</em> Planner becomes useful.</p>
 <p>Download a .csv file with the current study plan <a href="https://drive.google.com/file/d/1MAx7geMGMOMCEaZ7dqSgQcsQ1H6-6X_l/view?usp=share_link">from here</a>.</p>
 <p>You can then upload this spreadsheet into the we app using the “Upload a .csv file” option. You should find that the table populates with these values.</p>
 <p><img src="images/design_upload.png" class="img-fluid" style="width:100.0%"></p>
@@ -548,8 +547,12 @@ Table 3: results of the pfhrp2/3 study</td>
 <p>You can download these results in .csv form <a href="https://drive.google.com/file/d/1nWTYNZ6_955jFbXosRC3kL8pUFX9ehDu/view?usp=share_link">here</a>.</p>
 <p>The easiest way to analyse these data is via the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Analysis tab</a> of the <em>pfhrp2/3</em> Planner. Select “Upload a .csv file” and import the data.</p>
 <p><img src="images/analysis_upload.png" class="img-fluid" style="width:100.0%"></p>
-<p>Now click the “Estimate prevalence” button to perform a Bayesian analysis of the data. This analysis takes into account the intra-cluster correlation in the data, which is estimated and accounted for in the prevalence estimate. Therefore there is no need to estimate a design effect or effective sample size as this is accounted for automatically.</p>
-<p>You will also see a “Probability above threshold” field. This tells us the probability that the prevalence is above the 5% threshold.</p>
+<p>Now click the “Estimate prevalence” button to perform a Bayesian analysis of the data. This analysis takes into account the intra-cluster correlation in the data, which is estimated and accounted for in the prevalence estimate. Therefore, there is no need to estimate a design effect or effective sample size as these will be accounted for automatically.</p>
+<p>You will also see a “Probability above threshold” field. This tells us the probability that the prevalence is above the 5% threshold. To turn this into a decision-making framework, we need to decide on a level of confidence that we would be happy concluding that the prevalence is definitively over 5%. The power calculations in <strong>DRpower</strong> assume that we need 95% chance or higher to definitively conclude that prevalence is over 5%. This leads to two possible outcomes:</p>
+<ul>
+<li><strong>Outcome 1:</strong> There is less than 95% probability that the proportion of parasites with <em>pfhrp2/3</em> deletions causing false negative HRP2 RDT results within symptomatic <em>P. falciparum</em> patients is above the threshold. We conclude that this prevalence is <strong>below the threshold</strong>.</li>
+<li><strong>Outcome 2:</strong> There is a 95% probability or higher that the proportion of parasites with <em>pfhrp2/3</em> deletions causing false negative HRP2 RDT results within symptomatic <em>P. falciparum</em> patients is above the threshold. We conclude that this prevalence is <strong>above the threshold</strong>.</li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
 <div class="panel-heading tutorial-quiz-title">QUIZ - Probability above threshold</div>
@@ -568,7 +571,7 @@ Table 3: results of the pfhrp2/3 study</td>
 <p>In this example, we have sufficient evidence to conclude that the prevalence of <em>pfhrp2/3</em> deletions in the Amhara region is above the 5% threshold. Therefore, according to the WHO 2020 recommendation, we would be justified in switching RDTs to a brand that does not rely exclusively on the HRP2 protein.</p>
 <section id="estimating-the-icc" class="level3">
 <h3 class="anchored" data-anchor-id="estimating-the-icc">Estimating the ICC</h3>
-<p>As noted above, the <strong>DRpower</strong> method automatically accounts for ICC when estimating prevalence, so a separate ICC estimate is not strictly necessary. However, obtaining an ICC estimate can still be valuable for future study planning. It’s a straightforward process and contributes to a broader understanding of ICC levels, which can benefit researchers planning similar studies in the future or in neighbouring regions.</p>
+<p>As noted above, the <strong>DRpower</strong> method automatically accounts for ICC when estimating prevalence, so a separate ICC estimate is not strictly needed. However, obtaining an ICC estimate can still be valuable for future study planning. It’s a straightforward process and contributes to a broader understanding of ICC levels, which can benefit researchers planning similar studies in the future or in neighbouring regions.</p>
 <p>Still on the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Analysis tab</a>, scroll down to the “Estimate ICC” button (it should look like the screenshot below). Clicking this button gives an estimate of the ICC, including a point estimate and a 95% Credible Interval (CrI).</p>
 <p><img src="images/est_icc.png" class="img-fluid" style="width:100.0%"></p>
 <div class="cell">
@@ -590,7 +593,7 @@ Table 3: results of the pfhrp2/3 study</td>
 </section>
 <section id="recap-key-points" class="level3">
 <h3 class="anchored" data-anchor-id="recap-key-points">Recap key points</h3>
-<p>Our <em>pfhrp2/3</em> analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. By accounting for varying sample sizes across sites and anticipating potential drop-out, we reinforced the reliability of our approach. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study’s feasibility. Importantly, we accounted for possible over-dispersion at both the design and analysis stages, increasing our confidence in the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of <em>pfhrp2/3</em> deletions exceeds the 5% threshold—a finding with significant implications for malaria control at the national level.</p>
+<p>Our <em>pfhrp2/3</em> analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. We reinforced the reliability of our approach by accounting for varying sample sizes across sites and anticipating potential drop-out. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study’s feasibility. Importantly, we accounted for possible overdispersion at both the design and analysis stages, increasing the robustness of the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of <em>pfhrp2/3</em> deletions exceeds the 5% threshold — a finding with significant implications for malaria control at the national level.</p>
 </section>
 </section>
 <section id="bonus-questions" class="level2">
@@ -634,7 +637,8 @@ Table 3: results of the pfhrp2/3 study</td>
 <p><span style="font-size: 1.2em; color: #d19554;"> <i class="fas fa-comment"></i> Reflection: </span></p>
 <p><span style="color:#d19554;"> What total sample size would you need if you assume 10 clusters, 1% prevalence of the variant of interest, and an ICC of 0.05? How would this compare to the total sample size if you treated all sites as independent? </span></p>
 </div>
-<p><br> The result you obtain is the sample size needed per cluster to detect the presence of rare variants at 1% prevalence. 
+<p><br> The result you obtain is the sample size needed per cluster to detect the presence of rare variants at 1% prevalence.</p>
+<p>
 <script type="application/shiny-prerendered" data-context="server-start">
 # options(repos = c(
 #   plasmogenepi = "https://plasmogenepi.r-universe.dev",
@@ -677,16 +681,16 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sizes-10-1", 
     question = structure("What is the <em>total<\u002fem> sample size needed (over all clusters) if we recruit 5 clusters?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_2441dc3", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f06bd68", 
         option = "2480", value = "2480", label = structure("2480", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3f00039", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a290e1", 
         option = "678", value = "678", label = structure("678", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7286cef", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f557db9", 
         option = "408", value = "408", label = structure("408", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f912ec6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ff3c04d", 
         option = "300", value = "300", label = structure("300", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -697,23 +701,23 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sizes-10-1-answer", question = "quiz-sizes-10-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 669680111.688156, options = list()), class = c("learnr_radio", 
+    seed = 1583451442.76265, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sizes-10-2", 
     question = structure("What about if we recruit 10 clusters?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_f0908a4", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3da53a9", 
         option = "2480", value = "2480", label = structure("2480", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e6ebb56", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dab7ed3", 
         option = "678", value = "678", label = structure("678", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7237fea", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_35cf972", 
         option = "408", value = "408", label = structure("408", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e176884", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_892f985", 
         option = "300", value = "300", label = structure("300", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -724,49 +728,49 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sizes-10-2-answer", question = "quiz-sizes-10-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1048737285.01164, options = list()), class = c("learnr_radio", 
+    seed = 2025837402.05665, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-sizes-cost-1", 
     question = structure("Based on these financial figures, and using the numbers from the sample size table, how many clusters should you recruit to minimize the total cost?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_aa471f3", 
+    "character")), answers = list(structure(list(id = "lnr_ans_ee597fd", 
         option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_677c231", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4f8fe81", 
         option = "5", value = "5", label = structure("5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2d7ef9a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b86032", 
         option = "7", value = "7", label = structure("7", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_277722b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f026df", 
         option = "10", value = "10", label = structure("10", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+    "character"))), messages = list(correct = structure("That is correct! The design with 7 clusters comes in at $6,365 UDS total. This is made up of $3,500 for setting up the clusters plus $2,856 for the samples enrolled. This is the cheapest of the possible options, although between 6 and 10 clusters are quite similar total costs and may also be viable options.", html = TRUE, class = c("html", 
+    "character")), try_again = structure("Hint: you may want to use R or Excel to calculate the total cost for each possible number of clusters.", html = TRUE, class = c("html", 
+    "character")), incorrect = structure("Hint: you may want to use R or Excel to calculate the total cost for each possible number of clusters.", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-sizes-cost-1-answer", question = "quiz-sizes-cost-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 516847946.759324, options = list()), class = c("learnr_radio", 
+    seed = 463438764.784195, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-design-1", 
     question = structure("Which of these designs would you choose for this study?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_849d8b0", 
+    "character")), answers = list(structure(list(id = "lnr_ans_841b198", 
         option = "Sentinel site surveillance ", value = "Sentinel site surveillance ", 
         label = structure("Sentinel site surveillance", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = structure("Actually, both are correct answers depending on your study.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c0028ab", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4139be3", 
         option = "Random sampling", value = "Random sampling", 
         label = structure("Random sampling", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = structure("Actually, both are correct answers depending on your study.", html = TRUE, class = c("html", 
+        "character")), correct = TRUE, message = structure("Actually, both are correct answers, just as long as you can justify your choice.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -776,17 +780,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-design-1-answer", question = "quiz-design-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 164101241.423584, options = list()), class = c("learnr_radio", 
+    seed = 1030714465.52004, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-power-1", 
     question = structure("Do you think power is adequate under the current plan?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_469fb0a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_b475456", 
         option = "Yes", value = "Yes", label = structure("Yes", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_87eb4b3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7e814e2", 
         option = "No", value = "No", label = structure("No", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -797,68 +801,67 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-power-1-answer", question = "quiz-power-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 733892141.658255, options = list()), class = c("learnr_radio", 
+    seed = 1784226493.16915, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-prob-1", 
-    question = structure("Which of these is true?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_c7867f", 
-        option = "There is *less than 95% probability* that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is below 5%.", 
-        value = "There is *less than 95% probability* that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is below 5%.", 
-        label = structure("There is <em>less than 95% probability<\u002fem> that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is below 5%.", html = TRUE, class = c("html", 
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-prob-1", 
+    question = structure("Looking at your analysis results in the app, which of these is true?", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_2778508", 
+        option = "**Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is below the threshold.", 
+        value = "**Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is below the threshold.", 
+        label = structure("<strong>Outcome 1:<\u002fstrong> There is less than 95% probability that the proportion of parasites with <em>pfhrp⅔<\u002fem> deletions causing false negative HRP2 RDT results within symptomatic <em>P. falciparum<\u002fem> patients is above the threshold. We conclude that this prevalence is below the threshold.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4b7f175", 
-        option = "There is *more than 95% probability* that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is above 5%.", 
-        value = "There is *more than 95% probability* that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is above 5%.", 
-        label = structure("There is <em>more than 95% probability<\u002fem> that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is above 5%.", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d1a1424", 
+        option = "**Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is above the threshold.", 
+        value = "**Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is above the threshold.", 
+        label = structure("<strong>Outcome 2:<\u002fstrong> There is a 95% probability or higher that the proportion of parasites with <em>pfhrp⅔<\u002fem> deletions causing false negative HRP2 RDT results within symptomatic <em>P. falciparum<\u002fem> patients is above the threshold. We conclude that this prevalence is above the threshold.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect. Be sure to select every correct answer.", html = TRUE, class = c("html", 
+    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "quiz-prob-1-answer", question = "quiz-prob-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1572537504.26773, options = list()), class = c("learnr_checkbox", 
+    seed = 945448157.059741, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz-icc-1", 
-    question = structure("Based on the ICC analysis, which of these is true:", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_98c89ae", 
-        option = "There is strong evidence that the ICC is below 0.2", 
-        value = "There is strong evidence that the ICC is below 0.2", 
-        label = structure("There is strong evidence that the ICC is below 0.2", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_26ff9ca", 
-        option = "There is strong evidence that the ICC is below 0.1", 
-        value = "There is strong evidence that the ICC is below 0.1", 
-        label = structure("There is strong evidence that the ICC is below 0.1", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_378b916", 
-        option = "There is strong evidence that the ICC is below 0.05", 
-        value = "There is strong evidence that the ICC is below 0.05", 
-        label = structure("There is strong evidence that the ICC is below 0.05", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_11ce298", 
-        option = "There is strong evidence that the ICC is zero (complete independence)", 
-        value = "There is strong evidence that the ICC is zero (complete independence)", 
-        label = structure("There is strong evidence that the ICC is zero (complete independence)", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect. Be sure to select every correct answer.", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "quiz-icc-1-answer", question = "quiz-icc-1"), 
-    loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1736941305.19117, options = list()), class = c("learnr_checkbox", 
-"tutorial_question")), session = session)
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-icc-1", question = structure("Based on the ICC analysis, which of these is true:", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_fbb2235", 
+    option = "There is strong evidence that the ICC is below 0.2", 
+    value = "There is strong evidence that the ICC is below 0.2", 
+    label = structure("There is strong evidence that the ICC is below 0.2", html = TRUE, class = c("html", 
+    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c7ff14", 
+    option = "There is strong evidence that the ICC is below 0.1", 
+    value = "There is strong evidence that the ICC is below 0.1", 
+    label = structure("There is strong evidence that the ICC is below 0.1", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_953879c", 
+    option = "There is strong evidence that the ICC is below 0.05", 
+    value = "There is strong evidence that the ICC is below 0.05", 
+    label = structure("There is strong evidence that the ICC is below 0.05", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_287236a", 
+    option = "There is strong evidence that the ICC is zero (complete independence)", 
+    value = "There is strong evidence that the ICC is zero (complete independence)", 
+    label = structure("There is strong evidence that the ICC is zero (complete independence)", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
+"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
+"character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
+"character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), message = NULL, post_message = NULL), ids = list(
+    answer = "quiz-icc-1-answer", question = "quiz-icc-1"), loading = NULL, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1580353844.76409, 
+    options = list()), class = c("learnr_radio", "tutorial_question"
+)), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
