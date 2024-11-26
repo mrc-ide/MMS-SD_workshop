@@ -110,6 +110,9 @@ This includes:
 - `cost_transport_east`: transport cost per health facility (in USD) in the East region
 - `cost_transport_west`:  transport cost per health facility (in USD) in the West region
 
+
+We have also pre-loaded the [DRpower R package](https://mrc-ide.github.io/DRpower/index.html) so you can access its functions if you need to!
+
 ### Exercise 
 
 *You can use the below R code box to perform your calculations*

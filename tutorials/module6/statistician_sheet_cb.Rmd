@@ -98,6 +98,8 @@ This includes:
 - `cost_transport_forest`: transport cost per health facility (in USD) in the Forest region
 - `cost_transport_urban`:  transport cost per health facility (in USD) in the Urban region
 
+We have also pre-loaded the [DRpower R package](https://mrc-ide.github.io/DRpower/index.html) so you can access its functions if you need to!
+
 ### Exercise 
 
 *You can use the below R code box to perform your calculations*
