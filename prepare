@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 prepare_all <- function(root) {
+  .libPaths(file.path(root, "tutorials", ".lib"))
   paths <- dir(file.path(root, "tutorials"), full.names = TRUE)
   for (p in paths) {
     if (file.info(p)$isdir) {
