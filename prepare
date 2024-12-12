@@ -28,7 +28,7 @@ link_lib <- function(path) {
 prerender <- function(path) {
   files <- dir(path, "_(interactive|cb|tz)\\.Rmd$")
   for (f in files) {
-    # with_dir(path, rmarkdown::render(f))
+    with_dir(path, rmarkdown::render(f))
   }
 }
 
