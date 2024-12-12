@@ -1,0 +1,15 @@
+packages:
+  - DRpower
+  - dplyr
+  - ggplot2
+  - kableExtra
+  - knitr
+  - learnr
+  - rmarkdown
+  - rstudioapi
+  - tidyr
+  - xml2
+
+package_sources:
+  github:
+    - mrc-ide/DRpower
