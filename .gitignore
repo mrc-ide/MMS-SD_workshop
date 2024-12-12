@@ -36,3 +36,8 @@ rsconnect/
 /.quarto/
 .DS_Store
 MMS-SD_workshop.Rproj
+
+# Ignore generated files
+.lib
+tutorials/**/*.html
+tutorials/**/*_files/
