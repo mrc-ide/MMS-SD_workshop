@@ -1,5 +1,6 @@
 packages:
   - DRpower
+  - DT
   - dplyr
   - ggplot2
   - kableExtra
