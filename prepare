@@ -1,0 +1,45 @@
+#!/usr/bin/env Rscript
+prepare_all <- function(root) {
+  paths <- dir(file.path(root, "tutorials"), full.names = TRUE)
+  for (p in paths) {
+    if (file.info(p)$isdir) {
+      prepare(p)
+    }
+  }
+}
+
+with_dir <- function(path, code) {
+  owd <- setwd(path)
+  on.exit(setwd(owd))
+  force(code)
+}
+
+prepare <- function(path) {
+  link_lib(path)
+  prerender(path)
+}
+
+link_lib <- function(path) {
+  if (!file.exists(file.path(path, ".lib"))) {
+    with_dir(path, file.symlink("../.lib", ".lib"))
+  }
+}
+
+prerender <- function(path) {
+  files <- dir(path, "_(interactive|cb|tz)\\.Rmd$")
+  for (f in files) {
+    # with_dir(path, rmarkdown::render(f))
+  }
+}
+
+find_root <- function(args = commandArgs()) {
+  re <- "^--file=(.+)$"
+  i <- grep(re, args)
+  stopifnot(length(i) >= 1)
+  path_script <- normalizePath(sub(re, "\\1", args[[i[[1]]]]), mustWork = TRUE)
+  dirname(path_script)
+}
+
+if (!interactive()) {
+  prepare_all(find_root())
+}
