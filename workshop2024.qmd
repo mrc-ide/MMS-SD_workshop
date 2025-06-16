@@ -1,12 +1,17 @@
 ---
-title: "Schedule"
+title: "2024 New Orleans Workshop"
 ---
 
-This workshop is taking place before the 2024 ASTMH conference in New Orleans, USA. 
+# Details
+This workshop took place before the 2024 ASTMH conference in New Orleans, USA with 20 participants from 11 countries, primarily from sub-Saharan Africa, with additional attendees from South America, Southeast Asia, and the US. The group encompassed a diverse range of job roles, including participants from NMCPs and others with direct connections to policymakers.
 
 📍 Where: Aloft New Orleans, 225 Baronne St, New Orleans, USA
 
 🗓️ When: 11-12 Nov 2024, immediately prior to the ASTMH conference
+
+![*2024 New Orleans Workshop attendees*](img/group_photo.JPG)
+
+# Schedule 
 
 ## Day 1
 | Time          | Title                                                       | Format                |
@@ -45,3 +50,5 @@ This workshop is taking place before the 2024 ASTMH conference in New Orleans, U
 | 5:00-5:30    | Discussion                                        |                       |
 | 5:30-5:45    | Wrap-up                                        |                       |
 | 5:45-6:00    | Group photo and certificates                                       |                       |
+
+![*Group dinner*](img/group_dinner.JPG)

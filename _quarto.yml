@@ -8,8 +8,17 @@ website:
       - href: index.qmd
         text: "Home"
         icon: house
-      - href: schedule.qmd
+      # - href: events.qmd
+      #   icon: calendar
+      - text: Events
         icon: calendar
+        menu: 
+          - text: "Events overview"
+            href: events.qmd
+          - text: "2024 New Orleans Workshop"
+            href: workshop2024.qmd
+          - text: "2025 Toronto workshop (upcoming)"
+            href: workshop2025.qmd
       - href: lectures.qmd
         icon: bookmark
       - text: "Tutorials"

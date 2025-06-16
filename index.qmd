@@ -6,9 +6,15 @@ title: ""
 
 # Malaria Molecular Surveillance Study Design workshop
 
+## Motivation
+Malaria molecular surveillance (MMS) is undergoing several significant transitions. A decade ago, typical studies focused on a limited set of microsatellite markers, often supplemented by one or two key drug resistance markers. Today, MMS studies frequently involve thousands of samples collected across multiple geographic sites, sequenced to capture all major drug resistance markers alongside sufficient genetic diversity markers to elucidate population structure, sample relatedness, and correlates of transmission intensity. In parallel, sequencing efforts are increasingly shifting to the African continent, with a growing preference for targeted sequencing approaches over whole-genome sequencing. In this evolving landscape, it is critical to identify the key use cases of molecular data and design studies robustly powered to address these questions. Equally important, funders require clear guidance on the upper limits of sample sizes necessary to achieve these objectives, ensuring that the field remains focused and avoids unsustainable increases in sequencing demands. 
+
+## Aims
+This workshop was designed to meet the critical need for training in study design and sample size calculation, tailored specifically for researchers and practitioners working in MMS. The primary objective was to equip participants with practical skills and knowledge that they could apply to their own studies and share with colleagues at their institutions. Additionally, by hosting all lectures and interactive materials on a freely accessible website, we aimed to create a lasting public good resource to support the broader research community and foster improved understanding of the utility of genomic surveillance for the community.
+
 ## Workshop format
 
-Over the course of 1.5 days (see [Schedule](schedule.qmd)) we will have a combination of lectures, hands-on exercises, and group discussions. The workshop will be in English. We will cover several topics relevant to malaria molecular surveillance (MMS) study design, including:
+The in-person workshops involve a combination of lectures, hands-on exercises, and group discussions. We cover several topics relevant to malaria molecular surveillance (MMS) study design, including:
 
 - Statistical power
 - Sample size calculation
@@ -17,8 +23,10 @@ Over the course of 1.5 days (see [Schedule](schedule.qmd)) we will have a combin
 - Cluster-based study design and intra-cluster correlation
 - Guest lectures from experts conducting MMS studies
 
+The materials ([lectures](lectures.qmd) and [tutorials](tutorials.qmd)) can be undertaken independently, however, we have also hosted in-person workshops (see [Events](events.qmd)). Unfortunately, the guest lecture slides and group discussions are only available in-person during the workshops.
+
 ## Materials
-All of the materials were developed by Bob Verity and Shazia Ruybal-Pesántez and are freely available under the [MIT license](https://opensource.org/license/mit). This website is produced from a [Github repository](https://github.com/mrc-ide/MMS-SD_workshop).
+The workshop materials are in English. All of the materials were developed by Bob Verity and Shazia Ruybal-Pesántez and are freely available under the [MIT license](https://opensource.org/license/mit). This website is produced from a [Github repository](https://github.com/mrc-ide/MMS-SD_workshop).
 
 ## Acknowledgments and funding
-Funding for this workshop was provided by the Gates Foundation. 
+Funding for material development and the in-person workshops was provided by the Gates Foundation. 

@@ -86,10 +86,31 @@ ul.task-list li input[type="checkbox"] {
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./schedule.html" rel="" target=""><i class="bi bi-calendar" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-events" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-calendar" role="img">
 </i> 
- <span class="menu-text">Schedule</span></a>
+ <span class="menu-text">Events</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-events">    
+        <li>
+    <a class="dropdown-item" href="./events.html" rel="" target="">
+ <span class="dropdown-text">Events overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./workshop2024.html" rel="" target="">
+ <span class="dropdown-text">2024 New Orleans Workshop</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./workshop2025.html" rel="" target="">
+ <span class="dropdown-text">2025 Toronto workshop (upcoming)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./lectures.html" rel="" target=""><i class="bi bi-bookmark" role="img">
+</i> 
+ <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
@@ -103,9 +124,34 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorials/test.html" rel="" target=""><i class="bi bi-play" role="img">
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/" rel="" target=""><i class="bi bi-play" role="img">
 </i> 
- <span class="dropdown-text">Test</span></a>
+ <span class="dropdown-text">Activity 1 - Sampling from a population</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 2 - Sample size calculation based on margin of error</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 3 - Hypothesis testing and power</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 4 - Dealing with overdispersion in multi-cluster studies</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 5 - The DRpower tool</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./tutorials/module6/module6_scenarios.html" rel="" target=""><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 6 - Designing a study for multiple end-points</span></a>
   </li>  
     </ul>
   </li>
@@ -126,8 +172,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#list-of-all-the-tutorials" id="toc-list-of-all-the-tutorials" class="nav-link active" data-scroll-target="#list-of-all-the-tutorials">List of all the tutorials</a></li>
-  <li><a href="#testing-iframe-with-shinyapps.io-link" id="toc-testing-iframe-with-shinyapps.io-link" class="nav-link" data-scroll-target="#testing-iframe-with-shinyapps.io-link">Testing iframe with shinyapps.io link</a></li>
-  <li><a href="#testing-iframe-with-mrc-server-link" id="toc-testing-iframe-with-mrc-server-link" class="nav-link" data-scroll-target="#testing-iframe-with-mrc-server-link">Testing iframe with MRC server link</a></li>
   </ul>
 </nav>
     </div>
@@ -151,22 +195,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>All of the materials from this workshop are freely available. We suggest you work through them in order (see the <a href="./schedule.html">Schedule</a> for the order in which materials were presented at the pre-ASTMH workshop).</p>
+<p>All of the materials from this workshop are freely available. We suggest you work through them in order (see the specific <a href="./events.html">Events</a> page for the schedule and order in which materials were presented in each workshop).</p>
 <section id="list-of-all-the-tutorials" class="level2">
 <h2 class="anchored" data-anchor-id="list-of-all-the-tutorials">List of all the tutorials</h2>
 <ul>
-<li><a href="./tutorials/test.html">Test</a></li>
+<li>Activity 1: <a href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/">Sampling from a population</a></li>
+<li>Activity 2: <a href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/">Sample size calculation based on margin of error</a></li>
+<li>Activity 3: <a href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/">Hypothesis testing and power</a></li>
+<li>Activity 4: <a href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/">Dealing with overdispersion in multi-cluster studies</a></li>
+<li>Activity 5: <a href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/">The DRpower tool</a></li>
+<li>Activity 6: <a href="./tutorials/module6/module6_scenarios.html">Designing a study for multiple end-points</a></li>
 </ul>
-</section>
-<section id="testing-iframe-with-shinyapps.io-link" class="level2">
-<h2 class="anchored" data-anchor-id="testing-iframe-with-shinyapps.io-link">Testing iframe with shinyapps.io link</h2>
-<iframe src="https://shaziaruybal.shinyapps.io/covidClassifyR/" width="100%" height="800px" frameborder="0" allowfullscreen="">
-</iframe>
-</section>
-<section id="testing-iframe-with-mrc-server-link" class="level2">
-<h2 class="anchored" data-anchor-id="testing-iframe-with-mrc-server-link">Testing iframe with MRC server link</h2>
-<iframe src="https://shiny.dide.ic.ac.uk/DRpower-app/" width="100%" height="800px" frameborder="0" allowfullscreen="">
-</iframe>
 
 
 </section>

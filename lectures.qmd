@@ -2,7 +2,7 @@
 title: "Lectures"
 ---
 
-All of the materials from this workshop are freely available. We suggest you work through them in order (see the [Schedule](schedule.qmd) for the order in which materials were presented at the pre-ASTMH workshop).
+All of the materials from this workshop are freely available. We suggest you work through them in order (see the specific  [Events](events.qmd) page for the schedule and order in which materials were presented in each workshop).
 
 ## List of all the lectures (PDFs)
 

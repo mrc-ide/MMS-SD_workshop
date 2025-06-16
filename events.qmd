@@ -1,0 +1,10 @@
+---
+title: "Events"
+---
+
+We have hosted in-person workshops, often centered around the ASTMH annual meeting. However, all of the materials ([lectures](lectures.qmd) and [tutorials](tutorials.qmd)) from this workshop are freely available and can be undertaken independently. We suggest you work through them in order. See the following workshop pages for more information.
+
+## In-person workshops 
+
+- [2024 New Orleans, USA Workshop](workshop2024.qmd)
+- [2025 Toronto, Canada Workshop](workshop2025.qmd)
