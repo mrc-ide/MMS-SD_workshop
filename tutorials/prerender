@@ -1,0 +1,27 @@
+#!/usr/bin/env Rscript
+prerender_all <- function() {
+  for (p in dir()) {
+    if (file.info(p)$isdir) {
+      prerender(p)
+    }
+  }
+}
+
+with_dir <- function(path, code) {
+  owd <- setwd(path)
+  on.exit(setwd(owd))
+  force(code)
+}
+
+
+prerender <- function(path) {
+  files <- dir(path, "_(interactive|cb|tz)\\.Rmd$")
+  for (f in files) {
+    with_dir(path, rmarkdown::render(f))
+  }
+}
+
+
+if (!interactive()) {
+  prerender_all()
+}
