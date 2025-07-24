@@ -1,9 +1,6 @@
 #!/usr/bin/env Rscript
-prerender_all <- function(root) {
-  path_tutorials <- file.path(root, "tutorials")
-  stopifnot(file.exists(path_tutorials))
-  paths <- dir(path_tutorials, full.names = TRUE)
-  for (p in paths) {
+prerender_all <- function() {
+  for (p in dir()) {
     if (file.info(p)$isdir) {
       prerender(p)
     }
@@ -24,15 +21,7 @@ prerender <- function(path) {
   }
 }
 
-find_root <- function(args = commandArgs()) {
-  re <- "^--file=(.+)$"
-  i <- grep(re, args)
-  stopifnot(length(i) >= 1)
-  path_script <- normalizePath(sub(re, "\\1", args[[i[[1]]]]), mustWork = TRUE)
-  dirname(path_script)
-}
-
 
 if (!interactive()) {
-  prerender_all(find_root())
+  prerender_all()
 }
