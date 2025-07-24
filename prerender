@@ -1,10 +1,11 @@
 #!/usr/bin/env Rscript
-prepare_all <- function(root) {
-  .libPaths(file.path(root, "tutorials", ".lib"))
-  paths <- dir(file.path(root, "tutorials"), full.names = TRUE)
+prerender_all <- function(root) {
+  path_tutorials <- file.path(root, "tutorials")
+  stopifnot(file.exists(path_tutorials))
+  paths <- dir(path_tutorials, full.names = TRUE)
   for (p in paths) {
     if (file.info(p)$isdir) {
-      prepare(p)
+      prerender(p)
     }
   }
 }
@@ -15,16 +16,6 @@ with_dir <- function(path, code) {
   force(code)
 }
 
-prepare <- function(path) {
-  link_lib(path)
-  prerender(path)
-}
-
-link_lib <- function(path) {
-  if (!file.exists(file.path(path, ".lib"))) {
-    with_dir(path, file.symlink("../.lib", ".lib"))
-  }
-}
 
 prerender <- function(path) {
   files <- dir(path, "_(interactive|cb|tz)\\.Rmd$")
@@ -41,6 +32,7 @@ find_root <- function(args = commandArgs()) {
   dirname(path_script)
 }
 
+
 if (!interactive()) {
-  prepare_all(find_root())
+  prerender_all(find_root())
 }
