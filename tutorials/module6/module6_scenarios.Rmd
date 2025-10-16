@@ -57,6 +57,12 @@ Each member of the team can choose a specific 'role':
 
 #### Choose your scenario
 <div style="text-align: left;">
+  <a href="scenario0.Rmd" class="custom-button">
+    `r fa("circle-check")` Example
+  </a>
+</div>
+
+<div style="text-align: left;">
   <a href="scenario1.Rmd" class="custom-button">
     `r fa("circle-check")` Scenario 1
   </a>

@@ -1,0 +1,113 @@
+---
+title: "Example"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+# options(repos = c(
+#   plasmogenepi = "https://plasmogenepi.r-universe.dev",
+#   CRAN = "https://cloud.r-project.org"
+# ))
+
+library(DRpower)
+library(learnr)
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = FALSE)
+
+# needed for longer calculations (eg DRpower) note - in seconds
+tutorial_options(exercise.timelimit = 120)
+
+health_facilities <- data.frame(
+  region = c(
+    rep("West Region", 15)
+  ),
+  health_facility = c(
+    paste0("HF", 1:15)
+  ),
+ population_served = c(
+    1714, 29143, 21943, 3686, 1371, 
+    2657, 9857, 6343, 4200, 7286, 
+    11057, 1886, 3171, 5400, 1629
+  ),
+  expected_malaria_cases_per_month = c(
+    20, 340, 256, 43, 16,
+    31, 115, 74, 49, 85,
+    129, 22, 37, 63, 19
+  )
+)
+
+cost_per_hf <- 5000
+cost_per_sample <- 50
+
+```
+
+### Background
+
+You are a statistican who has been recruited by the National Malaria Control Programme (NMCP) of Ghana to assist with study design. The NMCP is concerned about the potential spread of mutations that affect the performance of HRP2-based rapid diagnostic tests (RDTs). *pfhrp2* deletions can cause false-negative results in HRP2-based RDTs. In the last few weeks, there have been anecdotal reports of RDT failures in border towns. Additionally, there are concerns about the emergence of artemisinin resistance due to *pfk13* mutations, as neighboring countries have reported detection of these mutations. Confirming whether these rare mutations are present in Ghana is a priority for the NMCP. The NMCP plans to conduct a cross-sectional study to estimate the prevalence of *pfhrp2* deletions and detect *pfk13* mutations. The NMCP are also interested to know the prevalence of other drug resistance mutations, such as *pfdhps*, *pfdhfr* and *pfcrt* mutations so these are secondary outcomes of interest.  
+
+### Your task
+The NMCP has decided to conduct a pilot study in one region before making a decision about a nationwide assessment. The Epidemiologist on your team has suggested focusing on the Western Region due to a high incidence of malaria and concerns about detection of these mutations in neighboring areas. The Health Facility Coordinator on your team has provided data on the 15 health facilities in this region. The Budget Officer on your team has given you a budget of 90,000 and a breakdown of costs. From previous studies conducted by the NMCP, we know that the **intra-cluster correlation is 0.05**. Your job is to design a study powered for the following end-points: 
+
+- **Primary endpoints**
+  - Estimate the prevalence of *pfhrp2* deletions causing false-negative RDTs
+  - Detect *pfk13* mutations associated with artemisinin resistance.
+
+- **Secondary endpoint**
+  - Estimate the prevalence of *pfdhps*, *pfdhfr* and *pfcrt* mutations.
+
+Available data includes: 
+
+- `health_facilities`: data on health facilities in each region, the population they serve, and expected malaria cases per month  
+- `cost_per_hf`: fixed cost per health facility enrolled (in USD), including training, equipment, and administrative expenses
+- `cost_per_sample`: cost per sample enrolled (in USD), including collection, laboratory testing, consumables, and data management
+
+
+We have also pre-loaded the [DRpower R package](https://mrc-ide.github.io/DRpower/index.html) so you can access its functions if you need to!
+
+### Exercise 
+
+*You can use the below R code box to perform your calculations*
+
+```{r code-box, exercise=TRUE}
+library(tidyverse)
+
+# View datasets
+health_facilities
+cost_per_hf
+cost_per_sample
+
+# Have a look at DRpower tool
+
+# Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites
+N <- c(X)
+  
+get_power_threshold(N = N,
+                    prevalence = 0.1,
+                    ICC = X,
+                    prev_thresh = 0.05,
+                    reps = 1e3)
+
+# Adjust for dropout
+N_adjusted <- ceiling(N / X)
+
+# Calculate the number of suspected cases to enroll
+N_suspected <- ceiling(N_adjusted / X)
+
+# Calculate cost
+length(N) * cost_per_hf + sum(N_suspected) * cost_per_sample
+
+# Power to detect pfk13
+get_power_presence(N = N, prevalence = 0.01, ICC = X)
+
+# Another approach: how many samples would we need to achieve 80% power?
+get_sample_size_presence(n_clust = X, prevalence = 0.01, ICC = X)
+
+# Sample size needed to estimate the prevalence of dhps, pfdhfr, and pfcrt using margin of error
+get_sample_size_margin(MOE = 0.1, n_clust = X, prevalence = 0.2, ICC = X)
+
+
+```
