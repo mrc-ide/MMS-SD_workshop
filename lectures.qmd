@@ -2,14 +2,15 @@
 title: "Lectures"
 ---
 
-All of the materials from this workshop are freely available. We suggest you work through them in order (see the specific  [Events](events.qmd) page for the schedule and order in which materials were presented in each workshop).
+All of the materials from this workshop are freely available. We suggest you work through them in order in combination with the associated [tutorials](tutorials.qmd).
 
 ## List of all the lectures (PDFs)
 
 - Intro lecture: [Goal of malaria molecular surveillance (MMS)](slides/L0-intro.pdf)
 - Lecture 1: [Sampling from a population](slides/L1-sampling_from_a_population.pdf)
 - Lecture 2: [Sample size calculation based on margin of error](slides/L2-sample_size_calculation_based_on_margin_of_error.pdf)
-- Lecture 3: [Hypothesis testing and power](slides/L3-hypothesis_testing_and_power.pdf)
-- Lecture 4: [Dealing with overdispersion in multi-cluster studies](slides/L4-dealing_with_overdispersion_in_multi-cluster_studies.pdf)
-- Lecture 5: [The DRpower tool](slides/L5-the_DRpower_tool.pdf)
-- Lecture 6: [Designing a study for multiple end-points](slides/L6-designing_a_study_for_multiple_endpoints.pdf)
+- Lecture 3: [Hypothesis testing](slides/L3-hypothesis_testing.pdf)
+- Lecture 4: [Statistical power](slides/L4-statistical_power.pdf)
+- Lecture 5: [Dealing with overdispersion in multi-cluster studies](slides/L5-dealing_with_overdispersion_in_multi-cluster_studies.pdf)
+- Lecture 6: [The DRpower tool](slides/L6-the_DRpower_tool.pdf)
+- Lecture 7: [Designing a study for multiple end-points](slides/L7-designing_a_study_for_multiple_endpoints.pdf)

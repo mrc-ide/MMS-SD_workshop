@@ -1,5 +1,5 @@
 ---
-title: 'Activity 4: Dealing with overdispersion in multi-cluster studies'
+title: 'Activity 5: Dealing with overdispersion in multi-cluster studies'
 output:
   learnr::tutorial:
     progressive: true
@@ -42,7 +42,7 @@ p <- dat$prevalence
 
 ## Introduction
 
-Welcome to Activity 4: **Dealing with overdispersion in multi-cluster studies**
+Welcome to Activity 5: **Dealing with overdispersion in multi-cluster studies**
 
 In this activity, we will explore the unique features of multi-cluster studies that differentiate them from single-cluster studies. In malaria surveillance, it is common to pool information from multiple sites, such as health facilities, towns, or even regions within a country. Combining data across sites allows us to draw broader conclusions at a higher geographic or administrative level. However, multi-cluster studies often face the challenge of *overdispersion*, where variability between sites exceeds what we would expect by chance. Overdispersion can reduce the precision of our estimates and lower statistical power, making it crucial to account for this phenomenon in our analyses.
 

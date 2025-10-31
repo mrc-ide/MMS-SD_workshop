@@ -17,6 +17,7 @@ library(learnr)
 library(dplyr)
 library(ggplot2)
 library(knitr)
+library(kableExtra)
 # library(DRpower)
 
 knitr::opts_chunk$set(warning = FALSE,
@@ -174,7 +175,7 @@ Z <- 1.96
 
 ## Introduction
 
-Welcome to Module 1: **Sampling from a population**.
+Welcome to Activity 1: **Sampling from a population**.
 
 In this module, we’ll explore how to relate samples to populations, calculate confidence intervals, and understand the impact of sample size on study results. To introduce these statistical concepts, we’ll start with a simple example focused on determining the prevalence of malaria. This approach provides a gentle introduction to thinking about these ideas in the context of study design. These same concepts are directly applicable to malaria molecular surveillance (MMS) studies. For instance, in MMS studies, we might design our research to estimate the prevalence of molecular markers, such as drug resistance markers, rather than the prevalence of malaria infection itself.
 
@@ -183,9 +184,9 @@ In this module, we’ll explore how to relate samples to populations, calculate 
 By the end of this tutorial, you will be able to:
 
 -   Define the target population for a study.
--   Differentiate between a population and a sample.
--   Calculate the 95% confidence interval.
--   Assess how sampling variability impacts the representation of the population.
+-   Explain the difference between a population and a sample.
+-   Calculate a 95% confidence interval.
+-   Assess how sampling variability impacts our estimate of the population.
 -   Understand the effect of sample size on confidence intervals.
 
 ## What is my population?
@@ -224,12 +225,14 @@ N <- 10000
 infected_pop <- census %>% filter(malaria_infection == "Infected")
 ```
 
-We now have access to a census of the entire population of the village (N= `r as.integer(N)`) with information on each residents age and sex. For purposes of this tutorial, there are `r census %>% filter(malaria_infection == "Infected") %>% nrow()` people in the village with malaria infections and we "know" the true infection status of every individual. This will help us understand how our sample relates to the entire population.
+We now have access to a census of the entire population of the village (N = `r as.integer(N)`) with information on each resident's age and sex. For purposes of this tutorial, imagine there are `r census %>% filter(malaria_infection == "Infected") %>% nrow()` people in the village with malaria infections and we know the true infection status of every individual. This will help us understand how our sample relates to the entire population.
 
 This is the information we have in the census (here we show the first 6 residents in the census):
 
 ```{r}
-kable(head(census))
+#kable(head(census))
+kable(head(census)) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
 ```
 
 ### Population demographics
@@ -291,7 +294,8 @@ plotInfectedProportion(comparison)
 
 ### Sampling many times from the population 
 
-Now run this a few times with the sample size of 200 to see how it changes with every random sample. Click "Start Over" and then "Run code". 
+Now run this a few times by clicking "Run Code" to see how it changes with every random sample.
+
 ```{r sampling-2, exercise=TRUE}
 sample <- sampleFromPopulation(sample_size = 200, census)
 comparison <- compareSampleToPopulation(sample, census)
@@ -355,7 +359,7 @@ quiz(caption = "QUIZ - Sampling from the population",
   </span> 
 
   <span style="color:#d19554;"> 
-  Smaller sample sizes are more susceptible to sampling variability. With a limited number of individuals, the likelihood of the sample deviating from the population characteristics increases. Think about how this may or may not impact your results. 
+  Smaller sample sizes are more susceptible to sampling variability. With a smaller number of individuals there is an increased chance the sample will deviate from the population characteristics. Think about how this may impact your results. 
   </span>
 </div>
 
@@ -369,7 +373,7 @@ quiz(caption = "QUIZ - Sampling bias",
            answer("Yes", correct = FALSE),
            answer("No", correct = TRUE),
            allow_retry = TRUE,
-           correct = "That is correct! This does not necessarily mean our sampling approach is biased. Bias refers to a *systematic error* that consistently favors certain outcomes. However, because we are randomly sampling 200 individuals with *equal chance of being selected* our sampling approach is not biased. This can occur even if the characteristics of our sample (e.g., age and sex distribution) may not perfectly match those of the population.",
+           correct = "That is correct! The fact that the sample differs from the population does not necessarily mean our sampling approach is biased. Bias refers to a *systematic error* that consistently favors certain outcomes. However, because we are randomly sampling 200 individuals with *equal chance of being selected* our sampling approach is not biased. This can occur even if the characteristics of our sample (e.g., age and sex distribution) may not perfectly match those of the population.",
            incorrect = "That is not correct! Although our sample was not always reflective of the population (for example, the characteristics like age and sex distribution did not perfectly match), our *sampling* method was unbiased because we randomly sampled 200 individuals and each person had an equal chance of being selected. Bias refers to a *systematic error* that consistently favors certain outcomes, which was not the case here."
   )
 )
@@ -377,7 +381,7 @@ quiz(caption = "QUIZ - Sampling bias",
 
 ## Estimating prevalence in our sample and calculating the 95% confidence interval
 
-Our next topic focuses on calculating the 95% confidence interval (CI) using the Wald method. When estimating the prevalence of malaria in a sample, we start with a *point estimate*. However, it’s equally important to calculate the 95% CI to capture the variability around this estimate. The CI provides an interval with defined lower and upper bounds, representing the range within which we are 95% confident the true population prevalence lies. In other words, if we were to repeat the sampling process many times and calculate a confidence interval for each sample, approximately 95 out of 100 of these intervals would contain the true population prevalence.
+Our next topic focuses on calculating the 95% confidence interval (CI) on the prevalence. The 95% CI provides an interval with defined lower and upper bounds, representing the range within which we are 95% confident the true population prevalence lies. In other words, if we were to repeat the sampling process many times and calculate a confidence interval for each sample, approximately 95 out of 100 of these intervals would contain the true population prevalence.
 
 ### Estimating prevalence in our sample
 For this exercise we have already pre-calculated some useful parameters:
@@ -412,19 +416,6 @@ CI_lower <- p_hat - Z * SE
 CI_upper <- p_hat + Z * SE
 ```
 
-
-Below is the code we ran for reference, but you don't have to run it yourself as everything is already loaded.
-```{r global-params-code, echo=T, eval=F}
-# set the sample size
-sample_size <- 200
-
-# sample from the population
-sample_data <- sampleFromPopulation(sample_size, census) 
-
-# Count number of infected individuals in the sample
-infected_count <- sum(sample_data$malaria_infection == "Infected")
-```
-
 ### What is the estimated prevalence of malaria in our sample?
 We can calculate this by dividing the number of individuals infected with malaria by our sample size. 
 
@@ -435,6 +426,8 @@ Try coding it yourself, or click on the solution. *Note: In R when we want to di
 ```
 
 ```{r est-prev-solution}
+
+# Calculate from the raw values
 69 / 200
 
 # Or you can use the stored variables:
@@ -454,14 +447,14 @@ Our estimated prevalence is 0.345 or 34.5%.
 
 Next, we need to calculate the 95% CI around our point estimate.
 
-This is the formula for the **Wald confidence interval:**
+Below is the formula for the **Wald confidence interval:**
 
 $$
 CI = \hat{p} \pm z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 $$
 Where:
 
-- $\hat{p}$ = sample proportion
+- $\hat{p}$ = sample proportion (i.e. estimated prevalence)
 - ${n}$ = sample size
 - $\ z_{1 - \alpha/2}$ = critical value of the normal distribution at significance level $\alpha$ (two sided)
 
@@ -469,13 +462,17 @@ We will now go through this formula step-by-step!
 
 #### 1. Defining our sample proportion, $\hat{p}$
 
-The sample proportion refers to the proportion of infected individuals in our sample. We just calculated this above by dividing the number of infected individuals in the sample by the total sample size. Let's do it again for good measure, and record it as `p_hat`. 
+The sample proportion refers to the proportion of infected individuals in our sample. We calculated this above by dividing the number of infected individuals in the sample by the total sample size.
+
+Complete the code below to calculate this value and record it as `p_hat`. 
 
 ```{r phat, exercise=TRUE, exercise.setup = "sample-seed-params"}
+
 p_hat <-
 ```
 
 ```{r phat-solution}
+
 # Sample proportion
 p_hat <- infected_count / sample_size
 p_hat
@@ -483,7 +480,7 @@ p_hat
 
 ##### 2. Sample size, $n$
 
-Above, we defined our sample size to be n=200 and recorded it as `sample_size`. 
+Above, we defined our sample size to be n=200. We already recorded this in the variable `sample_size`, so you don't need to do anything extra.
 
 ##### 3. Calculating the standard error
 
@@ -492,15 +489,17 @@ We can calculate the standard error using `p_hat` and `sample_size`. We can calc
 $$
 SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 $$
-
+Complete the code below to calculate standard error and store it in the variable `SE`:
 
 *Note: In R the function to take the square root is `sqrt()` and when we want to multiply two things we can use `*`.*
 
 ```{r SE, exercise=TRUE, exercise.setup = "sample-seed-params"}
+
 SE <- 
 ```
 
 ```{r SE-solution}
+
 # Standard error
 SE <- sqrt((p_hat * (1 - p_hat)) / sample_size)
 SE
@@ -517,10 +516,11 @@ Our standard error is 0.034.
 
 ##### 4. Calculating the confidence interval
 
-Now that we know our standard error, we can calculate the lower and upper bounds of our 95% confidence interval (CI). To do this, we multiply the standard error by  $z_{1-\alpha/2}$ , which is approximately 1.96 for a 95% CI. This factor is derived from the normal distribution, where 95% of the probability lies within 1.96 standard deviations of the mean, ensuring our interval reflects this range of uncertainty.
+Now that we know our standard error, we can calculate the lower and upper bounds of our 95% confidence interval (CI). To do this, we multiply the standard error by  $z_{1-\alpha/2}$ , which is approximately 1.96 for a 95% CI. This factor is derived from the normal distribution, where 95% of the probability lies within 1.96 standard deviations of the mean.
 
-Let's start with the lower bound. Click on the solution if you need help. 
+Complete the code below to calculate the lower bound from `z_alpha` and your stored value of `SE`. Look back at the formula for the Wald interval above if you're stuck.
 ```{r ci-lower, exercise=TRUE, exercise.setup = "sample-seed-params"}
+
 # Critical value for 95% confidence
 z_alpha <- 1.96
 
@@ -529,6 +529,7 @@ z_alpha <- 1.96
 ```
 
 ```{r ci-lower-solution}
+
 # Critical value for 95% confidence
 z_alpha <- 1.96
 
@@ -549,6 +550,7 @@ Our lower bound is 0.279 or 27.9%.
 
 Now let's calculate the upper bound. Remember now we need to *add* instead of subtract. 
 ```{r ci-upper, exercise=TRUE, exercise.setup = "sample-seed-params"}
+
 # Critical value for 95% confidence
 z_alpha <- 1.96
 
@@ -557,6 +559,7 @@ z_alpha <- 1.96
 ```
 
 ```{r ci-upper-solution}
+
 # Critical value for 95% confidence
 z_alpha <- 1.96
 
@@ -574,14 +577,20 @@ p_hat + z_alpha * SE
 Our upper bound is 0.411 or 41.1%. 
 </details>
 
-Let's put it all together! 
+##### 5. Putting it all together
+
+Let's put all the steps above together! 
 ```{r ci-calculation, exercise=TRUE}
+# input observed data
 infected_count <- 69
 sample_size <- 200
-z_alpha <- 1.96
 
+# calculate the sample proportion and standard error
 p_hat <- infected_count / sample_size
 SE <- sqrt((p_hat * (1 - p_hat)) / sample_size)
+
+# calculate lower and upper 95% bounds
+z_alpha <- 1.96
 CI_lower <- p_hat - z_alpha * SE
 CI_upper <- p_hat + z_alpha * SE
 
@@ -591,15 +600,15 @@ CI_lower
 CI_upper
 ```
 
-So, putting it all together, our estimated prevalence is 0.345 or **34.5%** and our 95%CI is 27.9% to 41.1%.
+So, putting it all together, our estimated prevalence is 34.5% and our 95% CI is 27.9% to 41.1%.
 
 ## Comparing to the true prevalence
 
-You may remember from our exploration of the census data earlier, that **26.78%** of our population was infected with malaria, in others this is the *true* prevalence. 
+You may remember from the census data that **26.78%** of our population was infected with malaria. This is the *true* prevalence.
 
 ```{r quiz-ci-prev}
 quiz(caption = "QUIZ - 95% confidence interval",
-     question("Is our true prevalence within the 95%CI of 27.9-41.1%?",
+     question("Our 95% CI goes from 27.9% to 41.1%. Is our true prevalence within the 95% CI?",
               allow_retry = TRUE,
               answer("Yes", correct = F, message = "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%"),
               answer("No", correct = T, "The true prevalence (26.78%) is not within the 95%CI of 27.9-41.1%. In the next exercise we are going to run some simulations to explore this further.")
@@ -618,7 +627,7 @@ quiz(caption = "QUIZ - 95% confidence interval",
 
 ## How often does true prevalence fall within the 95%CI?
 
-We explored above what would happen if we randomly sampled 200 individuals. In this first example, the true prevalence didn't fall within the 95%CI. But this was just one example. Now we want to see what happens if we repeat this sampling *many* times. Let's now explore by running a simulation where we sample 1000 times and we will count how many times our true prevalence is within the 95%CI.
+We explored above what would happen if we randomly sampled 200 individuals. In our example, the true prevalence didn't fall within the 95% CI. But this was just one example. Now we want to see what happens if we repeat this sampling *many* times. Let's now explore by running a simulation where we sample 1000 times and we will count how many times our true prevalence is within the 95%CI.
 
 <div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
   <span style="font-size: 1.2em; color: #d19554;">
@@ -640,6 +649,7 @@ results <- replicate(n_simulations, simulate_CI(census, sample_size, true_preval
 
 plotCISimulationResults(results, n_simulations)
 ```
+
 
 ```{r quiz-sim-ci}
 quiz(
@@ -727,6 +737,6 @@ plotCISimulationResults(results, n_simulations)
   </span> 
 
   <span style="color:#d19554;"> 
-  Does the true prevalence (**26.78%**) fall within our 95% CI? What do you notice about the simulation results?
+  Is there a greater chance of the true prevalence being within the 95% CI with this larger sample? If not, why not?
   </span>
 </div>

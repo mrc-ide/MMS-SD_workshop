@@ -1,5 +1,5 @@
 ---
-title: 'Module 5: The DRpower Tool'
+title: 'Activity 6: The DRpower Tool'
 output: html_document
 date: "2024-11-07"
 ---

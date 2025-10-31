@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-11-07">
+
+<title>Activity 6: The DRpower Tool – Malaria Molecular Surveillance Study Design workshop</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8610558a007458a9b978551a034f4d85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Malaria Molecular Surveillance Study Design workshop</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-events" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-calendar" role="img">
+</i> 
+ <span class="menu-text">Events</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-events">    
+        <li>
+    <a class="dropdown-item" href="../../events.html">
+ <span class="dropdown-text">Events overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../workshop2024.html">
+ <span class="dropdown-text">2024 New Orleans Workshop</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../workshop2025.html">
+ <span class="dropdown-text">2025 Toronto workshop (upcoming)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html"> <i class="bi bi-bookmark" role="img">
+</i> 
+<span class="menu-text">Lectures</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorials.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 1 - Sampling from a population</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 2 - Sample size calculation based on margin of error</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 3 - Hypothesis testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 4 - Statistical power</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 5 - Dealing with overdispersion in multi-cluster studies</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://shiny.dide.ic.ac.uk/mms-sd-workshop/module6/"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 6 - The DRpower tool</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorials/module7/module7_scenarios.html"><i class="bi bi-play" role="img">
+</i> 
+ <span class="dropdown-text">Activity 7 - Designing a study for multiple end-points</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
+  <li><a href="#designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia" id="toc-designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia" class="nav-link" data-scroll-target="#designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia">Designing a multi-cluster <em>pfhrp2/3</em> deletion study in Ethiopia</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#using-sample-size-tables" id="toc-using-sample-size-tables" class="nav-link" data-scroll-target="#using-sample-size-tables">Using sample size tables</a></li>
+  <li><a href="#factoring-in-financial-considerations" id="toc-factoring-in-financial-considerations" class="nav-link" data-scroll-target="#factoring-in-financial-considerations">Factoring in financial considerations</a></li>
+  <li><a href="#selecting-sites" id="toc-selecting-sites" class="nav-link" data-scroll-target="#selecting-sites">Selecting sites</a></li>
+  <li><a href="#refining-sample-sizes" id="toc-refining-sample-sizes" class="nav-link" data-scroll-target="#refining-sample-sizes">Refining sample sizes</a></li>
+  </ul></li>
+  <li><a href="#analyzing-pfhrp23-data" id="toc-analyzing-pfhrp23-data" class="nav-link" data-scroll-target="#analyzing-pfhrp23-data">Analyzing <em>pfhrp2/3</em> data</a>
+  <ul class="collapse">
+  <li><a href="#estimating-the-icc" id="toc-estimating-the-icc" class="nav-link" data-scroll-target="#estimating-the-icc">Estimating the ICC</a></li>
+  <li><a href="#recap-key-points" id="toc-recap-key-points" class="nav-link" data-scroll-target="#recap-key-points">Recap key points</a></li>
+  </ul></li>
+  <li><a href="#bonus-questions" id="toc-bonus-questions" class="nav-link" data-scroll-target="#bonus-questions">Bonus questions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Activity 6: The DRpower Tool</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 7, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
+<p>This activity demonstrates the use of the <strong>DRpower</strong> R package and the accompanying web-based tool. In this activity you will learn:</p>
+<ul>
+<li>How to design a multi-cluster <em>pfhrp2/3</em> deletion study.</li>
+<li>How to analyse and interpret the results of a <em>pfhrp2/3</em> deletion study.</li>
+<li>How to account for intra-cluster correlation in other study designs, such as prevalence surveys and presence/absence studies.</li>
+</ul>
+<p><em>Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.</em></p>
+</section>
+<section id="designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia" class="level2">
+<h2 class="anchored" data-anchor-id="designing-a-multi-cluster-pfhrp23-deletion-study-in-ethiopia">Designing a multi-cluster <em>pfhrp2/3</em> deletion study in Ethiopia</h2>
+<section id="background" class="level3">
+<h3 class="anchored" data-anchor-id="background">Background</h3>
+<p>You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into <em>pfhrp2/3</em> deletions. Following the WHO 2020 recommendation, this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of <em>pfhrp2</em> deletions among clinical malaria cases is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.</p>
+<p>A full study of this sort would normally be run in parallel over multiple regions, however, for the purposes of this tutorial we will focus exclusively on the Amhara region.</p>
+</section>
+<section id="using-sample-size-tables" class="level3">
+<h3 class="anchored" data-anchor-id="using-sample-size-tables">Using sample size tables</h3>
+<p>First, we need to scope out roughly how many sites and how many samples are required. The easiest way to do this is via pre-calculated sample size tables. Go to the <em>pfhrp2/3</em> Planner and navigate to the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Explore tab</a>. You should see a sample size table with the number of sites (health facilities) in rows, and the assumed prevalence of <em>pfhrp2/3</em> deletions in columns.</p>
+<p>In any power analysis, we must begin by assuming a known effect size under the alternative hypothesis. For this study, that means selecting an assumed prevalence of <em>pfhrp2/3</em> deletions in the population. This assumption can be challenging and may feel somewhat arbitrary. It’s important to remember that as the assumed prevalence approaches the 5% detection threshold, the required sample size increases significantly. Conversely, assuming a very high prevalence may reduce the public health relevance of the study by focusing power on detecting only large shifts in the parasite population—changes that could already be affecting clinical diagnosis.</p>
+<p>To balance these factors, we recommend a default assumed prevalence of 10%. This value provides a reasonable sensitivity level while keeping sample sizes manageable. For more insights on selecting this parameter, refer to the FAQ section in the web-based <em>pfhrp2/3</em> Planner.</p>
+<p><strong>Question:</strong> What is the <em>total</em> sample size needed (over all clusters) if we recruit 5 clusters?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>2480 <strong>(correct)</strong></li>
+<li>678</li>
+<li>408</li>
+<li>300</li>
+</ul>
+<p><strong>Question:</strong> What about if we recruit 10 clusters?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>2480</li>
+<li>678</li>
+<li>408</li>
+<li>300 <strong>(correct)</strong></li>
+</ul>
+<p>As the number of sites recruited increases, the total sample size needed actually decreases. This may seem counterintuitive, as we might expect that adding more clusters would inherently make the study larger. What’s happening here is that with more clusters, the samples become <em>more independent</em>. By sampling from a greater number of distinct sites, we reduce the likelihood of repeatedly sampling from the same sub-population, thereby minimizing the impact of intra-cluster correlation. As a result, fewer samples are needed overall to achieve the same level of statistical power.</p>
+</section>
+<section id="factoring-in-financial-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="factoring-in-financial-considerations">Factoring in financial considerations</h3>
+<p>The Ethiopian NMCP has provided you with rough estimates of the costs of various aspects of the planned study, including the costs of RDT testing, microscopy, staff time, transport of samples and training of staff. They estimate it will cost $500 USD per cluster recruited, plus an additional $6 USD per sample enrolled.</p>
+<p><strong>Question:</strong> Based on these financial figures, and using the numbers from the sample size table, how many clusters should you recruit to minimize the total cost?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>2</li>
+<li>5</li>
+<li>7 <strong>(correct)</strong></li>
+<li>10</li>
+</ul>
+<p>The design with 7 clusters comes in at $6,365 UDS total. This is made up of $3,500 for setting up the clusters plus $2,856 for the samples enrolled. This is the cheapest of the possible options, although between 6 and 10 clusters are quite similar total costs and may also be viable options.</p>
+</section>
+<section id="selecting-sites" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-sites">Selecting sites</h3>
+<p>Next, we have to choose how we will select the 7 sites. Common choices are 1) <em>sentinel site surveillance</em>, where known and established sites are chosen based on feasibility, and 2) random selection, where a complete list of all health facilities is compiled and a defined number of sites is drawn at random from this list.</p>
+<p>Some advantages of sentinel site surveillance include:</p>
+<ul>
+<li><p><strong>Consistency and Comparability Over Time:</strong> Sentinel sites are typically chosen for long-term monitoring, enabling consistent data collection over time. This allows for more precise trend analysis and easier comparisons of changes in disease prevalence.</p></li>
+<li><p><strong>Cost-Effectiveness and Established Infrastructure:</strong> Sentinel sites are often strategically chosen for accessibility and logistical ease, making them more cost-effective than random site selection, which may require travel to remote or difficult-to-reach locations. Additionally, these sites usually have established infrastructure, trained personnel, and local relationships, streamlining data collection and improving data quality..</p></li>
+<li><p><strong>Targeting High-Burden or Priority Areas:</strong> Sentinel sites are often selected based on epidemiological significance, such as higher disease burden or strategic relevance for outbreak monitoring. This targeted approach can be advantageous in understanding and responding to disease patterns in high-risk areas, which might be overlooked in a random selection approach.</p></li>
+</ul>
+<p>On the other hand, there are some advantages of random site selection:</p>
+<ul>
+<li><p><strong>Improved Representativeness and Reduced Selection Bias:</strong> Random site selection from a complete list provides a more representative sample of the population and minimizes biases associated with known sentinel sites, which are often chosen based on specific criteria like accessibility or historical disease burden. This approach enhances the validity and generalizability of prevalence estimates, making them more applicable across various areas, including those not included in the survey.</p></li>
+<li><p><strong>Greater Diversity of Environmental Conditions:</strong> Randomly selected sites are more likely to capture a range of environmental, socio-economic, and health system conditions. This variation is crucial for understanding factors that influence disease prevalence and for developing interventions that can apply across diverse settings.</p></li>
+</ul>
+<p><strong>Question:</strong> Which of these designs would you choose for this study?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>Sentinel site surveillance <strong>(both answers correct)</strong></li>
+<li>Random sampling <strong>(both answers correct)</strong></li>
+</ul>
+<p>For the sake of this tutorial we will go with random selection of sites. A complete list of all health facilities in the Amhara region is compiled, and 7 sites are selected from this list at random. <strong>Table 1</strong> gives the chosen sites and the target sample size based on our initial calculations.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Site name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sample size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Dese</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm;">Motta</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Debark</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm;">Metema</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Chagni</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm;">Finote Selam</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Alem Ketema</td>
+<td style="text-align: right; width: 4cm;">68</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup><br>
+Table 1: target sample sizes based on initial exploration</td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+</section>
+<section id="refining-sample-sizes" class="level3">
+<h3 class="anchored" data-anchor-id="refining-sample-sizes">Refining sample sizes</h3>
+<p>With a preliminary study plan in place, we can now incorporate some real-world constraints. After discussions with site leads at each of the seven locations, we’ve learned that several sites may face challenges in reaching the target sample size. This could stem from factors like limited staffing, low malaria incidence, or other local issues. To address this, you’ve adjusted the sample sizes by increasing recruitment targets at sites where it is feasible to do so. Here’s the updated sample size table:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Site name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sample size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Dese</td>
+<td style="text-align: right; width: 4cm;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm;">Motta</td>
+<td style="text-align: right; width: 4cm;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Debark</td>
+<td style="text-align: right; width: 4cm;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm;">Metema</td>
+<td style="text-align: right; width: 4cm;">55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Chagni</td>
+<td style="text-align: right; width: 4cm;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm;">Finote Selam</td>
+<td style="text-align: right; width: 4cm;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm;">Alem Ketema</td>
+<td style="text-align: right; width: 4cm;">60</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup><br>
+Table 2: target sample sizes factoring in constraints</td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+<p>But now we are faced with a problem - how do we know if this new design still has adequate power? We can no longer rely on sample size tables, which assume the same sample size per cluster. On the other hand, we cannot simply <em>assume</em> that power will be adequate. This is where the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Design tab</a> of the <em>pfhrp2/3</em> Planner becomes useful.</p>
+<p>Download a .csv file with the current study plan <a href="TODO">from here</a>. You can then upload this spreadsheet into the we app using the “Upload a .csv file” option. You should find that the table populates with these values.</p>
+<p>You’ll notice that drop-out is also considered at this stage. We are assuming 10% drop-out in each site, but for a more rigorous approach you may want to factor in different drop-out levels by site. When you click “Calculate adjusted sample sizes” you should see a table that contains the adjusted sample size, buffered for drop-out.</p>
+<p>Now we are ready to estimate power. On the same page you will find drop-down menus where you can set the assumed prevalence of <em>pfhrp2/3</em> deletions and the intra-cluster correlation. When you git the “Estimate power” button the tool will run a simulation-based power analysis (this may take a few seconds). Because this result is simulation-based we only get an <em>estimate</em> of the power, and not an exact figure. If you want a more precise estimate you can try increasing the number of simulations, although this will take longer to run.</p>
+<p><strong>Question:</strong> Do you think power is adequate under the current plan?</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>Yes <strong>(correct)</strong></li>
+<li>No</li>
+</ul>
+<p>Running an estimate with 1000 simulations should show that the study’s power is close to 80%, with the 95% confidence interval likely spanning this target. For future reference, you can download a copy of your power analysis from the “Generate report” tab. Based on these results, the study plan appears statistically sound and ready for consideration. However, final approval should also take into account logistical and financial factors to ensure feasibility.</p>
+</section>
+</section>
+<section id="analyzing-pfhrp23-data" class="level2">
+<h2 class="anchored" data-anchor-id="analyzing-pfhrp23-data">Analyzing <em>pfhrp2/3</em> data</h2>
+<p>Some time later, the Ethiopian NMCP request your assistance once again to analyse the results of the <em>pfhrp2/3</em> deletion study, which was carried out according to your plan. The results of the study are shown in <strong>Table 3</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Site name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">pfhrp2 negative</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sample size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; width: 3cm;">Dese</td>
+<td style="text-align: right; width: 3cm;">10</td>
+<td style="text-align: right; width: 3cm;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 3cm;">Motta</td>
+<td style="text-align: right; width: 3cm;">1</td>
+<td style="text-align: right; width: 3cm;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 3cm;">Debark</td>
+<td style="text-align: right; width: 3cm;">9</td>
+<td style="text-align: right; width: 3cm;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 3cm;">Metema</td>
+<td style="text-align: right; width: 3cm;">7</td>
+<td style="text-align: right; width: 3cm;">55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 3cm;">Chagni</td>
+<td style="text-align: right; width: 3cm;">2</td>
+<td style="text-align: right; width: 3cm;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 3cm;">Finote Selam</td>
+<td style="text-align: right; width: 3cm;">2</td>
+<td style="text-align: right; width: 3cm;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 3cm;">Alem Ketema</td>
+<td style="text-align: right; width: 3cm;">8</td>
+<td style="text-align: right; width: 3cm;">60</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup><br>
+Table 3: results of the pfhrp2/3 study</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+<p>You can download these results in .csv form <a href="TODO">here</a>. The easiest way to analyse these data is via the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Analysis tab</a> of the <em>pfhrp2/3</em> Planner. Select “Upload a .csv file” and import the data.</p>
+<p>Now click the “Estimate prevalence” button to perform a Bayesian analysis of the data. This analysis takes into account the intra-cluster correlation in the data, which is estimated and accounted for in the prevalence estimate. Therefore there is no need to estimate a design effect or effective sample size as this is accounted for automatically.</p>
+<p>You will also see a “Probability above threshold” field. This tells us the probability that the prevalence is above the 5% threshold.</p>
+<p><strong>Question:</strong> Which of these is true:</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>There is less than 95% probability that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is below 5%.</li>
+<li>There is more than 95% probability that the prevalence is above the 5% threshold. Therefore we conclude that the prevalence is above 5%. <strong>(correct)</strong></li>
+</ul>
+<p>In this example, we have sufficient evidence to conclude that the prevalence of <em>pfhrp2/3</em> deletions in the Amhara region is above the 5% threshold. Therefore, according to the WHO 2020 recommendation, we would be justified in switching RDTs to a brand that does not rely exclusively on the HRP2 protein.</p>
+<section id="estimating-the-icc" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-the-icc">Estimating the ICC</h3>
+<p>As noted above, the <strong>DRpower</strong> method automatically accounts for ICC when estimating prevalence, so a separate ICC estimate is not strictly necessary. However, obtaining an ICC estimate can still be valuable for future study planning. It’s a straightforward process and contributes to a broader understanding of ICC levels, which can benefit researchers planning similar studies in the future or in neighbouring regions.</p>
+<p>Still on the <a href="https://shiny.dide.ic.ac.uk/DRpower-app/">Analysis tab</a>, scroll down to the “Estimate ICC” button. Clicking this button gives an estimate of the ICC, including a point estimate and a 95% CrI.</p>
+<p><strong>Question:</strong> Based on the ICC analysis, which of these is true:</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>There is strong evidence that the ICC is below 0.2 **(correct)*</li>
+<li>There is strong evidence that the ICC is below 0.1</li>
+<li>There is strong evidence that the ICC is below 0.05</li>
+<li>There is strong evidence that the ICC is zero (complete independence)</li>
+</ul>
+<p>We can navigate to the “Generate report” tab to download a report detailing our analysis.</p>
+</section>
+<section id="recap-key-points" class="level3">
+<h3 class="anchored" data-anchor-id="recap-key-points">Recap key points</h3>
+<p>Our <em>pfhrp2/3</em> analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. By accounting for varying sample sizes across sites and anticipating potential drop-out, we reinforced the reliability of our approach. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study’s feasibility. Importantly, we accounted for possible over-dispersion at both the design and analysis stages, increasing our confidence in the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of <em>pfhrp2/3</em> deletions exceeds the 5% threshold—a finding with significant implications for malaria control at the national level.</p>
+</section>
+</section>
+<section id="bonus-questions" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-questions">Bonus questions</h2>
+<p>The <strong>DRpower</strong> R package is primarily designed with <em>pfhrp2/3</em> studies in mind, but also contains some functions that are useful for other multi-cluster designs. For example, it can be used when estimating prevalence to within a specified margin of error, or when detecting the presence of rare variants, while taking into account intra-cluster correlation. These features are only present in the R package, and are not present on the web-based <em>pfhrp2/3</em> Planner.</p>
+<p>The following R code calculates the sample size needed for a multi-cluster prevalence survey to reach a target margin of error. Try varying the value of the ICC and see how this impacts sample size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate sample size needed to achieve a target MOE</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>DRpower<span class="sc">::</span><span class="fu">get_sample_size_margin</span>(<span class="at">MOE =</span> <span class="fl">0.1</span>, <span class="at">n_clust =</span> <span class="dv">10</span>, <span class="at">prevalence =</span> <span class="fl">0.2</span>, <span class="at">ICC =</span> <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+<p>Until now, we have focused on using the Wald interval to construct a 95% confidence interval (CI). Although the Wald interval is straightforward to calculate, it relies on assumptions that may not always hold. For instance, with a small sample size or when prevalence is near 0 or 1, the Wald interval can extend beyond logical boundaries, producing values below 0 or above 1. Such results are nonsensical and indicate that the interval may not accurately represent the underlying data.</p>
+<p>An alternative approach is to use the Clopper-Pearson (CP) interval. Unlike the Wald interval, the CP interval remains within the 0 to 1 range, making it more statistically robust. However, this robustness comes with a trade-off: the CP interval tends to be conservative, resulting in wider intervals.</p>
+<p>Play around with the following R code, which still aims to reach a target margin of error but now assuming CP intervals. What do you notice about the sample size compared to the simple Wald interval approach?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate sample size needed to achieve a target MOE using CP intervals</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DRpower<span class="sc">::</span><span class="fu">get_sample_size_margin_CP</span>(<span class="at">MOE =</span> <span class="fl">0.1</span>, <span class="at">n_clust =</span> <span class="dv">10</span>, <span class="at">prevalence =</span> <span class="fl">0.2</span>, <span class="at">ICC =</span> <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>Finally, we may want to look for the presence of rare variants in a multi-cluster design while accounting for intra-cluster correlation.</p>
+<p>Play around with the following code. What total sample size would you need if you assume 10 clusters, 1% prevalence of the variant of interest, and an ICC of 0.05? How would this compare to the total sample size if you treated all sites as independent?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate sample size needed in a multi-cluster presence/absence study</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>DRpower<span class="sc">::</span><span class="fu">get_sample_size_presence</span>(<span class="at">n_clust =</span> <span class="dv">5</span>, <span class="at">prevalence =</span> <span class="fl">0.05</span>, <span class="at">ICC =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,5 +1,5 @@
 ---
-title: 'Activity 6: Designing a study for multiple end-points'
+title: 'Activity 7: Designing a study for multiple end-points'
 output: html_document
 ---
 
@@ -30,6 +30,9 @@ library(DT)
 ```
 
 ## Introduction
+
+Welcome to Activity 7: **Designing a study for multiple end-points**
+
 In this module, you will design a study for multiple end-points with a scenario-based activity. Ideally this module would be completed in groups to encourage discussion but can also be completed individually. **There is no right answer!** This activity is meant to give you a chance to think about real-world scenarios and how you might design a study that is powered for more than one end-point. Take this opportunity to think about how you might balance between a study that is feasible within logistical and financial constraints and that provides the most useful information. 
 
 *Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*

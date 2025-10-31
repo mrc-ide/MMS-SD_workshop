@@ -2,15 +2,16 @@
 title: "Tutorials"
 ---
 
-All of the materials from this workshop are freely available. We suggest you work through them in order (see the specific  [Events](events.qmd) page for the schedule and order in which materials were presented in each workshop).
+All of the materials from this workshop are freely available. We suggest you work through them in order in combination with the associated [lectures](lectures.qmd).
 
 ## List of all the tutorials 
 
 - Activity 1: [Sampling from a population](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/)
 - Activity 2: [Sample size calculation based on margin of error](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/)
-- Activity 3: [Hypothesis testing and power](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/)
-- Activity 4: [Dealing with overdispersion in multi-cluster studies](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/)
-- Activity 5: [The DRpower tool](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/)
-- Activity 6: [Designing a study for multiple end-points](tutorials/module6/module6_scenarios.Rmd)
+- Activity 3: [Hypothesis testing](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/)
+- Activity 4: [Statistical power](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/)
+- Activity 5: [Dealing with overdispersion in multi-cluster studies](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/)
+- Activity 6: [The DRpower tool](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module6/)
+- Activity 7: [Designing a study for multiple end-points](tutorials/module6/module7_scenarios.Rmd)
 
 

@@ -1,0 +1,417 @@
+---
+title: 'Activity 3: Hypothesis Testing'
+output:
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+<style>
+.alert {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+</style>
+
+```{r setup, include=FALSE}
+library(learnr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = FALSE)
+
+# needed for longer calculations (eg DRpower) note - in seconds
+tutorial_options(exercise.timelimit = 120)
+```
+
+## Introduction
+
+Welcome to Activity 3: **Hypothesis Testing**
+
+In this activity, we introduce the concept of *null hypothesis testing*. Hypothesis tests help us make sense of data by providing a structured way to decide whether the patterns we observe are likely to be genuine or could simply have occurred by chance.
+
+In MMS studies, we often use hypothesis testing to answer concrete, real-world questions such as:
+
+- Has the prevalence of drug resistance mutations increased over the past five years?
+- Are particular genetic variants associated with factors such as gender or occupation?
+- Does treatment efficacy differ depending on the parasite’s genetic profile?
+
+Each of these questions can be expressed as a null hypothesis — a statement that there is no difference or no association — which we then evaluate using data. Understanding this framework allows us to design studies that provide stronger, evidence-based conclusions.
+
+### Learning Outcomes
+
+By the end of this tutorial, you will be able to:
+
+- Define key terms related to null hypothesis testing.
+- Calculate a test statistic from sample data, and compare it against a null distribution.
+- Decide whether or not to reject the null hypothesis based on a p-value.
+
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
+
+
+## Intro quiz on hypothesis testing
+
+```{r quiz-q1}
+quiz(caption = "QUIZ - Hypothesis testing",
+     question("What is a null hypothesis?",
+           allow_retry = TRUE,
+           answer("A statement that there is a significant effect or difference between groups.", correct = FALSE),
+           answer("A prediction about the future outcome of an experiment.", correct = FALSE),
+           answer("A statement that there is no effect or no difference between groups, and any observed effect is due to chance.", correct = TRUE),
+           answer("A hypothesis that describes the expected relationship between two variables.", correct = FALSE), 
+           correct = "That is correct! A null hypothesis assumes there is no effect/difference between groups. Often the null hypothesis is a statement that there is nothing interesting going on - but not always! For example, imagine our null hypothesis is that people using bed nets have the same malaria incidence as those not using bed nets. If this null hypothesis is true then that is very interesting indeed.", 
+           incorrect = "Hint: when you see the word 'null' think 'nothing'."
+  ),
+  question("Which of these example statements is *not* a null hypothesis?",
+           allow_retry = TRUE,
+           answer("There is no difference in malaria prevalence between people who sleep under bed nets and people who do not.", correct = FALSE),
+           answer("The presence of a genetic marker for drug resistance is independent of the region (e.g., East Africa vs. West Africa).", correct = FALSE),
+           answer("Elevation has no relationship with malaria risk.", correct = FALSE),
+           answer("Malaria incidence is twice as high in men as it is in women.", correct = TRUE), 
+           correct = "That is correct! This cannot be a null hypothesis as it expresses a difference between two groups. The null hypothesis would be that there is no difference in incidence between men and women.", 
+           incorrect = "Hint: for each statement, try to work out if it assumes an effect/difference or no effect between groups."
+  ),
+  question("A false-negative result is when...",
+           allow_retry = TRUE,
+           answer("The test says there is no effect, but there really is one.", correct = TRUE, message = "A false-negative result means we failed to detect an effect that was really there"),
+           answer("The test says there is no effect, and there really isn’t one.", correct = FALSE, message = "You're right that this is a negative result, but this is a true-negative rather than a false-negative."),
+           answer("The test says there is an effect, and there really is one.", correct = FALSE, message = "This is the opposite of a false-negative result; this is a true-positive result."),
+           answer("The test says there is an effect, but there really isn’t one.", correct = FALSE, message = "You're right that this is a false result, but it is a false-positive rather than a false-negative.")
+  ),
+  question("The parameter $\\alpha$ is often referred to as...",
+           allow_retry = TRUE,
+           answer("The confidence level of a hypothesis test.", correct = FALSE),
+           answer("The significance level of a hypothesis test.", correct = TRUE),
+           answer("The power of a statistical test.", correct = FALSE),
+           answer("The probability of making a Type II error.", correct = FALSE), 
+           correct = "That is correct! Smaller values of $\\alpha$ make it harder for us to reject the null hypothesis.", 
+           incorrect = "Hint: $\\alpha$ is the threshold we set to decide if a result is statistically significant."
+  ),
+  question("A statistical test that only examines effects in one direction is called...",
+           allow_retry = TRUE,
+           answer("A one-headed test.", correct = FALSE),
+           answer("A one-way street analysis.", correct = FALSE),
+           answer("A wild goose chase.", correct = FALSE),
+           answer("A one-tailed test.", correct = TRUE), 
+           correct = "That is correct! A one-tailed test assumes that we already know the direction of the effect - for example, that bed nets will decrease the incidence of malaria, not increase it. One-tailed tests tend to be easier to disprove, but we have to be sure about the direction of the effect.", 
+           incorrect = "Hint: the 'tails' of a distribution refer to the low probability regions on either side of the main hump."
+  ),
+  question_radio("In statistical testing, we always compare our test statistic against the normal distribution.",
+           allow_retry = TRUE,
+           answer("True", correct = FALSE),
+           answer("False", correct = TRUE),
+           correct = "That is correct! Different statistical tests can have different distributions for the test statistic - for example, the chi-squared test statistic follows a chi-squared distribution. We need to know the correct distribution to compare against when assessing significance.", 
+           incorrect = "Hint: tests are often named after their null distribution (e.g. t-test, chi-squared test)."
+  )
+)
+```
+
+Well done on completing this quiz! We will now put some of these ideas into practice.
+
+## Testing Whether a Resistance Mutation Exceeds a Threshold
+
+### Background
+
+You are a molecular surveillance scientist working with a local research team in Mtwara, a coastal region in southern Tanzania. In recent years, reports from neighbouring districts have hinted at a possible rise in sulfadoxine–pyrimethamine (SP) resistance. To assess the situation locally, your team has genotyped samples collected from malaria-positive patients attending health facilities in Mtwara town.
+
+You are particularly interested in the A437G mutation in the *dhps* gene, a well-established marker of SP resistance. You decide to test whether the prevalence of this mutation in Mtwara exceeds 5% - a threshold that may indicate cause for clinical concern.
+
+Your question is straightforward: **Is the prevalence of the dhps A437G mutation in Mtwara greater than 5%?** You will answer this by conducting a formal hypothesis test.
+
+### Framing the Question
+
+Your survey in Mtwara was recently completed. Out of 1,000 participants tested for malaria, 320 were confirmed positive by rapid diagnostic test (RDT). Of these, 300 samples were successfully sequenced, and 27 were found to carry the *dhps* A437G mutation.
+
+```{r quiz-q2}
+quiz(
+  caption = "QUIZ - Setting Up the Hypothesis",
+  # Q1: Null hypothesis
+  question("Which of the following best expresses the null hypothesis for this study?",
+    answer("H\u2080: Prevalence = 0.05", correct = TRUE, message = "The null states the prevalence is not different from the threshold."),
+    answer("H\u2080: Prevalence > 0.05", correct = FALSE, message = "Hint: The null hypothesis is a statment of no difference or no effect between groups."),
+    answer("H\u2080: Prevalence < 0.05", correct = FALSE, message = "Even though our question asks whether prevalence is greater than 5%, the null hypothesis always represents the situation of no difference from the reference value — in this case, that the true prevalence is exactly 5%. We then test whether our data provide enough evidence to reject that assumption"),
+    allow_retry = TRUE
+  ),
+
+  # Q2: Which numbers to divide
+  question("To calculate the observed prevalence of the dhps A437G mutation, which two numbers should you divide?",
+    answer("27 / 1000", correct = FALSE, message = "Those are DR-positives over all participants, which is not the correct denominator for genotype prevalence."),
+    answer("320 / 1000", correct = FALSE, message = "That is the prevalence of malaria by RDT, but not the prevalence of the mutation among infections."),
+    answer("27 / 320", correct = FALSE, message = "Those are DR-positives over all malaria-positive cases, which is not the correct denominator. We only consider successfully sequenced samples in the denominator, as only these could have potentially identified the mutation."),
+    answer("27 / 300", correct = TRUE, message = "This is the prevalence among successfully sequenced infections."),
+    allow_retry = TRUE
+  )
+)
+```
+
+### Choosing an Appropriate Test
+
+Before we can calculate anything, we need to decide which type of statistical test is appropriate for our question. Different tests are used depending on:
+
+- What kind of data we have (e.g. proportions, means, counts), and  
+- What kind of comparison we want to make (e.g. one group vs. a reference value, or multiple groups vs. each other).
+
+Below are some common tests you may encounter in MMS:
+
+---
+
+<div class="alert alert-info" role="alert">
+<strong>One-sample <em>z</em>-test</strong>  
+<br>
+Used when comparing an **observed proportion or mean** to a **single fixed value**.  
+<br>
+<strong>Null hypothesis:</strong> the population proportion (or mean) is equal to the reference value.
+</div>
+
+<div class="alert alert-success" role="alert">
+<strong>Chi-squared test</strong>  
+<br>
+Used for **categorical data** to test for an **association between two variables**.  
+<br>
+<strong>Null hypothesis:</strong> there is no association between the variables (they are independent).
+</div>
+
+<div class="alert alert-warning" role="alert">
+<strong><em>t</em>-test</strong>  
+<br>
+Used when comparing **means between two groups** for **continuous data**.  
+<br>
+<strong>Null hypothesis:</strong> the population means of the two groups are equal.
+</div>
+
+<div class="alert alert-danger" role="alert">
+<strong>ANOVA (Analysis of Variance)</strong>  
+<br>
+Used to compare **means across three or more groups**.  
+<br>
+<strong>Null hypothesis:</strong> all group means are equal.
+</div>
+
+---
+
+```{r quiz-choose-test, echo=FALSE}
+library(learnr)
+
+quiz(
+  caption = "QUIZ – Choosing the Appropriate Test",
+  question("Which test is appropriate for your dhps A437G study?",
+    answer("One-sample z-test", correct = TRUE, message = "We're comparing one observed proportion (the prevalence of the mutation) with a single reference value (the threshold)."),
+    answer("Chi-squared test", correct = FALSE, message = "The chi-squared test is for associations between categorical variables, not comparing to a fixed threshold."),
+    answer("t-test", correct = FALSE, message = "The t-test compares means of continuous variables, not proportions."),
+    answer("ANOVA", correct = FALSE, message = "ANOVA compares means across multiple groups, not a single proportion to a threshold."),
+    allow_retry = TRUE
+  )
+)
+```
+
+### Calculating the Test Statistic
+
+Now that we've chosen a test, the next step is to calculate the test statistic. This value tells us how far our observed result is from what we would expect if the null hypothesis were true.
+
+For a one-sample *z*-test on a proportion, the formula is:
+
+\[
+z = \frac{\hat{p} - p_0}{\sqrt{p_0(1 - p_0)/n}}
+\]
+
+where:
+
+- \(\hat{p}\) = observed sample proportion  
+- \(p_0\) = null (expected) proportion  
+- \(n\) = sample size  
+
+---
+
+Fill in the blanks below to calculate the *z*-statistic for the Mtwara data.
+
+```{r calc-z-exercise, exercise=TRUE}
+# Observed and expected values
+p <- 27 / 300
+p_thresh <- 0.05
+n <- 300
+
+# Fill in the missing parts of the formula
+z <- (? - ?) / sqrt(? * (1 - ?) / ?)
+z
+```
+
+```{r calc-z-exercise-solution}
+# Observed and expected values
+p <- 27 / 300
+p_thresh <- 0.05
+n <- 300
+
+# Fill in the missing parts of the formula
+z <- (p - p_thresh) / sqrt(p_thresh * (1 - p_thresh) / n)
+z
+```
+
+<details>
+<summary style="text-decoration: underline; color: red;">
+`r fontawesome::fa("check", fill = "red")`Click to see the answer
+</summary>
+
+You should get z = 3.179.
+
+</details>
+</br>
+
+```{r quiz-understand-statistic, echo=FALSE}
+quiz(
+  caption = "QUIZ – Understanding the Test Statistic",
+  question("Look carefully at the formula for the z-statistic. Which of the following would increase the absolute value of the test statistic (that is, make it more extreme — either more positive or more negative)? Select all that apply.",
+    answer("A larger difference between p̂ and p₀", correct = TRUE),
+    answer("Reporting results with more decimal places", correct = FALSE),
+    answer("A larger sample size", correct = TRUE),
+    answer("Randomly discarding 10% of samples", correct = FALSE),
+    allow_retry = TRUE
+  )
+)
+```
+
+### From the Test Statistic to the *p*-value
+
+So far, we’ve calculated the *z*-statistic — a number that tells us how far our observed prevalence (9%) is from the null value (5%).
+
+But how large is “large”? To answer that, we need to compare our test statistic to what we’d expect **if the null hypothesis were true**. This is done using the **null distribution**.
+
+Under the null hypothesis, the *z*-statistic follows a **standard normal distribution**, centred at zero:
+
+```{r plot-null-dist, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+# Observed and expected values
+p <- 27 / 300
+p_thresh <- 0.05
+n <- 300
+
+# Calculate observed z
+z_obs <- (p - p_thresh) / sqrt(p_thresh * (1 - p_thresh) / n)
+
+# Create data for the null distribution
+x <- seq(-4, 4, by = 0.01)
+df <- data.frame(x = x, y = dnorm(x))
+
+# Define the critical z values for a two-tailed alpha = 0.05
+z_crit <- qnorm(0.975)  # ~1.96
+
+ggplot(df, aes(x, y)) +
+  theme_bw(base_size = 14) +
+  # Shade the 5% tails (2.5% each side)
+  geom_area(
+    data = subset(df, x <= -z_crit),
+    aes(x, y),
+    fill = "grey50", alpha = 0.5
+  ) +
+  geom_area(
+    data = subset(df, x >=  z_crit),
+    aes(x, y),
+    fill = "grey50", alpha = 0.5
+  ) +
+  # Plot the null distribution curve
+  geom_line(size = 1) +
+  # Add the observed z as a red arrow
+  geom_segment(
+    x = z_obs, xend = z_obs, y = 0.1, yend = dnorm(z_obs),
+    arrow = arrow(length = unit(0.25, "cm")),
+    colour = "red",
+    size = 1
+  ) +
+  labs(
+    title = "Null Distribution of the z-statistic",
+    x = "z",
+    y = "Density",
+    subtitle = sprintf("Observed z = %s (red arrow)", round(z_obs, 2))
+  )
+```
+
+The grey shaded areas show the **5% of most unusual results** (2.5% on either side) that we would expect **if the null hypothesis were true**.
+
+Our observed *z*-statistic is marked by the red arrow. If this value falls **inside one of the shaded regions**, it means that such an extreme result would be very unlikely under the null hypothesis.
+
+We can express this using a *p***-value**, which tells us the **exact probability** of seeing a result **at least as extreme** as this one, assuming the null hypothesis is true. A smaller *p*-value means a rarer, more unusual result.
+
+Run the following code to carry out this statistical test. Can you find the *p*-value in the output?
+
+```{r calc-pvalue, exercise=TRUE}
+# Conduct one-sample z-test
+prop.test(x = 27, n = 300, p = 0.05, correct = FALSE)
+```
+
+<details>
+<summary style="text-decoration: underline; color: red;">
+`r fontawesome::fa("check", fill = "red")`Click to see the answer
+</summary>
+
+You should get a p-value of 0.001478
+
+</details>
+</br>
+
+This means that if the true prevalence were exactly 5%, we would expect to see a result this extreme (or more extreme) only about 0.15% of the time. That’s very unlikely, giving us strong evidence that the true prevalence differs from 5%. In our case the observed prevalence was 9%, meaning we have strong evidence the prevalence is **higher** than the threshold.
+
+```{r quiz-p-value, echo=FALSE}
+quiz(
+  caption = "QUIZ – Understanding the p-value",
+  question("What do the grey shaded regions on the plot represent?",
+    answer("The most common results under the null hypothesis", correct = FALSE),
+    answer("The range where the null hypothesis is definitely false", correct = FALSE),
+    answer("The most unusual 5% of results expected if the null hypothesis were true", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question("If the observed z-statistic (red arrow) falls within one of these shaded regions, what does that mean?",
+    answer("The result supports the null hypothesis", correct = FALSE),
+    answer("The result is very unlikely under the null hypothesis", correct = TRUE),
+    answer("The data are too variable to draw conclusions", correct = FALSE),
+    allow_retry = TRUE
+  ),
+  question("What does the p-value tell us?",
+    answer("The probability that the null hypothesis is true", correct = FALSE),
+    answer("The proportion of samples carrying the mutation", correct = FALSE),
+        answer("How likely we are to get a result as extreme (or more extreme) than our observed result if the null hypothesis were true", correct = TRUE),
+    allow_retry = TRUE
+  )
+)
+```
+
+### Communicating the Results
+
+Now that we’ve completed the hypothesis test, let’s summarise what we’ve found and how to communicate it clearly.
+
+We started with a simple question:  **Is the prevalence of the *dhps* A437G mutation in Mtwara greater than 5%?**
+
+From our data, we calculated:  
+- Observed prevalence: **9% (27 out of 300)**  
+- Observed *z*-statistic: **3.179**  
+- Corresponding *p*-value: **0.001478**
+
+Because the *p*-value is much smaller than 0.05, we reject the null hypothesis that the true prevalence is equal to 5%. Because our observed prevalence (9%) is higher than this value, we conclude the prevalence is different in the **positive direction** - i.e. the prevalence is **greater than 5%**.
+
+When reporting results like this, it’s important to be **clear and transparent** about both the statistical and practical meaning. A good summary might look something like this:
+
+---
+
+Prevalence of the *dhps* A437G mutation in Mtwara town was estimated at 9.0% (27 / 300). A one-sample z-test comparing this against a 5% threshold provided strong evidence that the true prevalence exceeds 5% (z = 3.18, p = 0.0015).
+
+---
+
+```{r quiz-communicating, echo=FALSE}
+quiz(
+  caption = "REFLECTION – Thinking Beyond the Numbers",
+  question_checkbox(
+    "Which of the following would strengthen or extend this analysis? (Select all that apply.)",
+    answer("Collecting samples from additional sites to compare regional variation", correct = TRUE),
+    answer("Repeating the study at a later date to monitor trends over time", correct = TRUE),
+    answer("Including other molecular markers linked to SP resistance", correct = TRUE),
+    answer("Reporting confidence intervals for the estimated prevalence", correct = TRUE),
+    allow_retry = TRUE
+  )
+)
+```
+

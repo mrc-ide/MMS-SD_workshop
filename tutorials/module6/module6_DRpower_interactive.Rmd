@@ -1,5 +1,5 @@
 ---
-title: 'Activity 5: The DRpower tool'
+title: 'Activity 6: The DRpower tool'
 output:
   learnr::tutorial:
     progressive: true
@@ -29,7 +29,7 @@ tutorial_options(exercise.timelimit = 120)
 ```
 ## Introduction
 
-Welcome to Module 5: **The DRpower tool**.
+Welcome to Activity 6: **The DRpower tool**.
 
 In this module, we'll demonstrate the use of the **DRpower** tool. This is an R package that was primarily designed to help with the development of *P. falciparum* *pfhrp2/3* gene deletion studies. We we also explore the web-based *pfhrp2/3* Planner, which runs **DRpower** in the background but works via an intuitive user interface. Either of these tools can be used to design *pfhrp2/3* deletion studies that are well powered, and to analyse the resulting data to arrive at robust conclusions.
 

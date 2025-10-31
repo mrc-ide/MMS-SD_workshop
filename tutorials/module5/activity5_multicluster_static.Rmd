@@ -1,5 +1,5 @@
 ---
-title: "Activity 4: Intra-cluster correlation"
+title: 'Activity 5: Dealing with overdispersion in multi-cluster studies'
 output: html_document
 date: "`r Sys.Date()`"
 ---

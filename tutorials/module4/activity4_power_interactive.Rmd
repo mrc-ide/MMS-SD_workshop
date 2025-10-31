@@ -1,0 +1,707 @@
+---
+title: 'Activity 4: Statistical Power'
+output:
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(shiny)
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = FALSE)
+
+# needed for longer calculations (eg DRpower) note - in seconds
+tutorial_options(exercise.timelimit = 120)
+```
+
+## Introduction
+
+Welcome to Activity 4: **Statistical Power**
+
+In this activity, we build on what you’ve learned about hypothesis testing by introducing the concept of statistical power — the probability of detecting a real effect when it truly exists. Power analysis helps us answer a crucial question in study design: *If there is a real difference, how likely is our study to find it?*
+
+### Learning Outcomes
+
+By the end of this tutorial, you will be able to:
+
+- Perform power analysis using two different statistical tests.
+- Interpret power curves.
+- Use minimum sample size tables.
+
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
+
+
+## Designing a Study to Compare Prevalence of Resistance Mutations Against a Threshold
+
+### Background
+
+You are a molecular surveillance scientist working in Pemba, a coastal city in northern Mozambique. Following the recent findings from Mtwara, Tanzania — where the *dhps* A437G mutation was found in more than 5% of infections — your team wants to know whether a similar pattern might be emerging in your region.
+
+This time, you are still in the planning stage. Before any samples are collected, you need to design a study that will give you a good chance of detecting an elevated level of resistance if it truly exists. In other words, you want to know: **How many infections should we sample and sequence to have a strong chance of detecting a true prevalence above 5%?**
+
+### Recapping the one-sample z-test for proportions
+
+The first step in any power analysis is to define a clear analysis plan. We need to specify what data will be collected and how it will be analysed.
+
+In this study, we will collect genetic data as counts: the number of samples carrying the mutation out of the total number successfully sequenced. Dividing these gives the observed prevalence of the mutation, expressed as a proportion between 0 and 1.
+
+We will compare this observed proportion against a fixed reference value of 5%. From our earlier work on hypothesis testing, we know that the appropriate statistical test to use here is the one-sample z-test for proportions.
+
+The test statistic is given by:
+
+\[
+z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}}
+\]
+
+where:
+
+- \(\hat{p}\) = observed sample proportion  
+- \(p_0\) = null (expected) proportion  
+- \(n\) = sample size
+
+```{r quiz-choose-test, echo=FALSE}
+quiz(
+  caption = "QUIZ – Sample Size and Power",
+  question_radio("From the formula for the z-statistic, what do we expect will happen if we increase the sample size?",
+    answer("We will get less significant results because large samples make small effects harder to detect.", correct = FALSE, message = "Larger samples actually make small effects easier to detect by reducing variability."),
+    answer("Increasing the sample size will have no effect on whether we reject the null hypothesis.", correct = FALSE, message = "Power depends strongly on sample size: larger n → smaller standard error → higher power."),
+    answer("We will tend to see larger values of z and more significant p-values, increasing the chance that we will reject the null hypothesis.", correct = TRUE, message = "Large sample sizes increase the chance of correctly rejecting the null hypothesis"),
+    answer("The test becomes invalid if the sample size is too large.", correct = FALSE, message = "Large samples don’t invalidate the test; they typically improve precision and power."),
+    allow_retry = TRUE
+  )
+)
+```
+
+### Defining the alternative hypothesis
+
+So far, we’ve only looked at the null distribution — what we would expect to see if the null hypothesis were true. Now it’s time to consider the **alternative hypothesis**, which represents a real effect or difference.
+
+In our case, the alternative hypothesis means that the true prevalence, which we’ll call $p$, is not equal to the threshold value $p_0$.
+
+While there is only one null hypothesis, there are many possible alternatives. For example, $p$ could be 0.1 or 0.5 — both values differ from the null threshold of $p_0 = 0.05$, but they would lead to different test outcomes and different statistical power.
+
+The plot below shows the distribution of the test statistic that we would expect under the *alternative* hypothesis. Use the sliders to explore how changing each parameter affects the distribution.
+
+```{r normal-ui, echo=FALSE}
+fluidPage(
+  plotOutput("normalPlot", height = "300px", width = "500px"),
+  sliderInput("p_true", "True prevalence (%):", min = 0, max = 100, value = 10, step = 1, width = "60%"),
+  sliderInput("p_thresh", "Threshold (%):", min = 0, max = 100, value = 5, step = 1, width = "60%"),
+  sliderInput("n", "Sample size:", min = 5, max = 1000, value = 100, step = 1, width = "60%")
+)
+```
+
+```{r normal-server, context="server"}
+output$normalPlot <- renderPlot({
+  
+  # extract slider values
+  p_true <- input$p_true / 100
+  p_thresh <- input$p_thresh / 100
+  n <- input$n
+  m <- (p_true - p_thresh) / sqrt(p_true*(1 - p_true) / n)
+  
+  # other constants
+  z_crit <- qnorm(0.975)
+  pow <- pnorm(z_crit, mean = m, lower.tail = FALSE) + pnorm(-z_crit, mean = m, lower.tail = TRUE)
+  
+  # make plotting data
+  df_plot <- data.frame(x = seq(-8, 8, by = 0.01)) |>
+    mutate(H0 = dnorm(x),
+           H1 = dnorm(x, mean = m))
+  
+  # plot
+  df_plot |>
+    ggplot() + theme_bw() +
+    annotate(x = 0, y = 0.45, geom = "text", label = "Null", size = 7, col = "grey70") +
+    geom_segment(x = 0, xend = 0, y = 0.42, yend = dnorm(0), colour = "grey70") +
+    annotate(x = m, y = 0.5, geom = "text", label = "Alternative", size = 7, col = "grey70") +
+    geom_segment(x = m, xend = m, y = 0.48, yend = dnorm(0), colour = "grey70") +
+    geom_line(aes(x = x, y = H0)) +
+    geom_area(aes(x = x, y = H0), data = subset(df_plot, x >=  z_crit), fill = "grey50", alpha = 0.5) +
+    geom_area(aes(x = x, y = H0), data = subset(df_plot, x <=  -z_crit), fill = "grey50", alpha = 0.5) +
+    geom_line(aes(x = x, y = H1)) +
+    geom_area(aes(x = x, y = H1), data = subset(df_plot, x >=  z_crit), fill = "firebrick1", alpha = 0.5) +
+    geom_area(aes(x = x, y = H1), data = subset(df_plot, x <=  -z_crit), fill = "firebrick1", alpha = 0.5) +
+    scale_y_continuous(limits = c(0, 0.55), expand = c(0, 0)) +
+    scale_x_continuous(limits = c(-8, 8), expand = c(0, 0)) +
+    ggtitle(sprintf("Power = %s%%", round(pow*100, 1))) +
+    theme(plot.title = element_text(colour = "firebrick1", size = 18, face = "bold")
+)
+  
+})
+```
+
+```{r quiz-alternative-test, echo=FALSE}
+quiz(
+  caption = "QUIZ – Exploring the Alternative Hypothesis",
+  question_radio("What power would you expect if you assume the true prevalence is 20% (compared against the 5% threshold) and your sample size is 100?",
+    answer("30.3%", correct = FALSE),
+    answer("96.3%", correct = TRUE),
+    answer("42.0%", correct = FALSE),
+    answer("80.0%", correct = FALSE),
+    allow_retry = TRUE
+  ),
+  question_checkbox("Power is highest when...(check all that apply)",
+    answer("The sample size is large", correct = TRUE),
+    answer("The true prevalence exactly equals the threshold", correct = FALSE),
+    answer("The sample size is small", correct = FALSE),
+    answer("The true prevalence is a long way from the threshold", correct = TRUE),
+    allow_retry = TRUE
+  )
+)
+```
+
+Let's look at how to calculate power directly in R.
+
+We start by calculating the mean of the distribution under the alternative hypothesis. This is given by:
+$$
+E[Z] = \frac{|p - p_0|}{\sqrt{\frac{p(1-p)}{n}}}
+$$
+The vertical lines around $|p - p_0|$ indicate that we should take the *absolute value* of the difference. This ensures that $E[Z]$ is always positive.
+
+Complete the following R code to calculate the value of $E[Z]$, assuming a true prevalence of $p = 0.20$, a threshold of $p_0 = 0.05$, and a sample size of $n = 100$.
+
+```{r ztest-1, exercise=TRUE}
+# input parameters
+p0 <- ?
+p <- ?
+n <- ?
+
+# calculate absolute value of difference in prevalence
+p_diff <- abs(p - p0)
+
+# calculate the standard error
+SE <- sqrt(p*(1 - p) / n)
+
+# calculate the expected value of the statistic
+E_Z <- ?
+
+print(E_Z)
+```
+
+```{r ztest-1-solution}
+# input parameters
+p0 <- 0.05
+p <- 0.20
+n <- 100
+
+# calculate absolute value of difference in prevalence
+p_diff <- abs(p - p0)
+
+# calculate the standard error
+SE <- sqrt(p*(1 - p) / n)
+
+# calculate the expected value of the statistic
+E_Z <- p_diff / SE
+
+print(E_Z)
+```
+
+<details>
+<summary style="text-decoration: underline; color: red;">
+`r fontawesome::fa("check", fill = "red")`Click to see the answer
+</summary>
+
+You should find that $E[Z] = 3.75$.
+
+</details>
+</br>
+
+This means that *on average* we should expect our test statistic to equal $3.75$ if this alternative hypothesis is true.
+
+We can plug this value of $E[Z]$ into the following formula for power under the z-test:
+
+$$
+\text{Power} = 1 - \phi(z_{1-\alpha/2} - E[Z])
+$$
+
+$\phi()$ in this formula refers to the area under the curve of a standard normal distribution. There is no simple way of calculating this value by hand, but we can obtain it easily in R using the `pnorm()` function. As in previous activities, the value $z_{1 - \alpha/2}$ refers to the critical value of the normal distribution at a significance level $\alpha$ (two-tailed), which is approximately equal to $z_{1 - \alpha/2} = 1.96$.
+
+Complete the following R code to calculate the power under the planned study design.
+
+```{r ztest-2, exercise=TRUE}
+# calculate power
+E_Z <- 3.75
+z_alpha <- 1.96
+power <- ?   # hint, you will need to use the pnorm() function here
+
+print(power)
+```
+
+```{r ztest-2-solution}
+# calculate power
+E_Z <- 3.75
+z_alpha <- 1.96
+power <- 1 - pnorm(z_alpha - E_Z)
+
+print(power)
+```
+
+<details>
+<summary style="text-decoration: underline; color: red;">
+`r fontawesome::fa("check", fill = "red")`Click to see the answer
+</summary>
+
+You should find that $\text{Power} = 0.963$.
+
+</details>
+</br>
+
+```{r power-quiz}
+quiz(caption = "QUIZ - Interpreting power",
+     question("A power of 96% means...",
+           allow_retry = TRUE,
+           answer("There is a 96% chance that the study will be successful.", correct = FALSE),
+           answer("There is a 96% difference in prevalence between the time points.", correct = FALSE),
+           answer("There is a 96% chance that the alternative hypothesis is true.", correct = FALSE),
+           answer("Assuming the alternative hypothesis is true, there is a 96% chance that we will correctly reject the null hypothesis.", correct = TRUE), 
+           correct = "That is correct! Under the current study design there is a 96% chance that we will correctly conclude that prevalence is above the 5% threshold.", 
+           incorrect = "Hint: power is the chance of correctly rejecting the null hypothesis."
+  )
+)
+```
+
+
+### Using power curves
+
+Our current study design has 96% power. We normally aim for at least 80% power, meaning this study is adequately powered. In fact, we could argue that it is *over-powered*, meaning we could use fewer samples and still have a good chance of detecting a real effect.
+
+We can use power curves to explore how power changes as a function of sample size. In the plot below, the region with at least 80% power is shaded in blue.
+
+```{r, fig.width=6, fig.height=4}
+data.frame(p0 = 0.05,
+           p1 = 0.2,
+           N = 10:150,
+           z = 1.96) |>
+  mutate(mu_alt = abs(p1 - p0) / sqrt(p1*(1 - p1) / N),
+           pow = 1 - pnorm(z - mu_alt)) |>
+  ggplot() + theme_bw() +
+  geom_ribbon(aes(x = N, ymin = 0.8, ymax = 1), fill = "dodgerblue", alpha = 0.2) +
+  geom_line(aes(x = N, y = pow)) +
+  scale_x_continuous(limits = c(10, 150), breaks = seq(0, 150, 10), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2), expand = c(0, 0)) +
+  xlab("Sample size (n)") + ylab("Power") +
+  #ggtitle("Power (assuming $p$ = 20% and $p_0$ = 5%") +
+  ggtitle(bquote("Power (assuming " ~ p == 0.2 ~ "and" ~ p[0] == 0.05 ~ ")"))
+```
+
+```{r power-curve-quiz}
+quiz(caption = "QUIZ - Reading off power curves",
+     question("From this graph, what is the minimum sample size needed to achieve 80% power?",
+           allow_retry = TRUE,
+           answer("30", correct = FALSE),
+           answer("56", correct = TRUE),
+           answer("80", correct = FALSE),
+           answer("More than 150", correct = FALSE), 
+           correct = "That is correct! Our planned sample size of 100 is almost double what we need to achieve 80% power.", 
+           incorrect = "Hint: look for the point at which the curve intersects the shaded region."
+  )
+)
+```
+
+The power analysis indicates that we may not need to sequence 100 samples after all. However, it did make the rather pessimistic assumption that prevalence is 20%. It would be useful to repeat this analysis, exploring different assumptions about the prevalence. One way to do this is via a series of power curves:
+
+```{r, fig.width=6, fig.height=4}
+expand_grid(p0 = 0.05,
+           p1 = seq(0.1, 0.3, 0.05),
+           N = 10:150,
+           z = 1.96) |>
+  mutate(mu_alt = abs(p1 - p0) / sqrt(p1*(1 - p1) / N),
+         pow = 1 - pnorm(z - mu_alt),
+         p1_percent = sprintf("%s%%", p1*100)) |>
+  ggplot() + theme_bw() +
+  geom_ribbon(aes(x = N, ymin = 0.8, ymax = 1), fill = "dodgerblue", alpha = 0.2) +
+  geom_line(aes(x = N, y = pow, col = p1_percent, group = p1_percent)) +
+  scale_x_continuous(limits = c(10, 150), breaks = seq(0, 150, 10), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2), expand = c(0, 0)) +
+  labs(color = "Present day\nprevalence (p)") +
+  xlab("Sample size (n)") + ylab("Power")
+```
+
+Even small changes in our assumptions about the true prevalence of dhps *A437G* mutations can have a large impact on statistical power. For example, if we assume the current prevalence is 15% instead of 20%, we would need roughly 100 samples to achieve 80% power.
+
+### Using a sample size formula
+
+Power curves are valuable for visualising how power varies with sample size, but reading exact values from a power curve can be fiddly. This is where sample size formulae and pre-calculated sample size tables become useful — they allow us to identify the required sample size for a chosen level of power more quickly and precisely.
+
+Recall that power under the one-sample z-test for proportions is given by
+$$
+\text{Power} = 1 - \phi\left(z_{1-\alpha/2} - \frac{|p - p_0|}{\sqrt{\frac{p(1 - p)}{n}}} \right)
+$$
+In an earlier module, we rearranged the formula for the Wald confidence interval to express it in terms of the required sample size, $n$. We’ll take the same approach here - rearranging to get $n$ on the left. This is more fiddly than last time, and so the steps are not shown. The more mathematically inclined can click the button below to see the full derivation, otherwise feel free to skip to the answer!:
+
+---
+
+<details>
+<summary style="
+  background-color:#888888;
+  color:white;
+  padding:2px 4px;
+  border-radius:4px;
+  display:inline-block;
+  cursor:pointer;
+">
+Show full derivation ▼
+</summary>
+
+**Step 1: Define $\beta$ as the false-negative rate (1 minus the power):**
+
+$$
+\beta = \phi\left(z_{1-\alpha/2} - \frac{|p - p_0|}{\sqrt{\frac{p(1 - p)}{n}}} \right)
+$$
+**Step 2: Use the inverse normal function on both sides:**
+
+$$
+z_\beta = z_{1-\alpha/2} - \frac{|p - p_0|}{\sqrt{\frac{p(1 - p)}{n}}}
+$$
+**Step 3: Use the identity that $z_\beta = -z_{1 - \beta}$:**
+
+$$
+-z_{1 - \beta} = z_{1-\alpha/2} - \frac{|p - p_0|}{\sqrt{\frac{p(1 - p)}{n}}}
+$$
+**Step 4: Rearrange to get z-values together:**
+
+$$
+ \frac{|p - p_0|}{\sqrt{\frac{p(1 - p)}{n}}} = z_{1-\alpha/2} + z_{1 - \beta}
+$$
+**Step 5: Square both sides:**
+
+$$
+ \frac{(p - p_0)^2}{\frac{p(1 - p)}{n}} = (z_{1-\alpha/2} + z_{1 - \beta})^2
+$$
+**Step 6: Multiply both sides by $p(1-p)/n$:**
+
+$$
+ (p - p_0)^2 = (z_{1-\alpha/2} + z_{1 - \beta})^2 \frac{p(1 - p)}{n}
+$$
+**Step 7: Multiply both sides by $n$ and divide by $(p - p_0)^2$:**
+
+$$
+ n = (z_{1-\alpha/2} + z_{1 - \beta})^2 \frac{p(1 - p)}{(p - p_0)^2}
+$$
+
+</details>
+
+---
+
+The final result is:
+$$
+n = (z_{1 - \alpha/2} + z_{1 - \beta})^2\frac{p(1 - p)}{(p - p_0)^2}
+$$
+The only unfamiliar term here is $z_{1 - \beta}$, which is the area under the curve of the standard normal distribution up to the value $1 - \beta$. The parameter $\beta$ is defined as one minus our power. Typically $\beta = 0.2$ because target power is usually set at 80%.
+
+The following R code implements this sample size formula. Have a play around with this code and see how different parameter choices change the final sample size.
+
+```{r ztest-ss-2, exercise=TRUE}
+# define our assumed values
+p0 <- 0.05
+p <- 0.15
+
+# define the two z parameters
+z_alpha <- 1.96
+z_beta <- qnorm(0.8)
+
+# calculate the minimum sample size
+(z_alpha + z_beta)^2 * p*(1 - p) / (p - p0)^2
+```
+
+```{r sample_size-quiz}
+quiz(caption = "QUIZ - Using the sample size formula",
+     question("What happens to the minimum sample size as you increase $p$?",
+           allow_retry = TRUE,
+           answer("It decreases", correct = TRUE),
+           answer("It stays the same", correct = FALSE),
+           answer("It increases", correct = FALSE),
+           correct = "If the assumed true prevalence is further from the threshold we need fewer samples to prove this difference.", 
+           incorrect = "Hint: try changing the parameter $p$ in the code above and see what effect this has on the result."
+  ),
+  question("When $p = 0.15$ and $p_0 = 0.05$ we obtain a minimum sample size of 100.0758. In practice we would...",
+           allow_retry = TRUE,
+           answer("Round this down to 100", correct = FALSE),
+           answer("Round this up to 101", correct = TRUE),
+           answer("Change our assumptions until we hit a nice round number", correct = FALSE),
+           correct = "By always rounding sample sizes *up* we ensure our results are conservative.", 
+           incorrect = "Hint: we want our study to have power of *at least* 80%."
+  )
+)
+```
+
+### Using sample size tables
+
+Rather than using the sample size formulae, we may find it easier to produce a table of minimum sample sizes based on different assumptions. **Table 1** shows the minimum sample size required to achieve 80% power under different assumptions about the prevalence:
+
+```{r}
+data.frame(p0 = 0.05,
+           p1 = seq(0.06, 0.2, 0.02),
+           z_alpha = 1.96,
+           z_beta = qnorm(0.8)) |>
+  mutate(N = ceiling((z_alpha + z_beta)^2 * p1*(1 - p1) / (p1 - p0)^2),
+         p1_percent = sprintf("%s%%", p1*100)) |>
+  select(p1_percent, N) |>
+  kable("html", col.names = c("Assumed prevalence of dhps A437G mutation", "Minimum sample size"), escape = FALSE) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
+  column_spec(1, width = "6cm") |>
+  column_spec(2, width = "4cm") |>
+  footnote(general = "\nTable 1: minimum sample sizes under various assumptions about present-day prevalence", general_title = "")
+```
+
+Notice that the minimum sample size is *extremely* non-linear with the assumed prevalence. Even a small change from 6% to 8% results in a huge drop in required sample size.
+
+```{r sample_table-quiz}
+quiz(caption = "QUIZ - Using the sample size tables",
+     question("If our analysis reveals that we need 4427 samples we should...",
+           allow_retry = TRUE,
+           answer("Fire our statistician, and try to recruit a new one who gives lower numbers.", correct = FALSE),
+           answer("Go ahead with 4427 samples, no matter what the consequences.", correct = FALSE),
+           answer("Ignore the power analysis. Just collect whatever is feasible.", correct = FALSE),
+           answer("Assess the feasibility of this sample size, and consider other designs or assumptions that might give more feasible numbers.", correct = TRUE),
+           correct = "Statistical power is just one aspect of study optimisation, and should be taken alongside other considerations."
+  ),
+  question_checkbox("What other factors could play a part when deciding whether or not to run this study?",
+           allow_retry = TRUE,
+           answer("Logistics of sample collection.", correct = TRUE),
+           answer("Costs of raw materials and staff time.", correct = TRUE),
+           answer("The time required to run the study and produce results.", correct = TRUE),
+           answer("The ethics of taking blood from this many people.", correct = TRUE),
+           answer("The opportunity cost of running this study, i.e. how many other different studies could be run for the same cost.", correct = TRUE),
+           answer("How much we really need an answer to this particular question", correct = TRUE),
+           correct = "**All** of these factors play a role in our decision making.", 
+           incorrect = "There are still more aspects to consider..."
+  )
+)
+```
+
+### Buffering for drop-out
+
+Our analysis indicates a minimum sample size of 56. However, remember this is **the number of successfully sequenced samples**, and we should *buffer* this number to allow for loss of samples.
+
+The formula for buffering was already covered in a previous module - go back over your notes if you need to refresh your memory.
+
+```{r buffer-quiz}
+quiz(caption = "QUIZ - Buffering",
+     question("Assuming 10% of samples will be lost, how many malaria positive samples should we aim to collect?",
+           allow_retry = TRUE,
+           answer("60", correct = FALSE),
+           answer("61", correct = FALSE),
+           answer("62", correct = FALSE),
+           answer("63", correct = TRUE),
+           correct = "10% of 63 samples is around 7, resulting in the target 56.",
+           incorrect = "Hint: divide by 0.9 and round up."
+  ),
+  question("Use your answer from the previous question to work out how many patients we need to enrol that have suspected malaria. Assume a 60% positivity rate",
+           allow_retry = TRUE,
+           answer("100", correct = FALSE),
+           answer("105", correct = TRUE),
+           answer("110", correct = FALSE),
+           answer("115", correct = FALSE),
+           correct = "60% of 105 samples leaves us with 63 expected positive cases.", 
+           incorrect = "Hint: use the same inflation formula as in the previous question."
+  )
+)
+```
+
+### Conclusions
+
+We now completed our power analysis. We have made the following assumptions:
+
+- The prevalence of *dhps* A437G mutations in Pemba is 20% or higher.
+- We will compare against a threshold of 5% using a one-sample z-test.
+- We will recruit 105 participants, of which we expect 60% to be malaria positive.
+- We expect 10% loss of samples, leading to 57 successfully sequenced samples.
+
+Under these assumptions, we have calculated that we will have **80% power** to reject the null hypothesis.
+
+If any of these assumptions are violated then our power analysis will no longer hold. For example, if we were to switch to a different statistical test then our sample size *may* no longer be sufficient. If we are not confident that the prevalence in Pemba will be at least 20% then similarly we should revisit this assumption and change the design.
+
+Remember - it is a **false economy** to be optimistic when conducting power analysis (for example assuming a very large effect size) because we are likely to end up with non-significant results.
+
+In the next section we will perform a similar analysis focused on *detection* of rare *pfk13* mutations.
+
+
+
+
+## Detecting rare variants
+
+### Background
+
+Building on the success of your A437G study in Pemba, you have been invited to conduct a new study focused on identifying *pfk13* mutations in the neighbouring city of Nampula. This study will target WHO validated mutations that are known to be associated with partial resistance to artemisinin. Instead of estimating the *prevalence* of these mutations, your goal is simply to determine whether any of these mutations are *present* in the population.
+
+Your plan is to test individuals who present with malaria symptoms at a local health facility. For those who test positive for malaria, dried blood spots will be collected and subsequently sent for sequencing. However, due to limited resources, you are only able to sequence 100 samples.
+
+Your question: **with a sample size of only 100, is it worthwhile to pursue this study?**
+
+### Framing the problem as a hypothesis test
+
+This type of detection study can be framed as a null hypothesis test.
+
+Null hypothesis: **The prevalence of the mutation(s) is 0%**. In other words, it is completely absent from the population.
+
+Even a single observation of a WHO-validated mutant would disprove this null hypothesis. Therefore, unlike most statistical tests, there is no test statistic to calculate here. Instead, we simply reject the null hypothesis if we see a single sample containing a WHO-validated mutant.
+
+It is straightforward to calculate power under this test. As before, the steps of this derivation are hidden, but click the button below if you want to see them.
+
+---
+
+<details>
+<summary style="
+  background-color:#888888;
+  color:white;
+  padding:2px 4px;
+  border-radius:4px;
+  display:inline-block;
+  cursor:pointer;
+">
+Show full derivation ▼
+</summary>
+
+**Step 1: Chance of a single negative result:**
+
+The probability that a single sample is negative (i.e. does not carry a validated *pfk13* mutation) is given by:
+$$
+\text{Pr}(\text{Negative}) = 1 - p
+$$
+
+**Step 2: Chance of $n$ negative results:**
+
+The probability that all $n$ samples are negative is the probability of one negative sample raised to the power $n$:
+$$
+\text{Pr}(n \text{ negatives}) = (1 - p)^n
+$$
+This assumes that samples are drawn independently from a much larger population.
+
+**Step 3: Chance of at least one positive result:**
+
+The chance of seeing at least one positive sample is equal to one minus the probability of seeing no positive samples. If we see a positive sample then we reject the null hypothesis. Hence, this is also our power:
+
+$$
+\text{Power} = 1 - (1 - p)^n
+$$
+
+</details>
+
+---
+
+The resulting formula is:
+$$
+\text{Power} = 1 - (1 - p)^n
+$$
+
+This very simple expression can be used to guide our study design.
+
+Complete the following R code to implement this formula. What is our power if we assume a true prevalence of 5%?
+
+```{r detection-1, exercise=TRUE}
+# define parameters
+p <- 
+n <- 
+
+# calculate power
+power <- 
+
+print(power)
+```
+
+```{r detection-1-solution}
+# define parameters
+p <- 0.05
+n <- 100
+
+# calculate power
+power <- 1 - (1 - p)^n
+
+print(power)
+```
+
+<details>
+<summary style="text-decoration: underline; color: red;">
+`r fontawesome::fa("check", fill = "red")`Click to see the answer
+</summary>
+
+You should find that $\text{Power} = 0.994$ if we assume a prevalence of $p = 0.05$.
+
+</details>
+</br>
+
+```{r presence-power-quiz}
+quiz(caption = "QUIZ - Interpreting power",
+     question("Based on this result, which of these statements is correct?",
+           allow_retry = TRUE,
+           answer("We have insufficient power under the current design", correct = FALSE),
+           answer("We have adequate power under the current design", correct = FALSE),
+           answer("We are over-powered under the current design", correct = TRUE),
+           correct = "That is correct! We typically aim for at least 80% power, and we are way over this limit at 99.4% power.", 
+           incorrect = "Hint: Remember what power we normally aim for in definitive (non-pilot) studies."
+  )
+)
+```
+
+Based on this result, we are over-powered to detect *pfk13* mutants. This gives us the freedom to reduce the sample size. So, how many samples are needed? Rearranging our power formula in terms of $n$ we obtain:
+$$
+n = \frac{\text{log}(1 - \text{Power})}{\text{log}(1 - p)}
+$$
+
+Complete the following R code to implement this sample size formula. What minimum sample size is needed if we assume a prevalence of 5% and are aiming for 80% power?
+
+```{r detection-2, exercise=TRUE}
+# define prevalence
+p <- 
+
+# calculate minimum sample size
+n <- 
+
+print(n)
+```
+
+```{r detection-2-solution}
+# define prevalence
+p <- 0.05
+
+# calculate minimum sample size
+n <- log(1 - 0.8) / log(1 - p)
+
+print(n)
+```
+
+<details>
+<summary style="text-decoration: underline; color: red;">
+`r fontawesome::fa("check", fill = "red")`Click to see the answer
+</summary>
+
+You should find that $n = 31.38$, which would be rounded up to $n = 32$.
+
+</details>
+</br>
+
+This is a very promising result - we can definitely run a well-powered study within our resource constraints! However, we did make the fairly pessimistic assumption that validated *pfk13* mutants are at 5% prevalence in the population. In reality, we may want to catch them before they reach 5% in order to take pre-emptive measures. As before, we can consult a sample size table (**Table 2**):
+
+```{r}
+data.frame(p = c(0.001, 0.005, seq(0.01, 0.05, 0.01))) |>
+  mutate(N = ceiling(log(1 - 0.8) / log(1 - p)),
+         p_percent = sprintf("%s%%", p*100)) |>
+  select(p_percent, N) |>
+  kable("html", col.names = c("Assumed prevalence of pfk13 mutations", "Sample size"), escape = FALSE) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
+  column_spec(1, width = "5cm") |>
+  column_spec(2, width = "4cm") |>
+  footnote(general = "\nTable 2: minimum sample sizes needed to achieve 80% power under various assumptions about pfk13 mutation prevalence", general_title = "")
+```
+
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  Based on the values in **Table 2**, do you think it is worthwhile to conduct this study? If you ran a study that was powered down to 2% prevalence (80 samples) and did not find any *pfk13* mutants, would you be reassured by this result?
+  </span>
+</div>
+
+

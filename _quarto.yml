@@ -32,17 +32,20 @@ website:
           - text: "Activity 2 - Sample size calculation based on margin of error"
             href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/
             icon: play
-          - text: "Activity 3 - Hypothesis testing and power"
+          - text: "Activity 3 - Hypothesis testing"
             href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/
             icon: play
-          - text: "Activity 4 - Dealing with overdispersion in multi-cluster studies"
+          - text: "Activity 4 - Statistical power"
             href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/
             icon: play
-          - text: "Activity 5 - The DRpower tool"
+          - text: "Activity 5 - Dealing with overdispersion in multi-cluster studies"
             href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/
             icon: play
-          - text: "Activity 6 - Designing a study for multiple end-points"
-            href: tutorials/module6/module6_scenarios.Rmd 
+          - text: "Activity 6 - The DRpower tool"
+            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module6/
+            icon: play
+          - text: "Activity 7 - Designing a study for multiple end-points"
+            href: tutorials/module7/module7_scenarios.Rmd 
             icon: play
 
 format:
