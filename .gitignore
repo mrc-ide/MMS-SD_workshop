@@ -41,3 +41,6 @@ MMS-SD_workshop.Rproj
 .lib
 tutorials/**/*.html
 tutorials/**/*_files/
+
+# Ignore _site
+_site/
