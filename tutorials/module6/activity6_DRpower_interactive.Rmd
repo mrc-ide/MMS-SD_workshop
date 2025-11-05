@@ -31,7 +31,7 @@ tutorial_options(exercise.timelimit = 120)
 
 Welcome to Activity 6: **The DRpower tool**.
 
-In this module, we'll demonstrate the use of the **DRpower** tool. This is an R package that was primarily designed to help with the development of *P. falciparum* *pfhrp2/3* gene deletion studies. We we also explore the web-based *pfhrp2/3* Planner, which runs **DRpower** in the background but works via an intuitive user interface. Either of these tools can be used to design *pfhrp2/3* deletion studies that are well powered, and to analyse the resulting data to arrive at robust conclusions.
+In this module, we'll demonstrate the use of the **DRpower** tool. This is an R package that was primarily designed to help with the development of *P. falciparum* *pfhrp2/3* gene deletion studies. We we also explore the web-based *pfhrp2/3* Planner, which runs **DRpower** in the background but works via an intuitive user interface. This is the and is the recommended approach in the World Health Organisation [Master protocol for surveillance of pfhrp2/3 deletions and biobanking to support future research, second edition](https://www.who.int/publications/i/item/9789240099951). Either of these tools can be used to design *pfhrp2/3* deletion studies that are well powered, and to analyse the resulting data to arrive at robust conclusions.
 
 ### Learning outcomes
 
@@ -47,7 +47,7 @@ In this activity you will learn:
 
 ### Background
 
-You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into *pfhrp2/3* deletions. Following the WHO 2020 recommendation, this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of *pfhrp2/3* deletions among clinical malaria cases is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.
+You have been tasked by the Ethiopian National Malaria Control Programme (NMCP) to assist with design and implementation of a study into *pfhrp2/3* deletions. Following the WHO recommendations in the [master protocol](https://www.who.int/publications/i/item/9789240099951), this study will be multi-site and conducted at a regional level. It will establish whether the prevalence of *pfhrp2/3* deletions among clinical malaria cases with false negative HRP2 RDT results is significantly above the 5% threshold. If so, this will trigger a nationwide switch in rapid diagnostic tests (RDTs) away from tests that rely exclusively on the HRP2 protein.
 
 A full study of this sort would normally be run in parallel over multiple regions, however, for the purposes of this tutorial we will focus exclusively on the Amhara region.
 
@@ -61,9 +61,9 @@ You should see a sample size table with the number of sites (health facilities) 
 
 ![](images/explore_page.png){width="100%"}
 
-In any power analysis, we must begin by assuming a known effect size under the alternative hypothesis. For this study, that means selecting an assumed prevalence of *pfhrp2/3* deletions in the population. This assumption can be challenging and may feel somewhat arbitrary. It’s important to remember that as the assumed prevalence decreases towards 5% detection threshold, the required sample size increases significantly. Conversely, assuming a very high prevalence may reduce the public health relevance of the study by focusing power on detecting only large shifts in the parasite population—changes that could already be affecting clinical diagnosis.
+In any power analysis, we must begin by assuming a known effect size under the alternative hypothesis. For this study, that means selecting an assumed prevalence of *pfhrp2/3* deletions in the population. This assumption can be challenging and may feel somewhat arbitrary. It is important to remember that as the assumed prevalence decreases towards the 5% detection threshold, the required sample size increases significantly. Conversely, assuming a very high prevalence may reduce the public health relevance of the study by focusing power on detecting only large shifts in the parasite population — changes that could already be affecting clinical diagnosis.
 
-To balance these factors, we recommend a default assumed prevalence of 10% (highlighted in purple). This value provides a reasonable sensitivity level while keeping sample sizes manageable. For more insights on selecting this parameter, refer to the [FAQ section](https://shiny.dide.ic.ac.uk/DRpower-app/) in the web-based *pfhrp2/3* Planner.
+To balance these factors, we recommend a default assumed prevalence of 10% (highlighted in purple). This value provides a reasonable sensitivity level while keeping sample sizes manageable and logistically feasible. For more insights on selecting this parameter, refer to the [FAQ section](https://shiny.dide.ic.ac.uk/DRpower-app/) in the web-based *pfhrp2/3* Planner.
 
 ```{r quiz-sizes-10}
 quiz(caption = "QUIZ - Sample sizes",
@@ -146,11 +146,11 @@ In this tutorial we will go with random selection of sites. A complete list of a
 df1 <- data.frame(Site_name = c("Dese", "Motta", "Debark", "Metema", "Chagni", "Finote Selam", "Alem Ketema"),
            Sample_size = 68)
 
-kable(df1, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
+kable(df1, "html", col.names = c("Site name", "Sample size"), escape = FALSE,
+      caption = "\nTable 1: target sample sizes based on initial exploration") |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
   column_spec(1, width = "4cm") |>
-  column_spec(2, width = "4cm") |>
-  footnote(general = "\nTable 1: target sample sizes based on initial exploration", general_title = "")
+  column_spec(2, width = "4cm")
 ```
 
 ### Refining sample sizes
@@ -161,11 +161,11 @@ With a preliminary study plan in place, we can now incorporate some real-world c
 df2 <- read.csv("data/pfhrp2_design.csv") |>
   select(-percent_dropout)
 
-kable(df2, "html", col.names = c("Site name", "Sample size"), escape = FALSE) |>
+kable(df2, "html", col.names = c("Site name", "Sample size"), escape = FALSE,
+      caption = "\nTable 2: target sample sizes factoring in constraints") |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
   column_spec(1, width = "4cm") |>
-  column_spec(2, width = "4cm") |>
-  footnote(general = "\nTable 2: target sample sizes factoring in constraints", general_title = "")
+  column_spec(2, width = "4cm") 
 ```
 
 But now we are faced with a problem - how do we know if this new design has adequate power? We can no longer rely on sample size tables because these assume the same sample size per cluster. On the other hand, we cannot simply *assume* that power will be adequate. This is where the [Design tab](https://shiny.dide.ic.ac.uk/DRpower-app/) of the *pfhrp2/3* Planner becomes useful.
@@ -198,17 +198,17 @@ Running an estimate with 1000 simulations should show that the study’s power i
 
 ## Analyzing *pfhrp2/3* data
 
-Some time later, the Ethiopian NMCP request your assistance once again to analyse the results of the *pfhrp2/3* deletion study, which was carried out according to your plan. The results of the study are shown in **Table 3**.
+Some time later, the Ethiopian NMCP request your assistance once again to analyse the results of the *pfhrp2/3* deletion study, which was carried out according to your plan. The results of the study (number of *pfhrp2/3* deletions causing false negative HRP2 RDTs) are shown in **Table 3**.
 
 ```{r, echo=FALSE}
 df3 <- read.csv("data/pfhrp2_results.csv")
 
-kable(df3, "html", col.names = c("Site name", "pfhrp2 negative", "Sample size"), escape = FALSE) |>
+kable(df3, "html", col.names = c("Site name", "pfhrp2 negative", "Sample size"), escape = FALSE,
+      caption = "\nTable 3: Results of the pfhrp2/3 study") |>
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
   column_spec(1, width = "3cm") |>
   column_spec(2, width = "3cm") |>
-  column_spec(3, width = "3cm") |>
-  footnote(general = "\nTable 3: results of the pfhrp2/3 study", general_title = "")
+  column_spec(3, width = "3cm") 
 ```
 
 You can download these results in .csv form [here](https://drive.google.com/file/d/1nWTYNZ6_955jFbXosRC3kL8pUFX9ehDu/view?usp=share_link). 
@@ -219,23 +219,22 @@ The easiest way to analyse these data is via the [Analysis tab](https://shiny.di
 
 Now click the "Estimate prevalence" button to perform a Bayesian analysis of the data. This analysis takes into account the intra-cluster correlation in the data, which is estimated and accounted for in the prevalence estimate. Therefore, there is no need to estimate a design effect or effective sample size as these will be accounted for automatically.
 
-You will also see a "Probability above threshold" field. This tells us the probability that the prevalence is above the 5% threshold. To turn this into a decision-making framework, we need to decide on a level of confidence that we would be happy concluding that the prevalence is definitively over 5%. The power calculations in **DRpower** assume that we need 95% chance or higher to definitively conclude that prevalence is over 5%. This leads to two possible outcomes:
+You will also see a "Probability above threshold" field. This tells us the probability that the prevalence is above the 5% threshold. To turn this into a decision-making statistical framework, we need to decide on a level of confidence that we would be happy concluding that the prevalence is definitively over 5%. The power calculations in **DRpower** assume that we need 95% chance or higher to definitively conclude that prevalence is over 5%. This leads to two possible outcomes:
 
-- **Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is **below the threshold**.
-- **Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is **above the threshold**.
+![](images/stats_framework_v1.png){width="100%"}
 
 
 ```{r quiz-prob}
 quiz(caption = "QUIZ - Probability above threshold",
   question_radio("Looking at your analysis results in the app, which of these is true?",
            allow_retry = TRUE,
-           answer("**Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is below the threshold.", correct = FALSE),
-           answer("**Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is above the threshold.", correct = TRUE)
+           answer("**Outcome 1:** There is less than 95% probability that the proportion of parasites with *pfhrp2/ 3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is below the threshold.", correct = FALSE),
+           answer("**Outcome 2:** There is a 95% probability or higher that the proportion of parasites with *pfhrp2/ 3* deletions causing false negative HRP2 RDT results within symptomatic *P. falciparum* patients is above the threshold. We conclude that this prevalence is above the threshold.", correct = TRUE)
   )
 )
 ```
 
-In this example, we have sufficient evidence to conclude that the prevalence of *pfhrp2/3* deletions in the Amhara region is above the 5% threshold. Therefore, according to the WHO 2020 recommendation, we would be justified in switching RDTs to a brand that does not rely exclusively on the HRP2 protein.
+In this example, we have sufficient evidence to conclude that the prevalence of *pfhrp2/3* deletions in the Amhara region is above the 5% threshold. Therefore, according to the WHO 2020 recommendation, we would be justified in a nationwide switch of RDTs to a brand that does not rely exclusively on the HRP2 protein.
 
 ### Estimating the ICC
 
@@ -261,7 +260,7 @@ We can navigate to the "Generate report" tab to download a report detailing our 
 
 ### Recap key points
 
-Our *pfhrp2/3* analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. We reinforced the reliability of our approach by accounting for varying sample sizes across sites and anticipating potential drop-out. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study’s feasibility. Importantly, we accounted for possible overdispersion at both the design and analysis stages, increasing the robustness of the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of *pfhrp2/3* deletions exceeds the 5% threshold — a finding with significant implications for malaria control at the national level.
+Our *pfhrp2/3* analysis is now complete. We began with a well-powered study design, carefully crafted to be robust and realistic. We reinforced the reliability of our approach by accounting for varying sample sizes across sites and anticipating potential drop-out. Beyond statistical considerations, we incorporated logistical and financial constraints to ensure the study was feasible. Importantly, we accounted for possible overdispersion at both the design and analysis stages, increasing the robustness of the results. Ultimately, this rigorous approach allows us to conclude with confidence that the prevalence of *pfhrp2/3* deletions causing false-negative HRP2 RDTs exceeds the 5% threshold — a finding with significant implications for malaria control at the national level.
 
 ## Bonus questions
 
