@@ -1,1 +1,1 @@
-Sitemap: https://github.com/mrc-ide/MMS-SD_workshop/sitemap.xml
+Sitemap: https://mrc-ide.github.io/MMS-SD_workshop/sitemap.xml
