@@ -23,7 +23,7 @@ tutorial_options(exercise.timelimit = 120)
 
 Welcome to Activity 2: **Sample Size Calculation Base on Margin of Error**
 
-In this activity, we’ll explore how margin of error (MOE) arguments can guide sample size determination. This approach relies solely on the concept of *precision*; larger sample sizes lead to more precise estimates. This method is invaluable not only in Malaria Molecular Surveillance (MMS) but also in epidemiology more broadly, where estimating prevalence is often a primary goal.
+In this activity, we’ll explore how margin of error (MOE) arguments can guide sample size determination. This approach relies on the concept of *precision* - larger sample sizes lead to more precise estimates.
 
 ### Learning Outcomes
 
@@ -37,17 +37,17 @@ By the end of this tutorial, you will be able to:
 
 ## Background
 
-You have been recruited by the National Malaria Control Programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The *dhps* K540E mutation, known to be associated with high level SP resistance when found alongside other common mutations, has recently been found at 72% prevalence in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda. The NMCP is concerned that drug resistant parasites may be flowing over the border.
+You have been recruited by the National Malaria Control Programme (NMCP) of the Democratic Republic of the Congo (DRC) to assist with study design. The NMCP is concerned about the potential spread of mutations that confer partial resistance to the drug combination Sulfadoxine-Pyrimethamine (SP). The *dhps* K540E mutation, which is known to be associated with high level SP resistance when found alongside other common mutations, has recently been found at 72% prevalence in neighbouring Uganda. In the last few weeks there have been anecdotal reports of SP failure in Rutshuru town, which lies in Eastern DRC close to the border with Uganda. The NMCP is concerned that drug resistant parasites may be flowing over the border.
 
 The NMCP plans to conduct a cross-sectional study to estimate the prevalence of the *dhps* K540E mutation in Rutshuru town. **Your job is to work out the appropriate sample size for this study.**
 
 ## Results of a pilot study
 
-Fortunately, a pilot study has already been conducted in Rutshuru town. This pilot study included 100 participants chosen at random from households within the town, who were tested for malaria via rapid diagnostic test (RDT). 23 people tested positive for malaria, and these samples were sent away for genetic sequencing. 19 samples were successfully sequenced, and 5 of these were found to carry the K540E mutation.
+Fortunately, a pilot study has already been conducted in Rutshuru town. This pilot study included 100 participants chosen at random from households within the town. These participants were tested for malaria via rapid diagnostic test (RDT). 23 people tested positive for malaria, and these samples were sent away for genetic sequencing. 19 samples were successfully sequenced, and 5 of these were found to carry the *dhps* K540E mutation.
 
 ```{r quiz-pilot1}
 quiz(caption = "QUIZ - Estimating molecular marker prevalence",
-     question("Which is the correct formula when calculating the prevalence of K540E mutations from the pilot data?",
+     question("Which is the correct formula when calculating the prevalence of *dhps* K540E mutations from the pilot data?",
            allow_retry = TRUE,
            answer("23 / 100 = 23.0%", correct = FALSE),
            answer("19 / 100 = 19.0%", correct = FALSE),
@@ -72,6 +72,8 @@ x <-
 n <- 
 p <- x / n
 
+print(p)
+
 # calculate the margin of error (MOE)
 z_alpha <- 1.96
 MOE <- z_alpha * sqrt(p*(1 - p) / n)
@@ -86,6 +88,8 @@ p + MOE
 x <- 5
 n <- 19
 p <- x / n
+
+print(p)
 
 # calculate the margin of error (MOE)
 z_alpha <- 1.96
@@ -102,12 +106,12 @@ c(CI_lower, CI_upper)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-The 95% interval goes from 0.065 to 0.461, or in other words from 6.5% to 46.1%.
+Our point estimate is 26.3%. The 95% interval goes from 0.065 to 0.461, or in other words from 6.5% to 46.1%.
 
 </details>
 </br>
 
-The 95% confidence interval is very wide, revealing there is considerable uncertainty about the true prevalence of K540E mutations. While our best estimate is 26.3%, the plausible range spans from 6.5% to 46.1%, which the NMCP finds too broad to be practically useful. They therefore plan to conduct a follow-up study to obtain a more precise estimate.
+The 95% confidence interval is very wide, revealing there is considerable uncertainty about the true prevalence of *dhps* K540E mutations. While our best estimate is 26.3%, the plausible range spans from 6.5% to 46.1%, which the NMCP finds too broad to be practically useful. They therefore plan to conduct a follow-up study to obtain a more precise estimate.
 
 
 ## Calculating the appropriate sample size
@@ -126,13 +130,15 @@ $$
 $$
 m^2 = z_{1-\alpha/2}^2 \frac{p(1-p)}{n}
 $$
-**Step 3: Multiply both sides by $n$ and divide by $m^2$**
+**Step 3: Multiply both sides by $n$ and divide both sides by $m^2$**
 
 $$
 n = z_{1-\alpha/2}^2 \frac{p(1-p)}{m^2}
 $$
 
-This leads us to a new formula that can be used to determine the appropriate sample size based on assumed values of $p$ and $m$. Our reason for working through the derivation of this formula was to show how closely connected it is to the formula for the confidence interval. In fact, it is the same mathematical expression, just reverse engineered to be in terms of $n$!
+At the end of Step 3 we have a new formula that we can plug in values of $p$ and $m$ and it will tell us the appropriate sample size $n$.
+
+Our reason for working through the derivation of this formula was to show how closely connected it is to the formula for the confidence interval. In fact, it is the same mathematical expression, just reverse engineered to be in terms of $n$!
 
 Now we need to decide what values to assume for $p$ and $m$.
 
@@ -177,18 +183,23 @@ z^2*p*(1 - p) / m^2
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-We obtain a value of 295.65. We would round this *up* to $n=296$ to give a whole number.
+We obtain a value of 295.65. We would round this *up* to $n=296$ to give a whole number for sampling.
 
 </details>
 </br>
 
-One of the nice things about sample size determination is that we can easily check that our calculation is correct.
+The nice thing about sample size determination is that we can quickly confirm our calculation is correct:
 
 **Optional exercise:** Try entering the values $p=0.26$ and $n=296$ into the 95% CI formula that we used in the pilot data analysis. If our calculations were correct, you should find that the resulting MOE is very close to 5%.
 
 ```{r ss_check-1, exercise=TRUE}
-# Copy over the Wald formula code from the previous section, and edit to reflect
-# the new assumed prevalence of 26% and sample size of 296
+# enter assumed values
+p <- 
+n <- 
+
+# calculate the margin of error (MOE)
+z <- 1.96
+z*sqrt(p*(1 - p) / n)
 ```
 
 ```{r ss_check-1-solution}
@@ -219,7 +230,7 @@ Buffering refers to increasing a sample size to allow for drop-out (loss of samp
 - Participants dying or leaving the area
 - Samples being lost during transportation
 - Samples becoming contaminated
-- Samples failing amplification or sequencing, resulting in a lack of genetic data
+- Samples failing amplification or sequencing
 - Data being lost due to computational errors
 
 We cannot completely eliminate the risk of drop-out, but by buffering sample sizes we can be robust to it. If we expect a proportion $d$ of samples to be lost, then the formula for buffered sample size is:
@@ -273,13 +284,13 @@ $$
 n_{\text{test}} = \frac{n_{\text{confirmed}}}{f}
 $$
 
-Note that this inflating of the sample size to account for positive fraction is **on top of** buffering for drop-out. We can imagine a chain of events where we can lose samples at each stage; we want to ensure that in the end we still have enough samples remaining.
+Note that this inflating of the sample size to account for positive fraction is **on top of** buffering for drop-out. We can imagine a chain of events where we can lose participants at each stage; first by testing negative and second by unexpected drop-out. We need to ensure that in the end we still have enough samples remaining, hence we account for both events.
 
 Complete the following R code to work out the number of people that need to be tested to achieve the final target sample size:
 
 ```{r fraction-1, exercise=TRUE}
 # enter buffered sample size and positive fraction
-n <- 
+n <- 329
 f <- 
 
 # calculate the testing sample size
@@ -309,9 +320,11 @@ You should find that 1316 people need to be tested.
 </details>
 </br>
 
+### Final recommendation
+
 You have now completed your study design exercise. Your recommendation to the NMCP is as follows:
 
-*Assuming a prevalence of K540E mutations of 26% based on pilot data, a sample size of* **329** *confirmed malaria cases will be needed to estimate prevalence to within 5% margin of error. This number is buffered to allow for 10% drop-out.*
+*Assuming 26% prevalence of dhps K540E mutations from pilot data, a sample size of* **329** *confirmed malaria cases will be needed in order to estimate prevalence to within 5% margin of error. This number is buffered to allow for 10% drop-out.*
 
 *Assuming that malaria prevalence is 25% by RDT in Rutshuru town, this translates to* **1316** *individuals who will need to be tested in the cross-sectional study design.*
 
@@ -370,8 +383,17 @@ z*sqrt(p*(1 - p) / n)
 `r fontawesome::fa("check", fill = "red")`Click to see the answer
 </summary>
 
-Assuming 15% prevalence and 10% drop-out, our final sample size of successfully sequenced malaria cases would be around 178. This would result in a MOE of 6.4%.
+Assuming 15% prevalence and 10% drop-out, our final sample size of successfully sequenced malaria cases would be around 178, down from 329. This would result in a MOE of 6.4%.
 
 </details>
 </br>
 
+<div style="padding: 10px; border-radius: 5px; background-color: #fef3e7;">
+  <span style="font-size: 1.2em; color: #d19554;">
+    <i class="fas fa-comment"></i> Reflection:
+  </span> 
+
+  <span style="color:#d19554;"> 
+  How could you change your assumed parameters to make the study more robust? What would be the negative impacts of these changes?
+  </span>
+</div>

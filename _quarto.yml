@@ -27,22 +27,25 @@ website:
           - text: "Overview"
             href: tutorials.qmd
           - text: "Activity 1 - Sampling from a population"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/
+            href: https://mms-sdworkshop.shinyapps.io/activity1_sampling_interactive/ # https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/
             icon: play
           - text: "Activity 2 - Sample size calculation based on margin of error"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/
+            href: https://mms-sdworkshop.shinyapps.io/activity2_MOE_interactive/ # https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/
             icon: play
-          - text: "Activity 3 - Hypothesis testing and power"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/
+          - text: "Activity 3 - Hypothesis testing"
+            href: https://mms-sdworkshop.shinyapps.io/activity3_hypothesis_testing_interactive/ # https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/
             icon: play
-          - text: "Activity 4 - Dealing with overdispersion in multi-cluster studies"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/
+          - text: "Activity 4 - Statistical power"
+            href: https://mms-sdworkshop.shinyapps.io/activity4_power_interactive/ # https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/
             icon: play
-          - text: "Activity 5 - The DRpower tool"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/
+          - text: "Activity 5 - Dealing with overdispersion in multi-cluster studies"
+            href: https://mms-sdworkshop.shinyapps.io/activity5_multicluster_interactive/ # https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/
             icon: play
-          - text: "Activity 6 - Designing a study for multiple end-points"
-            href: tutorials/module6/module6_scenarios.Rmd 
+          - text: "Activity 6 - The DRpower tool"
+            href: https://mms-sdworkshop.shinyapps.io/activity6_DRpower_interactive/ # https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/
+            icon: play
+          - text: "Activity 7 - Designing a study for multiple end-points"
+            href: tutorials/module7/module7_scenarios.Rmd 
             icon: play
 
 format:

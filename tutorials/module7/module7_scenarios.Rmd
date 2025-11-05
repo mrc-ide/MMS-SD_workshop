@@ -1,0 +1,93 @@
+---
+title: 'Activity 7: Designing a study for multiple end-points'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(fontawesome)
+library(DT)
+```
+
+```{css, echo=FALSE}
+.custom-button {
+  background-color: #DB7069; /* Button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0; /* Adds space between buttons */
+  text-align: center;
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+.custom-button:hover {
+  background-color: #DB7069; /* Darker color on hover */
+}
+```
+
+## Introduction
+
+Welcome to Activity 7: **Designing a study for multiple end-points**
+
+In this module, you will design a study for multiple end-points with a scenario-based activity. Ideally this module would be completed in groups to encourage discussion but can also be completed individually. **There is no right answer!** This activity is meant to give you a chance to think about real-world scenarios and how you might design a study that is powered for more than one end-point. Take this opportunity to think about how you might balance between a study that is feasible within logistical and financial constraints and that provides the most useful information. 
+
+*Disclaimer: The scenarios in this document are entirely fictitious. While real place names are used, the data itself is artificial and designed for teaching purposes only. It does not necessarily represent the real epidemiological situation in these locations.*
+
+### Learning Outcomes
+
+By the end of this tutorial, you will be able to:
+
+- Consider different aspects and epidemiological context when designing studies to balance statistical considerations and practical constraints
+- Design a study for multiple end-points tailored to a specific budget and ICC, and:
+  - calculate power, sample size and margin of error of primary and secondary end-points
+  - define the number of clusters based on logistical and financial constraints
+  - buffer for drop-out
+  - estimate total cost of study
+
+### Group activity instructions
+
+#### Team roles 
+Each member of the team can choose a specific 'role':
+
+- `r fa("chart-line")` **Epidemiologist**: Provide insights on disease prevalence and high-risk areas. 
+- `r fa("hospital")` **Health Facility Coordinator**: Offer logistical information about facilities.
+- `r fa("circle-dollar-to-slot")` **Budget Officer**: Manage financial aspects and calculate costs.
+- `r fa("calculator")` **Statistician** (1-2 people): Handle sample size calculations and adjust for ICC.
+
+#### Choose your scenario
+<div style="text-align: left;">
+  <a href="scenario0.Rmd" class="custom-button">
+    `r fa("circle-check")` Example
+  </a>
+</div>
+
+<div style="text-align: left;">
+  <a href="scenario1.Rmd" class="custom-button">
+    `r fa("circle-check")` Scenario 1
+  </a>
+</div>
+
+<div style="text-align: left;">
+  <a href="scenario2.Rmd" class="custom-button">
+    `r fa("circle-check")` Scenario 2
+  </a>
+</div>
+
+<div style="text-align: left;">
+  <a href="scenario3.Rmd" class="custom-button">
+    `r fa("circle-check")` Scenario 3
+  </a>
+</div>
+
+<div style="text-align: left;">
+  <a href="scenario4.Rmd" class="custom-button">
+    `r fa("circle-check")` Scenario 4
+  </a>
+</div>
+
+#### Presenting your study design
+At the end of the activity, you will present your study design to the group. Prepare your 1-slide presentation following [this template](https://docs.google.com/presentation/d/1reyF7GcZJQWfddojUn_Md7FUEeRvWhfotjTxXiZrIY8/edit?usp=sharing). 

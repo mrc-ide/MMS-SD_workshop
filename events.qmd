@@ -2,7 +2,9 @@
 title: "Events"
 ---
 
-We have hosted in-person workshops, often centered around the ASTMH annual meeting. However, all of the materials ([lectures](lectures.qmd) and [tutorials](tutorials.qmd)) from this workshop are freely available and can be undertaken independently. We suggest you work through them in order. See the following workshop pages for more information.
+In-person workshops are a fun and rewarding way for us to connect with the wider MMS community and to provide direct support with the statistical aspects of study design. They offer space for lively discussion, reflection, and collaboration — a chance to explore the current challenges facing MMS and to imagine new directions for the field together.
+
+We’re always inspired by the diversity of experiences and expertise that participants bring. Despite working in different regions and contexts, it’s striking how often the same core challenges emerge, from practical constraints to questions about data interpretation and analysis. Bringing people together in one room allows us to share approaches, compare lessons learned, and find creative solutions that might not have surfaced in isolation.
 
 ## In-person workshops 
 
