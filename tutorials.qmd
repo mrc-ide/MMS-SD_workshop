@@ -9,9 +9,9 @@ All of the materials from this workshop are freely available. We suggest you wor
 - Activity 1: [Sampling from a population](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module1/)
 - Activity 2: [Sample size calculation based on margin of error](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module2/)
 - Activity 3: [Hypothesis testing](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/)
-- Activity 4: [Statistical power](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/)
-- Activity 5: [Dealing with overdispersion in multi-cluster studies](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/)
-- Activity 6: [The DRpower tool](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module6/)
+- Activity 4: [Statistical power](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/)
+- Activity 5: [Dealing with overdispersion in multi-cluster studies](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/)
+- Activity 6: [The DRpower tool](https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/)
 - Activity 7: [Designing a study for multiple end-points](tutorials/module7/module7_scenarios.Rmd)
 
 

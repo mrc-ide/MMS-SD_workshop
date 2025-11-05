@@ -36,13 +36,13 @@ website:
             href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/
             icon: play
           - text: "Activity 4 - Statistical power"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/
+            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module3/
             icon: play
           - text: "Activity 5 - Dealing with overdispersion in multi-cluster studies"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/
+            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module4/
             icon: play
           - text: "Activity 6 - The DRpower tool"
-            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module6/
+            href: https://shiny.dide.ic.ac.uk/mms-sd-workshop/module5/
             icon: play
           - text: "Activity 7 - Designing a study for multiple end-points"
             href: tutorials/module7/module7_scenarios.Rmd 
