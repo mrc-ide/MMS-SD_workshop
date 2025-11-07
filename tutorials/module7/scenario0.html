@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Example – Malaria Molecular Surveillance Study Design workshop</title>
+<title>Activity 7 scenario example – Malaria Molecular Surveillance Study Design workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Example</h1>
+<h1 class="title">Activity 7 scenario example</h1>
 </div>
 
 
@@ -277,41 +277,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>You can use the below R code box to perform your calculations</em></p>
 <div class="cell" data-exercise="true">
 <div class="tutorial-exercise" data-label="code-box" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|>">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View datasets</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>health_facilities</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>cost_per_hf</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cost_per_sample</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View datasets</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>health_facilities</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cost_per_hf</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cost_per_sample</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Have a look at DRpower tool</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Have a look at DRpower tool</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">c</span>(X)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">get_power_threshold</span>(<span class="at">N =</span> N,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">prevalence =</span> <span class="fl">0.1</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ICC =</span> X,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">prev_thresh =</span> <span class="fl">0.05</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">reps =</span> <span class="fl">1e3</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust for dropout</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>N_adjusted <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(N <span class="sc">/</span> X)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of suspected cases to enroll</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>N_suspected <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(N_adjusted <span class="sc">/</span> X)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cost</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(N) <span class="sc">*</span> cost_per_hf <span class="sc">+</span> <span class="fu">sum</span>(N_suspected) <span class="sc">*</span> cost_per_sample</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Power to detect pfk13</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">get_power_presence</span>(<span class="at">N =</span> N, <span class="at">prevalence =</span> <span class="fl">0.01</span>, <span class="at">ICC =</span> X)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Another approach: how many samples would we need to achieve 80% power?</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">get_sample_size_presence</span>(<span class="at">n_clust =</span> X, <span class="at">prevalence =</span> <span class="fl">0.01</span>, <span class="at">ICC =</span> X)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample size needed to estimate the prevalence of dhps, pfdhfr, and pfcrt using margin of error</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">get_sample_size_margin</span>(<span class="at">MOE =</span> <span class="fl">0.1</span>, <span class="at">n_clust =</span> X, <span class="at">prevalence =</span> <span class="fl">0.2</span>, <span class="at">ICC =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">c</span>(X)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">get_power_threshold</span>(<span class="at">N =</span> N,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">prevalence =</span> <span class="fl">0.1</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ICC =</span> X,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">prev_thresh =</span> <span class="fl">0.05</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">reps =</span> <span class="fl">1e3</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust for dropout</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>N_adjusted <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(N <span class="sc">/</span> X)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of suspected cases to enroll</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>N_suspected <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(N_adjusted <span class="sc">/</span> X)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cost</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(N) <span class="sc">*</span> cost_per_hf <span class="sc">+</span> <span class="fu">sum</span>(N_suspected) <span class="sc">*</span> cost_per_sample</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Power to detect pfk13</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">get_power_presence</span>(<span class="at">N =</span> N, <span class="at">prevalence =</span> <span class="fl">0.01</span>, <span class="at">ICC =</span> X)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Another approach: how many samples would we need to achieve 80% power?</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">get_sample_size_presence</span>(<span class="at">n_clust =</span> X, <span class="at">prevalence =</span> <span class="fl">0.01</span>, <span class="at">ICC =</span> X)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample size needed to estimate the prevalence of dhps, pfdhfr, and pfcrt using margin of error</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">get_sample_size_margin</span>(<span class="at">MOE =</span> <span class="fl">0.1</span>, <span class="at">n_clust =</span> X, <span class="at">prevalence =</span> <span class="fl">0.2</span>, <span class="at">ICC =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -393,7 +391,7 @@ learnr:::store_exercise_cache(structure(list(label = "code-box", global_setup = 
 "    20, 340, 256, 43, 16,", "    31, 115, 74, 49, 85,", "    129, 22, 37, 63, 19", 
 "  )", ")", "", "cost_per_hf <- 5000", "cost_per_sample <- 50", 
 ""), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "code-box", code = "library(tidyverse)\n\n# View datasets\nhealth_facilities\ncost_per_hf\ncost_per_sample\n\n# Have a look at DRpower tool\n\n# Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites\nN <- c(X)\n  \nget_power_threshold(N = N,\n                    prevalence = 0.1,\n                    ICC = X,\n                    prev_thresh = 0.05,\n                    reps = 1e3)\n\n# Adjust for dropout\nN_adjusted <- ceiling(N / X)\n\n# Calculate the number of suspected cases to enroll\nN_suspected <- ceiling(N_adjusted / X)\n\n# Calculate cost\nlength(N) * cost_per_hf + sum(N_suspected) * cost_per_sample\n\n# Power to detect pfk13\nget_power_presence(N = N, prevalence = 0.01, ICC = X)\n\n# Another approach: how many samples would we need to achieve 80% power?\nget_sample_size_presence(n_clust = X, prevalence = 0.01, ICC = X)\n\n# Sample size needed to estimate the prevalence of dhps, pfdhfr, and pfcrt using margin of error\nget_sample_size_margin(MOE = 0.1, n_clust = X, prevalence = 0.2, ICC = X)\n\n", 
+    chunks = list(list(label = "code-box", code = "# View datasets\nhealth_facilities\ncost_per_hf\ncost_per_sample\n\n# Have a look at DRpower tool\n\n# Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites\nN <- c(X)\n  \nget_power_threshold(N = N,\n                    prevalence = 0.1,\n                    ICC = X,\n                    prev_thresh = 0.05,\n                    reps = 1e3)\n\n# Adjust for dropout\nN_adjusted <- ceiling(N / X)\n\n# Calculate the number of suspected cases to enroll\nN_suspected <- ceiling(N_adjusted / X)\n\n# Calculate cost\nlength(N) * cost_per_hf + sum(N_suspected) * cost_per_sample\n\n# Power to detect pfk13\nget_power_presence(N = N, prevalence = 0.01, ICC = X)\n\n# Another approach: how many samples would we need to achieve 80% power?\nget_sample_size_presence(n_clust = X, prevalence = 0.01, ICC = X)\n\n# Sample size needed to estimate the prevalence of dhps, pfdhfr, and pfcrt using margin of error\nget_sample_size_margin(MOE = 0.1, n_clust = X, prevalence = 0.2, ICC = X)\n\n", 
         opts = list(label = "\"code-box\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -415,9 +413,9 @@ learnr:::store_exercise_cache(structure(list(label = "code-box", global_setup = 
         fig.asp = NULL, fenced.echo = FALSE, ft.shadow = FALSE, 
         exercise.timelimit = 120, label = "code-box", exercise = TRUE, 
         original.params.src = "r code-box, exercise=TRUE", chunk.echo = FALSE, 
-        code = c("library(tidyverse)", "", "# View datasets", 
-        "health_facilities", "cost_per_hf", "cost_per_sample", 
-        "", "# Have a look at DRpower tool", "", "# Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites", 
+        code = c("# View datasets", "health_facilities", "cost_per_hf", 
+        "cost_per_sample", "", "# Have a look at DRpower tool", 
+        "", "# Find power to estimate the prevalence of pfhrp2 deletions based on sample sizes from multiple sites", 
         "N <- c(X)", "  ", "get_power_threshold(N = N,", "                    prevalence = 0.1,", 
         "                    ICC = X,", "                    prev_thresh = 0.05,", 
         "                    reps = 1e3)", "", "# Adjust for dropout", 
