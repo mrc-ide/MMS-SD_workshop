@@ -15,7 +15,7 @@ As the health facility coordinator on the team, your job is to help your team ma
 - Decide on the number of clusters (health facilities) to include.
 - Planning for the time it will take to enrol the total number of malaria-positive patients in each location.
 
-Navigate back to the [group activity instructions](module6_scenarios.Rmd) if you need to!
+Navigate back to the [group activity instructions](module7_scenarios.Rmd) if you need to!
 
 **Health facility information**
 

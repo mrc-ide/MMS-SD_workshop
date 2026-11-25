@@ -19,7 +19,7 @@ As the budget officer on the team, your job is to help your team make informed d
 
 Do your best job to stay within your budget! 
 
-Navigate back to the [group activity instructions](module6_scenarios.Rmd) if you need to!
+Navigate back to the [group activity instructions](module7_scenarios.Rmd) if you need to!
 
 ### Costs per item
 
